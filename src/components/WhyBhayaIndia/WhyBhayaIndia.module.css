@@ -1,0 +1,96 @@
+.whySection {
+  background-color: #ffffff;
+}
+
+.header {
+  margin-bottom: clamp(3rem, 5vw, 4.5rem);
+}
+
+.headerRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: flex-end;
+  gap: 2.5rem;
+}
+
+.title {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--sapphire, #123456);
+}
+
+.subtitle {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--text-secondary, #4A5B6D);
+  max-width: 520px;
+}
+
+/* --- 4-Pillar Editorial Grid --- */
+.pillarsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  border-top: 1px solid var(--border-subtle, rgba(18, 52, 86, 0.08));
+  padding-top: clamp(2.5rem, 4vw, 3.5rem);
+}
+
+.pillarItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.pillarIndex {
+  font-family: var(--font-primary, sans-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gold, #C5A059);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.pillarDivider {
+  width: 32px;
+  height: 2px;
+  background-color: var(--sapphire, #123456);
+  margin-bottom: 1.25rem;
+  opacity: 0.8;
+}
+
+.pillarTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--sapphire, #123456);
+  letter-spacing: -0.015em;
+  margin-bottom: 0.75rem;
+}
+
+.pillarText {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text-secondary, #4A5B6D);
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .headerRow {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .pillarsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem 1.75rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .pillarsGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}

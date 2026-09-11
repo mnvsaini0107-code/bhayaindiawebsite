@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <!-- Placeholder logo — replace with actual BHAYA INDIA logo PNG -->
+  <!-- Place your real logo at /public/assets/bhaya-india-logo.png -->
+  <rect width="200" height="60" fill="#123456" rx="2"/>
+  <text x="12" y="22" font-family="Georgia, serif" font-size="14" font-weight="700" fill="#FDFDFD" letter-spacing="3">BHAYA</text>
+  <text x="12" y="38" font-family="Georgia, serif" font-size="14" font-weight="700" fill="#C5A059" letter-spacing="3">INDIA</text>
+  <line x1="90" y1="10" x2="90" y2="50" stroke="#C5A059" stroke-width="1" opacity="0.4"/>
+  <text x="100" y="27" font-family="sans-serif" font-size="7" fill="rgba(253,253,253,0.5)" letter-spacing="1">जहाँ भाया,</text>
+  <text x="100" y="38" font-family="sans-serif" font-size="7" fill="rgba(253,253,253,0.5)" letter-spacing="1">वहाँ भरोसा</text>
+</svg>

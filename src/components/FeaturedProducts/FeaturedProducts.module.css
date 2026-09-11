@@ -1,0 +1,225 @@
+.sectionHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
+  flex-wrap: wrap;
+}
+
+.heading {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--sapphire, #123456);
+}
+
+.viewAllTop {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--sapphire, #123456);
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--border-strong, #123456);
+  transition: all var(--duration-fast) ease;
+}
+
+.viewAllTop:hover {
+  color: var(--gold-dark, #a8833c);
+  border-bottom-color: var(--gold-dark, #a8833c);
+  transform: translateX(2px);
+}
+
+/* --- 4-Column Editorial Grid --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+  margin-bottom: clamp(3rem, 5vw, 4.5rem);
+}
+
+/* --- Product Card --- */
+.card {
+  background-color: #ffffff;
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid var(--border-subtle, rgba(18, 52, 86, 0.08));
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--duration-base) ease, box-shadow var(--duration-base) ease;
+}
+
+.card:hover {
+  border-color: var(--border-medium, rgba(18, 52, 86, 0.16));
+  box-shadow: 0 12px 32px rgba(18, 52, 86, 0.06);
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.15;
+  background-color: var(--ivory-subtle, #F4F3EE);
+  overflow: hidden;
+  display: block;
+}
+
+.productImage {
+  object-fit: cover;
+  transition: transform 0.7s var(--ease-editorial);
+}
+
+.card:hover .productImage {
+  transform: scale(1.04);
+}
+
+.badgeNew {
+  position: absolute;
+  top: 0.875rem;
+  left: 0.875rem;
+  background-color: var(--sapphire, #123456);
+  color: #ffffff;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.3rem 0.625rem;
+  border-radius: var(--radius-xs, 3px);
+  z-index: 2;
+}
+
+.cardBody {
+  padding: 1.25rem 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.categoryEyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted, #768696);
+  margin-bottom: 0.35rem;
+}
+
+.cardName {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--sapphire, #123456);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.cardName a {
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.cardName a:hover {
+  color: var(--gold-dark, #a8833c);
+}
+
+.priceRow {
+  margin-bottom: 1.25rem;
+}
+
+.priceWrap {
+  display: flex;
+  align-items: baseline;
+  gap: 0.375rem;
+}
+
+.priceAmount {
+  font-size: 1.1875rem;
+  font-weight: 700;
+  color: var(--sapphire, #123456);
+  letter-spacing: -0.01em;
+}
+
+.priceNote {
+  font-size: 0.75rem;
+  color: var(--text-muted, #768696);
+}
+
+.priceQuote {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--gold-dark, #a8833c);
+  letter-spacing: 0.01em;
+}
+
+/* Actions Row */
+.cardActions {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle, rgba(18, 52, 86, 0.08));
+}
+
+.btnView {
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.875rem;
+  background-color: var(--sapphire, #123456);
+  color: #ffffff;
+  border-radius: var(--radius-xs, 3px);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  transition: background-color var(--duration-fast) ease;
+  text-decoration: none;
+}
+
+.btnView:hover {
+  background-color: var(--sapphire-light, #1c4b78);
+}
+
+.btnWhatsapp {
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0 0.875rem;
+  background-color: transparent;
+  color: var(--sapphire, #123456);
+  border: 1px solid var(--border-medium, rgba(18, 52, 86, 0.16));
+  border-radius: var(--radius-xs, 3px);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  transition: all var(--duration-fast) ease;
+  text-decoration: none;
+}
+
+.btnWhatsapp:hover {
+  background-color: var(--ivory-warm, #F8F7F4);
+  border-color: var(--sapphire, #123456);
+  color: var(--gold-dark, #a8833c);
+}
+
+.sectionFooter {
+  display: flex;
+  justify-content: center;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,261 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  color: var(--sapphire, #123456);
+}
+
+.subTitle {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.addBtn {
+  background-color: var(--sapphire);
+  color: #ffffff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  border: 1px solid var(--gold);
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.loading {
+  padding: 3rem;
+  color: #64748b;
+}
+
+.catCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+}
+
+.cardCover {
+  position: relative;
+  height: 160px;
+  background-color: #f1f5f9;
+}
+
+.coverImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.countBadge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(18, 52, 86, 0.85);
+  color: #ffffff;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.cardBody {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.catName {
+  font-size: 1.15rem;
+  color: var(--sapphire);
+  margin-bottom: 0.2rem;
+}
+
+.catSlug {
+  font-size: 0.75rem;
+  color: var(--gold-dark);
+  font-family: monospace;
+  margin-bottom: 0.5rem;
+}
+
+.catDesc {
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.subCatArea {
+  margin-top: auto;
+  margin-bottom: 1.25rem;
+}
+
+.subCatTitle {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--sapphire);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.subCatTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.subTag {
+  background-color: #f1f5f9;
+  color: var(--sapphire);
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.cardActions {
+  display: flex;
+  gap: 0.5rem;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 1rem;
+}
+
+.editBtn {
+  flex: 1;
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e1;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--sapphire);
+  cursor: pointer;
+}
+
+.deleteBtn {
+  background: none;
+  border: 1px solid #fca5a5;
+  color: #dc2626;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+/* Modal */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modalContent {
+  background: #ffffff;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.modalHeader h2 {
+  font-size: 1.15rem;
+  color: var(--sapphire);
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: #94a3b8;
+  cursor: pointer;
+}
+
+.form {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--sapphire);
+}
+
+.input, .textarea {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.cancelBtn {
+  background: none;
+  border: 1px solid #cbd5e1;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.saveBtn {
+  background-color: var(--sapphire);
+  color: #ffffff;
+  border: 1px solid var(--gold);
+  padding: 0.6rem 1.25rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+}

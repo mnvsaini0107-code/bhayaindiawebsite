@@ -1,0 +1,270 @@
+.clientWrapper {
+  display: contents;
+}
+
+.galleryArea {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mainImageContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 4;
+  border-radius: var(--radius-lg, 8px);
+  overflow: hidden;
+  background-color: var(--gray-100);
+  box-shadow: var(--shadow-sm);
+}
+
+.mainImage {
+  object-fit: cover;
+}
+
+.newBadge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: var(--gold);
+  color: var(--sapphire);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.thumbStrip {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.thumbBtn {
+  width: 64px;
+  height: 64px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  background: none;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.thumbActive {
+  border-color: var(--gold);
+}
+
+.thumbImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.actionsBox {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.buttonRow {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btnPrimary, .btnSecondary {
+  flex: 1;
+  min-width: 160px;
+  justify-content: center;
+}
+
+.btnEnquire {
+  background: none;
+  border: 1px solid var(--gray-300);
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-sm);
+  color: var(--sapphire);
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btnEnquire:hover {
+  border-color: var(--gold);
+  background-color: var(--ivory-warm);
+}
+
+.contactLinksRow {
+  display: flex;
+  gap: 1rem;
+}
+
+.whatsappLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background-color: transparent;
+  color: var(--sapphire, #123456);
+  border: 1px solid var(--border-medium, rgba(18, 52, 86, 0.16));
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.whatsappLink:hover {
+  background-color: var(--ivory-warm, #F8F7F4);
+  border-color: var(--sapphire, #123456);
+  color: var(--gold-dark, #a8833c);
+}
+
+.callLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--gray-100);
+  color: var(--sapphire);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid var(--gray-300);
+  transition: all 0.15s ease;
+}
+
+.callLink:hover {
+  background-color: var(--gray-200);
+}
+
+/* Modal */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(18, 52, 86, 0.6);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modalContent {
+  background: #ffffff;
+  width: 100%;
+  max-width: 520px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  overflow: hidden;
+  border: 1px solid var(--gold);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--gray-200);
+  background-color: var(--gray-50);
+}
+
+.modalEyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--gold-dark);
+  font-weight: 600;
+  display: block;
+}
+
+.modalHeader h3 {
+  font-size: 1.15rem;
+  color: var(--sapphire);
+}
+
+.modalClose {
+  font-size: 1.25rem;
+  color: var(--gray-400);
+  cursor: pointer;
+}
+
+.enquiryForm {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.fieldRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+}
+
+.formLabel {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--sapphire);
+}
+
+.formInput, .formTextarea {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.formInput:focus, .formTextarea:focus {
+  border-color: var(--gold);
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+.successState {
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.successIcon {
+  width: 56px;
+  height: 56px;
+  background-color: #dcfce7;
+  color: #166534;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 auto 1rem;
+}
+
+.successState h4 {
+  font-size: 1.25rem;
+  color: var(--sapphire);
+  margin-bottom: 0.5rem;
+}
+
+.successState p {
+  color: var(--gray-600);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}

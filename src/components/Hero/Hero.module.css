@@ -1,0 +1,129 @@
+.heroSection {
+  background-color: var(--ivory, #FDFDFD);
+  padding-top: clamp(2.5rem, 5vw, 5.5rem);
+  padding-bottom: clamp(3.5rem, 7vw, 7rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.heroLayout {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: center;
+  gap: clamp(2.5rem, 5vw, 6rem);
+}
+
+/* --- Editorial Copy Column --- */
+.heroCopy {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+}
+
+.heroHeading {
+  font-size: clamp(2.5rem, 4.8vw, 4.25rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  color: var(--sapphire, #123456);
+  margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.heroSubtext {
+  font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
+  line-height: 1.65;
+  color: var(--text-secondary, #4A5B6D);
+  margin-bottom: clamp(2rem, 3.5vw, 2.75rem);
+  max-width: 560px;
+}
+
+.heroCtas {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: clamp(2rem, 3.5vw, 3rem);
+}
+
+.heroNote {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted, #768696);
+  letter-spacing: 0.02em;
+}
+
+.heroNoteDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--gold, #C5A059);
+}
+
+.heroNoteSep {
+  opacity: 0.5;
+}
+
+/* --- Editorial Visual Column --- */
+.heroVisualCol {
+  position: relative;
+  width: 100%;
+}
+
+.imageFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3.8;
+  border-radius: var(--radius-md, 8px);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle, rgba(18, 52, 86, 0.08));
+  box-shadow: 0 20px 48px rgba(18, 52, 86, 0.07);
+}
+
+.heroImage {
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-editorial);
+}
+
+.heroVisualCol:hover .heroImage {
+  transform: scale(1.02);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 52, 86, 0) 70%,
+    rgba(18, 52, 86, 0.06) 100%
+  );
+  pointer-events: none;
+}
+
+/* --- Responsive Breakpoints --- */
+@media (max-width: 1024px) {
+  .heroLayout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .heroCopy {
+    max-width: 100%;
+  }
+
+  .imageFrame {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (max-width: 640px) {
+  .heroCtas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .heroCtas .btn {
+    width: 100%;
+  }
+}

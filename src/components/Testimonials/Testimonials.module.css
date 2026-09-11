@@ -1,0 +1,115 @@
+.testimonialsSection {
+  background-color: var(--ivory-warm, #F8F7F4);
+  border-top: 1px solid var(--border-subtle, rgba(18, 52, 86, 0.08));
+  border-bottom: 1px solid var(--border-subtle, rgba(18, 52, 86, 0.08));
+}
+
+.header {
+  margin-bottom: clamp(3rem, 5vw, 4.5rem);
+  max-width: 680px;
+}
+
+.heading {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--sapphire, #123456);
+  margin-bottom: 0.75rem;
+}
+
+.subtext {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--text-secondary, #4A5B6D);
+}
+
+/* --- 3-Column Editorial Grid --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+.testimonialCol {
+  display: flex;
+  flex-direction: column;
+  padding-right: clamp(1rem, 2vw, 2rem);
+  border-right: 1px solid var(--border-subtle, rgba(18, 52, 86, 0.08));
+}
+
+.testimonialCol:last-child {
+  padding-right: 0;
+  border-right: none;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.stars {
+  display: flex;
+  gap: 0.25rem;
+  color: var(--gold, #C5A059);
+}
+
+.reviewIndex {
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-muted, #768696);
+  letter-spacing: 0.05em;
+}
+
+.quote {
+  font-size: clamp(1.125rem, 1.5vw, 1.25rem);
+  line-height: 1.6;
+  font-weight: 500;
+  color: var(--sapphire, #123456);
+  letter-spacing: -0.01em;
+  margin-bottom: 2rem;
+  flex: 1;
+}
+
+.reviewerMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border-top: 1px solid var(--border-subtle, rgba(18, 52, 86, 0.08));
+  padding-top: 1.25rem;
+}
+
+.reviewerName {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--sapphire, #123456);
+}
+
+.reviewerRole {
+  font-size: 0.8125rem;
+  color: var(--text-muted, #768696);
+  line-height: 1.4;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .testimonialCol {
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border-subtle, rgba(18, 52, 86, 0.08));
+    padding-bottom: 2.5rem;
+  }
+
+  .testimonialCol:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}

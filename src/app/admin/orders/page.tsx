@@ -44,18 +44,26 @@ export default function AdminOrdersPage() {
     return o.orderStatus === filter;
   });
 
+  const stages: Order["orderStatus"][] = [
+    "Order Placed",
+    "Processing",
+    "Shipped",
+    "Delivered",
+    "Cancelled",
+  ];
+
   return (
     <div className={styles.page}>
       <div className={styles.headerRow}>
         <div>
           <h1 className={styles.title}>Orders & Fulfillment Management</h1>
           <p className={styles.subTitle}>
-            Review customer orders, dispatch timelines, and payment transaction verification.
+            Review customer orders, update dispatch timelines (Order Placed ➔ Processing ➔ Shipped ➔ Delivered), and record payment status.
           </p>
         </div>
 
         <div className={styles.filterPills}>
-          {["all", "New", "Processing", "Completed", "Cancelled"].map((st) => (
+          {["all", ...stages].map((st) => (
             <button
               key={st}
               className={`${styles.pill} ${filter === st ? styles.pillActive : ""}`}
@@ -101,9 +109,9 @@ export default function AdminOrdersPage() {
                       </td>
                       <td>
                         <strong>{order.customerName}</strong>
-                        <span className={styles.phoneStr}>{order.phone}</span>
+                        <span className={styles.phoneStr}>📱 {order.phone}</span>
                         <span className={styles.addressStr}>
-                          {order.address}, {order.city} ({order.pincode})
+                          📍 {order.address}, {order.city} ({order.pincode})
                         </span>
                       </td>
                       <td>
@@ -148,9 +156,10 @@ export default function AdminOrdersPage() {
                             handleUpdate(order.id, e.target.value as Order["orderStatus"])
                           }
                         >
-                          <option value="New">New Order</option>
-                          <option value="Processing">Processing / Dispatched</option>
-                          <option value="Completed">Completed / Delivered</option>
+                          <option value="Order Placed">Order Placed</option>
+                          <option value="Processing">Processing</option>
+                          <option value="Shipped">Shipped</option>
+                          <option value="Delivered">Delivered</option>
                           <option value="Cancelled">Cancelled</option>
                         </select>
                       </td>

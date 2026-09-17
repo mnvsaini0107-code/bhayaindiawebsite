@@ -15,19 +15,21 @@ export const metadata: Metadata = {
 };
 
 function getWhatsAppUrl(product: Product, whatsappNumber: string) {
-  const msg = encodeURIComponent(
-    `Hello Bhaya India, I would like to inquire about "${product.name}" (SKU: ${product.sku}). Please share pricing and availability.`
-  );
-  return `https://wa.me/${whatsappNumber}?text=${msg}`;
+  const msg = `नमस्कार, मुझे BHAYA INDIA के इस product के बारे में जानकारी चाहिए:
+
+Product Name: ${product.name}
+Quantity: 1`;
+  return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
 }
 
 export default async function ProductsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ category?: string; q?: string; sort?: string; price?: string }>;
+  searchParams: Promise<{ category?: string; subcat?: string; q?: string; sort?: string; price?: string }>;
 }) {
   const resolvedParams = await searchParams;
   const activeCategory = resolvedParams.category || "all";
+  const activeSubcat = resolvedParams.subcat || "";
   const searchQuery = resolvedParams.q || "";
   const sortOption = resolvedParams.sort || "relevance";
   const priceFilter = resolvedParams.price || "all";
@@ -38,6 +40,7 @@ export default async function ProductsPage({
 
   const filtered = allProducts.filter((p) => {
     const matchesCat = activeCategory === "all" || p.categorySlug === activeCategory;
+    const matchesSubcat = !activeSubcat || p.subcategory.toLowerCase() === activeSubcat.toLowerCase();
     const matchesSearch =
       !searchQuery ||
       p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -56,7 +59,7 @@ export default async function ProductsPage({
       matchesPrice = p.price === null;
     }
 
-    return matchesCat && matchesSearch && matchesPrice;
+    return matchesCat && matchesSubcat && matchesSearch && matchesPrice;
   });
 
   // Sorting
@@ -94,7 +97,28 @@ export default async function ProductsPage({
         </div>
 
         <div className="container">
-          {/* Category Filter Pills (Section 16) */}
+          {/* Search Products Bar (Section 4) */}
+          <div className={styles.searchBarRow}>
+            <form action="/products" method="GET" className={styles.searchForm}>
+              {activeCategory !== "all" && <input type="hidden" name="category" value={activeCategory} />}
+              {activeSubcat && <input type="hidden" name="subcat" value={activeSubcat} />}
+              {priceFilter !== "all" && <input type="hidden" name="price" value={priceFilter} />}
+              {sortOption !== "relevance" && <input type="hidden" name="sort" value={sortOption} />}
+              <input
+                type="text"
+                name="q"
+                defaultValue={searchQuery}
+                placeholder="Search Products..."
+                className={styles.searchInput}
+                id="products-search-input"
+              />
+              <button type="submit" className={styles.searchSubmitBtn} id="products-search-submit">
+                Search
+              </button>
+            </form>
+          </div>
+
+          {/* Category Filter Pills (Section 4) */}
           <div className={styles.filterSection}>
             <div className={styles.filterLabel}>Collections:</div>
             <div className={styles.pillsRow}>
@@ -121,6 +145,30 @@ export default async function ProductsPage({
               })}
             </div>
           </div>
+
+          {/* Sub-category Pills (if category selected) */}
+          {activeCategoryObj?.subcategories && activeCategoryObj.subcategories.length > 0 && (
+            <div className={styles.filterSection} style={{ marginTop: "-0.5rem" }}>
+              <div className={styles.filterLabel}>Sub-Category:</div>
+              <div className={styles.pillsRow}>
+                <Link
+                  href={`/products?category=${activeCategory}${searchQuery ? `&q=${encodeURIComponent(searchQuery)}` : ""}${priceFilter !== "all" ? `&price=${priceFilter}` : ""}&sort=${sortOption}`}
+                  className={`pill-control ${!activeSubcat ? "pill-control--active" : ""}`}
+                >
+                  All {activeCategoryObj.name}
+                </Link>
+                {activeCategoryObj.subcategories.map((sub) => (
+                  <Link
+                    key={sub}
+                    href={`/products?category=${activeCategory}&subcat=${encodeURIComponent(sub)}${searchQuery ? `&q=${encodeURIComponent(searchQuery)}` : ""}${priceFilter !== "all" ? `&price=${priceFilter}` : ""}&sort=${sortOption}`}
+                    className={`pill-control ${activeSubcat.toLowerCase() === sub.toLowerCase() ? "pill-control--active" : ""}`}
+                  >
+                    {sub}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Sub-Bar: Price Slabs & Sorting Toolbar */}
           <div className={styles.toolbarRow}>
@@ -273,7 +321,7 @@ export default async function ProductsPage({
                             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
                             <path d="M11.998 2C6.477 2 2 6.484 2 12.017c0 1.99.518 3.869 1.424 5.49L2 22l4.618-1.41A9.917 9.917 0 0 0 12 22.033c5.52 0 9.998-4.484 9.998-10.016C21.998 6.484 17.52 2 11.998 2zm0 18.338a8.28 8.28 0 0 1-4.22-1.155l-.302-.18-3.13.955.832-3.048-.198-.313A8.273 8.273 0 0 1 3.72 12.017c0-4.57 3.718-8.286 8.278-8.286 4.556 0 8.275 3.716 8.275 8.286 0 4.571-3.72 8.321-8.275 8.321z"/>
                           </svg>
-                          Enquire
+                          WhatsApp Enquiry
                         </a>
                       </div>
                     </div>

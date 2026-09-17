@@ -6,9 +6,12 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import CredibilityStrip from "@/components/CredibilityStrip/CredibilityStrip";
 import type { FAQ } from "@/lib/types";
+import { useLanguage } from "@/context/LanguageContext";
+import { siteConfig } from "@/lib/site-config";
 import styles from "./faq.module.css";
 
 export default function FAQPage() {
+  const { language } = useLanguage();
   const [faqs, setFaqs] = useState<FAQ[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState("all");
@@ -29,12 +32,12 @@ export default function FAQPage() {
   }, []);
 
   const categories = [
-    { label: "All Questions", value: "all" },
-    { label: "Product & Silk Quality", value: "Product" },
-    { label: "Corporate Services & Bulk", value: "Service" },
-    { label: "Payment & Invoicing", value: "Payment" },
-    { label: "Pan-India Delivery", value: "Delivery" },
-    { label: "General Business", value: "General" },
+    { label: language === "hi" ? "सभी प्रश्न" : "All Questions", value: "all" },
+    { label: language === "hi" ? "सामान्य प्रश्न" : "General Business", value: "General" },
+    { label: language === "hi" ? "उत्पाद एवं गुणवत्ता" : "Product & Quality", value: "Product" },
+    { label: language === "hi" ? "ऑर्डर एवं भुगतान" : "Ordering & Payment", value: "Payment" },
+    { label: language === "hi" ? "डिलीवरी एवं ट्रैकिंग" : "Delivery & Logistics", value: "Delivery" },
+    { label: language === "hi" ? "थोक एवं विक्रेता" : "Wholesale & Sellers", value: "Service" },
   ];
 
   const filtered = faqs.filter(
@@ -45,6 +48,12 @@ export default function FAQPage() {
     setOpenId((prev) => (prev === id ? null : id));
   };
 
+  const whatsappUrl = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
+    language === "hi"
+      ? "नमस्कार BHAYA INDIA, मुझे एक प्रश्न के संबंध में सहायता चाहिए।"
+      : "Hi BHAYA INDIA, I have a question regarding your products or services."
+  )}`;
+
   return (
     <>
       <Header />
@@ -52,14 +61,20 @@ export default function FAQPage() {
         <div className={styles.heroSection}>
           <div className="container">
             <div className={styles.breadcrumb}>
-              <Link href="/">Home</Link>
+              <Link href="/">{language === "hi" ? "होम" : "Home"}</Link>
               <span className={styles.sep}>/</span>
-              <span>Frequently Asked Questions</span>
+              <span>{language === "hi" ? "अक्सर पूछे जाने वाले सवाल" : "Frequently Asked Questions"}</span>
             </div>
-            <span className={styles.eyebrow}>CLIENT KNOWLEDGE BASE</span>
-            <h1 className={styles.title}>Frequently Asked Questions</h1>
+            <span className={styles.eyebrow}>
+              {language === "hi" ? "सहायता एवं ज्ञान केंद्र" : "CLIENT KNOWLEDGE BASE"}
+            </span>
+            <h1 className={styles.title}>
+              {language === "hi" ? "अक्सर पूछे जाने वाले सवाल (FAQ)" : "Frequently Asked Questions"}
+            </h1>
             <p className={styles.subtitle}>
-              Clear answers regarding our craftsmanship, corporate allocations, pan-India logistics, and payments.
+              {language === "hi"
+                ? "BHAYA INDIA, उत्पादों, ऑर्डर प्रक्रिया, थोक आपूर्ति और BHAYA INDIA 2.0 से संबंधित सभी महत्वपूर्ण उत्तर।"
+                : "Clear answers regarding our operations, products, ordering, delivery, wholesale supply, and BHAYA INDIA 2.0."}
             </p>
           </div>
         </div>
@@ -68,7 +83,9 @@ export default function FAQPage() {
           <div className={styles.layout}>
             {/* Category Sidebar */}
             <aside className={styles.sidebar}>
-              <h3 className={styles.sidebarTitle}>Categories</h3>
+              <h3 className={styles.sidebarTitle}>
+                {language === "hi" ? "श्रेणियां" : "Categories"}
+              </h3>
               <div className={styles.catNav}>
                 {categories.map((c) => (
                   <button
@@ -82,15 +99,19 @@ export default function FAQPage() {
               </div>
 
               <div className={styles.helpBox}>
-                <h4>Need Custom Assistance?</h4>
-                <p>Our corporate client desk is available on WhatsApp for immediate queries.</p>
+                <h4>{language === "hi" ? "सीधी सहायता चाहिए?" : "Need Direct Assistance?"}</h4>
+                <p>
+                  {language === "hi"
+                    ? "हमारे प्रतिनिधि व्हाट्सऐप पर आपके प्रश्नों का त्वरित उत्तर देने के लिए उपलब्ध हैं।"
+                    : "Our team is available on WhatsApp for immediate queries and support."}
+                </p>
                 <a
-                  href="https://wa.me/919876543210?text=Hi%20Bhaya%20India%2C%20I%20have%20a%20question%20regarding%20an%20order."
+                  href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.waLink}
                 >
-                  💬 Chat on WhatsApp →
+                  💬 {language === "hi" ? "व्हाट्सऐप पर बात करें →" : "Chat on WhatsApp →"}
                 </a>
               </div>
             </aside>
@@ -98,13 +119,22 @@ export default function FAQPage() {
             {/* Accordion List */}
             <div className={styles.contentCol}>
               {loading ? (
-                <p className={styles.statusMsg}>Loading frequently asked questions...</p>
+                <p className={styles.statusMsg}>
+                  {language === "hi" ? "सवाल लोड हो रहे हैं..." : "Loading frequently asked questions..."}
+                </p>
               ) : filtered.length === 0 ? (
-                <p className={styles.statusMsg}>No questions currently available in this category.</p>
+                <p className={styles.statusMsg}>
+                  {language === "hi" ? "इस श्रेणी में कोई प्रश्न उपलब्ध नहीं है।" : "No questions currently available in this category."}
+                </p>
               ) : (
                 <div className={styles.accordionList}>
                   {filtered.map((item) => {
                     const isOpen = openId === item.id;
+                    const displayQuestion =
+                      language === "hi" && item.questionHi ? item.questionHi : item.question;
+                    const displayAnswer =
+                      language === "hi" && item.answerHi ? item.answerHi : item.answer;
+
                     return (
                       <div
                         key={item.id}
@@ -115,12 +145,12 @@ export default function FAQPage() {
                           onClick={() => toggleAccordion(item.id)}
                           aria-expanded={isOpen}
                         >
-                          <span className={styles.question}>{item.question}</span>
+                          <span className={styles.question}>{displayQuestion}</span>
                           <span className={styles.icon}>{isOpen ? "−" : "+"}</span>
                         </button>
                         {isOpen && (
                           <div className={styles.accordionBody}>
-                            <p>{item.answer}</p>
+                            <p style={{ whiteSpace: "pre-line" }}>{displayAnswer}</p>
                           </div>
                         )}
                       </div>

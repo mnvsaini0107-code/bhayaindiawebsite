@@ -279,3 +279,42 @@
     display: none;
   }
 }
+
+/* --- Language Switcher Pill --- */
+.langSwitcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.2rem 0.35rem;
+  border-radius: var(--radius-pill);
+  background: var(--ivory-warm);
+  border: 1px solid var(--border-medium);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+  white-space: nowrap;
+  color: var(--text-primary);
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.langSwitcher:hover {
+  border-color: var(--gold);
+}
+
+.langOption {
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-pill);
+  transition: all var(--duration-fast) ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  color: var(--text-secondary);
+}
+
+.langOptionActive {
+  background: var(--sapphire);
+  color: #ffffff;
+}
+

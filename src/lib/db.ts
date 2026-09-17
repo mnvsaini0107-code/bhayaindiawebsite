@@ -13,6 +13,8 @@ import type {
   GalleryItem,
   SiteSettings,
   PageContent,
+  CustomerUser,
+  CustomerAddress,
 } from "./types";
 
 export interface DatabaseSchema {
@@ -25,6 +27,7 @@ export interface DatabaseSchema {
   gallery: GalleryItem[];
   settings: SiteSettings;
   content: PageContent;
+  users?: CustomerUser[];
 }
 
 const DB_DIR = path.join(process.cwd(), "data");
@@ -32,43 +35,44 @@ const DB_FILE = path.join(DB_DIR, "db.json");
 
 // Default initial data
 const initialData: DatabaseSchema = {
+  users: [],
   settings: {
     businessName: "BHAYA INDIA",
     tagline: "जहाँ भाया, वहाँ भरोसा",
     phone: "+91 98765 43210",
     whatsapp: "919876543210",
     email: "contact@bhayaindia.com",
-    address: "Bhaya India Commercial Tower, Main Market Road, New Delhi, 110001, India",
+    address: "BHAYA INDIA — Business & E-commerce Desk, India",
     businessHours: "Monday – Saturday: 9:30 AM – 7:00 PM IST",
     socialLinks: {
-      instagram: "https://instagram.com",
-      facebook: "https://facebook.com",
-      youtube: "https://youtube.com",
-      linkedin: "https://linkedin.com",
+      instagram: "https://instagram.com/bhayaindia",
+      facebook: "https://facebook.com/bhayaindia",
+      youtube: "https://youtube.com/@bhayaindia",
+      linkedin: "https://linkedin.com/company/bhayaindia",
     },
-    mapsEmbedUrl: "https://maps.google.com",
+    mapsEmbedUrl: "",
   },
   content: {
     hero: {
-      eyebrow: "TRADITION MEETS EXCELLENCE",
-      headline: "Quality Products. Uncompromising Trust.",
+      eyebrow: "BHAYA INDIA • जहाँ भाया, वहाँ भरोसा",
+      headline: "Quality Products. Honest Business.",
       subheadline:
-        "Bhaya India delivers certified textiles, premium stationery, bespoke gift hampers and bulk goods with heritage craftsmanship and contemporary reliability across India.",
-      ctaPrimaryText: "Explore Catalogue",
-      ctaSecondaryText: "Enquire for Bulk",
+        "BHAYA INDIA is an Indian business and e-commerce platform connecting customers, regional merchants, and verified manufacturers with genuine trust.",
+      ctaPrimaryText: "Explore Products",
+      ctaSecondaryText: "Wholesale & B2B",
     },
     brandStory: {
-      eyebrow: "OUR JOURNEY",
-      headline: "From a Trusted Local Counter to a Pan-India Enterprise",
+      eyebrow: "OUR STORY",
+      headline: "Local to Online • Local to India",
       paragraph1:
-        "Built on the foundational promise of 'जहाँ भाया, वहाँ भरोसा', Bhaya India started as a merchant family deeply rooted in customer trust, reliable sourcing, and honest pricing.",
+        "BHAYA INDIA एक भारतीय Business & E-commerce Platform है, जिसका उद्देश्य ग्राहकों, स्थानीय व्यवसायों और manufacturers को एक भरोसेमंद digital platform से जोड़ना है।",
       paragraph2:
-        "Today, we bring that same personal commitment to our digital ecosystem — offering enterprises, retailers, and discerning individuals direct access to premium Indian craftsmanship.",
+        "Built on the foundational promise of 'जहाँ भाया, वहाँ भरोसा', we provide an authentic e-commerce and business ecosystem honoring quality products and reliable customer relationships.",
       stats: [
-        { label: "Satisfied Clients", value: "10,000+" },
-        { label: "Product Varieties", value: "250+" },
-        { label: "Pan-India Pincodes", value: "19,000+" },
-        { label: "Years of Trust", value: "25+" },
+        { label: "Our Foundation", value: "भरोसा" },
+        { label: "Vision", value: "Local to India" },
+        { label: "Sourcing", value: "Authentic" },
+        { label: "Platform", value: "B2B & Retail" },
       ],
     },
     whyBhaya: {
@@ -76,36 +80,36 @@ const initialData: DatabaseSchema = {
       headline: "Built on Values That Stand the Test of Time",
       pillars: [
         {
-          title: "Authentic Craftsmanship",
-          desc: "Every product in our catalogue is sourced directly from vetted master weavers, craft houses, and certified manufacturers.",
+          title: "Authentic Sourcing",
+          desc: "Products selected directly from trusted makers, artisans, and manufacturers.",
           icon: "shield",
         },
         {
           title: "Honest & Transparent Value",
-          desc: "No hidden surcharges. Direct factory-to-door pricing that honors both our artisans and our customers.",
+          desc: "Straightforward communication and honest value that honors both makers and customers.",
           icon: "tag",
         },
         {
-          title: "Comprehensive Range",
-          desc: "From delicate Banarasi silks to corporate executive hampers and bulk stationery, discover curated variety under one roof.",
+          title: "Curated Range",
+          desc: "Explore quality textiles, fine stationery, bespoke hampers, and daily essentials.",
           icon: "layers",
         },
         {
-          title: "Dedicated Client Concierge",
-          desc: "Personalized assistance for corporate orders, custom branding, wholesale enquiries, and timely dispatch.",
+          title: "Dedicated Support",
+          desc: "Personalized assistance for corporate orders, custom requirements, and quick dispatches.",
           icon: "headset",
         },
       ],
     },
     sellerCta: {
-      headline: "Partner With Bhaya India",
-      body: "Are you a master manufacturer, textile artisan, or premium product creator? Expand your reach through Bhaya India's nationwide distribution network.",
-      ctaText: "Become a Business Partner",
+      headline: "क्या आप दुकानदार या manufacturer हैं?",
+      body: "भविष्य के BHAYA INDIA Marketplace से जुड़ने के लिए अपना interest दर्ज करें।",
+      ctaText: "Become a Seller",
     },
     bhaya2: {
-      headline: "Bhaya India 2.0 — The Future Vision",
-      subheadline: "A Unified Multi-Vendor B2B & B2C Marketplace",
-      body: "We are architecting the next generation of digital commerce — connecting verified regional manufacturers directly with bulk buyers, institutional clients, and global shoppers under the trusted umbrella of Bhaya India.",
+      headline: "BHAYA INDIA 2.0",
+      subheadline: "एक प्लेटफॉर्म — हजारों दुकानें — एक भरोसा",
+      body: "Our future ecosystem connecting customers, local shopkeepers, manufacturers, and logistics under one trusted umbrella.",
     },
   },
   categories: [
@@ -446,117 +450,80 @@ const initialData: DatabaseSchema = {
       createdAt: new Date(Date.now() - 3600000 * 18).toISOString(),
     },
   ],
-  testimonials: [
-    {
-      id: "test-1",
-      customerName: "Rameshwar Kulkarni",
-      role: "Director of Procurement",
-      company: "Kulkarni Retail & Logistics, Pune",
-      review:
-        "Bhaya India sets the benchmark for consistency. We ordered over 200 corporate festival hampers with custom branding. Every trunk arrived in pristine condition right on schedule. Truly 'जहाँ भाया, वहाँ भरोसा'.",
-      rating: 5,
-      photo: "",
-      isPublished: true,
-      createdAt: new Date().toISOString(),
-    },
-    {
-      id: "test-2",
-      customerName: "Sunita Agarwal",
-      role: "Founder & Creative Lead",
-      company: "Virasat Handlooms, Jaipur",
-      review:
-        "The authenticity of the Banarasi sarees from Bhaya India is unmatched. The silk feel, weight, and zari work exceeded our expectations. Our bridal clients were delighted.",
-      rating: 5,
-      photo: "",
-      isPublished: true,
-      createdAt: new Date().toISOString(),
-    },
-    {
-      id: "test-3",
-      customerName: "Vikram Singhania",
-      role: "Operations Head",
-      company: "Nexus Enterprises, Gurugram",
-      review:
-        "Sourcing uniform textiles and corporate stationery at scale used to be a hassle until we partnered with Bhaya India. Transparent quotes, fast logistics, and dependable team.",
-      rating: 5,
-      photo: "",
-      isPublished: true,
-      createdAt: new Date().toISOString(),
-    },
-  ],
+  testimonials: [],
   faqs: [
     {
       id: "faq-1",
-      question: "How do I place a bulk or corporate enquiry?",
-      answer:
-        "You can click 'Get Quote' or 'Enquire Now' on any product page, fill out the simple enquiry form, or reach out to our team directly via WhatsApp. Our corporate team typically responds with itemized pricing and timeline estimates within 2 to 4 business hours.",
-      category: "Product",
+      question: "What is BHAYA INDIA?",
+      questionHi: "BHAYA INDIA क्या है?",
+      answer: "BHAYA INDIA is an Indian Business & E-commerce Platform connecting customers, local businesses, and manufacturers on a trusted digital platform.",
+      answerHi: "BHAYA INDIA एक भारतीय Business & E-commerce Platform है, जिसका उद्देश्य ग्राहकों, स्थानीय व्यवसायों और manufacturers को एक भरोसेमंद digital platform से जोड़ना है।",
+      category: "General",
       isPublished: true,
       sortOrder: 1,
     },
     {
       id: "faq-2",
-      question: "Do you ship across all pincodes in India?",
-      answer:
-        "Yes. Bhaya India partners with premier logistics couriers covering over 19,000+ pincodes across urban and rural India, including express air transport for fragile and high-value orders.",
-      category: "Delivery",
+      question: "How to purchase products?",
+      questionHi: "Product कैसे खरीदें?",
+      answer: "Browse our catalogue, select your desired quantity, and click 'Add to Bag' or 'Buy Now'. You can also enquire directly on WhatsApp for instant assistance.",
+      answerHi: "हमारी वेबसाइट पर products browse करें, आवश्यक संख्या चुनें, और 'Add to Bag' या 'Buy Now' पर क्लिक करें। आप सीधे WhatsApp पर भी Enquiry कर सकते हैं।",
+      category: "Product",
       isPublished: true,
       sortOrder: 2,
     },
     {
       id: "faq-3",
-      question: "Can products be customized with our company branding?",
-      answer:
-        "Yes! We offer custom logo embossing, foil-stamping on leather stationery, customized gift hamper packaging, and tailored corporate message cards for qualifying minimum order quantities.",
+      question: "How to make a wholesale or bulk enquiry?",
+      questionHi: "Wholesale enquiry कैसे करें?",
+      answer: "Visit our dedicated Wholesale & B2B page and fill out the enquiry form with your product and quantity details, or connect with our team via WhatsApp.",
+      answerHi: "हमारे Wholesale & B2B पेज पर जाकर enquiry form भरें या WhatsApp पर संपर्क करें। हमारी टीम आपकी आवश्यकतानुसार कोटेशन प्रदान करेगी।",
       category: "Service",
       isPublished: true,
       sortOrder: 3,
     },
     {
       id: "faq-4",
-      question: "What payment methods are supported on Bhaya India?",
-      answer:
-        "We support all major Indian payment channels including UPI (Google Pay, PhonePe, Paytm), Debit & Credit Cards (Visa, MasterCard, RuPay), Net Banking across 50+ banks, and NEFT/RTGS for wholesale invoices.",
-      category: "Payment",
+      question: "How to become a seller?",
+      questionHi: "Seller कैसे बनें?",
+      answer: "Shopkeepers and retailers can submit their interest on our 'Become a Seller' page for the upcoming BHAYA INDIA digital marketplace.",
+      answerHi: "'Become a Seller' पेज पर जाकर अपना interest फॉर्म दर्ज करें। भविष्य के BHAYA INDIA Marketplace के लिए हमारी टीम आपसे संपर्क करेगी।",
+      category: "General",
       isPublished: true,
       sortOrder: 4,
     },
     {
       id: "faq-5",
-      question: "What is Bhaya India's quality guarantee policy?",
-      answer:
-        "We stand by 'जहाँ भाया, वहाँ भरोसा'. Every piece undergoes multi-point inspection before dispatch. If an item arrives damaged or materially differs from specifications, we arrange immediate replacement or credit.",
+      question: "How can manufacturers partner with BHAYA INDIA?",
+      questionHi: "Manufacturer कैसे जुड़ें?",
+      answer: "Manufacturers can submit their product categories and factory details on our dedicated 'For Manufacturers' page to register interest for distribution.",
+      answerHi: "'For Manufacturers' पेज पर जाकर अपने उत्पाद और उत्पादन क्षमता का विवरण दर्ज करें। हमारी मर्चेंट टीम आपसे संपर्क करेगी।",
       category: "General",
       isPublished: true,
       sortOrder: 5,
     },
-  ],
-  gallery: [
     {
-      id: "gal-1",
-      title: "Handloom Weaving Workshop",
-      url: "/assets/category-textiles.jpg",
-      category: "Company",
-      caption: "Master weavers working on traditional loom setups in Varanasi.",
-      createdAt: new Date().toISOString(),
+      id: "faq-6",
+      question: "What payment methods are available?",
+      questionHi: "Payment कैसे करें?",
+      answer: "We support UPI, Debit & Credit Cards, Net Banking, and Order Confirmation with verification upon delivery.",
+      answerHi: "हम UPI, डेबिट/क्रेडिट कार्ड, नेट बैंकिंग और डिलीवरी सत्यापन के साथ आर्डर स्वीकार करते हैं।",
+      category: "Payment",
+      isPublished: true,
+      sortOrder: 6,
     },
     {
-      id: "gal-2",
-      title: "Handcrafted Stationery Production",
-      url: "/assets/category-stationery.jpg",
-      category: "Products",
-      caption: "Binding genuine leather journals and archival notebook covers.",
-      createdAt: new Date().toISOString(),
-    },
-    {
-      id: "gal-3",
-      title: "Festival Hamper Assembly",
-      url: "/assets/hero-editorial.jpg",
-      category: "Projects",
-      caption: "Meticulous quality check and ribbon finishing for corporate clients.",
-      createdAt: new Date().toISOString(),
+      id: "faq-7",
+      question: "How to track an order?",
+      questionHi: "Order कैसे track करें?",
+      answer: "You can track your order status anytime in the 'My Account' section using your registered mobile number or Order ID.",
+      answerHi: "'My Account' सेक्शन में जाकर अपने रजिस्टर्ड मोबाइल नंबर या Order ID के माध्यम से अपने आर्डर का status देख सकते हैं।",
+      category: "Delivery",
+      isPublished: true,
+      sortOrder: 7,
     },
   ],
+  gallery: [],
 };
 
 function ensureDb(): DatabaseSchema {
@@ -862,3 +829,85 @@ export function updatePageContent(content: Partial<PageContent>): PageContent {
   writeDb(db);
   return db.content;
 }
+
+// ------------------- USERS / CUSTOMER ACCOUNTS -------------------
+export function getUsers(): CustomerUser[] {
+  const db = ensureDb();
+  return db.users || [];
+}
+
+export function getUserById(id: string): CustomerUser | undefined {
+  const db = ensureDb();
+  return (db.users || []).find((u) => u.id === id);
+}
+
+export function getUserByPhoneOrEmail(identifier: string): CustomerUser | undefined {
+  const db = ensureDb();
+  const clean = identifier.trim().toLowerCase();
+  const cleanPhone = identifier.replace(/[^0-9]/g, "");
+  return (db.users || []).find(
+    (u) =>
+      (cleanPhone && u.phone.replace(/[^0-9]/g, "").includes(cleanPhone)) ||
+      u.email.toLowerCase() === clean
+  );
+}
+
+export function saveUser(userData: Omit<CustomerUser, "id" | "createdAt"> & { id?: string }): CustomerUser {
+  const db = ensureDb();
+  if (!db.users) db.users = [];
+
+  if (userData.id) {
+    const index = db.users.findIndex((u) => u.id === userData.id);
+    if (index !== -1) {
+      db.users[index] = {
+        ...db.users[index],
+        ...userData,
+      };
+      writeDb(db);
+      return db.users[index];
+    }
+  }
+
+  // Create new user
+  const newUser: CustomerUser = {
+    ...userData,
+    id: userData.id || `usr-${Date.now()}`,
+    addresses: userData.addresses || [],
+    createdAt: new Date().toISOString(),
+  };
+  db.users.push(newUser);
+  writeDb(db);
+  return newUser;
+}
+
+export function addUserAddress(userId: string, addressData: Omit<CustomerAddress, "id">): CustomerUser | null {
+  const db = ensureDb();
+  if (!db.users) db.users = [];
+  const user = db.users.find((u) => u.id === userId);
+  if (!user) return null;
+
+  const newAddress: CustomerAddress = {
+    ...addressData,
+    id: `addr-${Date.now()}`,
+  };
+
+  if (!user.addresses) user.addresses = [];
+  if (newAddress.isDefault) {
+    user.addresses.forEach((a) => (a.isDefault = false));
+  }
+  user.addresses.push(newAddress);
+  writeDb(db);
+  return user;
+}
+
+export function deleteUserAddress(userId: string, addressId: string): CustomerUser | null {
+  const db = ensureDb();
+  if (!db.users) db.users = [];
+  const user = db.users.find((u) => u.id === userId);
+  if (!user || !user.addresses) return null;
+
+  user.addresses = user.addresses.filter((a) => a.id !== addressId);
+  writeDb(db);
+  return user;
+}
+

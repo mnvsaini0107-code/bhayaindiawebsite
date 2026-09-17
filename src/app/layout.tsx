@@ -2,18 +2,20 @@ import type { Metadata } from "next";
 import "./globals.css";
 import BrandSplash from "@/components/BrandSplash/BrandSplash";
 import { CartProvider } from "@/context/CartContext";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata: Metadata = {
   title: {
-    default: "Bhaya India — जहाँ भाया, वहाँ भरोसा",
-    template: "%s | Bhaya India",
+    default: "BHAYA INDIA — जहाँ भाया, वहाँ भरोसा",
+    template: "%s | BHAYA INDIA",
   },
   description:
-    "Bhaya India is a premium Indian business offering quality textiles, stationery, gift hampers, electronics and homeware. Trusted craftsmanship, delivered across India.",
+    "BHAYA INDIA is an Indian Business & E-commerce Platform connecting customers, local businesses and manufacturers on a trusted digital platform.",
   keywords: [
     "Bhaya India",
     "Indian products",
-    "premium textiles",
+    "business platform",
+    "textiles",
     "gift hampers",
     "wholesale",
     "online shopping India",
@@ -32,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en-IN">
+    <html lang="en-IN" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -41,11 +43,13 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body>
-        <CartProvider>
-          <BrandSplash />
-          {children}
-        </CartProvider>
+      <body suppressHydrationWarning>
+        <LanguageProvider>
+          <CartProvider>
+            <BrandSplash />
+            {children}
+          </CartProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

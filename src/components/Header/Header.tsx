@@ -5,23 +5,27 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./Header.module.css";
 import { useCart } from "@/context/CartContext";
+import { useLanguage } from "@/context/LanguageContext";
 import SearchModal from "@/components/SearchModal/SearchModal";
 import EnquiryModal from "@/components/EnquiryModal/EnquiryModal";
-
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Products", href: "/products" },
-  { label: "Services", href: "/services" },
-  { label: "Gallery", href: "/gallery" },
-  { label: "Contact", href: "/contact" },
-];
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [enquiryOpen, setEnquiryOpen] = useState(false);
   const { totalCount } = useCart();
+  const { locale, toggleLocale, t } = useLanguage();
+
+  const navLinks = [
+    { label: t("navHome"), href: "/" },
+    { label: t("navAbout"), href: "/about" },
+    { label: t("navProducts"), href: "/products" },
+    { label: t("navServices"), href: "/services" },
+    { label: t("navWholesale"), href: "/wholesale" },
+    { label: t("navGallery"), href: "/gallery" },
+    { label: t("navFaq"), href: "/faq" },
+    { label: t("navContact"), href: "/contact" },
+  ];
 
   useEffect(() => {
     if (mobileOpen) {
@@ -63,7 +67,7 @@ export default function Header() {
 
             {/* Desktop Nav */}
             <nav className={styles.nav} aria-label="Main navigation">
-              {navLinks.map((link) => (
+              {navLinks.slice(0, 6).map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
@@ -76,6 +80,24 @@ export default function Header() {
 
             {/* Right Utility Cluster & Primary CTA */}
             <div className={styles.utilActions}>
+              {/* Language Switcher Pill */}
+              <button
+                type="button"
+                className={styles.langSwitcher}
+                onClick={toggleLocale}
+                aria-label="Toggle language between Hindi and English"
+                id="header-lang-btn"
+                title="Switch Language / भाषा बदलें"
+              >
+                <span className={`${styles.langOption} ${locale === "hi" ? styles.langOptionActive : ""}`}>
+                  🇮🇳 हिन्दी
+                </span>
+                <span style={{ opacity: 0.3 }}>|</span>
+                <span className={`${styles.langOption} ${locale === "en" ? styles.langOptionActive : ""}`}>
+                  English 🇬🇧
+                </span>
+              </button>
+
               <button
                 className={styles.utilBtn}
                 aria-label="Search catalogue"
@@ -120,7 +142,7 @@ export default function Header() {
                 id="header-enquire-btn"
                 onClick={() => setEnquiryOpen(true)}
               >
-                Enquire Now
+                {t("enquireNow")}
               </button>
 
               {/* Mobile Toggle */}
@@ -175,6 +197,24 @@ export default function Header() {
           </button>
         </div>
 
+        {/* Mobile Language Switcher */}
+        <div style={{ padding: "0 1.5rem 0.5rem" }}>
+          <button
+            type="button"
+            className={styles.langSwitcher}
+            onClick={toggleLocale}
+            style={{ width: "100%", justifyContent: "center", padding: "0.5rem" }}
+          >
+            <span className={`${styles.langOption} ${locale === "hi" ? styles.langOptionActive : ""}`}>
+              🇮🇳 हिन्दी
+            </span>
+            <span style={{ opacity: 0.3 }}>|</span>
+            <span className={`${styles.langOption} ${locale === "en" ? styles.langOptionActive : ""}`}>
+              English 🇬🇧
+            </span>
+          </button>
+        </div>
+
         <div className={styles.drawerNav}>
           {navLinks.map((link) => (
             <Link
@@ -188,18 +228,32 @@ export default function Header() {
           ))}
           <div className={styles.drawerDivider} />
           <Link
-            href="/products"
+            href="/become-a-seller"
             className={styles.drawerNavLink}
             onClick={() => setMobileOpen(false)}
           >
-            All Products Catalogue
+            {t("navSeller")}
+          </Link>
+          <Link
+            href="/manufacturers"
+            className={styles.drawerNavLink}
+            onClick={() => setMobileOpen(false)}
+          >
+            {t("navManufacturer")}
+          </Link>
+          <Link
+            href="/bhaya-india-2"
+            className={styles.drawerNavLink}
+            onClick={() => setMobileOpen(false)}
+          >
+            {t("navBhaya2")}
           </Link>
           <Link
             href="/account"
             className={styles.drawerNavLink}
             onClick={() => setMobileOpen(false)}
           >
-            My Account & Orders
+            {t("navAccount")}
           </Link>
         </div>
 
@@ -212,7 +266,7 @@ export default function Header() {
               setEnquiryOpen(true);
             }}
           >
-            Enquire Now
+            {t("enquireNow")}
           </button>
         </div>
       </nav>

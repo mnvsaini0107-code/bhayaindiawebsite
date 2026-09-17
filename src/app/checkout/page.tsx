@@ -46,7 +46,7 @@ export default function CheckoutPage() {
     setLoading(true);
 
     try {
-      // Simulate secure gateway validation & call backend order creation
+      // Call backend order creation with truthful Order Placed status
       const res = await fetch("/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -67,7 +67,8 @@ export default function CheckoutPage() {
           })),
           totalAmount: totalPrice,
           paymentMethod: formData.paymentMethod,
-          paymentStatus: formData.paymentMethod === "COD" ? "Pending" : "Paid",
+          paymentStatus: "Pending",
+          orderStatus: "Order Placed",
         }),
       });
 
@@ -76,7 +77,7 @@ export default function CheckoutPage() {
         setOrderComplete(data.order);
         clearCart();
       } else {
-        setError(data.error || "Payment transaction could not be completed. Please try again.");
+        setError(data.error || "Order could not be submitted. Please try again.");
       }
     } catch (err) {
       console.error("Checkout submit error:", err);
@@ -94,11 +95,11 @@ export default function CheckoutPage() {
           {orderComplete ? (
             <div className={styles.successCard}>
               <div className={styles.checkIcon}>✓</div>
-              <span className={styles.successEyebrow}>THANK YOU FOR YOUR ORDER</span>
+              <span className={styles.successEyebrow}>ORDER RECEIVED SUCCESSFULLY</span>
               <h1 className={styles.successTitle}>Order Confirmed #{orderComplete.id}</h1>
               <p className={styles.successDesc}>
                 We have received your order for {orderComplete.items.length} item(s) totaling ₹
-                {orderComplete.totalAmount.toLocaleString("en-IN")}. A confirmation has been sent to{" "}
+                {orderComplete.totalAmount.toLocaleString("en-IN")}. A confirmation has been registered for{" "}
                 <strong>{orderComplete.phone}</strong>.
               </p>
 
@@ -108,8 +109,12 @@ export default function CheckoutPage() {
                   <strong>{orderComplete.id}</strong>
                 </div>
                 <div className={styles.receiptRow}>
-                  <span>Payment Method</span>
-                  <span>{orderComplete.paymentMethod} ({orderComplete.paymentStatus})</span>
+                  <span>Order Status</span>
+                  <strong style={{ color: "var(--sapphire)" }}>{orderComplete.orderStatus || "Order Placed"}</strong>
+                </div>
+                <div className={styles.receiptRow}>
+                  <span>Payment Status</span>
+                  <span>{orderComplete.paymentMethod} (Pending Merchant Verification)</span>
                 </div>
                 <div className={styles.receiptRow}>
                   <span>Shipping Address</span>
@@ -118,10 +123,17 @@ export default function CheckoutPage() {
               </div>
 
               <div className={styles.successActions}>
-                <Link href="/products" className="btn btn-primary">
+                <Link href="/account" className="btn btn-primary" id="btn-track-order">
+                  Track in My Account
+                </Link>
+                <Link href="/products" className="btn btn-secondary">
                   Continue Shopping
                 </Link>
-                <Link href={`https://wa.me/919876543210?text=Hi%20Bhaya%20India%2C%20regarding%20my%20order%20${orderComplete.id}`} className="btn btn-secondary" target="_blank">
+                <Link
+                  href={`https://wa.me/919876543210?text=${encodeURIComponent(`Hi BHAYA INDIA, regarding my order ${orderComplete.id}`)}`}
+                  className="btn btn-secondary"
+                  target="_blank"
+                >
                   WhatsApp Support
                 </Link>
               </div>
@@ -269,6 +281,23 @@ export default function CheckoutPage() {
                     {/* Step 2: Payment Method */}
                     <div className={styles.sectionCard}>
                       <h2 className={styles.sectionHeading}>2. Payment Method</h2>
+                      <div style={{
+                        padding: "0.85rem 1rem",
+                        background: "rgba(197, 160, 89, 0.08)",
+                        border: "1px solid var(--border-gold)",
+                        borderRadius: "var(--radius-sm)",
+                        marginBottom: "1.25rem",
+                        fontSize: "0.85rem",
+                        color: "var(--text-secondary)",
+                        lineHeight: 1.5,
+                      }}>
+                        <strong style={{ color: "var(--sapphire)", display: "block", marginBottom: "0.25rem" }}>
+                          🔒 Payment Gateway Integration Architecture Ready
+                        </strong>
+                        <span>
+                          Standard gateway integration (UPI / Net Banking / Cards) is built and ready for connection to the client&apos;s production merchant account. Orders submitted now are logged as <strong>Order Placed (Pending Merchant Verification)</strong>.
+                        </span>
+                      </div>
                       <div className={styles.paymentOptions}>
                         <label
                           className={`${styles.paymentOption} ${formData.paymentMethod === "UPI" ? styles.paymentSelected : ""}`}

@@ -26,6 +26,62 @@
   max-width: 680px;
 }
 
+/* --- Inline Product Search Bar --- */
+.searchBarRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.searchForm {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 480px;
+  background: var(--white);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  padding: 0.2rem 0.4rem;
+  transition: border-color var(--duration-fast);
+}
+
+.searchForm:focus-within {
+  border-color: var(--sapphire);
+  box-shadow: 0 0 0 2px rgba(18, 52, 86, 0.08);
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  background: none;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9375rem;
+  font-family: var(--font-primary);
+  color: var(--text-primary);
+  outline: none;
+}
+
+.searchSubmitBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  background: var(--sapphire);
+  color: #ffffff;
+  border-radius: var(--radius-xs);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background 0.15s ease;
+}
+
+.searchSubmitBtn:hover {
+  background: var(--sapphire-light);
+}
+
 /* --- Category Filter Pills --- */
 .filterSection {
   display: flex;

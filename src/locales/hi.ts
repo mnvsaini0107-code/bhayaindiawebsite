@@ -1,0 +1,120 @@
+export const hi = {
+  // Brand
+  brandName: "BHAYA INDIA",
+  tagline: "जहाँ भाया, वहाँ भरोसा",
+  brandSubtitle: "जहाँ भरोसा, वहाँ गुणवत्ता",
+
+  // Navigation
+  navHome: "होम",
+  navAbout: "हमारे बारे में",
+  navProducts: "उत्पाद (Products)",
+  navServices: "सेवाएं",
+  navWholesale: "थोक व B2B",
+  navSeller: "विक्रेता बनें (Seller)",
+  navManufacturer: "मैन्युफैक्चरर्स के लिए",
+  navBhaya2: "भाया इंडिया 2.0",
+  navGallery: "गैलरी",
+  navFaq: "अक्सर पूछे जाने वाले सवाल (FAQ)",
+  navContact: "संपर्क करें",
+  navAccount: "मेरा खाता (Account)",
+  navCart: "शॉपिंग बैग",
+
+  // Common CTAs
+  exploreProducts: "उत्पाद देखें",
+  enquireNow: "पूछताछ करें (Enquire)",
+  addToBag: "बैग में जोड़ें",
+  addedToBag: "✓ बैग में जोड़ा गया",
+  buyNow: "अभी खरीदें",
+  whatsAppEnquiry: "व्हाट्सएप पूछताछ",
+  viewPiece: "विवरण देखें",
+  searchPlaceholder: "Search Products...",
+  getQuote: "कोटेशन प्राप्त करें",
+  clearFilters: "फ़िल्टर हटाएं",
+  resetAll: "सभी फ़िल्टर रीसेट करें",
+  continueShopping: "खरीदारी जारी रखें",
+  proceedToCheckout: "चेकआउट की ओर बढ़ें",
+  confirmOrder: "आर्डर की पुष्टि करें",
+
+  // Filter & Sorting
+  allPieces: "सभी उत्पाद",
+  collections: "श्रेणियां",
+  price: "मूल्य",
+  sort: "क्रमबद्ध करें",
+  sortFeatured: "प्रमुख (Featured)",
+  sortPriceLow: "मूल्य: कम से अधिक",
+  sortPriceHigh: "मूल्य: अधिक से कम",
+  sortNewest: "नवीनतम",
+  showingProducts: "{count} सत्यापित उत्पाद दिखाए जा रहे हैं",
+
+  // Product Details
+  sku: "SKU कोड",
+  keyFeatures: "मुख्य विशेषताएं व कारीगरी",
+  specifications: "विशिष्टताएं (Specifications)",
+  quantity: "संख्या (Quantity)",
+  inStock: "स्टॉक में उपलब्ध",
+  outOfStock: "अस्थायी रूप से समाप्त",
+  relatedProducts: "संबंधित उत्पाद",
+
+  // Cart & Checkout
+  cartTitle: "आपका शॉपिंग बैग",
+  cartEmptyTitle: "आपका शॉपिंग बैग खाली है",
+  cartEmptyDesc: "हमारे प्रामाणिक वस्त्र, कॉर्पोरेट स्टेशनरी और उपहार हैंपर्स का संग्रह देखें।",
+  subtotal: "उप-कुल (Subtotal)",
+  delivery: "डिलीवरी",
+  complimentary: "पूरे भारत में निशुल्क",
+  taxesIncluded: "जीएसटी सहित",
+  totalAmount: "कुल राशि",
+  billingDetails: "डिलीवरी व संपर्क जानकारी",
+  fullName: "पूरा नाम",
+  mobileNumber: "मोबाइल नंबर",
+  emailAddress: "ईमेल पता",
+  streetAddress: "पूरा डिलीवरी पता",
+  city: "शहर",
+  state: "राज्य",
+  pincode: "पिनकोड",
+  selectPaymentMethod: "भुगतान का तरीका",
+  upiPayment: "UPI (GPay / PhonePe / Paytm / BHIM)",
+  cardPayment: "डेबिट / क्रेडिट कार्ड (Visa, RuPay, MasterCard)",
+  netBanking: "नेट बैंकिंग",
+  codPayment: "डिलीवरी पर नकद / सत्यापन",
+  orderConfirmed: "आर्डर स्वीकृत हुआ",
+
+  // Account
+  accountTitle: "ग्राहक खाता (My Account)",
+  accountSubtitle: "अपनी प्रोफ़ाइल, पते प्रबंधित करें और आर्डर की स्थिति देखें।",
+  myOrders: "मेरे आर्डर",
+  profile: "प्रोफ़ाइल विवरण",
+  savedAddresses: "सहेजे गए पते",
+  login: "साइन इन करें",
+  register: "नया खाता बनाएं",
+  logout: "लॉगआउट",
+  orderId: "आर्डर संख्या",
+  orderDate: "तारीख",
+  orderStatus: "आर्डर स्थिति",
+  viewDetails: "विवरण देखें",
+  noOrdersFound: "इस खाते के लिए कोई आर्डर नहीं मिला।",
+  addNewAddress: "+ नया पता जोड़ें",
+
+  // Order Statuses
+  statusOrderPlaced: "Order Placed",
+  statusProcessing: "Processing",
+  statusShipped: "Shipped",
+  statusDelivered: "Delivered",
+  statusCancelled: "Cancelled",
+
+  // Badges
+  comingSoon: "शीघ्र उपलब्ध (Coming Soon)",
+  futureVision: "भविष्य की योजना (Future Vision)",
+  newArrival: "नया आगमन",
+
+  // WhatsApp Message
+  waGreeting: "नमस्कार, मुझे BHAYA INDIA के इस product के बारे में जानकारी चाहिए:",
+  waProductName: "Product Name",
+  waQuantity: "Quantity",
+
+  // About
+  aboutTitle: "BHAYA INDIA के बारे में",
+  aboutSubtitle: "एक भारतीय बिजनेस एवं ई-कॉमर्स प्लेटफॉर्म, जो स्थानीय व्यापार को राष्ट्रीय विश्वास से जोड़ता है।",
+  aboutStory: "BHAYA INDIA एक भारतीय Business & E-commerce Platform है, जो स्थानीय खुदरा व्यापारियों, थोक विक्रेताओं और निर्माताओं को आधुनिक डिजिटल कॉमर्स से जोड़ता है।\nहमारा लक्ष्य हर भारतीय व्यापारी को डिजिटल शक्ति देना और ग्राहकों को विश्वसनीय, गुणवत्तापूर्ण उत्पाद सीधे उपलब्ध कराना है।",
+  aboutMotto: "Local to Online • Local to India\nजहाँ भाया, वहाँ भरोसा",
+};

@@ -37,7 +37,7 @@ export default function WhyBhayaIndia() {
               {content.whyBhaya.headline || "Principles That Endure"}
             </h2>
             <p className={styles.subtitle}>
-              Our foundational commitments guide every transaction — from a single silk piece to enterprise consignments across 19,000+ pincodes.
+              Our foundational commitments guide every transaction — from individual retail orders to wholesale consignments with genuine trust.
             </p>
           </div>
         </div>

@@ -8,6 +8,7 @@ export default function AdminEnquiriesPage() {
   const [enquiries, setEnquiries] = useState<Enquiry[]>([]);
   const [loading, setLoading] = useState(true);
   const [filterStatus, setFilterStatus] = useState("all");
+  const [filterType, setFilterType] = useState("all");
 
   useEffect(() => {
     fetch("/api/enquiries")
@@ -37,9 +38,20 @@ export default function AdminEnquiriesPage() {
     }
   };
 
-  const filtered = enquiries.filter(
-    (e) => filterStatus === "all" || e.status === filterStatus
-  );
+  const filtered = enquiries.filter((e) => {
+    const matchStatus = filterStatus === "all" || e.status === filterStatus;
+    const matchType = filterType === "all" || (e.type || "general") === filterType;
+    return matchStatus && matchType;
+  });
+
+  const enquiryTypes = [
+    { label: "All Types", value: "all" },
+    { label: "Wholesale (B2B)", value: "wholesale" },
+    { label: "Seller Onboarding", value: "seller" },
+    { label: "Manufacturer", value: "manufacturer" },
+    { label: "Product Inquiries", value: "product" },
+    { label: "General", value: "general" },
+  ];
 
   return (
     <div className={styles.page}>
@@ -47,20 +59,44 @@ export default function AdminEnquiriesPage() {
         <div>
           <h1 className={styles.title}>Leads & Customer Inquiries</h1>
           <p className={styles.subTitle}>
-            Review inquiries submitted from product pages and contact forms. Track lead resolution pipeline.
+            Review B2B wholesale requests, seller applications, factory submissions, and product inquiries.
           </p>
         </div>
 
-        <div className={styles.filterPills}>
-          {["all", "New", "In Progress", "Closed"].map((st) => (
-            <button
-              key={st}
-              className={`${styles.pill} ${filterStatus === st ? styles.pillActive : ""}`}
-              onClick={() => setFilterStatus(st)}
-            >
-              {st === "all" ? `All (${enquiries.length})` : st}
-            </button>
-          ))}
+        <div style={{ display: "flex", flexDirection: "column", gap: "8px", alignItems: "flex-end" }}>
+          {/* Status filter */}
+          <div className={styles.filterPills}>
+            {["all", "New", "In Progress", "Closed"].map((st) => (
+              <button
+                key={st}
+                className={`${styles.pill} ${filterStatus === st ? styles.pillActive : ""}`}
+                onClick={() => setFilterStatus(st)}
+              >
+                {st === "all" ? `All (${enquiries.length})` : st}
+              </button>
+            ))}
+          </div>
+
+          {/* Type filter */}
+          <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
+            {enquiryTypes.map((t) => (
+              <button
+                key={t.value}
+                style={{
+                  fontSize: "12px",
+                  padding: "4px 10px",
+                  borderRadius: "12px",
+                  border: "1px solid var(--border-medium)",
+                  background: filterType === t.value ? "var(--sapphire)" : "white",
+                  color: filterType === t.value ? "white" : "var(--text-secondary)",
+                  cursor: "pointer",
+                }}
+                onClick={() => setFilterType(t.value)}
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -74,10 +110,10 @@ export default function AdminEnquiriesPage() {
             <table className={styles.table}>
               <thead>
                 <tr>
-                  <th>Date & Time</th>
-                  <th>Customer Info</th>
-                  <th>Product Requested</th>
-                  <th>Qty</th>
+                  <th>Date & Type</th>
+                  <th>Customer & Business</th>
+                  <th>Product / Category</th>
+                  <th>Qty / Location</th>
                   <th>Message / Scope</th>
                   <th>Lead Status</th>
                   <th>Direct Actions</th>
@@ -89,20 +125,67 @@ export default function AdminEnquiriesPage() {
                     dateStyle: "medium",
                     timeStyle: "short",
                   });
-                  const cleanPhone = enq.mobile.replace(/[^0-9]/g, "");
+                  const cleanPhone = (enq.mobile || "").replace(/[^0-9]/g, "");
+                  const badgeColor =
+                    enq.type === "wholesale"
+                      ? "#854d0e"
+                      : enq.type === "seller"
+                      ? "#1e40af"
+                      : enq.type === "manufacturer"
+                      ? "#15803d"
+                      : "#475569";
+                  const badgeBg =
+                    enq.type === "wholesale"
+                      ? "#fef9c3"
+                      : enq.type === "seller"
+                      ? "#dbeafe"
+                      : enq.type === "manufacturer"
+                      ? "#dcfce7"
+                      : "#f1f5f9";
 
                   return (
                     <tr key={enq.id}>
-                      <td className={styles.dateCell}>{dateStr}</td>
+                      <td className={styles.dateCell}>
+                        <span>{dateStr}</span>
+                        <span
+                          style={{
+                            display: "inline-block",
+                            marginTop: "6px",
+                            padding: "2px 8px",
+                            fontSize: "11px",
+                            fontWeight: 600,
+                            borderRadius: "10px",
+                            color: badgeColor,
+                            background: badgeBg,
+                            textTransform: "capitalize",
+                          }}
+                        >
+                          {enq.type || "General"}
+                        </span>
+                      </td>
                       <td>
                         <strong className={styles.customerName}>{enq.name}</strong>
-                        <span className={styles.contactLine}>{enq.mobile}</span>
-                        {enq.email && <span className={styles.emailLine}>{enq.email}</span>}
+                        {enq.businessName && (
+                          <span style={{ fontSize: "12px", color: "var(--sapphire)", display: "block", fontWeight: 600 }}>
+                            🏢 {enq.businessName}
+                          </span>
+                        )}
+                        <span className={styles.contactLine}>📱 {enq.mobile}</span>
+                        {enq.email && <span className={styles.emailLine}>✉️ {enq.email}</span>}
                       </td>
                       <td>
-                        <strong>{enq.productName}</strong>
+                        <strong>{enq.productName || "General / Catalogue"}</strong>
                       </td>
-                      <td>{enq.quantity || "—"}</td>
+                      <td>
+                        <div>
+                          <span>{enq.quantity ? `Qty: ${enq.quantity}` : "—"}</span>
+                          {enq.city && (
+                            <span style={{ fontSize: "12px", color: "var(--text-muted)", display: "block" }}>
+                              📍 {enq.city}
+                            </span>
+                          )}
+                        </div>
+                      </td>
                       <td className={styles.messageCell}>
                         <p>{enq.message}</p>
                       </td>
@@ -130,8 +213,8 @@ export default function AdminEnquiriesPage() {
                           <a
                             href={`https://wa.me/${cleanPhone}?text=Hello%20${encodeURIComponent(
                               enq.name
-                            )}%2C%20thank%20you%20for%20contacting%20Bhaya%20India%20regarding%20${encodeURIComponent(
-                              enq.productName
+                            )}%2C%20thank%20you%20for%20contacting%20BHAYA%20INDIA%20regarding%20${encodeURIComponent(
+                              enq.productName || "your enquiry"
                             )}.`}
                             target="_blank"
                             rel="noopener noreferrer"

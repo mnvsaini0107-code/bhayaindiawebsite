@@ -1,0 +1,120 @@
+export const en = {
+  // Brand
+  brandName: "BHAYA INDIA",
+  tagline: "जहाँ भाया, वहाँ भरोसा",
+  brandSubtitle: "Where Faith Meets Quality",
+
+  // Navigation
+  navHome: "Home",
+  navAbout: "About Us",
+  navProducts: "Products",
+  navServices: "Services",
+  navWholesale: "Wholesale & B2B",
+  navSeller: "Become a Seller",
+  navManufacturer: "For Manufacturers",
+  navBhaya2: "BHAYA INDIA 2.0",
+  navGallery: "Gallery",
+  navFaq: "FAQ",
+  navContact: "Contact",
+  navAccount: "My Account",
+  navCart: "Shopping Bag",
+
+  // Common CTAs
+  exploreProducts: "Explore Products",
+  enquireNow: "Enquire Now",
+  addToBag: "Add to Bag",
+  addedToBag: "✓ Added to Bag",
+  buyNow: "Buy Now",
+  whatsAppEnquiry: "WhatsApp Enquiry",
+  viewPiece: "View Piece",
+  searchPlaceholder: "Search Products...",
+  getQuote: "Get Custom Quote",
+  clearFilters: "Clear Filters",
+  resetAll: "Reset all filters",
+  continueShopping: "Continue Shopping",
+  proceedToCheckout: "Proceed to Checkout",
+  confirmOrder: "Confirm Order",
+
+  // Filter & Sorting
+  allPieces: "All Pieces",
+  collections: "Collections",
+  price: "Price",
+  sort: "Sort",
+  sortFeatured: "Featured",
+  sortPriceLow: "Price: Low → High",
+  sortPriceHigh: "Price: High → Low",
+  sortNewest: "Newest",
+  showingProducts: "Showing {count} verified product(s)",
+
+  // Product Details
+  sku: "SKU",
+  keyFeatures: "Key Features & Craftsmanship",
+  specifications: "Specifications",
+  quantity: "Quantity",
+  inStock: "In Stock",
+  outOfStock: "Temporarily Out of Stock",
+  relatedProducts: "Related Products",
+
+  // Cart & Checkout
+  cartTitle: "Your Shopping Bag",
+  cartEmptyTitle: "Your shopping bag is empty",
+  cartEmptyDesc: "Explore our collection of authentic textiles, fine stationery, and curated hampers.",
+  subtotal: "Subtotal",
+  delivery: "Delivery",
+  complimentary: "Complimentary across India",
+  taxesIncluded: "GST Inclusive",
+  totalAmount: "Total Amount",
+  billingDetails: "Delivery & Contact Information",
+  fullName: "Full Name",
+  mobileNumber: "Mobile Number",
+  emailAddress: "Email Address",
+  streetAddress: "Complete Delivery Address",
+  city: "City",
+  state: "State",
+  pincode: "Pincode",
+  selectPaymentMethod: "Payment Method",
+  upiPayment: "UPI (GPay / PhonePe / Paytm / BHIM)",
+  cardPayment: "Debit / Credit Card (Visa, RuPay, MasterCard)",
+  netBanking: "Net Banking",
+  codPayment: "Cash / Verification on Delivery",
+  orderConfirmed: "Order Confirmed",
+
+  // Account
+  accountTitle: "Customer Account",
+  accountSubtitle: "Manage your profile, saved addresses, and track active order dispatches.",
+  myOrders: "My Orders",
+  profile: "Profile Details",
+  savedAddresses: "Saved Addresses",
+  login: "Sign In",
+  register: "Create Account",
+  logout: "Sign Out",
+  orderId: "Order ID",
+  orderDate: "Date",
+  orderStatus: "Order Status",
+  viewDetails: "View Details",
+  noOrdersFound: "No orders found for this account.",
+  addNewAddress: "+ Add New Address",
+
+  // Order Statuses
+  statusOrderPlaced: "Order Placed",
+  statusProcessing: "Processing",
+  statusShipped: "Shipped",
+  statusDelivered: "Delivered",
+  statusCancelled: "Cancelled",
+
+  // Badges
+  comingSoon: "Coming Soon",
+  futureVision: "Future Vision",
+  newArrival: "New Arrival",
+
+  // WhatsApp Message
+  waGreeting: "नमस्कार, मुझे BHAYA INDIA के इस product के बारे में जानकारी चाहिए:",
+  waProductName: "Product Name",
+  waQuantity: "Quantity",
+
+  // About
+  aboutTitle: "About BHAYA INDIA",
+  aboutSubtitle: "An Indian Business & E-commerce Platform connecting local commerce with nationwide trust.",
+  aboutStory: "BHAYA INDIA is an Indian Business & E-commerce Platform connecting local retailers, wholesalers, and manufacturers with modern digital commerce.",
+  aboutMotto: "Local to Online • Local to India\nजहाँ भाया, वहाँ भरोसा",
+};

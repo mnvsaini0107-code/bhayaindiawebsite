@@ -52,7 +52,7 @@ export default function CompanyProfilePage() {
                 <li><strong>Strict Origin Provenance:</strong> Direct cluster sourcing without exploitative middlemen.</li>
                 <li><strong>Certified Material Specifications:</strong> Lab-tested silk compositions, archival papers, and pure copper-brass metallurgy.</li>
                 <li><strong>Transparent Contract Commercials:</strong> Fixed wholesale volume slabs with verified GST compliance.</li>
-                <li><strong>Pan-India Supply Reliability:</strong> Express courier partnerships covering 19,000+ pincodes.</li>
+                <li><strong>Nationwide Supply Reliability:</strong> Dedicated courier partnerships ensuring safe and tracked dispatches across India.</li>
               </ul>
             </div>
 

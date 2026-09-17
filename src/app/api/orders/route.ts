@@ -33,7 +33,7 @@ export async function POST(request: Request) {
       totalAmount: Number(body.totalAmount) || 0,
       paymentMethod: body.paymentMethod || "UPI",
       paymentStatus: body.paymentStatus || "Pending",
-      orderStatus: "New",
+      orderStatus: body.orderStatus || "Order Placed",
     });
 
     return NextResponse.json({ success: true, order }, { status: 201 });

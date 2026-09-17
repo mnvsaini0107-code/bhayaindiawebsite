@@ -31,7 +31,7 @@ export default function Footer({ settings = DEFAULT_SITE_SETTINGS }: { settings?
               </span>
             </div>
             <p className={styles.footerDesc}>
-              A certified Indian business delivering authentic handlooms, luxury corporate stationery, festive hampers and institutional supplies across India.
+              A trusted Indian business & commerce platform connecting local retailers, wholesalers, and manufacturers with verified products and dependable service.
             </p>
             <div className={styles.socialLinks}>
               <a href={settings.socialLinks.instagram} className={styles.socialLink} aria-label="Instagram" target="_blank" rel="noopener noreferrer">
@@ -57,15 +57,15 @@ export default function Footer({ settings = DEFAULT_SITE_SETTINGS }: { settings?
 
           {/* Company & Profile */}
           <div>
-            <p className={styles.colTitle}>Company</p>
+            <p className={styles.colTitle}>Company & Vision</p>
             <ul className={styles.linkList}>
               {[
                 { label: "About Us", href: "/about" },
+                { label: "BHAYA INDIA 2.0", href: "/bhaya-india-2" },
                 { label: "Company Profile", href: "/company-profile" },
                 { label: "Why Choose Us", href: "/why-choose-us" },
                 { label: "Visual Gallery", href: "/gallery" },
                 { label: "Client Testimonials", href: "/testimonials" },
-                { label: "Services & Wholesale", href: "/services" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className={styles.footerLink}>
@@ -76,17 +76,17 @@ export default function Footer({ settings = DEFAULT_SITE_SETTINGS }: { settings?
             </ul>
           </div>
 
-          {/* Catalogue & Categories */}
+          {/* Business & Partnerships */}
           <div>
-            <p className={styles.colTitle}>Catalogue</p>
+            <p className={styles.colTitle}>Business & B2B</p>
             <ul className={styles.linkList}>
               {[
                 { label: "All Products", href: "/products" },
-                { label: "Textiles & Fabrics", href: "/products?category=textiles-fabrics" },
-                { label: "Stationery & Office", href: "/products?category=stationery-office" },
-                { label: "Gift Hampers", href: "/products?category=gift-hampers" },
-                { label: "Home & Living", href: "/products?category=home-living" },
-                { label: "Wholesale & Bulk", href: "/products?category=wholesale-bulk" },
+                { label: "Wholesale & B2B", href: "/wholesale" },
+                { label: "Become a Seller", href: "/become-a-seller" },
+                { label: "For Manufacturers", href: "/manufacturers" },
+                { label: "Services & Solutions", href: "/services" },
+                { label: "Track Your Order", href: "/account" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className={styles.footerLink}>
@@ -120,7 +120,7 @@ export default function Footer({ settings = DEFAULT_SITE_SETTINGS }: { settings?
                 </a>
               </li>
               <li className={styles.contactItem}>
-                <span className={styles.contactLabel}>Headquarters</span>
+                <span className={styles.contactLabel}>Registered Office</span>
                 <span className={styles.contactValueAddress}>{settings.address}</span>
               </li>
             </ul>
@@ -130,7 +130,7 @@ export default function Footer({ settings = DEFAULT_SITE_SETTINGS }: { settings?
         {/* Bottom Bar */}
         <div className={styles.bottomBar}>
           <p className={styles.copyright}>
-            &copy; {new Date().getFullYear()} Bhaya India. All rights reserved. Registered Indian Trademark.
+            &copy; {new Date().getFullYear()} BHAYA INDIA. All rights reserved. Registered Indian Enterprise.
           </p>
           <div className={styles.legalLinks}>
             <Link href="/faq" className={styles.legalLink}>FAQ</Link>
@@ -139,9 +139,9 @@ export default function Footer({ settings = DEFAULT_SITE_SETTINGS }: { settings?
             <span className={styles.legalSep}>·</span>
             <Link href="/terms-conditions" className={styles.legalLink}>Terms & Conditions</Link>
             <span className={styles.legalSep}>·</span>
-            <Link href="/account" className={styles.legalLink}>Order Tracking</Link>
+            <Link href="/account" className={styles.legalLink}>Customer Account</Link>
             <span className={styles.legalSep}>·</span>
-            <Link href="/admin/login" className={styles.adminLoginLink}>Admin CMS</Link>
+            <Link href="/admin/login" className={styles.adminLoginLink}>Admin Portal</Link>
           </div>
         </div>
       </div>

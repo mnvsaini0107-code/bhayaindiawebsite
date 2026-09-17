@@ -27,6 +27,7 @@ export interface Product {
   seoTitle?: string;
   seoDescription?: string;
   createdAt: string;
+  updatedAt?: string;
 }
 
 export interface Category {
@@ -49,6 +50,37 @@ export interface Enquiry {
   quantity?: number;
   message: string;
   status: "New" | "In Progress" | "Closed";
+  type?: "general" | "product" | "wholesale" | "seller" | "manufacturer";
+  businessName?: string;
+  businessType?: string;
+  categoryInterest?: string;
+  city?: string;
+  location?: string;
+  createdAt: string;
+}
+
+export interface CustomerAddress {
+  id: string;
+  title?: string;
+  label?: string;
+  recipientName?: string;
+  fullName?: string;
+  phone?: string;
+  address?: string;
+  street?: string;
+  city: string;
+  state: string;
+  pincode: string;
+  isDefault?: boolean;
+}
+
+export interface CustomerUser {
+  id: string;
+  name: string;
+  phone: string;
+  email: string;
+  password?: string;
+  addresses: CustomerAddress[];
   createdAt: string;
 }
 
@@ -73,7 +105,7 @@ export interface Order {
   totalAmount: number;
   paymentMethod: "UPI" | "Card" | "NetBanking" | "COD";
   paymentStatus: "Pending" | "Paid" | "Failed";
-  orderStatus: "New" | "Processing" | "Completed" | "Cancelled";
+  orderStatus: "Order Placed" | "Processing" | "Shipped" | "Delivered" | "Cancelled" | "New" | "Completed";
   createdAt: string;
 }
 
@@ -93,6 +125,8 @@ export interface FAQ {
   id: string;
   question: string;
   answer: string;
+  questionHi?: string;
+  answerHi?: string;
   category: "Product" | "Service" | "Payment" | "Delivery" | "General";
   isPublished: boolean;
   sortOrder: number;

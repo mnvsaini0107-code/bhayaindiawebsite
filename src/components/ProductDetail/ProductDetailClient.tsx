@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
+import { useLanguage } from "@/context/LanguageContext";
 import type { Product } from "@/lib/types";
 import styles from "./ProductDetailClient.module.css";
 
@@ -19,14 +20,15 @@ export default function ProductDetailClient({ product, whatsappNumber, phone }: 
   const [enquiryOpen, setEnquiryOpen] = useState(false);
   const [enquiryLoading, setEnquiryLoading] = useState(false);
   const [enquirySuccess, setEnquirySuccess] = useState(false);
+  const { t } = useLanguage();
 
-  // Enquiry form state
+  // Quantity and enquiry form state
+  const [quantity, setQuantity] = useState("1");
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
-  const [quantity, setQuantity] = useState("1");
   const [message, setMessage] = useState(
-    `Hello Bhaya India, I am interested in purchasing "${product.name}". Please provide availability, dispatch timeline, and terms.`
+    `Hello BHAYA INDIA, I am interested in purchasing "${product.name}". Please provide availability and dispatch timeline.`
   );
 
   const { addItem } = useCart();
@@ -37,14 +39,18 @@ export default function ProductDetailClient({ product, whatsappNumber, phone }: 
       setEnquiryOpen(true);
       return;
     }
-    addItem({
-      id: product.id,
-      name: product.name,
-      slug: product.slug,
-      price: product.price,
-      image: selectedImage,
-      category: product.category,
-    });
+    const parsedQty = Math.max(1, Number(quantity) || 1);
+    addItem(
+      {
+        id: product.id,
+        name: product.name,
+        slug: product.slug,
+        price: product.price,
+        image: selectedImage,
+        category: product.category,
+      },
+      parsedQty
+    );
     setAdded(true);
     setTimeout(() => setAdded(false), 2500);
   };
@@ -54,14 +60,18 @@ export default function ProductDetailClient({ product, whatsappNumber, phone }: 
       setEnquiryOpen(true);
       return;
     }
-    addItem({
-      id: product.id,
-      name: product.name,
-      slug: product.slug,
-      price: product.price,
-      image: selectedImage,
-      category: product.category,
-    });
+    const parsedQty = Math.max(1, Number(quantity) || 1);
+    addItem(
+      {
+        id: product.id,
+        name: product.name,
+        slug: product.slug,
+        price: product.price,
+        image: selectedImage,
+        category: product.category,
+      },
+      parsedQty
+    );
     router.push("/checkout");
   };
 
@@ -80,6 +90,7 @@ export default function ProductDetailClient({ product, whatsappNumber, phone }: 
           productName: product.name,
           productId: product.id,
           quantity: Number(quantity) || 1,
+          type: "product",
           message,
         }),
       });
@@ -98,9 +109,15 @@ export default function ProductDetailClient({ product, whatsappNumber, phone }: 
     }
   };
 
-  // Pre-filled WhatsApp format required by PRD Section 21:
-  // "Hello BHAYA INDIA, I am interested in [PRODUCT NAME]. Please share more details."
-  const whatsappText = `Hello BHAYA INDIA, I am interested in ${product.name}. Please share more details.`;
+  // Section 8 Mandatory Exact WhatsApp format:
+  // नमस्कार, मुझे BHAYA INDIA के इस product के बारे में जानकारी चाहिए:
+  // Product Name: ______
+  // Quantity: ______
+  const parsedQty = Math.max(1, Number(quantity) || 1);
+  const whatsappText = `नमस्कार, मुझे BHAYA INDIA के इस product के बारे में जानकारी चाहिए:
+
+Product Name: ${product.name}
+Quantity: ${parsedQty}`;
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappText)}`;
 
   return (
@@ -116,7 +133,7 @@ export default function ProductDetailClient({ product, whatsappNumber, phone }: 
             className={styles.mainImage}
             sizes="(max-width: 768px) 100vw, 50vw"
           />
-          {product.isNew && <span className={styles.newBadge}>New Arrival</span>}
+          {product.isNew && <span className={styles.newBadge}>{t("newArrival")}</span>}
         </div>
 
         {product.images && product.images.length > 1 && (
@@ -137,6 +154,30 @@ export default function ProductDetailClient({ product, whatsappNumber, phone }: 
 
       {/* Primary Actions Strip */}
       <div className={styles.actionsBox}>
+        {/* Quantity Selector */}
+        <div className={styles.qtySelectorRow}>
+          <span className={styles.qtyPickerLabel}>{t("quantity")}:</span>
+          <div className={styles.qtyPickerControl}>
+            <button
+              type="button"
+              className={styles.qtyPickerBtn}
+              onClick={() => setQuantity(String(Math.max(1, (Number(quantity) || 1) - 1)))}
+              aria-label="Decrease quantity"
+            >
+              −
+            </button>
+            <span className={styles.qtyPickerVal}>{quantity}</span>
+            <button
+              type="button"
+              className={styles.qtyPickerBtn}
+              onClick={() => setQuantity(String((Number(quantity) || 1) + 1))}
+              aria-label="Increase quantity"
+            >
+              +
+            </button>
+          </div>
+        </div>
+
         <div className={styles.buttonRow}>
           {product.price !== null ? (
             <>
@@ -146,7 +187,7 @@ export default function ProductDetailClient({ product, whatsappNumber, phone }: 
                 className={`btn btn-primary ${styles.btnPrimary}`}
                 id={`btn-add-cart-${product.sku}`}
               >
-                {added ? "✓ Added to Shopping Bag" : "Add to Bag"}
+                {added ? t("addedToBag") : t("addToBag")}
               </button>
               <button
                 type="button"
@@ -154,7 +195,7 @@ export default function ProductDetailClient({ product, whatsappNumber, phone }: 
                 className={`btn btn-secondary ${styles.btnSecondary}`}
                 id={`btn-buy-now-${product.sku}`}
               >
-                Buy Now
+                {t("buyNow")}
               </button>
             </>
           ) : (
@@ -163,7 +204,7 @@ export default function ProductDetailClient({ product, whatsappNumber, phone }: 
               onClick={() => setEnquiryOpen(true)}
               className={`btn btn-primary ${styles.btnPrimary}`}
             >
-              Request Custom Quotation
+              {t("getQuote")}
             </button>
           )}
 
@@ -172,7 +213,7 @@ export default function ProductDetailClient({ product, whatsappNumber, phone }: 
             onClick={() => setEnquiryOpen(true)}
             className={styles.btnEnquire}
           >
-            Enquire Now
+            {t("enquireNow")}
           </button>
         </div>
 
@@ -183,12 +224,13 @@ export default function ProductDetailClient({ product, whatsappNumber, phone }: 
             rel="noopener noreferrer"
             className={styles.whatsappLink}
             id={`btn-whatsapp-${product.sku}`}
+            title="WhatsApp Enquiry"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
               <path d="M11.998 2C6.477 2 2 6.484 2 12.017c0 1.99.518 3.869 1.424 5.49L2 22l4.618-1.41A9.917 9.917 0 0 0 12 22.033c5.52 0 9.998-4.484 9.998-10.016C21.998 6.484 17.52 2 11.998 2zm0 18.338a8.28 8.28 0 0 1-4.22-1.155l-.302-.18-3.13.955.832-3.048-.198-.313A8.273 8.273 0 0 1 3.72 12.017c0-4.57 3.718-8.286 8.278-8.286 4.556 0 8.275 3.716 8.275 8.286 0 4.571-3.72 8.321-8.275 8.321z" />
             </svg>
-            Enquire on WhatsApp
+            {t("whatsAppEnquiry")}
           </a>
 
           <a href={`tel:${phone}`} className={styles.callLink}>

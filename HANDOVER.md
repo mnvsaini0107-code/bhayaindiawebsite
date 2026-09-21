@@ -140,36 +140,45 @@ A unified customer portal catering to both registered customers and guest order 
 
 ---
 
-## 8. Database Architecture & Persistence
+## 8. Shopify Commerce Architecture & Source of Truth
 
-Data is persisted in JSON database format at `data/db.json` and accessed via `src/lib/db.ts`:
+The e-commerce data layer has been connected to **Shopify** as the primary platform and source of truth, removing separate duplicate custom commerce databases:
 
-- `products`: Product catalog with pricing, images, specifications, and slugs.
-- `categories`: Categories and subcategories.
-- `orders`: Customer orders, items, amounts, and statuses.
-- `enquiries`: B2B, wholesale, seller, manufacturer, and product leads.
-- `users`: Customer accounts with saved delivery addresses.
-- `faqs`: 7 bilingual FAQ records with English and Hindi questions and answers.
-- `gallery`: Visual media items.
-- `testimonials`: Verified customer feedback items.
-- `settings`: Store configuration, phone, WhatsApp, email, and address.
+- **Products, Variants, Prices & Inventory:** Managed via Shopify Admin and fetched live through **Shopify Storefront API** (`src/lib/shopify`).
+- **Collections & Taxonomy:** Mapped directly to Shopify Collections.
+- **Cart & Checkout:** Managed via Shopify Storefront Cart API (`cartCreate`, `cartLinesAdd`, `cartLinesUpdate`). When checking out, customers are directed to the secure **Shopify Checkout** portal (`checkoutUrl`) with native support for UPI, Debit/Credit Cards, Net Banking, and COD.
+- **Orders & Fulfillment:** Handled inside Shopify Admin (`admin.shopify.com/store/{shop}/orders`).
+- **Customer Accounts:** Accessible via official Shopify Customer Accounts (`/api/auth/shopify` -> `/account`).
+- **B2B & Merchant Leads:** Submissions from `/become-a-seller`, `/manufacturers`, and `/wholesale` are synchronized to Shopify Customer Leads with relevant tags (`Lead - Become a Seller`, `Lead - Manufacturer`, `Lead - Wholesale B2B`) and notes.
+- **Data Migration Ready:**
+  - Standard Shopify CSV export generated at `data/shopify_products_import.csv` ready for 1-click import in Shopify Admin > Products > Import.
+  - Automated migration endpoint and dry-run tester at `/api/shopify/migrate`.
+  - Migration script at `scripts/export-shopify-csv.js`.
 
 ---
 
-## 9. Payment Gateway Configuration (When Merchant Credentials Arrive)
+## 9. Shopify Environment Configuration (`.env.local`)
 
-To activate automated online payment collection (Razorpay, Cashfree, PhonePe, or Paytm), add the following keys to your `.env.local` file:
+To connect the storefront to your live Shopify store, populate `.env.local` based on `.env.example`:
 
 ```env
-# Razorpay Configuration (Example)
-NEXT_PUBLIC_RAZORPAY_KEY_ID="rzp_live_xxxxxxxxxxxx"
-RAZORPAY_KEY_SECRET="xxxxxxxxxxxxxxxxxxxxxxxx"
+# 1. Shopify Store Domain
+SHOPIFY_STORE_DOMAIN="bhaya-india.myshopify.com"
+NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN="bhaya-india.myshopify.com"
 
-# Webhook Secret (For automatic status transition to 'Paid')
-RAZORPAY_WEBHOOK_SECRET="whsec_xxxxxxxxxxxxxxxxxxxx"
+# 2. Shopify Storefront API Access Token (Public)
+# Generated in Shopify Admin > Settings > Apps and sales channels > Develop apps
+SHOPIFY_STOREFRONT_ACCESS_TOKEN="shpat_xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN="shpat_xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# 3. Shopify Admin API Access Token (Server-Side Only for Migrations & Lead Sync)
+SHOPIFY_ADMIN_ACCESS_TOKEN="shpat_xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# 4. API Version
+SHOPIFY_API_VERSION="2026-07"
 ```
 
-The checkout endpoint (`src/app/checkout/page.tsx`) and orders API (`src/app/api/orders/route.ts`) are modularly structured to initialize the checkout modal upon receiving these keys.
+*Note: The platform features an intelligent fallback layer. If credentials are not yet entered, it displays the verified catalog locally while preventing any crashes.*
 
 ---
 

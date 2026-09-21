@@ -16,7 +16,7 @@ export default function ServicesClient() {
         : "Tell us your specific requirements. We locate verified Indian manufacturing sources, verify sample quality, and negotiate transparent bulk pricing.",
       items: [
         language === "hi" ? "विनिर्देश आधारित सोर्सिंग" : "Specification-based sourcing",
-        language === "hi" ? "नमूना (Sample) निरीक्षण" : "Physical sample inspection",
+        language === "hi" ? "नमूना निरीक्षण" : "Physical sample inspection",
         language === "hi" ? "फैक्टरी मूल्य सत्यापन" : "Direct factory pricing validation",
         language === "hi" ? "गुणवत्ता रिपोर्टिंग" : "Transparent quality verification",
       ],
@@ -41,7 +41,7 @@ export default function ServicesClient() {
     },
     {
       id: "svc-03",
-      title: language === "hi" ? "कॉरपोरेट उपहार (Corporate Gifting)" : "Corporate & Festival Gifting",
+      title: language === "hi" ? "कॉरपोरेट उपहार" : "Corporate & Festival Gifting",
       badge: language === "hi" ? "सक्रिय सेवा" : "Currently Active",
       desc: language === "hi"
         ? "त्योहारों, सम्मेलनों और कर्मचारी सम्मान के लिए विशेष रूप से तैयार किए गए प्रीमियम उपहार सेट और कस्टम ब्रांडिंग।"

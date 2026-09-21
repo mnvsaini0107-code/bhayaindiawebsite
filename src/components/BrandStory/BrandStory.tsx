@@ -1,10 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./BrandStory.module.css";
-import { getPageContent } from "@/lib/db";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function BrandStory() {
-  const content = getPageContent();
+  const { t } = useLanguage();
 
   return (
     <section className={`section section--subtle ${styles.storySection}`} aria-labelledby="story-heading">
@@ -28,35 +30,29 @@ export default function BrandStory() {
           <div className={styles.contentCol}>
             <div className="eyebrow eyebrow--gold">
               <span className="eyebrow-line" />
-              {content.brandStory.eyebrow || "Our Story"}
+              {t("storyEyebrow")}
             </div>
 
             <h2 className={styles.heading} id="story-heading">
-              {content.brandStory.headline || "From a Trusted Merchant Counter to a Pan-India Digital Enterprise"}
+              {t("storyHeadline")}
             </h2>
 
             <div className={styles.bodyText}>
-              <p>
-                {content.brandStory.paragraph1 ||
-                  "Built on the foundational promise of 'जहाँ भाया, वहाँ भरोसा', Bhaya India originated as a family merchant house deeply anchored in customer relationships, authenticated sourcing, and honorable pricing."}
-              </p>
+              <p>{t("storyP1")}</p>
 
               <blockquote className={styles.pullQuote}>
                 <span className={`${styles.pullQuoteText} font-devanagari`}>
                   &ldquo;जहाँ भाया, वहाँ भरोसा&rdquo;
                 </span>
-                <span className={styles.pullQuoteAuthor}>The Bhaya India Quality Pledge</span>
+                <span className={styles.pullQuoteAuthor}>{t("storyQuote")}</span>
               </blockquote>
 
-              <p>
-                {content.brandStory.paragraph2 ||
-                  "Today, we bring that same personal dedication into a scalable digital ecosystem — offering corporate institutions, retail buyers, and discerning households direct access to verified Indian craftsmanship."}
-              </p>
+              <p>{t("storyP2")}</p>
             </div>
 
             <div className={styles.actionRow}>
               <Link href="/about" className={styles.storyLink} id="story-about-link">
-                Read the Complete Journey
+                {t("storyReadMore")}
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />

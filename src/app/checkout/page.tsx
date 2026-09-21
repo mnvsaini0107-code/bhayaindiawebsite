@@ -1,16 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import { useCart } from "@/context/CartContext";
+import { useLanguage } from "@/context/LanguageContext";
 import type { Order } from "@/lib/types";
 import styles from "./checkout.module.css";
 
 export default function CheckoutPage() {
-  const { items, totalPrice, clearCart } = useCart();
+  const { items, totalPrice, clearCart, checkoutUrl } = useCart();
+  const { t, language } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,6 +29,12 @@ export default function CheckoutPage() {
   const [orderComplete, setOrderComplete] = useState<Order | null>(null);
   const [error, setError] = useState("");
 
+  useEffect(() => {
+    if (checkoutUrl) {
+      window.location.href = checkoutUrl;
+    }
+  }, [checkoutUrl]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -34,11 +42,11 @@ export default function CheckoutPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (items.length === 0) {
-      setError("Your cart is empty. Please add products before checking out.");
+      setError(language === "hi" ? "आपका कार्ट खाली है।" : "Your cart is empty. Please add products before checking out.");
       return;
     }
     if (!formData.name || !formData.phone || !formData.address || !formData.pincode) {
-      setError("Please complete all required address fields.");
+      setError(language === "hi" ? "कृपया सभी आवश्यक पते के फ़ील्ड भरें।" : "Please complete all required address fields.");
       return;
     }
 
@@ -46,7 +54,6 @@ export default function CheckoutPage() {
     setLoading(true);
 
     try {
-      // Call backend order creation with truthful Order Placed status
       const res = await fetch("/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -77,15 +84,45 @@ export default function CheckoutPage() {
         setOrderComplete(data.order);
         clearCart();
       } else {
-        setError(data.error || "Order could not be submitted. Please try again.");
+        setError(data.error || (language === "hi" ? "ऑर्डर जमा नहीं हो सका। कृपया पुनः प्रयास करें।" : "Order could not be submitted. Please try again."));
       }
     } catch (err) {
       console.error("Checkout submit error:", err);
-      setError("A connection error occurred. Please try again.");
+      setError(language === "hi" ? "नेटवर्क त्रुटि हुई। कृपया पुनः प्रयास करें।" : "A connection error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
   };
+
+  if (checkoutUrl) {
+    return (
+      <>
+        <Header />
+        <main className={styles.main}>
+          <div className="container" style={{ padding: "40px 0" }}>
+            <div className={styles.successCard} style={{ maxWidth: "600px", margin: "0 auto", textAlign: "center" }}>
+              <div className={styles.checkIcon} style={{ background: "var(--sapphire)", color: "#fff" }}>✓</div>
+              <span className={styles.successEyebrow}>SHOPIFY SECURE COMMERCE</span>
+              <h1 className={styles.successTitle}>
+                {language === "hi" ? "Shopify चेकआउट पर भेजा जा रहा है" : "Redirecting to Shopify Checkout"}
+              </h1>
+              <p className={styles.successDesc}>
+                {language === "hi"
+                  ? "आपको सुरक्षित Shopify पेमेंट पोर्टल (UPI, कार्ड, नेट बैंकिंग) पर ले जाया जा रहा है।"
+                  : "Taking you to the official Shopify checkout portal with UPI, Debit/Credit Cards, and Net Banking."}
+              </p>
+              <div style={{ marginTop: "24px" }}>
+                <a href={checkoutUrl} className="btn btn-primary" style={{ padding: "14px 28px" }}>
+                  {language === "hi" ? "Shopify चेकआउट पर आगे बढ़ें →" : "Proceed to Shopify Checkout Now →"}
+                </a>
+              </div>
+            </div>
+          </div>
+        </main>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
@@ -95,46 +132,52 @@ export default function CheckoutPage() {
           {orderComplete ? (
             <div className={styles.successCard}>
               <div className={styles.checkIcon}>✓</div>
-              <span className={styles.successEyebrow}>ORDER RECEIVED SUCCESSFULLY</span>
-              <h1 className={styles.successTitle}>Order Confirmed #{orderComplete.id}</h1>
+              <span className={styles.successEyebrow}>
+                {language === "hi" ? "ऑर्डर सफलतापूर्वक प्राप्त हुआ" : "ORDER RECEIVED SUCCESSFULLY"}
+              </span>
+              <h1 className={styles.successTitle}>
+                {language === "hi" ? `ऑर्डर स्वीकृत #${orderComplete.id}` : `Order Confirmed #${orderComplete.id}`}
+              </h1>
               <p className={styles.successDesc}>
-                We have received your order for {orderComplete.items.length} item(s) totaling ₹
-                {orderComplete.totalAmount.toLocaleString("en-IN")}. A confirmation has been registered for{" "}
-                <strong>{orderComplete.phone}</strong>.
+                {language === "hi"
+                  ? `हमें आपके ${orderComplete.items.length} उत्पादों का ऑर्डर (कुल राशि ₹${orderComplete.totalAmount.toLocaleString("en-IN")}) प्राप्त हो गया है। मोबाइल ${orderComplete.phone} पर पुष्टि दर्ज कर ली गई है।`
+                  : `We have received your order for ${orderComplete.items.length} item(s) totaling ₹${orderComplete.totalAmount.toLocaleString("en-IN")}. A confirmation has been registered for ${orderComplete.phone}.`}
               </p>
 
               <div className={styles.receiptBox}>
                 <div className={styles.receiptRow}>
-                  <span>Order Number</span>
+                  <span>{t("orderId")}</span>
                   <strong>{orderComplete.id}</strong>
                 </div>
                 <div className={styles.receiptRow}>
-                  <span>Order Status</span>
-                  <strong style={{ color: "var(--sapphire)" }}>{orderComplete.orderStatus || "Order Placed"}</strong>
+                  <span>{t("orderStatus")}</span>
+                  <strong style={{ color: "var(--sapphire)" }}>
+                    {language === "hi" ? "ऑर्डर दर्ज" : orderComplete.orderStatus || "Order Placed"}
+                  </strong>
                 </div>
                 <div className={styles.receiptRow}>
-                  <span>Payment Status</span>
-                  <span>{orderComplete.paymentMethod} (Pending Merchant Verification)</span>
+                  <span>{language === "hi" ? "भुगतान स्थिति" : "Payment Status"}</span>
+                  <span>{orderComplete.paymentMethod} ({language === "hi" ? "सत्यापन लंबित" : "Pending Verification"})</span>
                 </div>
                 <div className={styles.receiptRow}>
-                  <span>Shipping Address</span>
+                  <span>{language === "hi" ? "डिलीवरी पता" : "Shipping Address"}</span>
                   <span>{orderComplete.address}, {orderComplete.city}, {orderComplete.state} — {orderComplete.pincode}</span>
                 </div>
               </div>
 
               <div className={styles.successActions}>
                 <Link href="/account" className="btn btn-primary" id="btn-track-order">
-                  Track in My Account
+                  {language === "hi" ? "खाते में ट्रैक करें" : "Track in My Account"}
                 </Link>
                 <Link href="/products" className="btn btn-secondary">
-                  Continue Shopping
+                  {t("continueShopping")}
                 </Link>
                 <Link
                   href={`https://wa.me/919876543210?text=${encodeURIComponent(`Hi BHAYA INDIA, regarding my order ${orderComplete.id}`)}`}
                   className="btn btn-secondary"
                   target="_blank"
                 >
-                  WhatsApp Support
+                  {t("whatsAppEnquiry")}
                 </Link>
               </div>
             </div>
@@ -142,21 +185,25 @@ export default function CheckoutPage() {
             <>
               <div className={styles.headerArea}>
                 <div className={styles.breadcrumb}>
-                  <Link href="/cart">Shopping Bag</Link>
+                  <Link href="/cart">{t("navCart")}</Link>
                   <span className={styles.sep}>/</span>
-                  <span>Secure Checkout</span>
+                  <span>{t("proceedToCheckout")}</span>
                 </div>
-                <h1 className={styles.title}>Complete Your Order</h1>
+                <h1 className={styles.title}>
+                  {language === "hi" ? "अपना ऑर्डर पूरा करें" : "Complete Your Order"}
+                </h1>
                 <p className={styles.subtitle}>
-                  Enter delivery details and select your preferred payment gateway method.
+                  {language === "hi"
+                    ? "डिलीवरी विवरण दर्ज करें और अपनी पसंदीदा भुगतान विधि चुनें।"
+                    : "Enter delivery details and select your preferred payment gateway method."}
                 </p>
               </div>
 
               {items.length === 0 ? (
                 <div className={styles.emptyNotice}>
-                  <p>Your shopping bag is empty.</p>
+                  <p>{t("cartEmptyTitle")}</p>
                   <Link href="/products" className="btn btn-primary">
-                    Browse Products
+                    {t("exploreProducts")}
                   </Link>
                 </div>
               ) : (
@@ -166,23 +213,23 @@ export default function CheckoutPage() {
 
                     {/* Step 1: Customer Contact & Address */}
                     <div className={styles.sectionCard}>
-                      <h2 className={styles.sectionHeading}>1. Delivery & Contact Details</h2>
+                      <h2 className={styles.sectionHeading}>1. {t("billingDetails")}</h2>
                       <div className={styles.formGrid}>
                         <div className={styles.fieldFull}>
-                          <label className={styles.label}>Full Name *</label>
+                          <label className={styles.label}>{t("fullName")} *</label>
                           <input
                             type="text"
                             name="name"
                             required
                             className={styles.input}
-                            placeholder="e.g. Rameshwar Kulkarni"
+                            placeholder={language === "hi" ? "उदा. रामेश्वर कुलकर्णी" : "e.g. Rameshwar Kulkarni"}
                             value={formData.name}
                             onChange={handleChange}
                           />
                         </div>
 
                         <div className={styles.fieldHalf}>
-                          <label className={styles.label}>Mobile Number *</label>
+                          <label className={styles.label}>{t("mobileNumber")} *</label>
                           <input
                             type="tel"
                             name="phone"
@@ -195,7 +242,7 @@ export default function CheckoutPage() {
                         </div>
 
                         <div className={styles.fieldHalf}>
-                          <label className={styles.label}>Email Address</label>
+                          <label className={styles.label}>{t("emailAddress")}</label>
                           <input
                             type="email"
                             name="email"
@@ -207,33 +254,33 @@ export default function CheckoutPage() {
                         </div>
 
                         <div className={styles.fieldFull}>
-                          <label className={styles.label}>Street Address *</label>
+                          <label className={styles.label}>{t("streetAddress")} *</label>
                           <input
                             type="text"
                             name="address"
                             required
                             className={styles.input}
-                            placeholder="Flat/House No., Building Name, Street"
+                            placeholder={language === "hi" ? "मकान नं., बिल्डिंग, सड़क का नाम" : "Flat/House No., Building Name, Street"}
                             value={formData.address}
                             onChange={handleChange}
                           />
                         </div>
 
                         <div className={styles.fieldThird}>
-                          <label className={styles.label}>City *</label>
+                          <label className={styles.label}>{t("city")} *</label>
                           <input
                             type="text"
                             name="city"
                             required
                             className={styles.input}
-                            placeholder="City"
+                            placeholder={t("city")}
                             value={formData.city}
                             onChange={handleChange}
                           />
                         </div>
 
                         <div className={styles.fieldThird}>
-                          <label className={styles.label}>State *</label>
+                          <label className={styles.label}>{t("state")} *</label>
                           <select
                             name="state"
                             className={styles.select}
@@ -264,7 +311,7 @@ export default function CheckoutPage() {
                         </div>
 
                         <div className={styles.fieldThird}>
-                          <label className={styles.label}>Pincode *</label>
+                          <label className={styles.label}>{t("pincode")} *</label>
                           <input
                             type="text"
                             name="pincode"
@@ -280,7 +327,7 @@ export default function CheckoutPage() {
 
                     {/* Step 2: Payment Method */}
                     <div className={styles.sectionCard}>
-                      <h2 className={styles.sectionHeading}>2. Payment Method</h2>
+                      <h2 className={styles.sectionHeading}>2. {t("selectPaymentMethod")}</h2>
                       <div style={{
                         padding: "0.85rem 1rem",
                         background: "rgba(197, 160, 89, 0.08)",
@@ -292,10 +339,10 @@ export default function CheckoutPage() {
                         lineHeight: 1.5,
                       }}>
                         <strong style={{ color: "var(--sapphire)", display: "block", marginBottom: "0.25rem" }}>
-                          🔒 Payment Gateway Integration Architecture Ready
+                          {language === "hi" ? "सत्यापित भारतीय ई-कॉमर्स पेमेंट" : "Verified Payment Security"}
                         </strong>
                         <span>
-                          Standard gateway integration (UPI / Net Banking / Cards) is built and ready for connection to the client&apos;s production merchant account. Orders submitted now are logged as <strong>Order Placed (Pending Merchant Verification)</strong>.
+                          {t("paymentPendingNotice")}
                         </span>
                       </div>
                       <div className={styles.paymentOptions}>
@@ -310,14 +357,14 @@ export default function CheckoutPage() {
                             onChange={handleChange}
                           />
                           <div className={styles.paymentMeta}>
-                            <strong>UPI (Instant & Zero Surcharge)</strong>
+                            <strong>{t("upiPayment")}</strong>
                             <span>Google Pay, PhonePe, Paytm, BHIM UPI</span>
                           </div>
                         </label>
 
                         {formData.paymentMethod === "UPI" && (
                           <div className={styles.upiSubField}>
-                            <label className={styles.label}>Enter your UPI ID / VPA</label>
+                            <label className={styles.label}>{language === "hi" ? "अपना UPI ID / VPA दर्ज करें" : "Enter your UPI ID / VPA"}</label>
                             <input
                               type="text"
                               name="upiId"
@@ -327,7 +374,7 @@ export default function CheckoutPage() {
                               onChange={handleChange}
                             />
                             <span className={styles.fieldHint}>
-                              A secure UPI payment request will be sent to your UPI app.
+                              {language === "hi" ? "आपके UPI ऐप पर भुगतान अनुरोध भेजा जाएगा।" : "A secure UPI payment request will be sent to your UPI app."}
                             </span>
                           </div>
                         )}
@@ -343,8 +390,8 @@ export default function CheckoutPage() {
                             onChange={handleChange}
                           />
                           <div className={styles.paymentMeta}>
-                            <strong>Credit / Debit Card</strong>
-                            <span>Visa, MasterCard, RuPay & American Express</span>
+                            <strong>{t("cardPayment")}</strong>
+                            <span>Visa, MasterCard, RuPay</span>
                           </div>
                         </label>
 
@@ -359,8 +406,8 @@ export default function CheckoutPage() {
                             onChange={handleChange}
                           />
                           <div className={styles.paymentMeta}>
-                            <strong>Net Banking</strong>
-                            <span>All 50+ major Indian banks supported</span>
+                            <strong>{t("netBanking")}</strong>
+                            <span>{language === "hi" ? "सभी प्रमुख भारतीय बैंक समर्थित" : "All major Indian banks supported"}</span>
                           </div>
                         </label>
 
@@ -375,8 +422,8 @@ export default function CheckoutPage() {
                             onChange={handleChange}
                           />
                           <div className={styles.paymentMeta}>
-                            <strong>Bank Transfer / Cash on Delivery</strong>
-                            <span>Pay upon verified delivery or invoice</span>
+                            <strong>{t("codPayment")}</strong>
+                            <span>{language === "hi" ? "डिलीवरी पर सत्यापन के साथ भुगतान" : "Pay upon verified delivery or invoice"}</span>
                           </div>
                         </label>
                       </div>
@@ -386,7 +433,9 @@ export default function CheckoutPage() {
                   {/* Summary Column */}
                   <div className={styles.summaryColumn}>
                     <div className={styles.orderCard}>
-                      <h3 className={styles.orderCardHeading}>Order Items ({items.length})</h3>
+                      <h3 className={styles.orderCardHeading}>
+                        {language === "hi" ? `ऑर्डर किए गए उत्पाद (${items.length})` : `Order Items (${items.length})`}
+                      </h3>
 
                       <div className={styles.orderItemsList}>
                         {items.map((item) => (
@@ -402,7 +451,7 @@ export default function CheckoutPage() {
                             </div>
                             <div className={styles.itemInfo}>
                               <span className={styles.itemName}>{item.name}</span>
-                              <span className={styles.itemQty}>Qty: {item.quantity}</span>
+                              <span className={styles.itemQty}>{t("quantity")}: {item.quantity}</span>
                             </div>
                             <span className={styles.itemPrice}>
                               ₹{(item.price * item.quantity).toLocaleString("en-IN")}
@@ -414,22 +463,22 @@ export default function CheckoutPage() {
                       <div className={styles.calcDivider} />
 
                       <div className={styles.calcRow}>
-                        <span>Subtotal</span>
+                        <span>{t("subtotal")}</span>
                         <span>₹{totalPrice.toLocaleString("en-IN")}</span>
                       </div>
                       <div className={styles.calcRow}>
-                        <span>Delivery Fee</span>
-                        <span className={styles.freeBadge}>FREE (Pan-India)</span>
+                        <span>{t("delivery")}</span>
+                        <span className={styles.freeBadge}>{t("complimentary")}</span>
                       </div>
                       <div className={styles.calcRow}>
-                        <span>Taxes (GST)</span>
-                        <span>Included</span>
+                        <span>{t("taxesIncluded")}</span>
+                        <span>{t("priceInclusiveTaxes")}</span>
                       </div>
 
                       <div className={styles.calcDivider} />
 
                       <div className={styles.finalTotalRow}>
-                        <span>Total Payable</span>
+                        <span>{t("totalAmount")}</span>
                         <span className={styles.payableAmount}>
                           ₹{totalPrice.toLocaleString("en-IN")}
                         </span>
@@ -440,11 +489,15 @@ export default function CheckoutPage() {
                         disabled={loading}
                         className={`btn btn-primary ${styles.submitOrderBtn}`}
                       >
-                        {loading ? "Processing Secure Payment..." : `Pay ₹${totalPrice.toLocaleString("en-IN")} Now →`}
+                        {loading
+                          ? t("loadingText")
+                          : (language === "hi"
+                              ? `अभी भुगतान करें: ₹${totalPrice.toLocaleString("en-IN")} →`
+                              : `Pay ₹${totalPrice.toLocaleString("en-IN")} Now →`)}
                       </button>
 
                       <p className={styles.securityNote}>
-                        🔒 256-Bit SSL Encrypted & Certified Indian Payment Gateway Architecture.
+                        {language === "hi" ? "256-बिट सुरक्षित एन्क्रिप्टेड भुगतान प्रणाली" : "256-Bit SSL Encrypted & Certified Secure Commerce."}
                       </p>
                     </div>
                   </div>

@@ -54,7 +54,7 @@ export default function WholesaleClient() {
     }
   };
 
-  const whatsappDirectMsg = `नमस्कार, मुझे BHAYA INDIA से थोक एवं B2B खरीद (Wholesale) के बारे में जानकारी चाहिए:
+  const whatsappDirectMsg = `नमस्कार, मुझे BHAYA INDIA से थोक एवं व्यावसायिक खरीद के बारे में जानकारी चाहिए:
 Business Name: ${businessName || "____"}
 Product: ${productInterested || "____"}
 Quantity: ${quantity || "____"}`;
@@ -87,7 +87,7 @@ Quantity: ${quantity || "____"}`;
             </Link>
             <span>/</span>
             <span style={{ color: "rgba(255,255,255,0.8)" }}>
-              {language === "hi" ? "थोक व्यापार (B2B)" : "Wholesale & B2B"}
+              {language === "hi" ? "थोक व्यापार" : "Wholesale & B2B"}
             </span>
           </nav>
 
@@ -191,13 +191,13 @@ Quantity: ${quantity || "____"}`;
                   {
                     title: language === "hi" ? "जीएसटी इनवॉइस एवं बिलिंग" : "Compliant GST Invoicing",
                     desc: language === "hi"
-                      ? "व्यवसाय के लिए 100% कानूनी पक्के बिल एवं इनपुट टैक्स क्रेडिट (ITC) सुविधा।"
+                      ? "व्यवसाय के लिए 100% कानूनी पक्के बिल एवं इनपुट टैक्स क्रेडिट सुविधा।"
                       : "Official GST tax invoices with HSN codes allowing complete input tax credit claims.",
                   },
                   {
                     title: language === "hi" ? "व्हाट्सऐप त्वरित कोटेशन" : "Instant WhatsApp Quote Assistance",
                     desc: language === "hi"
-                      ? "औपचारिक कोटेशन या नमूनों (samples) की जानकारी तुरंत हमारे थोक डेस्क से प्राप्त करें।"
+                      ? "औपचारिक कोटेशन या नमूनों की जानकारी तुरंत हमारे थोक डेस्क से प्राप्त करें।"
                       : "Request catalog sheets, test samples, and custom price lists directly on WhatsApp.",
                   },
                 ].map((col) => (
@@ -233,7 +233,6 @@ Quantity: ${quantity || "____"}`;
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                  <span style={{ fontSize: "24px" }}>💬</span>
                   <strong style={{ color: "#128C7E", fontSize: "16px" }}>
                     {language === "hi" ? "तत्काल थोक व्हाट्सऐप परामर्श" : "Direct WhatsApp Wholesale Desk"}
                   </strong>
@@ -257,7 +256,7 @@ Quantity: ${quantity || "____"}`;
                     fontWeight: 600,
                   }}
                 >
-                  💬 {language === "hi" ? "व्हाट्सऐप पर कोटेशन मांगें" : "Chat on WhatsApp Now"}
+                  {language === "hi" ? "व्हाट्सऐप पर कोटेशन मांगें" : "Chat on WhatsApp Now"}
                 </a>
               </div>
             </div>
@@ -299,8 +298,7 @@ Quantity: ${quantity || "____"}`;
                     textAlign: "center",
                   }}
                 >
-                  <span style={{ fontSize: "36px" }}>📦</span>
-                  <h4 style={{ color: "#15803d", fontSize: "18px", marginTop: "12px", marginBottom: "8px" }}>
+                  <h4 style={{ color: "#15803d", fontSize: "18px", marginTop: "4px", marginBottom: "8px" }}>
                     {language === "hi" ? "कोटेशन अनुरोध प्राप्त हुआ!" : "Quote Request Successfully Submitted!"}
                   </h4>
                   <p style={{ fontSize: "14px", color: "var(--text-secondary)", margin: 0 }}>
@@ -412,7 +410,7 @@ Quantity: ${quantity || "____"}`;
                     </div>
                     <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                       <label style={{ fontSize: "13px", fontWeight: 600, color: "var(--text-primary)" }}>
-                        {language === "hi" ? "अपेक्षित मात्रा (Quantity)" : "Expected Quantity"} *
+                        {language === "hi" ? "अपेक्षित मात्रा" : "Expected Quantity"} *
                       </label>
                       <input
                         type="text"

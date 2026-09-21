@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { getProducts, createProduct } from "@/lib/db";
+import { getShopifyProducts, searchShopifyProducts, isShopifyConfigured } from "@/lib/shopify";
+import { createProduct } from "@/lib/db";
 
 export async function GET(request: Request) {
   try {
@@ -9,36 +10,33 @@ export async function GET(request: Request) {
     const sort = searchParams.get("sort");
     const featured = searchParams.get("featured");
 
-    let items = getProducts();
-
-    if (category && category !== "all") {
-      items = items.filter((p) => p.categorySlug === category);
-    }
-
     if (search) {
-      const q = search.toLowerCase();
-      items = items.filter(
-        (p) =>
-          p.name.toLowerCase().includes(q) ||
-          p.category.toLowerCase().includes(q) ||
-          p.subcategory.toLowerCase().includes(q) ||
-          p.description.toLowerCase().includes(q)
-      );
+      // Use Shopify search
+      const results = await searchShopifyProducts(search);
+      return NextResponse.json({
+        success: true,
+        count: results.length,
+        isShopify: isShopifyConfigured(),
+        products: results,
+      });
     }
+
+    let items = await getShopifyProducts({
+      category: category || undefined,
+      sortKey: sort === "price-low" || sort === "price-high" ? "PRICE" : "RELEVANCE",
+      reverse: sort === "price-high",
+    });
 
     if (featured === "true") {
-      items = items.filter((p) => p.isFeatured && p.isPublished);
+      items = items.filter((p) => p.isFeatured);
     }
 
-    if (sort === "price-low") {
-      items.sort((a, b) => (a.price || 999999) - (b.price || 999999));
-    } else if (sort === "price-high") {
-      items.sort((a, b) => (b.price || 0) - (a.price || 0));
-    } else if (sort === "newest") {
-      items.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-    }
-
-    return NextResponse.json({ success: true, count: items.length, products: items });
+    return NextResponse.json({
+      success: true,
+      count: items.length,
+      isShopify: isShopifyConfigured(),
+      products: items,
+    });
   } catch (error) {
     console.error("GET /api/products error:", error);
     return NextResponse.json({ success: false, error: "Failed to fetch products" }, { status: 500 });
@@ -71,9 +69,9 @@ export async function POST(request: Request) {
       subcategory: body.subcategory || "General",
       tagline: body.tagline || "",
       description: body.description || "",
-      images: body.images && body.images.length > 0 ? body.images : ["/assets/category-textiles.jpg"],
-      price: body.price !== undefined ? body.price : null,
-      priceNote: body.priceNote || "",
+      images: body.images || ["/assets/category-textiles.jpg"],
+      price: body.price !== undefined ? Number(body.price) : null,
+      priceNote: body.priceNote || "Per piece",
       specs: body.specs || [],
       features: body.features || [],
       benefits: body.benefits || [],
@@ -83,8 +81,8 @@ export async function POST(request: Request) {
       inStock: body.inStock !== undefined ? Boolean(body.inStock) : true,
       minOrder: body.minOrder ? Number(body.minOrder) : 1,
       sku: body.sku || `BI-${Date.now().toString().slice(-4)}`,
-      seoTitle: body.seoTitle || `${body.name} — Bhaya India`,
-      seoDescription: body.seoDescription || body.description?.slice(0, 150) || "",
+      seoTitle: body.seoTitle,
+      seoDescription: body.seoDescription,
     });
 
     return NextResponse.json({ success: true, product: newProduct }, { status: 201 });

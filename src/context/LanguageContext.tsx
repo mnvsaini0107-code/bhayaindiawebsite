@@ -9,6 +9,7 @@ export type Locale = "hi" | "en";
 interface LanguageContextType {
   locale: Locale;
   language: Locale;
+  mounted: boolean;
   setLocale: (l: Locale) => void;
   toggleLocale: () => void;
   t: (key: keyof typeof en, params?: Record<string, string | number>) => string;
@@ -17,27 +18,34 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("en");
+export function LanguageProvider({
+  children,
+  initialLocale = "en",
+}: {
+  children: React.ReactNode;
+  initialLocale?: Locale;
+}) {
+  const [locale, setLocaleState] = useState<Locale>(initialLocale);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     try {
       const saved = localStorage.getItem("bhaya_locale") as Locale;
-      if (saved === "hi" || saved === "en") {
-        setLocaleState(saved);
+      if (saved && (saved === "hi" || saved === "en")) {
+        setLocaleState((prev) => (prev !== saved ? saved : prev));
+        document.cookie = `bhaya_locale=${saved}; path=/; max-age=31536000; SameSite=Lax`;
       }
     } catch {
       // ignore
     }
-    setMounted(true);
   }, []);
 
   const setLocale = (newLocale: Locale) => {
     setLocaleState(newLocale);
     try {
       localStorage.setItem("bhaya_locale", newLocale);
-      document.cookie = `bhaya_locale=${newLocale}; path=/; max-age=31536000`;
+      document.cookie = `bhaya_locale=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
     } catch {
       // ignore
     }
@@ -64,6 +72,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       value={{
         locale,
         language: locale,
+        mounted,
         setLocale,
         toggleLocale,
         t,
@@ -82,6 +91,7 @@ export function useLanguage() {
     return {
       locale: "en" as Locale,
       language: "en" as Locale,
+      mounted: false,
       setLocale: () => {},
       toggleLocale: () => {},
       t: (key: keyof typeof en) => en[key] || (key as string),
@@ -90,3 +100,4 @@ export function useLanguage() {
   }
   return context;
 }
+

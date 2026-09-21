@@ -5,6 +5,13 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./SearchModal.module.css";
 import type { Product } from "@/lib/types";
+import { useLanguage } from "@/context/LanguageContext";
+import {
+  getLanguageAwareProductImage,
+  getLocalizedProductName,
+  getLocalizedProductCategory,
+  getLocalizedProductSubcategory,
+} from "@/lib/shopify/utils";
 
 export default function SearchModal({
   isOpen,
@@ -13,6 +20,7 @@ export default function SearchModal({
   isOpen: boolean;
   onClose: () => void;
 }) {
+  const { language, t } = useLanguage();
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
@@ -58,6 +66,10 @@ export default function SearchModal({
 
   if (!isOpen) return null;
 
+  const popularTags = language === "hi"
+    ? ["बनारसी सिल्क", "लेदर नोटबुक", "उत्सव हैंपर", "पीतल की उरली", "यूनिफ़ॉर्म फैब्रिक", "दुपट्टा"]
+    : ["Banarasi Silk", "Leather Notebook", "Festival Hamper", "Brass Urli", "Uniform Fabric", "Dupatta"];
+
   return (
     <div className={styles.overlay} onClick={handleClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
@@ -78,7 +90,11 @@ export default function SearchModal({
             <input
               type="text"
               className={styles.input}
-              placeholder="Search products, fabrics, stationery, gift hampers..."
+              placeholder={
+                language === "hi"
+                  ? "उत्पाद, वस्त्र, स्टेशनरी, उपहार हैम्पर्स खोजें..."
+                  : "Search products, fabrics, stationery, gift hampers..."
+              }
               value={query}
               onChange={(e) => {
                 setQuery(e.target.value);
@@ -94,50 +110,76 @@ export default function SearchModal({
         </div>
 
         <div className={styles.body}>
-          {loading && <p className={styles.statusText}>Searching catalogue...</p>}
+          {loading && (
+            <p className={styles.statusText}>
+              {language === "hi" ? "कैटलॉग में खोज रहे हैं..." : "Searching catalogue..."}
+            </p>
+          )}
 
           {!loading && query && results.length === 0 && (
             <div className={styles.emptyState}>
-              <p>No products found for &ldquo;{query}&rdquo;</p>
-              <span>Try searching for sarees, notebooks, hampers, or brassware</span>
+              <p>
+                {language === "hi"
+                  ? `"${query}" के लिए कोई उत्पाद नहीं मिला`
+                  : `No products found for "${query}"`}
+              </p>
+              <span>
+                {language === "hi"
+                  ? "साड़ी, नोटबुक, हैंपर्स या पीतल के बर्तन खोज कर देखें"
+                  : "Try searching for sarees, notebooks, hampers, or brassware"}
+              </span>
             </div>
           )}
 
           {results.length > 0 && (
             <div className={styles.resultsList}>
-              <p className={styles.resultsHeading}>Matching Products ({results.length})</p>
-              {results.map((product) => (
-                <Link
-                  key={product.id}
-                  href={`/products/${product.slug}`}
-                  className={styles.resultItem}
-                  onClick={onClose}
-                >
-                  <div className={styles.thumbWrapper}>
-                    <Image
-                      src={product.images[0] || "/assets/category-textiles.jpg"}
-                      alt={product.name}
-                      width={52}
-                      height={52}
-                      className={styles.thumb}
-                    />
-                  </div>
-                  <div className={styles.itemInfo}>
-                    <h4 className={styles.itemName}>{product.name}</h4>
-                    <span className={styles.itemCat}>{product.category} · {product.subcategory}</span>
-                  </div>
-                  <div className={styles.itemPrice}>
-                    {product.price ? `₹${product.price.toLocaleString("en-IN")}` : "Get Quote"}
-                  </div>
-                </Link>
-              ))}
+              <p className={styles.resultsHeading}>
+                {language === "hi"
+                  ? `मिलते-जुलते उत्पाद (${results.length})`
+                  : `Matching Products (${results.length})`}
+              </p>
+              {results.map((product) => {
+                const prodName = getLocalizedProductName(product, language);
+                const prodCat = getLocalizedProductCategory(product, language);
+                const prodSubcat = getLocalizedProductSubcategory(product, language);
+
+                return (
+                  <Link
+                    key={product.id}
+                    href={`/products/${product.slug}`}
+                    className={styles.resultItem}
+                    onClick={onClose}
+                  >
+                    <div className={styles.thumbWrapper}>
+                      <Image
+                        src={getLanguageAwareProductImage(product, language)}
+                        alt={prodName}
+                        width={52}
+                        height={52}
+                        className={styles.thumb}
+                      />
+                    </div>
+                    <div className={styles.itemInfo}>
+                      <h4 className={styles.itemName}>{prodName}</h4>
+                      <span className={styles.itemCat}>
+                        {prodCat}{prodSubcat ? ` · ${prodSubcat}` : ""}
+                      </span>
+                    </div>
+                    <div className={styles.itemPrice}>
+                      {product.price ? `₹${product.price.toLocaleString("en-IN")}` : t("customQuoteWholesale")}
+                    </div>
+                  </Link>
+                );
+              })}
               <div className={styles.viewAllFooter}>
                 <Link
                   href={`/products?q=${encodeURIComponent(query)}`}
                   className={styles.viewAllLink}
                   onClick={onClose}
                 >
-                  View all results for &ldquo;{query}&rdquo; →
+                  {language === "hi"
+                    ? `"${query}" के सभी परिणाम देखें →`
+                    : `View all results for "${query}" →`}
                 </Link>
               </div>
             </div>
@@ -145,19 +187,19 @@ export default function SearchModal({
 
           {!query && (
             <div className={styles.popularTags}>
-              <p className={styles.popularHeading}>Suggested Searches</p>
+              <p className={styles.popularHeading}>
+                {language === "hi" ? "सुझाए गए खोज" : "Suggested Searches"}
+              </p>
               <div className={styles.tagGroup}>
-                {["Banarasi Silk", "Leather Notebook", "Festival Hamper", "Brass Urli", "Uniform Fabric", "Dupatta"].map(
-                  (tag) => (
-                    <button
-                      key={tag}
-                      className={styles.tagBtn}
-                      onClick={() => setQuery(tag)}
-                    >
-                      {tag}
-                    </button>
-                  )
-                )}
+                {popularTags.map((tag) => (
+                  <button
+                    key={tag}
+                    className={styles.tagBtn}
+                    onClick={() => setQuery(tag)}
+                  >
+                    {tag}
+                  </button>
+                ))}
               </div>
             </div>
           )}

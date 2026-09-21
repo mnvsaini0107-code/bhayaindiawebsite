@@ -6,21 +6,33 @@ import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { useLanguage } from "@/context/LanguageContext";
 import type { Product } from "@/lib/types";
+import type { BhayaShopifyProduct } from "@/lib/shopify/types";
+import { getLanguageAwareProductImage } from "@/lib/shopify/utils";
 import styles from "./ProductDetailClient.module.css";
 
 interface Props {
-  product: Product;
+  product: BhayaShopifyProduct | Product;
   whatsappNumber: string;
   phone: string;
 }
 
 export default function ProductDetailClient({ product, whatsappNumber, phone }: Props) {
-  const [selectedImage, setSelectedImage] = useState(product.images[0] || "/assets/category-textiles.jpg");
+  const { language, t } = useLanguage();
+  const activeImage = getLanguageAwareProductImage(product, language);
+  const [userSelectedImage, setUserSelectedImage] = useState<string | null>(null);
+  const [prevLanguage, setPrevLanguage] = useState(language);
+
+  if (prevLanguage !== language) {
+    setPrevLanguage(language);
+    setUserSelectedImage(null);
+  }
+
+  const selectedImage = userSelectedImage || activeImage;
+
   const [added, setAdded] = useState(false);
   const [enquiryOpen, setEnquiryOpen] = useState(false);
   const [enquiryLoading, setEnquiryLoading] = useState(false);
   const [enquirySuccess, setEnquirySuccess] = useState(false);
-  const { t } = useLanguage();
 
   // Quantity and enquiry form state
   const [quantity, setQuantity] = useState("1");
@@ -40,9 +52,11 @@ export default function ProductDetailClient({ product, whatsappNumber, phone }: 
       return;
     }
     const parsedQty = Math.max(1, Number(quantity) || 1);
+    const variantId = "variantId" in product ? product.variantId : product.id;
     addItem(
       {
         id: product.id,
+        variantId,
         name: product.name,
         slug: product.slug,
         price: product.price,
@@ -61,9 +75,11 @@ export default function ProductDetailClient({ product, whatsappNumber, phone }: 
       return;
     }
     const parsedQty = Math.max(1, Number(quantity) || 1);
+    const variantId = "variantId" in product ? product.variantId : product.id;
     addItem(
       {
         id: product.id,
+        variantId,
         name: product.name,
         slug: product.slug,
         price: product.price,
@@ -72,7 +88,7 @@ export default function ProductDetailClient({ product, whatsappNumber, phone }: 
       },
       parsedQty
     );
-    router.push("/checkout");
+    router.push("/cart");
   };
 
   const handleEnquirySubmit = async (e: React.FormEvent) => {
@@ -143,7 +159,7 @@ Quantity: ${parsedQty}`;
                 key={i}
                 type="button"
                 className={`${styles.thumbBtn} ${selectedImage === img ? styles.thumbActive : ""}`}
-                onClick={() => setSelectedImage(img)}
+                onClick={() => setUserSelectedImage(img)}
               >
                 <Image src={img} alt={`View ${i + 1}`} width={64} height={64} className={styles.thumbImg} />
               </button>

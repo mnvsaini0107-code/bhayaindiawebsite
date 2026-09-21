@@ -1,6 +1,7 @@
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import Hero from "@/components/Hero/Hero";
+import BusinessVerticals from "@/components/BusinessVerticals/BusinessVerticals";
 import CategoryShowcase from "@/components/CategoryShowcase/CategoryShowcase";
 import FeaturedProducts from "@/components/FeaturedProducts/FeaturedProducts";
 import BrandStory from "@/components/BrandStory/BrandStory";
@@ -15,6 +16,7 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
+        <BusinessVerticals />
         <CategoryShowcase />
         <FeaturedProducts />
         <BrandStory />

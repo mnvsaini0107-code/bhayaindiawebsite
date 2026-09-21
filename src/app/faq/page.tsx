@@ -69,7 +69,7 @@ export default function FAQPage() {
               {language === "hi" ? "सहायता एवं ज्ञान केंद्र" : "CLIENT KNOWLEDGE BASE"}
             </span>
             <h1 className={styles.title}>
-              {language === "hi" ? "अक्सर पूछे जाने वाले सवाल (FAQ)" : "Frequently Asked Questions"}
+              {language === "hi" ? "अक्सर पूछे जाने वाले सवाल" : "Frequently Asked Questions"}
             </h1>
             <p className={styles.subtitle}>
               {language === "hi"
@@ -111,7 +111,7 @@ export default function FAQPage() {
                   rel="noopener noreferrer"
                   className={styles.waLink}
                 >
-                  💬 {language === "hi" ? "व्हाट्सऐप पर बात करें →" : "Chat on WhatsApp →"}
+                  {language === "hi" ? "व्हाट्सऐप पर बात करें →" : "Chat on WhatsApp →"}
                 </a>
               </div>
             </aside>

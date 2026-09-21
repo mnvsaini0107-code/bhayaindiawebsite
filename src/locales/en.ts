@@ -2,7 +2,7 @@ export const en = {
   // Brand
   brandName: "BHAYA INDIA",
   tagline: "जहाँ भाया, वहाँ भरोसा",
-  brandSubtitle: "Where Faith Meets Quality",
+  brandSubtitle: "A Trusted Indian Business & E-commerce Platform",
 
   // Navigation
   navHome: "Home",
@@ -18,42 +18,72 @@ export const en = {
   navContact: "Contact",
   navAccount: "My Account",
   navCart: "Shopping Bag",
+  navSignInRegister: "Sign In / Register",
+  navAllCategories: "All Categories",
 
-  // Common CTAs
+  // Common CTAs & Actions
   exploreProducts: "Explore Products",
   enquireNow: "Enquire Now",
   addToBag: "Add to Bag",
   addedToBag: "✓ Added to Bag",
   buyNow: "Buy Now",
   whatsAppEnquiry: "WhatsApp Enquiry",
-  viewPiece: "View Piece",
+  viewPiece: "View Details",
+  viewAll: "View All",
   searchPlaceholder: "Search Products...",
+  searchButton: "Search",
   getQuote: "Get Custom Quote",
   clearFilters: "Clear Filters",
   resetAll: "Reset all filters",
   continueShopping: "Continue Shopping",
   proceedToCheckout: "Proceed to Checkout",
   confirmOrder: "Confirm Order",
+  apply: "Apply",
+  save: "Save",
+  cancel: "Cancel",
+  submit: "Submit",
+  close: "Close",
+  menu: "Menu",
+  next: "Next",
+  previous: "Previous",
+  remove: "Remove",
+
+  // Wishlist & Reviews
+  addToWishlist: "Add to Wishlist",
+  removeFromWishlist: "Remove from Wishlist",
+  ratingText: "{rating} out of 5",
+  ratingReviewsCount: "({count} reviews)",
+  verifiedProduct: "Verified Product",
+  offDiscount: "{discount}% OFF",
 
   // Filter & Sorting
-  allPieces: "All Pieces",
+  allPieces: "All Products",
   collections: "Collections",
+  categoriesTitle: "Product Categories",
   price: "Price",
   sort: "Sort",
   sortFeatured: "Featured",
   sortPriceLow: "Price: Low → High",
   sortPriceHigh: "Price: High → Low",
   sortNewest: "Newest",
+  filter: "Filter",
   showingProducts: "Showing {count} verified product(s)",
 
   // Product Details
   sku: "SKU",
-  keyFeatures: "Key Features & Craftsmanship",
+  keyFeatures: "Key Features",
   specifications: "Specifications",
   quantity: "Quantity",
   inStock: "In Stock",
   outOfStock: "Temporarily Out of Stock",
   relatedProducts: "Related Products",
+  newArrival: "New Release",
+  priceInclusiveTaxes: "Inclusive of all taxes",
+  customQuoteWholesale: "Custom Quote / Wholesale",
+
+  // About Page
+  aboutTitle: "Our Story & Vision",
+  aboutSubtitle: "Empowering regional merchants, manufacturers, and customers across India through transparent commerce.",
 
   // Cart & Checkout
   cartTitle: "Your Shopping Bag",
@@ -78,6 +108,7 @@ export const en = {
   netBanking: "Net Banking",
   codPayment: "Cash / Verification on Delivery",
   orderConfirmed: "Order Confirmed",
+  paymentPendingNotice: "Orders are secured with customer verification and concierge fulfillment.",
 
   // Account
   accountTitle: "Customer Account",
@@ -94,6 +125,9 @@ export const en = {
   viewDetails: "View Details",
   noOrdersFound: "No orders found for this account.",
   addNewAddress: "+ Add New Address",
+  trackOrderTab: "Track Order",
+  trackOrderPlaceholder: "Enter Order ID (e.g. ORD-1001) or Mobile",
+  trackOrderButton: "Track Dispatch",
 
   // Order Statuses
   statusOrderPlaced: "Order Placed",
@@ -102,19 +136,178 @@ export const en = {
   statusDelivered: "Delivered",
   statusCancelled: "Cancelled",
 
-  // Badges
-  comingSoon: "Coming Soon",
-  futureVision: "Future Vision",
-  newArrival: "New Arrival",
+  // Form Fields & Labels
+  formName: "Full Name",
+  formBusinessName: "Business / Entity Name",
+  formMobile: "Mobile Number",
+  formEmail: "Email Address",
+  formLocation: "City / Location",
+  formQuantity: "Required Quantity",
+  formRequirement: "Requirement Details",
+  formCategory: "Product Category",
+  formMessage: "Message / Specifications",
+  formSubmit: "Submit Information",
+  valRequiredName: "Please enter your name.",
+  valRequiredMobile: "Please enter a valid 10-digit mobile number.",
+  valRequiredEmail: "Please enter a valid email address.",
+  valRequiredAddress: "Please enter your full delivery address.",
+  valRequiredCity: "Please enter your city.",
+  valRequiredState: "Please enter your state.",
+  valRequiredPincode: "Please enter a valid 6-digit pincode.",
 
-  // WhatsApp Message
-  waGreeting: "नमस्कार, मुझे BHAYA INDIA के इस product के बारे में जानकारी चाहिए:",
-  waProductName: "Product Name",
-  waQuantity: "Quantity",
+  // System States (Errors, Loading, Empty)
+  loadingText: "Loading...",
+  errorGeneric: "Something went wrong. Please try again.",
+  successGeneric: "Your request was submitted successfully.",
+  noProductsFound: "No products found matching your search.",
+  emptyWishlist: "Your wishlist is currently empty.",
 
-  // About
-  aboutTitle: "About BHAYA INDIA",
-  aboutSubtitle: "An Indian Business & E-commerce Platform connecting local commerce with nationwide trust.",
-  aboutStory: "BHAYA INDIA is an Indian Business & E-commerce Platform connecting local retailers, wholesalers, and manufacturers with modern digital commerce.",
-  aboutMotto: "Local to Online • Local to India\nजहाँ भाया, वहाँ भरोसा",
+  // Hero Section
+  heroEyebrow: "BHAYA INDIA — A TRUSTED INDIAN COMMERCE PLATFORM",
+  heroHeadline: "Quality Products. Honest Business. Genuine Trust.",
+  heroSubheadline: "Connecting customers, regional retailers, and verified manufacturers through authentic sourcing, fair pricing, and dependable e-commerce across India.",
+  heroExploreCta: "Explore Products",
+  heroEnquireCta: "Wholesale & Business Enquiry",
+  heroTrustPledge: "जहाँ भाया, वहाँ भरोसा • Local to Online, Local to India",
+
+  // Categories Showcase (Circular Strip)
+  catShowcaseEyebrow: "OUR COLLECTION",
+  catShowcaseHeadline: "Curated Product Collections",
+  catShowcaseViewAll: "View Complete Catalogue",
+  catFeaturedBadge: "Featured Collection",
+  catExploreCta: "Explore Collection",
+  catProductsCount: "{count} Products",
+  catCatalogueText: "Catalogue",
+
+  // Category Names (Bilingual Support)
+  catFestival: "Festival",
+  catRetail: "Retail",
+  catAgro: "Agro",
+  catManufacturing: "Manufacturing",
+  catLogistics: "Logistics",
+  catExports: "Exports",
+  catEcommerce: "E-commerce",
+  catTextiles: "Textiles & Fabrics",
+  catStationery: "Stationery & Office",
+  catHampers: "Gift Hampers",
+  catHomeLiving: "Home & Living",
+  catWholesale: "Wholesale & Bulk",
+
+  // 7 Core Business Verticals
+  verticalsEyebrow: "MAIN BUSINESS DIRECTIONS",
+  verticalsHeadline: "Festival • Retail • Agro • Manufacturing • Logistics • Exports • E-commerce",
+  verticalsSubtitle: "The seven foundational pillars guiding BHAYA INDIA's nationwide commerce ecosystem.",
+  
+  v1Title: "1. FESTIVAL",
+  v1Desc: "Festival Products, Decoration, Puja & Celebration",
+  v1Status: "Active",
+
+  v2Title: "2. RETAIL",
+  v2Desc: "Daily-use & General Products for Households and Stores",
+  v2Status: "Active",
+
+  v3Title: "3. AGRO",
+  v3Desc: "Agricultural Products & Sustainable Rural Opportunities",
+  v3Status: "Active / Expanding",
+
+  v4Title: "4. MANUFACTURING",
+  v4Desc: "Made in India Products & Direct Factory Manufacturing",
+  v4Status: "Active",
+
+  v5Title: "5. LOGISTICS",
+  v5Desc: "Distribution & Delivery Network Across Key Hubs",
+  v5Status: "Active Network",
+
+  v6Title: "6. EXPORTS",
+  v6Desc: "India to the World — Connecting Indian Makers to Global Buyers",
+  v6Status: "Active Desk",
+
+  v7Title: "7. E-COMMERCE",
+  v7Desc: "Online Products • Shopping • Digital Marketplace",
+  v7Status: "Shopify Powered",
+
+  // Brand Story Section
+  storyEyebrow: "OUR STORY",
+  storyHeadline: "From a Trusted Merchant Counter to a Pan-India Digital Platform",
+  storyP1: "Built on the foundational promise of 'जहाँ भाया, वहाँ भरोसा', BHAYA INDIA originated with a clear commitment to customer relationships, genuine sourcing, and honest value.",
+  storyQuote: "जहाँ भाया, वहाँ भरोसा — The Bhaya India Quality Pledge",
+  storyP2: "Today, we bring that same personal dedication into modern e-commerce — connecting customers, local shopkeepers, and verified manufacturers through a unified, trusted platform.",
+  storyReadMore: "Read Our Full Journey",
+
+  // Why Choose Us Section
+  whyEyebrow: "WHY CHOOSE BHAYA INDIA",
+  whyHeadline: "Built on Values That Stand the Test of Time",
+  whySubheadline: "Our foundational commitments guide every transaction — from retail shopping to wholesale consignments with genuine trust.",
+  whyPillar1Title: "Authentic Sourcing",
+  whyPillar1Desc: "Products selected directly from trusted makers, artisans, and regional producers.",
+  whyPillar2Title: "Transparent & Honest Value",
+  whyPillar2Desc: "Straightforward communication and honest value that honors both makers and customers.",
+  whyPillar3Title: "Curated Variety",
+  whyPillar3Desc: "A diverse catalogue spanning festival goods, daily retail essentials, textiles, and bulk items.",
+  whyPillar4Title: "Dedicated Support",
+  whyPillar4Desc: "Personalized assistance for corporate orders, custom requirements, and quick dispatches.",
+
+  // Bhaya 2.0 Section
+  bhaya2Eyebrow: "FUTURE PLATFORM VISION • COMING SOON",
+  bhaya2Headline: "BHAYA INDIA 2.0",
+  bhaya2Subheadline: "एक प्लेटफॉर्म — हजारों दुकानें — एक भरोसा",
+  bhaya2Desc: "Our future ecosystem connecting customers, local shopkeepers, manufacturers, and logistics under one trusted digital umbrella.",
+  bhaya2Cta: "Explore BHAYA INDIA 2.0 Vision",
+
+  // Final CTA Section
+  finalEyebrow: "GENUINE COMMERCE & WHOLESALE ALLOCATIONS",
+  finalHeadline: "Ready to Experience Honest Indian Commerce?",
+  finalDesc: "Discover curated products across our seven verticals — or connect directly with our merchant desk for bulk and custom requirements.",
+  finalExploreBtn: "Explore Full Catalogue",
+  finalEnquireBtn: "Commercial Inquiry Desk",
+  finalWhatsappBtn: "WhatsApp Desk",
+
+  // Footer Section
+  footerDesc: "A trusted Indian business & e-commerce platform connecting customers, local retailers, wholesalers, and manufacturers with quality products and dependable service.",
+  footerCompanyTitle: "Company & Vision",
+  footerEcosystemTitle: "Business Ecosystem",
+  footerHelpTitle: "Customer Care & Support",
+  footerRights: "All rights reserved. BHAYA INDIA is committed to authentic Indian commerce.",
+  footerReviews: "Client Reviews",
+  footerPrivacy: "Privacy Policy",
+  footerTerms: "Terms & Conditions",
+  footerCustomerDesk: "Customer Desk",
+  footerWhatsappInquiry: "WhatsApp Inquiries",
+  footerEmailContact: "Email",
+  footerRegisteredOffice: "Registered Office",
+
+  // Dynamic Content & Search Localization
+  searchProducts: "Search Products...",
+  searchingCatalogue: "Searching catalogue...",
+  noProductsFoundFor: "No products found for \"{query}\"",
+  trySearchingFor: "Try searching for sarees, notebooks, hampers, or brassware",
+  matchingProducts: "Matching Products ({count})",
+  viewAllResultsFor: "View all results for \"{query}\" →",
+  suggestedSearches: "Suggested Searches",
+  subCategory: "Sub-Category",
+  all: "All",
+  under1000: "Under ₹1,000",
+  between1000and3000: "₹1,000 – ₹3,000",
+  above3000: "Above ₹3,000",
+  wholesaleQuote: "Wholesale / Quote",
+  sortRelevance: "Featured",
+  showing: "Showing",
+  productsWord: "product",
+  productsPluralWord: "products",
+  callDesk: "Call Desk",
+  allIndiaDelivery: "Secure All-India Delivery",
+  taxInclusiveNotice: "Inclusive of all taxes & GST",
+  sellerHeadline: "Partner With Bhaya India",
+  sellerBody: "Are you a master manufacturer, textile artisan, or premium product creator? Expand your reach through Bhaya India's nationwide distribution network.",
+  sellerCta: "Become a Business Partner",
+  sellerNote: "Register your interest — our partnership desk will reach out directly.",
+  completeCollection: "The Complete Collection",
+  allProductsTitle: "Product Catalogue",
+  allCategoryPrefix: "All",
+  inStockReady: "In Stock & Ready",
+  volumeDiscountNote: "Volume discounts available upon request",
+  keyFeaturesTitle: "Key Features & Craftsmanship",
+  benefitsPurposeTitle: "Benefits & Purpose",
+  technicalSpecsTitle: "Technical Specifications",
+  youMayAlsoLike: "You May Also Appreciate",
 };

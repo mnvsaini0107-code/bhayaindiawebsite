@@ -219,22 +219,19 @@ export default function AboutClient() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "28px" }}>
             {[
               {
-                icon: "🛍️",
-                title: language === "hi" ? "1. रिटेल ई-कॉमर्स (B2C)" : "1. Retail E-commerce (B2C)",
+                title: language === "hi" ? "1. खुदरा ई-कॉमर्स" : "1. Retail E-commerce (B2C)",
                 desc: language === "hi"
                   ? "ग्राहकों को सीधे सत्यापित उत्पादों का आसान और पारदर्शी कैटलॉग, स्पष्ट मूल्य और व्हाट्सऐप सहायता के साथ उपलब्ध कराना।"
                   : "Providing end consumers direct access to verified lifestyle and home goods with honest pricing and direct WhatsApp enquiry support.",
               },
               {
-                icon: "📦",
-                title: language === "hi" ? "2. थोक एवं थोक व्यापार (B2B)" : "2. Wholesale & Bulk Supply (B2B)",
+                title: language === "hi" ? "2. थोक एवं व्यापक आपूर्ति" : "2. Wholesale & Bulk Supply (B2B)",
                 desc: language === "hi"
                   ? "खुदरा दुकानदारों और संस्थागत खरीदारों के लिए थोक दर, सीधे निर्माताओं से सोर्सिंग और पारदर्शी कोटेशन प्रक्रिया।"
                   : "Connecting shop owners, institutions, and bulk buyers directly with manufacturers for tiered quantity pricing and reliable dispatch.",
               },
               {
-                icon: "🏪",
-                title: language === "hi" ? "3. हाइपरलोकल विज़न (2.0)" : "3. Hyperlocal Vision (Bhaya 2.0)",
+                title: language === "hi" ? "3. हाइपरलोकल विज़न" : "3. Hyperlocal Vision (Bhaya 2.0)",
                 desc: language === "hi"
                   ? "आगामी चरण में पड़ोस के स्थानीय व्यापारियों को डिजिटल बनाकर आस-पास के ग्राहकों तक तेजी से सेवा पहुंचाना।"
                   : "Empowering trusted neighborhood shopkeepers with digital storefronts to serve nearby households with lightning-fast delivery.",
@@ -249,7 +246,6 @@ export default function AboutClient() {
                   borderRadius: "4px",
                 }}
               >
-                <div style={{ fontSize: "32px", marginBottom: "16px" }}>{col.icon}</div>
                 <h3
                   style={{
                     fontFamily: "var(--font-display)",

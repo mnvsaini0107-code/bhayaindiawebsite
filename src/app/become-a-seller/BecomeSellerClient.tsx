@@ -153,7 +153,6 @@ export default function BecomeSellerClient() {
         }}
       >
         <div className="container" style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <span style={{ fontSize: "20px" }}>🏪</span>
           <p style={{ margin: 0, fontSize: "14px", color: "var(--sapphire)", fontWeight: 500 }}>
             <strong>Vendor Marketplace — Coming Soon:</strong>{" "}
             {language === "hi"
@@ -270,8 +269,7 @@ export default function BecomeSellerClient() {
                   textAlign: "center",
                 }}
               >
-                <span style={{ fontSize: "36px" }}>🎉</span>
-                <h4 style={{ color: "#15803d", fontSize: "18px", marginTop: "12px", marginBottom: "8px" }}>
+                <h4 style={{ color: "#15803d", fontSize: "18px", marginTop: "4px", marginBottom: "8px" }}>
                   {language === "hi" ? "आवेदन सफलतापूर्वक प्राप्त हुआ!" : "Application Successfully Received!"}
                 </h4>
                 <p style={{ fontSize: "14px", color: "var(--text-secondary)", margin: 0 }}>

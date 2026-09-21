@@ -12,12 +12,25 @@ export interface Product {
   subcategory: string;
   tagline: string;
   description: string;
+  nameHi?: string;
+  descriptionHi?: string;
+  taglineHi?: string;
+  categoryHi?: string;
+  subcategoryHi?: string;
   images: string[];
+  image_en?: string;
+  image_hi?: string;
   price: number | null; // null = Get Quote
+  compareAtPrice?: number | null;
+  rating?: number;
+  reviewsCount?: number;
   priceNote?: string;
   specs: ProductSpec[];
+  specsHi?: ProductSpec[];
   features: string[];
+  featuresHi?: string[];
   benefits: string[];
+  benefitsHi?: string[];
   isFeatured: boolean;
   isPublished: boolean;
   isNew?: boolean;
@@ -35,9 +48,12 @@ export interface Category {
   name: string;
   slug: string;
   description: string;
+  nameHi?: string;
+  descriptionHi?: string;
   image: string;
   productCount: number;
   subcategories: string[];
+  subcategoriesHi?: string[];
 }
 
 export interface Enquiry {

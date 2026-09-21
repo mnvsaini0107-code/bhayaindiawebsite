@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import "./globals.css";
 import BrandSplash from "@/components/BrandSplash/BrandSplash";
 import { CartProvider } from "@/context/CartContext";
-import { LanguageProvider } from "@/context/LanguageContext";
+import { LanguageProvider, Locale } from "@/context/LanguageContext";
 
 export const metadata: Metadata = {
   title: {
@@ -28,13 +29,17 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://bhayaindia.com"),
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const cookieStore = await cookies();
+  const rawLocale = cookieStore.get("bhaya_locale")?.value;
+  const initialLocale: Locale = rawLocale === "hi" ? "hi" : "en";
+
   return (
-    <html lang="en-IN" suppressHydrationWarning>
+    <html lang={initialLocale === "hi" ? "hi-IN" : "en-IN"} suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -44,7 +49,7 @@ export default function RootLayout({
         />
       </head>
       <body suppressHydrationWarning>
-        <LanguageProvider>
+        <LanguageProvider initialLocale={initialLocale}>
           <CartProvider>
             <BrandSplash />
             {children}
@@ -54,3 +59,4 @@ export default function RootLayout({
     </html>
   );
 }
+

@@ -42,22 +42,6 @@ export default function AccountPage() {
   const [authLoading, setAuthLoading] = useState(false);
   const [feedback, setFeedback] = useState<{ type: "success" | "error"; msg: string } | null>(null);
 
-  // Restore session from localStorage on mount
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem("bhaya_customer_user");
-      if (stored) {
-        const parsed: CustomerUser = JSON.parse(stored);
-        setUser(parsed);
-        setProfileName(parsed.name || "");
-        setProfileEmail(parsed.email || "");
-        fetchOrders(parsed.phone);
-      }
-    } catch {
-      // ignore parse error
-    }
-  }, []);
-
   const fetchOrders = async (identifier: string) => {
     setLoadingOrders(true);
     try {
@@ -80,6 +64,26 @@ export default function AccountPage() {
       setLoadingOrders(false);
     }
   };
+
+  // Restore session from localStorage on mount
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("bhaya_customer_user");
+      if (stored) {
+        const parsed: CustomerUser = JSON.parse(stored);
+        const timer = setTimeout(() => {
+          setUser(parsed);
+          setProfileName(parsed.name || "");
+          setProfileEmail(parsed.email || "");
+          fetchOrders(parsed.phone);
+        }, 0);
+        return () => clearTimeout(timer);
+      }
+    } catch {
+      // ignore parse error
+    }
+  }, []);
+
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -262,6 +266,17 @@ export default function AccountPage() {
 
   const timelineSteps = ["Order Placed", "Processing", "Shipped", "Delivered"];
 
+  const getLocalizedStatus = (status: string) => {
+    switch (status) {
+      case "Order Placed": return language === "hi" ? "ऑर्डर दर्ज" : "Order Placed";
+      case "Processing": return language === "hi" ? "प्रगति पर" : "Processing";
+      case "Shipped": return language === "hi" ? "भेज दिया गया" : "Shipped";
+      case "Delivered": return language === "hi" ? "वितरित" : "Delivered";
+      case "Cancelled": return language === "hi" ? "रद्द" : "Cancelled";
+      default: return status;
+    }
+  };
+
   const getStepIndex = (status: string) => {
     if (status === "Delivered") return 3;
     if (status === "Shipped") return 2;
@@ -302,7 +317,7 @@ export default function AccountPage() {
                       {language === "hi" ? `नमस्ते, ${user.name}!` : `Welcome back, ${user.name}!`}
                     </span>
                     <span className={styles.userPhone}>
-                      📱 {user.phone} {user.email ? `• ✉️ ${user.email}` : ""}
+                      {user.phone} {user.email ? `• ${user.email}` : ""}
                     </span>
                   </div>
                   <button onClick={handleLogout} className={styles.logoutBtn}>
@@ -316,19 +331,19 @@ export default function AccountPage() {
                     className={`${styles.tabBtn} ${activeTab === "orders" ? styles.tabBtnActive : ""}`}
                     onClick={() => setActiveTab("orders")}
                   >
-                    📦 {language === "hi" ? "मेरे ऑर्डर्स" : "My Orders"} ({orders.length})
+                    {language === "hi" ? "मेरे ऑर्डर्स" : "My Orders"} ({orders.length})
                   </button>
                   <button
                     className={`${styles.tabBtn} ${activeTab === "addresses" ? styles.tabBtnActive : ""}`}
                     onClick={() => setActiveTab("addresses")}
                   >
-                    📍 {language === "hi" ? "सहेजे गए पते" : "Saved Addresses"} ({user.addresses?.length || 0})
+                    {language === "hi" ? "सहेजे गए पते" : "Saved Addresses"} ({user.addresses?.length || 0})
                   </button>
                   <button
                     className={`${styles.tabBtn} ${activeTab === "profile" ? styles.tabBtnActive : ""}`}
                     onClick={() => setActiveTab("profile")}
                   >
-                    👤 {language === "hi" ? "मेरी प्रोफ़ाइल" : "Profile Settings"}
+                    {language === "hi" ? "मेरी प्रोफ़ाइल" : "Profile Settings"}
                   </button>
                 </div>
 
@@ -368,7 +383,9 @@ export default function AccountPage() {
                           <div key={o.id} className={styles.orderCard}>
                             <div className={styles.orderHeader}>
                               <div>
-                                <span className={styles.orderId}>Order #{o.id}</span>
+                                <span className={styles.orderId}>
+                                  {language === "hi" ? "ऑर्डर #" : "Order #"}{o.id}
+                                </span>
                                 <span className={styles.orderDate}>
                                   {language === "hi" ? "तारीख:" : "Placed on"}{" "}
                                   {new Date(o.createdAt).toLocaleDateString(language === "hi" ? "hi-IN" : "en-IN", {
@@ -389,7 +406,7 @@ export default function AccountPage() {
                                     : styles.statusPlaced
                                 }`}
                               >
-                                {o.orderStatus}
+                                {getLocalizedStatus(o.orderStatus)}
                               </span>
                             </div>
 
@@ -403,7 +420,7 @@ export default function AccountPage() {
                                         idx <= activeIdx ? styles.stepDotActive : ""
                                       }`}
                                     />
-                                    <span className={styles.stepLabel}>{step}</span>
+                                    <span className={styles.stepLabel}>{getLocalizedStatus(step)}</span>
                                   </div>
                                 ))}
                               </div>
@@ -629,6 +646,39 @@ export default function AccountPage() {
             ) : (
               /* Guest View: Sign In / Register / Quick Order Lookup */
               <div className={styles.authCard}>
+                <div
+                  style={{
+                    padding: "1rem",
+                    background: "rgba(18, 52, 86, 0.04)",
+                    border: "1px solid rgba(197, 160, 89, 0.3)",
+                    borderRadius: "var(--radius-sm)",
+                    marginBottom: "1.5rem",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    flexWrap: "wrap",
+                    gap: "0.75rem",
+                  }}
+                >
+                  <div>
+                    <strong style={{ color: "var(--sapphire)", display: "block", fontSize: "0.95rem" }}>
+                      Shopify Customer Account
+                    </strong>
+                    <span style={{ fontSize: "0.825rem", color: "var(--text-secondary)" }}>
+                      {language === "hi"
+                        ? "आधिकारिक Shopify अकाउंट से लॉगिन करें या नीचे तुरंत ट्रैक करें।"
+                        : "Sign in with your official Shopify account or track your order below."}
+                    </span>
+                  </div>
+                  <a
+                    href="/api/auth/shopify"
+                    className="btn btn-secondary"
+                    style={{ fontSize: "0.825rem", padding: "8px 16px" }}
+                  >
+                    Shopify Portal →
+                  </a>
+                </div>
+
                 <div className={styles.authTabs}>
                   <button
                     className={`${styles.authTab} ${authMode === "login" ? styles.authTabActive : ""}`}
@@ -770,13 +820,15 @@ export default function AccountPage() {
                           <div key={o.id} className={styles.orderCard} style={{ marginBottom: "1rem" }}>
                             <div className={styles.orderHeader}>
                               <div>
-                                <span className={styles.orderId}>Order #{o.id}</span>
+                                <span className={styles.orderId}>
+                                  {language === "hi" ? "ऑर्डर #" : "Order #"}{o.id}
+                                </span>
                                 <span className={styles.orderDate}>
-                                  {new Date(o.createdAt).toLocaleDateString("en-IN", { dateStyle: "long" })}
+                                  {new Date(o.createdAt).toLocaleDateString(language === "hi" ? "hi-IN" : "en-IN", { dateStyle: "long" })}
                                 </span>
                               </div>
                               <span className={`${styles.statusBadge} ${styles.statusPlaced}`}>
-                                {o.orderStatus}
+                                {getLocalizedStatus(o.orderStatus)}
                               </span>
                             </div>
                             <div className={styles.itemsList}>
@@ -789,7 +841,9 @@ export default function AccountPage() {
                             </div>
                             <div className={styles.orderFooter}>
                               <div>
-                                <span style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>Delivery to:</span>
+                                <span style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>
+                                  {language === "hi" ? "डिलीवरी पता:" : "Delivery to:"}
+                                </span>
                                 <p style={{ fontSize: "0.875rem" }}>{o.customerName}, {o.city} ({o.pincode})</p>
                               </div>
                               <span className={styles.totalAmount}>₹{o.totalAmount.toLocaleString("en-IN")}</span>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getProducts, getCategories, getEnquiries, getOrders } from "@/lib/db";
+import { getShopifyStoreDomain, isShopifyConfigured, isShopifyAdminConfigured } from "@/lib/shopify";
 import styles from "./dashboard.module.css";
 
 export const dynamic = "force-dynamic";
@@ -10,6 +11,12 @@ export default function AdminDashboardPage() {
   const enquiries = getEnquiries();
   const orders = getOrders();
 
+  const isConfigured = isShopifyConfigured();
+  const isAdminConfigured = isShopifyAdminConfigured();
+  const shopifyDomain = getShopifyStoreDomain() || "bhaya-india.myshopify.com";
+  const cleanDomain = shopifyDomain.replace(/^https?:\/\//, "").replace(/\/$/, "");
+  const shopifyAdminUrl = `https://admin.shopify.com/store/${cleanDomain.replace(".myshopify.com", "")}`;
+
   const activeLeads = enquiries.filter((e) => e.status !== "Closed");
   const totalRevenue = orders
     .filter((o) => o.paymentStatus === "Paid")
@@ -17,16 +24,135 @@ export default function AdminDashboardPage() {
 
   return (
     <div className={styles.container}>
+      {/* Primary Shopify Hub Notice */}
+      <div
+        style={{
+          background: "linear-gradient(135deg, #123456 0%, #0a1f33 100%)",
+          color: "#ffffff",
+          padding: "1.75rem",
+          borderRadius: "var(--radius-md, 8px)",
+          marginBottom: "1.75rem",
+          border: "1px solid rgba(197, 160, 89, 0.4)",
+          boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+        }}
+      >
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "1rem" }}>
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem" }}>
+              <span style={{ fontSize: "1.25rem" }}>🛍️</span>
+              <h2 style={{ fontSize: "1.25rem", margin: 0, color: "var(--gold, #c5a059)" }}>
+                SHOPIFY ADMIN — Primary Commerce Source of Truth
+              </h2>
+              <span
+                style={{
+                  fontSize: "0.75rem",
+                  padding: "2px 8px",
+                  borderRadius: "12px",
+                  background: isConfigured ? "rgba(74, 222, 128, 0.2)" : "rgba(234, 179, 8, 0.2)",
+                  color: isConfigured ? "#4ade80" : "#facc15",
+                  fontWeight: 600,
+                }}
+              >
+                {isConfigured && isAdminConfigured ? "Live Sync Active" : isConfigured ? "Connected" : "Setup Mode"}
+              </span>
+            </div>
+            <p style={{ margin: 0, color: "rgba(255,255,255,0.8)", fontSize: "0.9rem", maxWidth: "750px", lineHeight: 1.5 }}>
+              All products, prices, variants, inventory, collections, orders, and customer accounts are managed primarily through{" "}
+              <strong>Shopify Admin</strong>. Changes made in Shopify automatically synchronize to the BHAYA INDIA frontend.
+            </p>
+          </div>
+          <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+            <a
+              href={shopifyAdminUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+              style={{ background: "var(--gold, #c5a059)", color: "#123456", fontWeight: 600, padding: "10px 20px" }}
+            >
+              Open Shopify Admin ↗
+            </a>
+            <a
+              href="/data/shopify_products_import.csv"
+              download="shopify_products_import.csv"
+              className="btn btn-secondary"
+              style={{ color: "#ffffff", borderColor: "rgba(255,255,255,0.3)", padding: "10px 16px" }}
+              title="Download standard Shopify CSV export with all 6 products ready for 1-click import"
+            >
+              Download Shopify CSV
+            </a>
+          </div>
+        </div>
+
+        {/* Quick Shopify Deep Links */}
+        <div
+          style={{
+            marginTop: "1.25rem",
+            paddingTop: "1rem",
+            borderTop: "1px solid rgba(255,255,255,0.1)",
+            display: "flex",
+            gap: "1.25rem",
+            flexWrap: "wrap",
+            fontSize: "0.85rem",
+          }}
+        >
+          <a
+            href={`${shopifyAdminUrl}/products`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "rgba(255,255,255,0.9)", textDecoration: "underline" }}
+          >
+            Manage Products & Prices ↗
+          </a>
+          <a
+            href={`${shopifyAdminUrl}/orders`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "rgba(255,255,255,0.9)", textDecoration: "underline" }}
+          >
+            Manage Orders & Dispatches ↗
+          </a>
+          <a
+            href={`${shopifyAdminUrl}/customers`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "rgba(255,255,255,0.9)", textDecoration: "underline" }}
+          >
+            Manage Customers ↗
+          </a>
+          <a
+            href={`${shopifyAdminUrl}/collections`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "rgba(255,255,255,0.9)", textDecoration: "underline" }}
+          >
+            Manage Collections ↗
+          </a>
+          <a
+            href={`${shopifyAdminUrl}/discounts`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "rgba(255,255,255,0.9)", textDecoration: "underline" }}
+          >
+            Discounts & Coupons ↗
+          </a>
+        </div>
+      </div>
+
       <div className={styles.welcomeBanner}>
         <div>
           <h1 className={styles.pageHeading}>Overview Dashboard</h1>
           <p className={styles.pageSub}>
-            Manage all catalogue items, customer enquiries, orders, and content without editing code.
+            Catalogue items, customer enquiries, orders, and content overview.
           </p>
         </div>
-        <Link href="/admin/products?new=true" className={styles.actionBtn}>
-          + Add New Product
-        </Link>
+        <a
+          href={`${shopifyAdminUrl}/products/new`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.actionBtn}
+        >
+          + Add Product on Shopify ↗
+        </a>
       </div>
 
       {/* Metrics Row */}
@@ -72,22 +198,22 @@ export default function AdminDashboardPage() {
 
       {/* Quick Actions Strip */}
       <div className={styles.quickSection}>
-        <h2 className={styles.sectionTitle}>Administrative Quick Actions</h2>
+        <h2 className={styles.sectionTitle}>Administrative & CMS Quick Actions</h2>
         <div className={styles.quickGrid}>
-          <Link href="/admin/products" className={styles.quickCard}>
+          <a href={`${shopifyAdminUrl}/products`} target="_blank" rel="noopener noreferrer" className={styles.quickCard}>
             <span className={styles.quickIcon}>📦</span>
             <div>
-              <strong>Manage Products</strong>
-              <p>Add, edit prices, upload images, update specifications</p>
+              <strong>Shopify Product Catalog ↗</strong>
+              <p>Add products, change prices, edit descriptions, upload imagery</p>
             </div>
-          </Link>
-          <Link href="/admin/categories" className={styles.quickCard}>
+          </a>
+          <a href={`${shopifyAdminUrl}/collections`} target="_blank" rel="noopener noreferrer" className={styles.quickCard}>
             <span className={styles.quickIcon}>🏷️</span>
             <div>
-              <strong>Categories & Subcategories</strong>
-              <p>Organize product taxonomy and showcase categories</p>
+              <strong>Shopify Collections ↗</strong>
+              <p>Organize product taxonomy, automated tags, and showcase categories</p>
             </div>
-          </Link>
+          </a>
           <Link href="/admin/content" className={styles.quickCard}>
             <span className={styles.quickIcon}>✍️</span>
             <div>

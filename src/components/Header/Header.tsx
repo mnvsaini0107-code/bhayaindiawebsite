@@ -3,16 +3,17 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import styles from "./Header.module.css";
 import { useCart } from "@/context/CartContext";
 import { useLanguage } from "@/context/LanguageContext";
-import SearchModal from "@/components/SearchModal/SearchModal";
 import EnquiryModal from "@/components/EnquiryModal/EnquiryModal";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
   const [enquiryOpen, setEnquiryOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter();
   const { totalCount } = useCart();
   const { locale, toggleLocale, t } = useLanguage();
 
@@ -22,9 +23,21 @@ export default function Header() {
     { label: t("navProducts"), href: "/products" },
     { label: t("navServices"), href: "/services" },
     { label: t("navWholesale"), href: "/wholesale" },
-    { label: t("navGallery"), href: "/gallery" },
+    { label: t("navBhaya2"), href: "/bhaya-india-2" },
     { label: t("navFaq"), href: "/faq" },
     { label: t("navContact"), href: "/contact" },
+  ];
+
+  const categoryLinks = [
+    { label: t("catFestival"), href: "/products?category=gift-hampers" },
+    { label: t("catRetail"), href: "/products" },
+    { label: t("catAgro"), href: "/contact?type=agro" },
+    { label: t("catManufacturing"), href: "/manufacturers" },
+    { label: t("catLogistics"), href: "/services" },
+    { label: t("catExports"), href: "/wholesale" },
+    { label: t("catEcommerce"), href: "/products" },
+    { label: t("catTextiles"), href: "/products?category=textiles-fabrics" },
+    { label: t("catStationery"), href: "/products?category=stationery-office" },
   ];
 
   useEffect(() => {
@@ -38,9 +51,18 @@ export default function Header() {
     };
   }, [mobileOpen]);
 
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/products?q=${encodeURIComponent(searchQuery.trim())}`);
+      setMobileOpen(false);
+    }
+  };
+
   return (
     <>
       <header className={styles.header}>
+        {/* Main Header Bar */}
         <div className="container">
           <div className={styles.mainRow}>
             {/* Logo Area */}
@@ -48,9 +70,9 @@ export default function Header() {
               <Link href="/" className={styles.logoLink} aria-label="Bhaya India — Home">
                 <Image
                   src="/assets/bhaya-india-logo.png"
-                  alt="Bhaya India"
-                  width={38}
-                  height={38}
+                  alt="BHAYA INDIA Logo"
+                  width={44}
+                  height={44}
                   className={styles.logoImg}
                   priority
                 />
@@ -65,20 +87,31 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* Desktop Nav */}
-            <nav className={styles.nav} aria-label="Main navigation">
-              {navLinks.slice(0, 6).map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={styles.navLink}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
+            {/* Inline Search Bar */}
+            <form onSubmit={handleSearch} className={styles.searchBar} role="search">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={t("searchPlaceholder")}
+                className={styles.searchInput}
+                aria-label={t("searchPlaceholder")}
+                id="header-inline-search-input"
+              />
+              <button
+                type="submit"
+                className={styles.searchBtn}
+                aria-label={t("searchButton")}
+                id="header-inline-search-submit"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.35-4.35" />
+                </svg>
+              </button>
+            </form>
 
-            {/* Right Utility Cluster & Primary CTA */}
+            {/* Right Actions Cluster */}
             <div className={styles.utilActions}>
               {/* Language Switcher Pill */}
               <button
@@ -92,43 +125,35 @@ export default function Header() {
                 <span className={`${styles.langOption} ${locale === "hi" ? styles.langOptionActive : ""}`}>
                   🇮🇳 हिन्दी
                 </span>
-                <span style={{ opacity: 0.3 }}>|</span>
+                <span className={styles.langDivider}>|</span>
                 <span className={`${styles.langOption} ${locale === "en" ? styles.langOptionActive : ""}`}>
                   English 🇬🇧
                 </span>
               </button>
 
-              <button
-                className={styles.utilBtn}
-                aria-label="Search catalogue"
-                id="header-search-btn"
-                onClick={() => setSearchOpen(true)}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="11" cy="11" r="8" />
-                  <path d="m21 21-4.35-4.35" />
-                </svg>
-              </button>
-
+              {/* Account / Login Link */}
               <Link
                 href="/account"
-                className={styles.utilBtn}
-                aria-label="My Account & Tracking"
+                className={styles.accountBtn}
+                aria-label={t("navSignInRegister")}
                 id="header-account-btn"
               >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                   <circle cx="12" cy="7" r="4" />
                 </svg>
+                <span className={styles.accountLabel}>{t("navSignInRegister")}</span>
               </Link>
 
+              {/* Shopping Bag Link */}
               <Link
                 href="/cart"
                 className={`${styles.utilBtn} ${styles.cartBtn}`}
-                aria-label="Shopping Cart"
+                aria-label={t("navCart")}
                 id="header-cart-btn"
+                title={t("navCart")}
               >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
                   <line x1="3" y1="6" x2="21" y2="6" />
                   <path d="M16 10a4 4 0 0 1-8 0" />
@@ -136,6 +161,7 @@ export default function Header() {
                 {totalCount > 0 && <span className={styles.cartCount}>{totalCount}</span>}
               </Link>
 
+              {/* Enquiry Desk CTA */}
               <button
                 type="button"
                 className={styles.ctaEnquireBtn}
@@ -145,19 +171,38 @@ export default function Header() {
                 {t("enquireNow")}
               </button>
 
-              {/* Mobile Toggle */}
+              {/* Mobile Drawer Trigger */}
               <button
                 className={styles.mobileMenuBtn}
                 onClick={() => setMobileOpen(true)}
-                aria-label="Open menu"
+                aria-label={t("menu")}
                 id="mobile-menu-btn"
               >
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                   <line x1="4" y1="7" x2="20" y2="7" />
                   <line x1="4" y1="12" x2="20" y2="12" />
-                  <line x1="4" y1="17" x2="16" y2="17" />
+                  <line x1="4" y1="17" x2="20" y2="17" />
                 </svg>
               </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Category Menu Navigation Strip */}
+        <div className={styles.categoryBar}>
+          <div className="container">
+            <div className={styles.categoryBarInner}>
+              <Link href="/products" className={styles.categoryAllLink}>
+                <span className={styles.menuIcon}>☰</span>
+                <span>{t("navAllCategories")}</span>
+              </Link>
+              <nav className={styles.categoryNav} aria-label="Category navigation">
+                {categoryLinks.map((cat, idx) => (
+                  <Link key={idx} href={cat.href} className={styles.categoryItem}>
+                    <span className={styles.catLabel}>{cat.label}</span>
+                  </Link>
+                ))}
+              </nav>
             </div>
           </div>
         </div>
@@ -170,10 +215,10 @@ export default function Header() {
         aria-hidden="true"
       />
 
-      {/* Mobile Drawer */}
+      {/* Mobile Navigation Drawer */}
       <nav
         className={`${styles.mobileDrawer} ${mobileOpen ? styles.open : ""}`}
-        aria-label="Mobile navigation"
+        aria-label="Mobile navigation drawer"
         aria-hidden={!mobileOpen}
       >
         <div className={styles.drawerHeader}>
@@ -188,34 +233,53 @@ export default function Header() {
           <button
             className={styles.drawerClose}
             onClick={() => setMobileOpen(false)}
-            aria-label="Close menu"
+            aria-label={t("close")}
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
               <line x1="18" y1="6" x2="6" y2="18" />
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           </button>
         </div>
 
+        {/* Mobile Search */}
+        <form onSubmit={handleSearch} className={styles.mobileSearchBar}>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder={t("searchPlaceholder")}
+            className={styles.mobileSearchInput}
+          />
+          <button type="submit" className={styles.mobileSearchBtn} aria-label={t("searchButton")}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.35-4.35" />
+            </svg>
+          </button>
+        </form>
+
         {/* Mobile Language Switcher */}
-        <div style={{ padding: "0 1.5rem 0.5rem" }}>
+        <div style={{ padding: "0 1.25rem 0.75rem" }}>
           <button
             type="button"
             className={styles.langSwitcher}
             onClick={toggleLocale}
-            style={{ width: "100%", justifyContent: "center", padding: "0.5rem" }}
+            style={{ width: "100%", justifyContent: "center", padding: "0.6rem" }}
           >
             <span className={`${styles.langOption} ${locale === "hi" ? styles.langOptionActive : ""}`}>
               🇮🇳 हिन्दी
             </span>
-            <span style={{ opacity: 0.3 }}>|</span>
+            <span className={styles.langDivider}>|</span>
             <span className={`${styles.langOption} ${locale === "en" ? styles.langOptionActive : ""}`}>
               English 🇬🇧
             </span>
           </button>
         </div>
 
+        {/* Mobile Navigation Links */}
         <div className={styles.drawerNav}>
+          <div className={styles.drawerGroupTitle}>{t("allPieces")}</div>
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -226,34 +290,34 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+
           <div className={styles.drawerDivider} />
-          <Link
-            href="/become-a-seller"
-            className={styles.drawerNavLink}
-            onClick={() => setMobileOpen(false)}
-          >
-            {t("navSeller")}
-          </Link>
-          <Link
-            href="/manufacturers"
-            className={styles.drawerNavLink}
-            onClick={() => setMobileOpen(false)}
-          >
-            {t("navManufacturer")}
-          </Link>
-          <Link
-            href="/bhaya-india-2"
-            className={styles.drawerNavLink}
-            onClick={() => setMobileOpen(false)}
-          >
-            {t("navBhaya2")}
-          </Link>
+          <div className={styles.drawerGroupTitle}>{t("categoriesTitle")}</div>
+          {categoryLinks.slice(0, 7).map((cat, i) => (
+            <Link
+              key={i}
+              href={cat.href}
+              className={styles.drawerCatLink}
+              onClick={() => setMobileOpen(false)}
+            >
+              <span>{cat.label}</span>
+            </Link>
+          ))}
+
+          <div className={styles.drawerDivider} />
           <Link
             href="/account"
             className={styles.drawerNavLink}
             onClick={() => setMobileOpen(false)}
           >
             {t("navAccount")}
+          </Link>
+          <Link
+            href="/cart"
+            className={styles.drawerNavLink}
+            onClick={() => setMobileOpen(false)}
+          >
+            {t("navCart")} ({totalCount})
           </Link>
         </div>
 
@@ -271,8 +335,7 @@ export default function Header() {
         </div>
       </nav>
 
-      {/* Modals */}
-      <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
+      {/* Enquiry Modal */}
       <EnquiryModal isOpen={enquiryOpen} onClose={() => setEnquiryOpen(false)} />
     </>
   );

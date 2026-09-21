@@ -256,8 +256,7 @@ export default function ManufacturersClient() {
                     textAlign: "center",
                   }}
                 >
-                  <span style={{ fontSize: "36px" }}>🏭</span>
-                  <h4 style={{ color: "#15803d", fontSize: "18px", marginTop: "12px", marginBottom: "8px" }}>
+                  <h4 style={{ color: "#15803d", fontSize: "18px", marginTop: "4px", marginBottom: "8px" }}>
                     {language === "hi" ? "जानकारी सफलतापूर्वक प्राप्त हुई!" : "Factory Inquiry Logged!"}
                   </h4>
                   <p style={{ fontSize: "14px", color: "var(--text-secondary)", margin: 0 }}>

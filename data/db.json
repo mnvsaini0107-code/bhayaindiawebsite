@@ -88,8 +88,10 @@
     {
       "id": "cat-1",
       "name": "Textiles & Fabrics",
+      "nameHi": "वस्त्र एवं परिधान",
       "slug": "textiles-fabrics",
       "description": "Handcrafted sarees, pure silks, heritage shawls, and premium tailored linens.",
+      "descriptionHi": "हस्तनिर्मित साड़ियाँ, शुद्ध रेशम, विरासती शॉल और प्रीमियम परिधान।",
       "image": "/assets/category-textiles.jpg",
       "productCount": 48,
       "subcategories": [
@@ -97,13 +99,21 @@
         "Silk Dupattas",
         "Handloom Shawls",
         "Unstitched Suits"
+      ],
+      "subcategoriesHi": [
+        "साड़ियाँ",
+        "सिल्क दुपट्टे",
+        "हथकरघा शॉल",
+        "अनस्टिच्ड सूट"
       ]
     },
     {
       "id": "cat-2",
       "name": "Stationery & Office",
+      "nameHi": "स्टेशनरी एवं कार्यालय सामग्री",
       "slug": "stationery-office",
       "description": "Fine leather journals, executive desk accessories, and corporate paper supplies.",
+      "descriptionHi": "उत्कृष्ट लेदर जर्नल्स, एग्जीक्यूटिव डेस्क एक्सेसरीज़ और कॉर्पोरेट स्टेशनरी सामग्री।",
       "image": "/assets/category-stationery.jpg",
       "productCount": 36,
       "subcategories": [
@@ -111,13 +121,21 @@
         "Executive Pens",
         "Desk Organizers",
         "Paper Sets"
+      ],
+      "subcategoriesHi": [
+        "नोटबुक्स",
+        "एग्जीक्यूटिव पेन",
+        "डेस्क आयोजक",
+        "पेपर सेट्स"
       ]
     },
     {
       "id": "cat-3",
       "name": "Gift Hampers",
+      "nameHi": "उपहार हैम्पर्स",
       "slug": "gift-hampers",
       "description": "Bespoke curated gifting for festive celebrations, weddings, and corporate recognition.",
+      "descriptionHi": "त्योहारों, शादियों और कॉर्पोरेट आयोजनों के लिए विशेष रूप से तैयार किए गए उपहार।",
       "image": "/assets/hero-editorial.jpg",
       "productCount": 24,
       "subcategories": [
@@ -125,13 +143,21 @@
         "Festival Hampers",
         "Wedding Favours",
         "Custom Hampers"
+      ],
+      "subcategoriesHi": [
+        "कॉर्पोरेट उपहार",
+        "त्योहार उपहार",
+        "विवाह उपहार",
+        "कस्टम उपहार"
       ]
     },
     {
       "id": "cat-4",
       "name": "Home & Living",
+      "nameHi": "घर एवं जीवनशैली",
       "slug": "home-living",
       "description": "Artisanal brassware, hand-carved accessories, and luxury home decor accents.",
+      "descriptionHi": "पारंपरिक पीतल के बर्तन, दस्तकारी सजावट और सुरुचिपूर्ण होम डेकोर।",
       "image": "/assets/hero-editorial.jpg",
       "productCount": 42,
       "subcategories": [
@@ -139,19 +165,32 @@
         "Bedding",
         "Tableware",
         "Artisanal Accents"
+      ],
+      "subcategoriesHi": [
+        "पीतल सजावट",
+        "बिस्तर एवं चादरें",
+        "टेबलवेयर",
+        "शिल्प कलाकृतियाँ"
       ]
     },
     {
       "id": "cat-5",
       "name": "Wholesale & Bulk",
+      "nameHi": "थोक एवं बड़ी मात्रा में आपूर्ति",
       "slug": "wholesale-bulk",
       "description": "Institutional supply, commercial fabrics, corporate supplies, and bulk packaging.",
+      "descriptionHi": "संस्थागत आपूर्ति, वाणिज्यिक वस्त्र, कॉर्पोरेट स्टेशनरी और थोक पैकेजिंग।",
       "image": "/assets/category-stationery.jpg",
       "productCount": 65,
       "subcategories": [
         "Institutional Textiles",
         "Bulk Stationery",
         "Custom Merchandise"
+      ],
+      "subcategoriesHi": [
+        "संस्थागत वस्त्र",
+        "थोक स्टेशनरी",
+        "कस्टम मर्चेंडाइज"
       ]
     }
   ],
@@ -159,15 +198,22 @@
     {
       "id": "prod-001",
       "name": "Premium Banarasi Silk Saree",
+      "nameHi": "प्रीमियम बनारसी सिल्क साड़ी",
       "slug": "premium-banarasi-silk-saree",
       "category": "Textiles & Fabrics",
+      "categoryHi": "वस्त्र एवं परिधान",
       "categorySlug": "textiles-fabrics",
       "subcategory": "Sarees",
+      "subcategoryHi": "साड़ियाँ",
       "tagline": "Heritage weave, contemporary grace",
+      "taglineHi": "विरासती बुनाई, समकालीन लालित्य",
       "description": "Handwoven Banarasi silk saree crafted with genuine gold-tone zari embellishment along the borders and ornate pallu. Blends timeless Indian craftsmanship with modern refinement, ideal for weddings, family milestones, and auspicious celebrations.",
+      "descriptionHi": "हथकरघे पर निर्मित प्रामाणिक बनारसी सिल्क साड़ी, पारंपरिक जरी बॉर्डर और समृद्ध पल्लू के साथ। विवाह एवं शुभ अवसरों के लिए सर्वोत्कृष्ट भारतीय शिल्प।",
       "images": [
         "/assets/category-textiles.jpg"
       ],
+      "image_en": "/assets/category-textiles.jpg",
+      "image_hi": "/assets/hero-editorial.jpg",
       "price": 3800,
       "priceNote": "Per piece (Inclusive of Taxes)",
       "specs": [
@@ -192,16 +238,49 @@
           "value": "Dry Clean Only"
         }
       ],
+      "specsHi": [
+        {
+          "label": "सामग्री",
+          "value": "शुद्ध कतान सिल्क"
+        },
+        {
+          "label": "लंबाई",
+          "value": "6.5 मीटर (ब्लाउज सहित)"
+        },
+        {
+          "label": "ब्लाउज पीस",
+          "value": "शामिल (0.8 मी)"
+        },
+        {
+          "label": "बुनाई तकनीक",
+          "value": "कढ़वा हथकरघा"
+        },
+        {
+          "label": "देखभाल निर्देश",
+          "value": "केवल ड्राई क्लीन"
+        }
+      ],
       "features": [
         "Pure mulberry silk foundation",
         "Authentic Banarasi Kadhwa weave",
         "Rich zari borders and heavy ornamental pallu",
         "Silk Mark certified quality assurance"
       ],
+      "featuresHi": [
+        "शुद्ध मलबरी सिल्क आधार",
+        "प्रामाणिक बनारसी कढ़वा बुनाई",
+        "समृद्ध जरी बॉर्डर और अलंकृत पल्लू",
+        "सिल्क मार्क प्रमाणित गुणवत्ता"
+      ],
       "benefits": [
         "Inheritance-grade longevity and natural silk lustre",
         "Lightweight drape for effortless evening wear",
         "Includes matched unstitched blouse piece"
+      ],
+      "benefitsHi": [
+        "पीढ़ियों तक चलने वाली चमक व प्रामाणिकता",
+        "सहज व आरामदायक परिधान अनुभव",
+        "मैचिंग अनस्टिच्ड ब्लाउज पीस शामिल"
       ],
       "isFeatured": true,
       "isPublished": true,
@@ -216,12 +295,17 @@
     {
       "id": "prod-002",
       "name": "Leather-Bound Executive Notebook",
+      "nameHi": "प्रीमियम लेदर-बाउंड एग्जीक्यूटिव नोटबुक",
       "slug": "leather-bound-executive-notebook",
       "category": "Stationery & Office",
+      "categoryHi": "स्टेशनरी एवं कार्यालय सामग्री",
       "categorySlug": "stationery-office",
       "subcategory": "Notebooks",
+      "subcategoryHi": "नोटबुक्स",
       "tagline": "Write your legacy with intention",
+      "taglineHi": "अपने विचारों को दें एक गरिमापूर्ण रूप",
       "description": "Handcrafted top-grain leather journal with 200 pages of 90 GSM archival-grade ivory paper. Featuring lay-flat bookbinding, gilded edge accents, and a satin bookmark ribbon. Built for leaders, thinkers, and discerning professionals.",
+      "descriptionHi": "हस्तनिर्मित टॉप-ग्रेन लेदर कवर और 90 जीएसएम एसिड-फ्री आइवरी पेपर्स के साथ निर्मित जर्नल। विचारकों, कॉर्पोरेट लीडर्स और रचनाकारों के लिए उत्कृष्ट साथी।",
       "images": [
         "/assets/category-stationery.jpg"
       ],
@@ -249,16 +333,49 @@
           "value": "Hand-stitched Lay-flat"
         }
       ],
+      "specsHi": [
+        {
+          "label": "कवर सामग्री",
+          "value": "प्रामाणिक फुल-ग्रेन लेदर"
+        },
+        {
+          "label": "कागज",
+          "value": "90 जीएसएम फाउंटेन-पेन फ्रेंडली आइवरी"
+        },
+        {
+          "label": "पृष्ठ संख्या",
+          "value": "200 रूल्ड पृष्ठ"
+        },
+        {
+          "label": "आकार",
+          "value": "A5 (148 × 210 मिमी)"
+        },
+        {
+          "label": "बाइंडिंग",
+          "value": "हस्तनिर्मित ले-फ्लैट"
+        }
+      ],
       "features": [
         "Supple genuine leather finish that patinas with age",
         "Zero bleed-through on fountain pens and rollers",
         "Integrated dual bookmark ribbons",
         "Custom hot-foil gold monogramming available on bulk orders"
       ],
+      "featuresHi": [
+        "असली फुल-ग्रेन लेदर कवर",
+        "फ्लैट खुलने वाली मजबूत बाइंडिंग",
+        "सैटिन बुकमार्क रिबन",
+        "कस्टम लोगो एम्बॉसिंग उपलब्ध"
+      ],
       "benefits": [
         "Elevates executive workspace aesthetic",
         "Resistant to environmental humidity and yellowing",
         "Ideal corporate executive gift"
+      ],
+      "benefitsHi": [
+        "स्याही न फैलने वाला उच्च गुणवत्ता वाला कागज",
+        "प्रतिष्ठित कॉर्पोरेट व व्यक्तिगत उपहार",
+        "दीर्घकालिक टिकाऊपन"
       ],
       "isFeatured": true,
       "isPublished": true,
@@ -273,12 +390,17 @@
     {
       "id": "prod-003",
       "name": "Royal Heritage Festival Hamper",
+      "nameHi": "रॉयल हेरिटेज त्योहार उपहार",
       "slug": "royal-heritage-festival-hamper",
       "category": "Gift Hampers",
+      "categoryHi": "उपहार हैम्पर्स",
       "categorySlug": "gift-hampers",
       "subcategory": "Festival Hampers",
+      "subcategoryHi": "त्योहार उपहार",
       "tagline": "Thoughtful gifting made effortless",
+      "taglineHi": "विचारशील उपहार, अत्यंत सहजता के साथ",
       "description": "An opulent gift trunk handcrafted in wooden casing with gold-embossed faux leather trim. Includes artisanal saffron treats, stone-ground dry fruits, pure brass incense holder, hand-poured soy candle, and personalized greeting scroll.",
+      "descriptionHi": "त्योहारों, शादियों और कॉर्पोरेट आयोजनों के लिए विशेष रूप से तैयार किया गया प्रीमियम हैंपर — जिसमें पारंपरिक मिष्ठान, उत्कृष्ट स्टेशनरी और हस्तनिर्मित वस्तुएं शामिल हैं।",
       "images": [
         "/assets/hero-editorial.jpg"
       ],
@@ -302,16 +424,45 @@
           "value": "Individual air-sealed containers"
         }
       ],
+      "specsHi": [
+        {
+          "label": "ट्रंक आयाम",
+          "value": "32 × 24 × 12 सेमी"
+        },
+        {
+          "label": "ट्रंक सामग्री",
+          "value": "वेगन लेदर और पीतल के लॉक"
+        },
+        {
+          "label": "शेल्फ लाइफ",
+          "value": "खाद्य पदार्थों के लिए 6 महीने"
+        },
+        {
+          "label": "पैकेजिंग",
+          "value": "वायुरोधी सीलबंद कंटेनर"
+        }
+      ],
       "features": [
         "Curated assortment of premium dry fruits and sweets",
         "Brass handcrafted artifact for lasting keepsake",
         "Custom foil-stamped corporate company ribbon option",
         "Express temperature-controlled shipping"
       ],
+      "featuresHi": [
+        "विशिष्ट चयनित प्रीमियम वस्तुएं",
+        "पीतल का हस्तनिर्मित उपहार स्मृति-चिह्न",
+        "कस्टम ब्रांडिंग व लोगो रिबन विकल्प",
+        "सुरक्षित तापमान-नियंत्रित एक्सप्रेस डिलीवरी"
+      ],
       "benefits": [
         "Leaves an unforgettable impression on clients and family",
         "Zero plastic presentation with reusable storage trunk",
         "Complete gifting solution ready to present"
+      ],
+      "benefitsHi": [
+        "ग्राहकों और परिजनों पर एक अमिट छाप छोड़ता है",
+        "प्लास्टिक-मुक्त प्रस्तुतिकरण और पुन: उपयोग योग्य ट्रंक",
+        "उपहार देने के लिए पूरी तरह तैयार समाधान"
       ],
       "isFeatured": true,
       "isPublished": true,
@@ -326,12 +477,17 @@
     {
       "id": "prod-004",
       "name": "Handcrafted Brass Urli Bowl",
+      "nameHi": "हस्तनिर्मित पीतल उरली बाउल",
       "slug": "handcrafted-brass-urli-bowl",
       "category": "Home & Living",
+      "categoryHi": "घर एवं जीवनशैली",
       "categorySlug": "home-living",
       "subcategory": "Brass Decor",
+      "subcategoryHi": "पीतल सजावट",
       "tagline": "Spiritual serenity in pure metal",
+      "taglineHi": "शुद्ध धातु में आध्यात्मिक शांति",
       "description": "Traditional bell-metal brass urli bowl hand-beaten by hereditary artisans. Perfectly sized for floating flower petals, aromatic water, and tealights at the entrance of homes and luxury office receptions.",
+      "descriptionHi": "पारंपरिक कारीगरों द्वारा हस्तनिर्मित शुद्ध पीतल की उरली। घर के प्रवेश द्वार और स्वागत कक्ष में फूलों की पंखुड़ियों, सुगंधित जल और दीपकों के लिए उपयुक्त।",
       "images": [
         "/assets/hero-editorial.jpg"
       ],
@@ -355,15 +511,43 @@
           "value": "Traditional Antique Gold Polish"
         }
       ],
+      "specsHi": [
+        {
+          "label": "धातु",
+          "value": "शुद्ध पीतल (85% तांबा, 15% जस्ता)"
+        },
+        {
+          "label": "व्यास",
+          "value": "12 इंच (30 सेमी)"
+        },
+        {
+          "label": "वजन",
+          "value": "2.1 किग्रा"
+        },
+        {
+          "label": "फिनिश",
+          "value": "पारंपरिक एंटीक गोल्ड पॉलिश"
+        }
+      ],
       "features": [
         "Hand-carved floral edge filigree",
         "Heavy stable base prevents tipping",
         "Coated with natural tarnish-resistant lacquer"
       ],
+      "featuresHi": [
+        "हाथ से तराशी गई सुंदर किनारी",
+        "स्थिर और भारी आधार जो गिरने से रोकता है",
+        "प्राकृतिक चमक और सुरक्षात्मक लेप"
+      ],
       "benefits": [
         "Invokes traditional Vastu positive energy",
         "Timeless decorative centerpiece for living and dining areas",
         "Durable heirloom piece"
+      ],
+      "benefitsHi": [
+        "घर में सकारात्मक और मांगलिक ऊर्जा का संचार",
+        "लिविंग और डाइनिंग क्षेत्र के लिए मनमोहक केंद्र-बिंदु",
+        "पीढ़ियों तक चलने वाली टिकाऊ कलाकृति"
       ],
       "isFeatured": true,
       "isPublished": true,
@@ -378,12 +562,17 @@
     {
       "id": "prod-005",
       "name": "Chanderi Silk Cotton Dupatta",
+      "nameHi": "चंदेरी सिल्क कॉटन दुपट्टा",
       "slug": "chanderi-silk-cotton-dupatta",
       "category": "Textiles & Fabrics",
+      "categoryHi": "वस्त्र एवं परिधान",
       "categorySlug": "textiles-fabrics",
       "subcategory": "Silk Dupattas",
+      "subcategoryHi": "सिल्क दुपट्टे",
       "tagline": "Breezy elegance woven with grace",
+      "taglineHi": "शालीनता और सहज आकर्षण का सुंदर संगम",
       "description": "Lightweight authentic Chanderi fabric combining raw silk warp with fine combed cotton weft. Embellished with delicate hand-block gold motifs (boota) and sheer pallu detailing.",
+      "descriptionHi": "हल्का प्रामाणिक चंदेरी कपड़ा, जिसमें शुद्ध सिल्क और कॉटन का सुंदर मिश्रण है। पारंपरिक सुनहरी बूटा कढ़ाई और किनारी के साथ सुसज्जित।",
       "images": [
         "/assets/category-textiles.jpg"
       ],
@@ -407,14 +596,41 @@
           "value": "Gentle Hand Wash or Dry Clean"
         }
       ],
+      "specsHi": [
+        {
+          "label": "रचना",
+          "value": "70% कॉटन, 30% सिल्क"
+        },
+        {
+          "label": "लंबाई",
+          "value": "2.5 मीटर"
+        },
+        {
+          "label": "चौड़ाई",
+          "value": "36 इंच"
+        },
+        {
+          "label": "देखभाल",
+          "value": "हल्के हाथों से धुलाई या ड्राई क्लीन"
+        }
+      ],
       "features": [
         "Authentic Madhya Pradesh Chanderi cluster weave",
         "Zari tissue borders",
         "Subtle shimmer in natural daylight"
       ],
+      "featuresHi": [
+        "प्रामाणिक मध्य प्रदेश चंदेरी बुनाई",
+        "जरी पल्लू और किनारी",
+        "प्राकृतिक धूप में सुरुचिपूर्ण चमक"
+      ],
       "benefits": [
         "Comfortable for all-day festive wear in warm climates",
         "Pairs seamlessly with ethnic kurtas and fusion outfits"
+      ],
+      "benefitsHi": [
+        "पूरे दिन के उत्सवों के लिए बेहद आरामदायक",
+        "कुर्ता और एथनिक परिधानों के साथ आकर्षक समन्वय"
       ],
       "isFeatured": false,
       "isPublished": true,
@@ -429,12 +645,17 @@
     {
       "id": "prod-006",
       "name": "Institutional Bulk Uniform Fabric",
+      "nameHi": "संस्थागत थोक यूनिफॉर्म कपड़ा",
       "slug": "institutional-bulk-uniform-fabric",
       "category": "Wholesale & Bulk",
+      "categoryHi": "थोक एवं बड़ी मात्रा में आपूर्ति",
       "categorySlug": "wholesale-bulk",
       "subcategory": "Institutional Textiles",
+      "subcategoryHi": "संस्थागत वस्त्र",
       "tagline": "Industrial durability meets comfort",
+      "taglineHi": "औद्योगिक मजबूती और संपूर्ण आराम",
       "description": "High-density poly-viscose and combed cotton blended textiles tailored for institutional uniforms, corporate workforce attire, and hospitality garments. Available in roll bolts of 50m to 500m.",
+      "descriptionHi": "संस्थानों, कार्यस्थलों और कॉर्पोरेट यूनिफॉर्म के लिए विशेष रूप से तैयार किया गया उच्च-घनत्व पॉली-विस्कोस कपड़ा। 50 से 500 मीटर के थानों में उपलब्ध।",
       "images": [
         "/assets/category-textiles.jpg"
       ],
@@ -458,14 +679,41 @@
           "value": "Grade 4.5 Certified"
         }
       ],
+      "specsHi": [
+        {
+          "label": "मिश्रण",
+          "value": "65% पॉली, 35% विस्कोस"
+        },
+        {
+          "label": "जीएसएम",
+          "value": "210 GSM"
+        },
+        {
+          "label": "थान की चौड़ाई",
+          "value": "58 इंच (147 सेमी)"
+        },
+        {
+          "label": "रंग स्थिरता",
+          "value": "ग्रेड 4.5 प्रमाणित"
+        }
+      ],
       "features": [
         "Wrinkle-resistant and sweat-wicking breathability",
         "Tested for 100+ commercial wash cycles",
         "Custom Pantone dyeing available for 500m+ orders"
       ],
+      "featuresHi": [
+        "रिंकल-रेसिस्टेंट और पसीना सोखने वाला कपड़ा",
+        "100+ कमर्शियल वॉश साइकिल में परीक्षित",
+        "500 मीटर+ ऑर्डर पर कस्टम रंग विकल्प"
+      ],
       "benefits": [
         "Standardized color matching across repeated batch orders",
         "Direct mill pricing ensures optimal margin for institutions"
+      ],
+      "benefitsHi": [
+        "बार-बार ऑर्डर पर एक समान रंग गुणवत्ता",
+        "सीधे मिल मूल्य जिससे संस्थानों को अधिकतम लाभ"
       ],
       "isFeatured": false,
       "isPublished": true,

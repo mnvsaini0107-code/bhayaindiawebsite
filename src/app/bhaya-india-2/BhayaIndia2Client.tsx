@@ -143,7 +143,6 @@ export default function BhayaIndia2Client() {
         }}
       >
         <div className="container" style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <span style={{ fontSize: "20px" }}>ℹ️</span>
           <p style={{ margin: 0, fontSize: "14px", color: "var(--sapphire)", fontWeight: 500 }}>
             <strong>{language === "hi" ? "पारदर्शी घोषणा:" : "Transparent Notice:"}</strong>{" "}
             {language === "hi"
@@ -302,8 +301,7 @@ export default function BhayaIndia2Client() {
                   textAlign: "center",
                 }}
               >
-                <span style={{ fontSize: "32px" }}>✅</span>
-                <h3 style={{ color: "#15803d", fontSize: "18px", marginTop: "12px", marginBottom: "8px" }}>
+                <h3 style={{ color: "#15803d", fontSize: "18px", marginTop: "4px", marginBottom: "8px" }}>
                   {language === "hi" ? "पंजीकरण अनुरोध प्राप्त हुआ!" : "Early Registration Received!"}
                 </h3>
                 <p style={{ fontSize: "14px", color: "var(--text-secondary)", margin: 0 }}>
@@ -412,9 +410,9 @@ export default function BhayaIndia2Client() {
                       value={role}
                       onChange={(e) => setRole(e.target.value)}
                     >
-                      <option value="retailer">{language === "hi" ? "खुदरा दुकानदार (Retailer)" : "Retail Shopkeeper"}</option>
-                      <option value="wholesaler">{language === "hi" ? "थोक व्यापारी (Wholesaler)" : "Wholesaler / Distributor"}</option>
-                      <option value="manufacturer">{language === "hi" ? "निर्माता (Manufacturer)" : "Manufacturer / Factory"}</option>
+                      <option value="retailer">{language === "hi" ? "खुदरा दुकानदार" : "Retail Shopkeeper"}</option>
+                      <option value="wholesaler">{language === "hi" ? "थोक व्यापारी" : "Wholesaler / Distributor"}</option>
+                      <option value="manufacturer">{language === "hi" ? "निर्माता" : "Manufacturer / Factory"}</option>
                     </select>
                   </div>
                 </div>

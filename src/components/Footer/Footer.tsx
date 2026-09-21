@@ -1,10 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./Footer.module.css";
 import { DEFAULT_SITE_SETTINGS } from "@/lib/site-config";
 import type { SiteSettings } from "@/lib/types";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer({ settings = DEFAULT_SITE_SETTINGS }: { settings?: SiteSettings }) {
+  const { t } = useLanguage();
   const whatsappUrl = `https://wa.me/${settings.whatsapp}?text=Hi%20Bhaya%20India%2C%20I%20would%20like%20to%20enquire%20about%20your%20products.`;
 
   return (
@@ -31,7 +35,7 @@ export default function Footer({ settings = DEFAULT_SITE_SETTINGS }: { settings?
               </span>
             </div>
             <p className={styles.footerDesc}>
-              A trusted Indian business & commerce platform connecting local retailers, wholesalers, and manufacturers with verified products and dependable service.
+              {t("footerDesc")}
             </p>
             <div className={styles.socialLinks}>
               <a href={settings.socialLinks.instagram} className={styles.socialLink} aria-label="Instagram" target="_blank" rel="noopener noreferrer">
@@ -57,15 +61,15 @@ export default function Footer({ settings = DEFAULT_SITE_SETTINGS }: { settings?
 
           {/* Company & Profile */}
           <div>
-            <p className={styles.colTitle}>Company & Vision</p>
+            <p className={styles.colTitle}>{t("footerCompanyTitle")}</p>
             <ul className={styles.linkList}>
               {[
-                { label: "About Us", href: "/about" },
-                { label: "BHAYA INDIA 2.0", href: "/bhaya-india-2" },
-                { label: "Company Profile", href: "/company-profile" },
-                { label: "Why Choose Us", href: "/why-choose-us" },
-                { label: "Visual Gallery", href: "/gallery" },
-                { label: "Client Testimonials", href: "/testimonials" },
+                { label: t("navAbout"), href: "/about" },
+                { label: t("navBhaya2"), href: "/bhaya-india-2" },
+                { label: t("footerCompanyTitle"), href: "/company-profile" },
+                { label: t("whyEyebrow"), href: "/why-choose-us" },
+                { label: t("navGallery"), href: "/gallery" },
+                { label: t("footerReviews"), href: "/testimonials" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className={styles.footerLink}>
@@ -78,15 +82,15 @@ export default function Footer({ settings = DEFAULT_SITE_SETTINGS }: { settings?
 
           {/* Business & Partnerships */}
           <div>
-            <p className={styles.colTitle}>Business & B2B</p>
+            <p className={styles.colTitle}>{t("footerEcosystemTitle")}</p>
             <ul className={styles.linkList}>
               {[
-                { label: "All Products", href: "/products" },
-                { label: "Wholesale & B2B", href: "/wholesale" },
-                { label: "Become a Seller", href: "/become-a-seller" },
-                { label: "For Manufacturers", href: "/manufacturers" },
-                { label: "Services & Solutions", href: "/services" },
-                { label: "Track Your Order", href: "/account" },
+                { label: t("allPieces"), href: "/products" },
+                { label: t("navWholesale"), href: "/wholesale" },
+                { label: t("navSeller"), href: "/become-a-seller" },
+                { label: t("navManufacturer"), href: "/manufacturers" },
+                { label: t("navServices"), href: "/services" },
+                { label: t("navAccount"), href: "/account" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className={styles.footerLink}>
@@ -99,28 +103,28 @@ export default function Footer({ settings = DEFAULT_SITE_SETTINGS }: { settings?
 
           {/* Contact & Support */}
           <div>
-            <p className={styles.colTitle}>Client Support</p>
+            <p className={styles.colTitle}>{t("footerHelpTitle")}</p>
             <ul className={styles.contactList}>
               <li className={styles.contactItem}>
-                <span className={styles.contactLabel}>Customer Desk</span>
+                <span className={styles.contactLabel}>{t("footerCustomerDesk")}</span>
                 <a href={`tel:${settings.phone.replace(/\s+/g, "")}`} className={styles.contactValue}>
                   {settings.phone}
                 </a>
               </li>
               <li className={styles.contactItem}>
-                <span className={styles.contactLabel}>WhatsApp Inquiries</span>
+                <span className={styles.contactLabel}>{t("footerWhatsappInquiry")}</span>
                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className={styles.contactValue}>
                   +{settings.whatsapp}
                 </a>
               </li>
               <li className={styles.contactItem}>
-                <span className={styles.contactLabel}>Email</span>
+                <span className={styles.contactLabel}>{t("footerEmailContact")}</span>
                 <a href={`mailto:${settings.email}`} className={styles.contactValue}>
                   {settings.email}
                 </a>
               </li>
               <li className={styles.contactItem}>
-                <span className={styles.contactLabel}>Registered Office</span>
+                <span className={styles.contactLabel}>{t("footerRegisteredOffice")}</span>
                 <span className={styles.contactValueAddress}>{settings.address}</span>
               </li>
             </ul>
@@ -130,18 +134,14 @@ export default function Footer({ settings = DEFAULT_SITE_SETTINGS }: { settings?
         {/* Bottom Bar */}
         <div className={styles.bottomBar}>
           <p className={styles.copyright}>
-            &copy; {new Date().getFullYear()} BHAYA INDIA. All rights reserved. Registered Indian Enterprise.
+            &copy; {new Date().getFullYear()} BHAYA INDIA. {t("footerRights")}
           </p>
           <div className={styles.legalLinks}>
-            <Link href="/faq" className={styles.legalLink}>FAQ</Link>
+            <Link href="/faq" className={styles.legalLink}>{t("navFaq")}</Link>
             <span className={styles.legalSep}>·</span>
-            <Link href="/privacy-policy" className={styles.legalLink}>Privacy Policy</Link>
+            <Link href="/privacy-policy" className={styles.legalLink}>{t("footerPrivacy")}</Link>
             <span className={styles.legalSep}>·</span>
-            <Link href="/terms-conditions" className={styles.legalLink}>Terms & Conditions</Link>
-            <span className={styles.legalSep}>·</span>
-            <Link href="/account" className={styles.legalLink}>Customer Account</Link>
-            <span className={styles.legalSep}>·</span>
-            <Link href="/admin/login" className={styles.adminLoginLink}>Admin Portal</Link>
+            <Link href="/terms-conditions" className={styles.legalLink}>{t("footerTerms")}</Link>
           </div>
         </div>
       </div>

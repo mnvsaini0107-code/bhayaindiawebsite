@@ -351,7 +351,7 @@ export default function BhayaIndia2Client() {
                       }}
                       value={mobile}
                       onChange={(e) => setMobile(e.target.value)}
-                      placeholder="e.g. 9876543210"
+                      placeholder="e.g. 8726690926"
                     />
                   </div>
 

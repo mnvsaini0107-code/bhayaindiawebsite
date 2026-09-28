@@ -30,6 +30,19 @@
   line-height: 1.15;
 }
 
+.brandMottoBadge {
+  display: inline-block;
+  margin-top: 0.6rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(197, 160, 89, 0.18);
+  border: 1px solid var(--gold, #C5A059);
+  border-radius: 4px;
+  color: var(--gold, #C5A059);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
 .subtitle {
   font-size: 1rem;
   line-height: 1.6;

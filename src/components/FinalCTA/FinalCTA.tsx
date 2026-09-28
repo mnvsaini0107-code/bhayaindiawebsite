@@ -6,7 +6,7 @@ import styles from "./FinalCTA.module.css";
 import { useLanguage } from "@/context/LanguageContext";
 import EnquiryModal from "@/components/EnquiryModal/EnquiryModal";
 
-const WHATSAPP_NUMBER = "919876543210";
+const WHATSAPP_NUMBER = "918726690926";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20Bhaya%20India%2C%20I%20would%20like%20to%20enquire%20about%20your%20products%20and%20catalogue.`;
 
 export default function FinalCTA() {

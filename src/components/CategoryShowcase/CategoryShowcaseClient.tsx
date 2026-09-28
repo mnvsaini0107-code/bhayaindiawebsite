@@ -12,15 +12,16 @@ export default function CategoryShowcaseClient({ categories }: { categories: Bha
 
   if (!categories || categories.length === 0) return null;
 
-  // Circular strip items representing core categories + directions
+  // Circular strip items representing the 8 client-mandated categories
   const circularItems = [
-    { name: t("catFestival"), slug: "gift-hampers", image: "/assets/hero-editorial.jpg" },
-    { name: t("catTextiles"), slug: "textiles-fabrics", image: "/assets/category-textiles.jpg" },
-    { name: t("catStationery"), slug: "stationery-office", image: "/assets/category-stationery.jpg" },
-    { name: t("catHampers"), slug: "gift-hampers", image: "/assets/hero-editorial.jpg" },
-    { name: t("catHomeLiving"), slug: "home-living", image: "/assets/category-textiles.jpg" },
-    { name: t("catWholesale"), slug: "wholesale-bulk", image: "/assets/category-stationery.jpg" },
-    { name: t("catRetail"), slug: "all", image: "/assets/hero-editorial.jpg" },
+    { name: t("catPujaSamagri"), slug: "puja-samagri", image: "/assets/hero-editorial.jpg" },
+    { name: t("catFestivalDecoration"), slug: "festival-decoration", image: "/assets/category-textiles.jpg" },
+    { name: t("catWeddingMarriage"), slug: "wedding-marriage-items", image: "/assets/category-textiles.jpg" },
+    { name: t("catHandicraft"), slug: "handicraft", image: "/assets/category-stationery.jpg" },
+    { name: t("catHomeDecoration"), slug: "home-decoration", image: "/assets/hero-editorial.jpg" },
+    { name: t("catGiftItems"), slug: "gift-items", image: "/assets/hero-editorial.jpg" },
+    { name: t("catHouseholdProducts"), slug: "household-products", image: "/assets/category-textiles.jpg" },
+    { name: t("catOtherCategories"), slug: "other-categories", image: "/assets/category-stationery.jpg" },
   ];
 
   return (

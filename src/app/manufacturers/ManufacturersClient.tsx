@@ -322,7 +322,7 @@ export default function ManufacturersClient() {
                         }}
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
-                        placeholder="e.g. 9876543210"
+                        placeholder="e.g. 8726690926"
                       />
                     </div>
                   </div>

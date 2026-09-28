@@ -18,7 +18,7 @@ ${items.map((i, idx) => `${idx + 1}. Product Name: ${i.name}\nQuantity: ${i.quan
 
 Total Amount: ₹${totalPrice.toLocaleString("en-IN")}`;
 
-  const cartWaUrl = `https://wa.me/919876543210?text=${encodeURIComponent(cartWaMsg)}`;
+  const cartWaUrl = `https://wa.me/918726690926?text=${encodeURIComponent(cartWaMsg)}`;
 
   return (
     <>

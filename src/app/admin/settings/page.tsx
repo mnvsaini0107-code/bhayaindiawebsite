@@ -114,7 +114,7 @@ export default function AdminSettingsPage() {
             />
           </div>
           <div className={styles.field}>
-            <label className={styles.label}>Official WhatsApp Number (Country code + number, e.g. 919876543210)</label>
+            <label className={styles.label}>Official WhatsApp Number (Country code + number, e.g. 918726690926)</label>
             <input
               type="text"
               className={styles.input}

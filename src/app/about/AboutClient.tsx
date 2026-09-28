@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
+import FounderStory from "@/components/FounderStory/FounderStory";
 
 export default function AboutClient() {
   const { language, t } = useLanguage();
@@ -69,7 +70,7 @@ export default function AboutClient() {
               fontSize: "18px",
               color: "rgba(255,255,255,0.7)",
               fontWeight: 300,
-              maxWidth: "600px",
+              maxWidth: "640px",
             }}
           >
             {t("aboutSubtitle")}
@@ -77,7 +78,7 @@ export default function AboutClient() {
         </div>
       </div>
 
-      {/* Primary Mission & Core Approved Text */}
+      {/* Primary Mission & Core Dimensions */}
       <section style={{ padding: "80px 0", background: "var(--ivory)" }}>
         <div
           className="container"
@@ -114,7 +115,7 @@ export default function AboutClient() {
                 : "From Local Roots to Nationwide Trust"}
             </h2>
 
-            {/* Approved Hindi text */}
+            {/* Approved Brand Box */}
             <div
               style={{
                 background: "var(--white)",
@@ -134,7 +135,9 @@ export default function AboutClient() {
                   marginBottom: "14px",
                 }}
               >
-                BHAYA INDIA एक भारतीय Business & E-commerce Platform है, जो स्थानीय खुदरा व्यापारियों, थोक विक्रेताओं और निर्माताओं को आधुनिक डिजिटल कॉमर्स से जोड़ता है।
+                {language === "hi"
+                  ? "BHAYA INDIA एक भारतीय Business & E-commerce Platform है, जो स्थानीय खुदरा व्यापारियों, थोक विक्रेताओं और निर्माताओं को आधुनिक डिजिटल कॉमर्स से जोड़ता है।"
+                  : "BHAYA INDIA is a premier Indian Business & E-commerce Platform connecting local retailers, wholesalers, and manufacturers with modern digital commerce."}
               </p>
               <p
                 style={{
@@ -145,7 +148,9 @@ export default function AboutClient() {
                   marginBottom: "16px",
                 }}
               >
-                हमारा लक्ष्य हर भारतीय व्यापारी को डिजिटल शक्ति देना और ग्राहकों को विश्वसनीय, गुणवत्तापूर्ण उत्पाद सीधे उपलब्ध कराना है।
+                {language === "hi"
+                  ? "हमारा लक्ष्य हर भारतीय व्यापारी को डिजिटल शक्ति देना और ग्राहकों को विश्वसनीय, गुणवत्तापूर्ण उत्पाद सीधे उपलब्ध कराना है।"
+                  : "Our mission is to empower every Indian merchant with digital commerce capability while delivering authentic, quality-tested products directly to consumers."}
               </p>
               <div
                 style={{
@@ -170,7 +175,7 @@ export default function AboutClient() {
             <p style={{ fontSize: "15px", color: "var(--gray-500)", lineHeight: 1.8, marginBottom: "16px" }}>
               {language === "hi"
                 ? "BHAYA INDIA की शुरुआत जमीनी व्यापारिक जरूरतों को समझने से हुई। भारत के लाखों छोटे और मध्यम व्यवसायी बेहतरीन उत्पाद बनाते और बेचते हैं, लेकिन जटिल तकनीक और भारी कमीशन के कारण ऑनलाइन व्यापार में पीछे रह जाते हैं। BHAYA INDIA इस दूरी को मिटाने के लिए प्रतिबद्ध है।"
-                : "Bhaya India was born from deep grassroots understanding of Indian commerce. Millions of local artisans, manufacturers, and retailers produce high quality goods but face hurdles with heavy commissions and complex technology. Bhaya India bridges this gap with fair, transparent digital enablement."}
+                : "BHAYA INDIA was founded upon deep grassroots understanding of Indian commerce. Millions of local artisans, manufacturers, and retailers produce exceptional goods but have historically faced technical friction and heavy platform commissions. BHAYA INDIA bridges this divide with integrity, transparent operations, and equitable partnership."}
             </p>
           </div>
 
@@ -194,6 +199,9 @@ export default function AboutClient() {
           </div>
         </div>
       </section>
+
+      {/* Expanded Founder Story Section (Includes 6 core dimensions & strict verified facts) */}
+      <FounderStory />
 
       {/* Business Model: B2C, B2B & Hyperlocal Vision */}
       <section style={{ padding: "80px 0", background: "var(--ivory-warm)", borderTop: "1px solid rgba(18,52,86,0.06)" }}>
@@ -364,7 +372,7 @@ export default function AboutClient() {
                 marginBottom: "20px",
               }}
             >
-              एक प्लेटफॉर्म — हजारों दुकानें — एक भरोसा
+              {language === "hi" ? "एक प्लेटफॉर्म — हजारों दुकानें — एक भरोसा" : "One Platform — Thousands of Shops — One Trust"}
             </h2>
             <p
               style={{

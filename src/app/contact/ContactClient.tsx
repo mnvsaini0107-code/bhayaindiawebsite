@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
-const WHATSAPP_NUMBER = "919999999999";
+const WHATSAPP_NUMBER = "918726690926";
 
 export default function ContactClient() {
   const { language } = useLanguage();
@@ -64,16 +64,16 @@ export default function ContactClient() {
                 {[
                   {
                     label: "WhatsApp",
-                    value: "+91 99999 99999",
+                    value: "+91 87266 90926",
                     sublabel: language === "hi" ? "त्वरित उत्तर — आमतौर पर कुछ ही मिनटों में" : "Fastest response — typically within minutes",
                     href: whatsappUrl,
                     isWhatsapp: true,
                   },
                   {
-                    label: language === "hi" ? "फोन" : "Phone",
-                    value: "+91 99999 99999",
+                    label: language === "hi" ? "ग्राहक सेवा / फोन" : "Customer Desk / Phone",
+                    value: "+91 87266 90926",
                     sublabel: language === "hi" ? "सोमवार–शनिवार, सुबह 9 से शाम 7 बजे तक" : "Mon–Sat, 9 AM – 7 PM",
-                    href: "tel:+919999999999",
+                    href: "tel:+918726690926",
                   },
                   {
                     label: "Email",

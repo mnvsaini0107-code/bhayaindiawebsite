@@ -10,7 +10,7 @@ interface EnquiryModalProps {
   productId?: string;
 }
 
-const WHATSAPP_NUMBER = "919876543210";
+const WHATSAPP_NUMBER = "918726690926";
 
 export default function EnquiryModal({
   isOpen,
@@ -170,7 +170,7 @@ export default function EnquiryModal({
                   type="tel"
                   required
                   className={styles.input}
-                  placeholder="+91 98765 43210"
+                  placeholder="+91 87266 90926"
                   value={formData.mobile}
                   onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
                 />

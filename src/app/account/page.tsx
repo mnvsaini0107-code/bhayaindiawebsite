@@ -729,7 +729,7 @@ export default function AccountPage() {
                         className={styles.input}
                         type="tel"
                         required
-                        placeholder="e.g. 9876543210"
+                        placeholder="e.g. 8726690926"
                         value={loginPhone}
                         onChange={(e) => setLoginPhone(e.target.value)}
                       />
@@ -762,7 +762,7 @@ export default function AccountPage() {
                         className={styles.input}
                         type="tel"
                         required
-                        placeholder="e.g. 9876543210"
+                        placeholder="e.g. 8726690926"
                         value={regPhone}
                         onChange={(e) => setRegPhone(e.target.value)}
                       />

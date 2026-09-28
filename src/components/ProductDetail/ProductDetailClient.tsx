@@ -299,7 +299,7 @@ Quantity: ${parsedQty}`;
                       type="tel"
                       required
                       className={styles.formInput}
-                      placeholder="+91 98765 43210"
+                      placeholder="+91 87266 90926"
                       value={mobile}
                       onChange={(e) => setMobile(e.target.value)}
                     />

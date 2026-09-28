@@ -173,7 +173,7 @@ export default function CheckoutPage() {
                   {t("continueShopping")}
                 </Link>
                 <Link
-                  href={`https://wa.me/919876543210?text=${encodeURIComponent(`Hi BHAYA INDIA, regarding my order ${orderComplete.id}`)}`}
+                  href={`https://wa.me/918726690926?text=${encodeURIComponent(`Hi BHAYA INDIA, regarding my order ${orderComplete.id}`)}`}
                   className="btn btn-secondary"
                   target="_blank"
                 >
@@ -235,7 +235,7 @@ export default function CheckoutPage() {
                             name="phone"
                             required
                             className={styles.input}
-                            placeholder="+91 98765 43210"
+                            placeholder="+91 87266 90926"
                             value={formData.phone}
                             onChange={handleChange}
                           />

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { saveMedia } from "@/lib/db";
 
 export async function POST(request: Request) {
   try {
@@ -32,7 +33,27 @@ export async function POST(request: Request) {
     fs.writeFileSync(filePath, buffer);
 
     const publicUrl = `/uploads/${fileName}`;
-    return NextResponse.json({ success: true, url: publicUrl, fileName });
+
+    // Automatically index in Media Library
+    const cleanTitle = path
+      .basename(file.name, ext)
+      .replace(/[-_]+/g, " ")
+      .replace(/\b\w/g, (c) => c.toUpperCase());
+
+    const asset = saveMedia({
+      filename: fileName,
+      originalName: file.name,
+      fileType: file.type || `image/${ext.replace(".", "")}`,
+      fileSize: buffer.length,
+      url: publicUrl,
+      title: cleanTitle,
+      altEn: `${cleanTitle} — BHAYA INDIA`,
+      altHi: `${cleanTitle} — भाया इंडिया`,
+      usage: "Uploaded Asset",
+      uploadedAt: new Date().toISOString(),
+    });
+
+    return NextResponse.json({ success: true, url: publicUrl, fileName, asset });
   } catch (error) {
     console.error("POST /api/upload error:", error);
     return NextResponse.json({ success: false, error: "Upload failed" }, { status: 500 });

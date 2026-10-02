@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import type { Testimonial } from "@/lib/types";
+import { Star, X } from "lucide-react";
 import styles from "./testimonials.module.css";
 
 export default function AdminTestimonialsPage() {
@@ -142,9 +143,15 @@ export default function AdminTestimonialsPage() {
         ) : (
           testimonials.map((t) => (
             <div key={t.id} className={styles.card}>
-              <div className={styles.ratingStars}>
-                {"★".repeat(t.rating)}
-                {"☆".repeat(5 - t.rating)}
+              <div className={styles.ratingStars} style={{ display: "flex", gap: "2px" }}>
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star
+                    key={i}
+                    size={14}
+                    fill={i < t.rating ? "#c5a059" : "none"}
+                    color={i < t.rating ? "#c5a059" : "#cbd5e1"}
+                  />
+                ))}
               </div>
               <p className={styles.reviewText}>&ldquo;{t.review}&rdquo;</p>
               <div className={styles.authorMeta}>
@@ -176,7 +183,7 @@ export default function AdminTestimonialsPage() {
             <div className={styles.modalHeader}>
               <h2>{editingItem ? "Edit Testimonial" : "Add Testimonial"}</h2>
               <button className={styles.closeBtn} onClick={() => setIsModalOpen(false)}>
-                ✕
+                <X size={18} />
               </button>
             </div>
             <form onSubmit={handleSave} className={styles.form}>
@@ -222,9 +229,9 @@ export default function AdminTestimonialsPage() {
                   value={rating}
                   onChange={(e) => setRating(Number(e.target.value))}
                 >
-                  <option value={5}>★★★★★ (5 Stars)</option>
-                  <option value={4}>★★★★☆ (4 Stars)</option>
-                  <option value={3}>★★★☆☆ (3 Stars)</option>
+                  <option value={5}>5 Stars (Exceptional)</option>
+                  <option value={4}>4 Stars (Very Good)</option>
+                  <option value={3}>3 Stars (Satisfactory)</option>
                 </select>
               </div>
 

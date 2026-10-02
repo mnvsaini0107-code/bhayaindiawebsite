@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import type { Enquiry } from "@/lib/types";
+import { Building2, Phone, Mail, MapPin, MessageSquare, PhoneCall } from "lucide-react";
 import styles from "./enquiries.module.css";
 
 export default function AdminEnquiriesPage() {
@@ -166,12 +167,21 @@ export default function AdminEnquiriesPage() {
                       <td>
                         <strong className={styles.customerName}>{enq.name}</strong>
                         {enq.businessName && (
-                          <span style={{ fontSize: "12px", color: "var(--sapphire)", display: "block", fontWeight: 600 }}>
-                            🏢 {enq.businessName}
+                          <span style={{ fontSize: "12px", color: "var(--sapphire)", display: "flex", alignItems: "center", gap: "4px", fontWeight: 600 }}>
+                            <Building2 size={12} />
+                            <span>{enq.businessName}</span>
                           </span>
                         )}
-                        <span className={styles.contactLine}>📱 {enq.mobile}</span>
-                        {enq.email && <span className={styles.emailLine}>✉️ {enq.email}</span>}
+                        <span className={styles.contactLine} style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                          <Phone size={12} />
+                          <span>{enq.mobile}</span>
+                        </span>
+                        {enq.email && (
+                          <span className={styles.emailLine} style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                            <Mail size={12} />
+                            <span>{enq.email}</span>
+                          </span>
+                        )}
                       </td>
                       <td>
                         <strong>{enq.productName || "General / Catalogue"}</strong>
@@ -180,8 +190,9 @@ export default function AdminEnquiriesPage() {
                         <div>
                           <span>{enq.quantity ? `Qty: ${enq.quantity}` : "—"}</span>
                           {enq.city && (
-                            <span style={{ fontSize: "12px", color: "var(--text-muted)", display: "block" }}>
-                              📍 {enq.city}
+                            <span style={{ fontSize: "12px", color: "var(--text-muted)", display: "flex", alignItems: "center", gap: "4px" }}>
+                              <MapPin size={12} />
+                              <span>{enq.city}</span>
                             </span>
                           )}
                         </div>
@@ -220,15 +231,19 @@ export default function AdminEnquiriesPage() {
                             rel="noopener noreferrer"
                             className={styles.waBtn}
                             title="Chat on WhatsApp"
+                            style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}
                           >
-                            💬 WhatsApp
+                            <MessageSquare size={13} />
+                            <span>WhatsApp</span>
                           </a>
                           <a
                             href={`tel:${enq.mobile}`}
                             className={styles.callBtn}
                             title="Call customer"
+                            style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}
                           >
-                            📞 Call
+                            <PhoneCall size={13} />
+                            <span>Call</span>
                           </a>
                         </div>
                       </td>

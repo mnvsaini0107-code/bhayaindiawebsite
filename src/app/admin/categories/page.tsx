@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import type { Category } from "@/lib/types";
+import { X } from "lucide-react";
 import styles from "./categories.module.css";
 
 export default function AdminCategoriesPage() {
@@ -179,7 +180,7 @@ export default function AdminCategoriesPage() {
             <div className={styles.modalHeader}>
               <h2>{editingCat ? `Edit Category: ${editingCat.name}` : "Create New Category"}</h2>
               <button className={styles.closeBtn} onClick={() => setIsModalOpen(false)}>
-                ✕
+                <X size={18} />
               </button>
             </div>
 

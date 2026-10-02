@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import type { FAQ } from "@/lib/types";
+import { X } from "lucide-react";
 import styles from "./faqs.module.css";
 
 export default function AdminFaqsPage() {
@@ -155,7 +156,7 @@ export default function AdminFaqsPage() {
             <div className={styles.modalHeader}>
               <h2>{editingFaq ? "Edit FAQ" : "Add FAQ Question"}</h2>
               <button className={styles.closeBtn} onClick={() => setIsModalOpen(false)}>
-                ✕
+                <X size={18} />
               </button>
             </div>
             <form onSubmit={handleSave} className={styles.form}>

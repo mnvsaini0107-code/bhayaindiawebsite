@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import type { Order } from "@/lib/types";
+import { Phone, MapPin } from "lucide-react";
 import styles from "./orders.module.css";
 
 export default function AdminOrdersPage() {
@@ -58,7 +59,7 @@ export default function AdminOrdersPage() {
         <div>
           <h1 className={styles.title}>Orders & Fulfillment Management</h1>
           <p className={styles.subTitle}>
-            Review customer orders, update dispatch timelines (Order Placed ➔ Processing ➔ Shipped ➔ Delivered), and record payment status.
+            Review customer orders, update dispatch timelines (Order Placed &rarr; Processing &rarr; Shipped &rarr; Delivered), and record payment status.
           </p>
         </div>
 
@@ -109,9 +110,13 @@ export default function AdminOrdersPage() {
                       </td>
                       <td>
                         <strong>{order.customerName}</strong>
-                        <span className={styles.phoneStr}>📱 {order.phone}</span>
-                        <span className={styles.addressStr}>
-                          📍 {order.address}, {order.city} ({order.pincode})
+                        <span className={styles.phoneStr} style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                          <Phone size={12} />
+                          <span>{order.phone}</span>
+                        </span>
+                        <span className={styles.addressStr} style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                          <MapPin size={12} />
+                          <span>{order.address}, {order.city} ({order.pincode})</span>
                         </span>
                       </td>
                       <td>

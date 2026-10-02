@@ -157,6 +157,127 @@ export interface GalleryItem {
   createdAt: string;
 }
 
+export interface MediaAsset {
+  id: string;
+  filename: string;
+  originalName: string;
+  fileType: string;
+  dimensions?: string;
+  fileSize: number; // bytes
+  url: string;
+  altEn: string;
+  altHi: string;
+  title?: string;
+  caption?: string;
+  usage?: string;
+  uploadedAt: string;
+}
+
+export interface ServiceItem {
+  id: string;
+  title: string;
+  titleHi?: string;
+  description: string;
+  descriptionHi?: string;
+  category: string;
+  image?: string;
+  featured: boolean;
+  status: "Published" | "Draft";
+  order: number;
+  seoTitle?: string;
+  seoDescription?: string;
+  createdAt: string;
+}
+
+export interface TeamMember {
+  id: string;
+  name: string;
+  nameHi?: string;
+  role: string;
+  roleHi?: string;
+  bio?: string;
+  bioHi?: string;
+  image?: string;
+  order: number;
+  status: "Active" | "Inactive";
+  createdAt: string;
+}
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  titleHi?: string;
+  slug: string;
+  excerpt: string;
+  excerptHi?: string;
+  content: string;
+  contentHi?: string;
+  author: string;
+  publishedAt: string;
+  featuredImage: string;
+  category: string;
+  tags: string[];
+  status: "Published" | "Draft";
+  seoTitle?: string;
+  seoDescription?: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+export interface GlobalSeoSettings {
+  homepageTitle: string;
+  homepageDescription: string;
+  homepageKeywords: string;
+  defaultTitle: string;
+  defaultDescription: string;
+  defaultOgImage: string;
+  defaultTwitterImage: string;
+  defaultCanonical: string;
+  siteName: string;
+  organizationName: string;
+  defaultRobots: string;
+  googleVerificationTag?: string;
+  ga4MeasurementId?: string;
+  gtmId?: string;
+  cookieConsentEnabled: boolean;
+}
+
+export interface PageSeoRecord {
+  path: string;
+  pageName: string;
+  pageNameHi?: string;
+  seoTitle: string;
+  metaDescription: string;
+  canonicalUrl: string;
+  ogTitle: string;
+  ogDescription: string;
+  ogImage: string;
+  twitterTitle: string;
+  twitterDescription: string;
+  twitterImage: string;
+  robots: "index, follow" | "noindex, follow" | "noindex, nofollow";
+  schemaType: "Organization" | "WebSite" | "Article" | "FAQPage" | "LocalBusiness" | "Product";
+  isIndexable: boolean;
+  updatedAt?: string;
+}
+
+export interface RedirectRule {
+  id: string;
+  source: string;
+  destination: string;
+  statusCode: 301 | 302;
+  createdAt: string;
+}
+
+export interface ActivityLogItem {
+  id: string;
+  user: string;
+  action: string;
+  object: string;
+  details?: string;
+  timestamp: string;
+}
+
 export interface SiteSettings {
   businessName: string;
   tagline: string;
@@ -205,3 +326,22 @@ export interface PageContent {
     body: string;
   };
 }
+
+export interface ExtendedSiteSettings extends SiteSettings {
+  logo?: string;
+  favicon?: string;
+  primaryColor?: string;
+  secondaryColor?: string;
+  taxGst?: string;
+  currencySymbol?: string;
+  currencyCode?: string;
+  minimumOrderValue?: number;
+  codEnabled?: boolean;
+  shippingNotes?: string;
+  smtpHost?: string;
+  smtpPort?: string;
+  smtpUser?: string;
+  smtpSenderEmail?: string;
+  sessionTimeoutMinutes?: number;
+}
+

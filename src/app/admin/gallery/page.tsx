@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import type { GalleryItem } from "@/lib/types";
+import { Upload, X } from "lucide-react";
 import styles from "./gallery.module.css";
 
 export default function AdminGalleryPage() {
@@ -164,7 +165,7 @@ export default function AdminGalleryPage() {
             <div className={styles.modalHeader}>
               <h2>Upload to Gallery</h2>
               <button className={styles.closeBtn} onClick={() => setIsModalOpen(false)}>
-                ✕
+                <X size={18} />
               </button>
             </div>
             <form onSubmit={handleSave} className={styles.form}>
@@ -208,8 +209,10 @@ export default function AdminGalleryPage() {
                   onClick={() => fileRef.current?.click()}
                   className={styles.uploadBtn}
                   disabled={uploading}
+                  style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
                 >
-                  {uploading ? "Uploading File..." : "📁 Choose Image File"}
+                  <Upload size={14} />
+                  <span>{uploading ? "Uploading File..." : "Choose Image File"}</span>
                 </button>
                 {url && (
                   <div className={styles.preview}>

@@ -3,6 +3,15 @@ import path from "path";
 
 export * from "./types";
 export * from "./site-config";
+import {
+  defaultMediaAssets,
+  defaultServices,
+  defaultTeam,
+  defaultBlogs,
+  defaultGlobalSeoSettings,
+  defaultPageSeoRecords,
+  defaultActivityLogs,
+} from "./cms-defaults";
 import type {
   Product,
   Category,
@@ -11,10 +20,19 @@ import type {
   Testimonial,
   FAQ,
   GalleryItem,
-  SiteSettings,
+  ExtendedSiteSettings,
   PageContent,
   CustomerUser,
   CustomerAddress,
+  MediaAsset,
+  ServiceItem,
+  TeamMember,
+
+  BlogPost,
+  GlobalSeoSettings,
+  PageSeoRecord,
+  RedirectRule,
+  ActivityLogItem,
 } from "./types";
 
 export interface DatabaseSchema {
@@ -25,13 +43,22 @@ export interface DatabaseSchema {
   testimonials: Testimonial[];
   faqs: FAQ[];
   gallery: GalleryItem[];
-  settings: SiteSettings;
+  settings: ExtendedSiteSettings;
   content: PageContent;
   users?: CustomerUser[];
+  media?: MediaAsset[];
+  services?: ServiceItem[];
+  team?: TeamMember[];
+  blogs?: BlogPost[];
+  seoSettings?: GlobalSeoSettings;
+  seoPages?: Record<string, PageSeoRecord>;
+  redirects?: RedirectRule[];
+  activityLogs?: ActivityLogItem[];
 }
 
 const DB_DIR = path.join(process.cwd(), "data");
 const DB_FILE = path.join(DB_DIR, "db.json");
+
 
 // Default initial data
 const initialData: DatabaseSchema = {
@@ -628,16 +655,83 @@ function ensureDb(): DatabaseSchema {
   }
 
   if (!fs.existsSync(DB_FILE)) {
-    fs.writeFileSync(DB_FILE, JSON.stringify(initialData, null, 2), "utf-8");
-    return initialData;
+    const fullInitial: DatabaseSchema = {
+      ...initialData,
+      media: defaultMediaAssets,
+      services: defaultServices,
+      team: defaultTeam,
+      blogs: defaultBlogs,
+      seoSettings: defaultGlobalSeoSettings,
+      seoPages: defaultPageSeoRecords,
+      redirects: [],
+      activityLogs: defaultActivityLogs,
+    };
+    fs.writeFileSync(DB_FILE, JSON.stringify(fullInitial, null, 2), "utf-8");
+    return fullInitial;
   }
 
   try {
     const raw = fs.readFileSync(DB_FILE, "utf-8");
-    return JSON.parse(raw);
+    const parsed: DatabaseSchema = JSON.parse(raw);
+    let mutated = false;
+
+    if (!parsed.media || parsed.media.length === 0) {
+      parsed.media = defaultMediaAssets;
+      mutated = true;
+    }
+    if (!parsed.services || parsed.services.length === 0) {
+      parsed.services = defaultServices;
+      mutated = true;
+    }
+    if (!parsed.team || parsed.team.length === 0) {
+      parsed.team = defaultTeam;
+      mutated = true;
+    }
+    if (!parsed.blogs || parsed.blogs.length === 0) {
+      parsed.blogs = defaultBlogs;
+      mutated = true;
+    }
+    if (!parsed.seoSettings) {
+      parsed.seoSettings = defaultGlobalSeoSettings;
+      mutated = true;
+    }
+    if (!parsed.seoPages || Object.keys(parsed.seoPages).length === 0) {
+      parsed.seoPages = defaultPageSeoRecords;
+      mutated = true;
+    }
+    if (!parsed.redirects) {
+      parsed.redirects = [];
+      mutated = true;
+    }
+    if (!parsed.activityLogs || parsed.activityLogs.length === 0) {
+      parsed.activityLogs = defaultActivityLogs;
+      mutated = true;
+    }
+
+    if (mutated) {
+      try {
+        const tmpFile = `${DB_FILE}.tmp`;
+        fs.writeFileSync(tmpFile, JSON.stringify(parsed, null, 2), "utf-8");
+        fs.renameSync(tmpFile, DB_FILE);
+      } catch (writeErr) {
+        console.error("Failed to write populated schema to db.json:", writeErr);
+      }
+    }
+
+    return parsed;
   } catch (err) {
     console.error("Error reading db.json, falling back to initialData:", err);
-    return initialData;
+    return {
+      ...initialData,
+      media: defaultMediaAssets,
+      services: defaultServices,
+      team: defaultTeam,
+      blogs: defaultBlogs,
+      seoSettings: defaultGlobalSeoSettings,
+      seoPages: defaultPageSeoRecords,
+      redirects: [],
+      activityLogs: defaultActivityLogs,
+    };
   }
 }
 
@@ -902,12 +996,12 @@ export function deleteGalleryItem(id: string): boolean {
 }
 
 // ------------------- SETTINGS & CONTENT -------------------
-export function getSiteSettings(): SiteSettings {
+export function getSiteSettings(): ExtendedSiteSettings {
   const db = ensureDb();
   return db.settings || initialData.settings;
 }
 
-export function updateSiteSettings(settings: Partial<SiteSettings>): SiteSettings {
+export function updateSiteSettings(settings: Partial<ExtendedSiteSettings>): ExtendedSiteSettings {
   const db = ensureDb();
   db.settings = { ...db.settings, ...settings };
   writeDb(db);
@@ -1006,4 +1100,520 @@ export function deleteUserAddress(userId: string, addressId: string): CustomerUs
   writeDb(db);
   return user;
 }
+
+// ------------------- MEDIA LIBRARY -------------------
+export function getMedia(): MediaAsset[] {
+  const db = ensureDb();
+  return db.media || defaultMediaAssets;
+}
+
+export function getMediaById(id: string): MediaAsset | undefined {
+  const db = ensureDb();
+  return (db.media || defaultMediaAssets).find((m) => m.id === id);
+}
+
+export function saveMedia(asset: Partial<MediaAsset> & { id?: string }): MediaAsset {
+  const db = ensureDb();
+  if (!db.media) db.media = [...defaultMediaAssets];
+
+  if (asset.id) {
+    const idx = db.media.findIndex((m) => m.id === asset.id);
+    if (idx !== -1) {
+      db.media[idx] = { ...db.media[idx], ...asset };
+      writeDb(db);
+      logActivity("Admin", "Updated Media Asset", db.media[idx].filename);
+      return db.media[idx];
+    }
+  }
+
+  const newAsset: MediaAsset = {
+    id: asset.id || `media-${Date.now()}`,
+    filename: asset.filename || "image.jpg",
+    originalName: asset.originalName || asset.filename || "Asset",
+    fileType: asset.fileType || "image/jpeg",
+    dimensions: asset.dimensions || "1200 × 800 px",
+    fileSize: asset.fileSize || 0,
+    url: asset.url || "",
+    altEn: asset.altEn || "",
+    altHi: asset.altHi || "",
+    title: asset.title || "",
+    caption: asset.caption || "",
+    usage: asset.usage || "Catalogue & Content",
+    uploadedAt: asset.uploadedAt || new Date().toISOString(),
+  };
+
+  db.media.unshift(newAsset);
+  writeDb(db);
+  logActivity("Admin", "Uploaded Media Asset", newAsset.filename);
+  return newAsset;
+}
+
+export function deleteMedia(id: string): boolean {
+  const db = ensureDb();
+  if (!db.media) return false;
+  const target = db.media.find((m) => m.id === id);
+  db.media = db.media.filter((m) => m.id !== id);
+  writeDb(db);
+  if (target) {
+    logActivity("Admin", "Deleted Media Asset", target.filename);
+  }
+  return true;
+}
+
+export function getMediaTotalSize(): number {
+  const items = getMedia();
+  return items.reduce((sum, item) => sum + (item.fileSize || 0), 0);
+}
+
+// ------------------- SERVICES CMS -------------------
+export function getServices(): ServiceItem[] {
+  const db = ensureDb();
+  return db.services || defaultServices;
+}
+
+export function getServiceById(id: string): ServiceItem | undefined {
+  const db = ensureDb();
+  return (db.services || defaultServices).find((s) => s.id === id);
+}
+
+export function saveService(service: Partial<ServiceItem> & { id?: string }): ServiceItem {
+  const db = ensureDb();
+  if (!db.services) db.services = [...defaultServices];
+
+  if (service.id) {
+    const idx = db.services.findIndex((s) => s.id === service.id);
+    if (idx !== -1) {
+      db.services[idx] = { ...db.services[idx], ...service };
+      writeDb(db);
+      logActivity("Admin", "Updated Service", db.services[idx].title);
+      return db.services[idx];
+    }
+  }
+
+  const newService: ServiceItem = {
+    id: service.id || `srv-${Date.now()}`,
+    title: service.title || "New Service",
+    titleHi: service.titleHi || "",
+    description: service.description || "",
+    descriptionHi: service.descriptionHi || "",
+    category: service.category || "General",
+    image: service.image || "/assets/hero-editorial.jpg",
+    featured: service.featured ?? false,
+    status: service.status || "Published",
+    order: service.order || db.services.length + 1,
+    seoTitle: service.seoTitle || "",
+    seoDescription: service.seoDescription || "",
+    createdAt: new Date().toISOString(),
+  };
+
+  db.services.push(newService);
+  writeDb(db);
+  logActivity("Admin", "Created Service", newService.title);
+  return newService;
+}
+
+export function deleteService(id: string): boolean {
+  const db = ensureDb();
+  if (!db.services) return false;
+  const target = db.services.find((s) => s.id === id);
+  db.services = db.services.filter((s) => s.id !== id);
+  writeDb(db);
+  if (target) logActivity("Admin", "Deleted Service", target.title);
+  return true;
+}
+
+// ------------------- TEAM / CREATORS CMS -------------------
+export function getTeam(): TeamMember[] {
+  const db = ensureDb();
+  return db.team || defaultTeam;
+}
+
+export function getTeamById(id: string): TeamMember | undefined {
+  const db = ensureDb();
+  return (db.team || defaultTeam).find((t) => t.id === id);
+}
+
+export function saveTeam(member: Partial<TeamMember> & { id?: string }): TeamMember {
+  const db = ensureDb();
+  if (!db.team) db.team = [...defaultTeam];
+
+  if (member.id) {
+    const idx = db.team.findIndex((t) => t.id === member.id);
+    if (idx !== -1) {
+      db.team[idx] = { ...db.team[idx], ...member };
+      writeDb(db);
+      logActivity("Admin", "Updated Team Member", db.team[idx].name);
+      return db.team[idx];
+    }
+  }
+
+  const newMember: TeamMember = {
+    id: member.id || `team-${Date.now()}`,
+    name: member.name || "Team Member",
+    nameHi: member.nameHi || "",
+    role: member.role || "Specialist",
+    roleHi: member.roleHi || "",
+    bio: member.bio || "",
+    bioHi: member.bioHi || "",
+    image: member.image || "/assets/bhaya-india-logo.png",
+    order: member.order || db.team.length + 1,
+    status: member.status || "Active",
+    createdAt: new Date().toISOString(),
+  };
+
+  db.team.push(newMember);
+  writeDb(db);
+  logActivity("Admin", "Added Team Member", newMember.name);
+  return newMember;
+}
+
+export function deleteTeam(id: string): boolean {
+  const db = ensureDb();
+  if (!db.team) return false;
+  const target = db.team.find((t) => t.id === id);
+  db.team = db.team.filter((t) => t.id !== id);
+  writeDb(db);
+  if (target) logActivity("Admin", "Deleted Team Member", target.name);
+  return true;
+}
+
+// ------------------- BLOG / PUBLICATIONS CMS -------------------
+export function getBlogs(): BlogPost[] {
+  const db = ensureDb();
+  return db.blogs || defaultBlogs;
+}
+
+export function getBlogById(id: string): BlogPost | undefined {
+  const db = ensureDb();
+  return (db.blogs || defaultBlogs).find((b) => b.id === id);
+}
+
+export function getBlogBySlug(slug: string): BlogPost | undefined {
+  const db = ensureDb();
+  return (db.blogs || defaultBlogs).find((b) => b.slug === slug);
+}
+
+export function saveBlog(post: Partial<BlogPost> & { id?: string }): BlogPost {
+  const db = ensureDb();
+  if (!db.blogs) db.blogs = [...defaultBlogs];
+
+  if (post.id) {
+    const idx = db.blogs.findIndex((b) => b.id === post.id);
+    if (idx !== -1) {
+      db.blogs[idx] = { ...db.blogs[idx], ...post };
+      writeDb(db);
+      logActivity("Admin", "Updated Publication", db.blogs[idx].title);
+      return db.blogs[idx];
+    }
+  }
+
+  const newPost: BlogPost = {
+    id: post.id || `blog-${Date.now()}`,
+    title: post.title || "Untitled Article",
+    titleHi: post.titleHi || "",
+    slug:
+      post.slug ||
+      (post.title || "article")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, ""),
+    excerpt: post.excerpt || "",
+    excerptHi: post.excerptHi || "",
+    content: post.content || "",
+    contentHi: post.contentHi || "",
+    author: post.author || "BHAYA INDIA Editorial Desk",
+    publishedAt: post.publishedAt || new Date().toISOString(),
+    featuredImage: post.featuredImage || "/assets/hero-editorial.jpg",
+    category: post.category || "General",
+    tags: post.tags || ["Business"],
+    status: post.status || "Published",
+    seoTitle: post.seoTitle || post.title || "",
+    seoDescription: post.seoDescription || post.excerpt || "",
+    canonical: post.canonical || `https://bhayaindia.com/blog/${post.slug || "article"}`,
+    ogImage: post.ogImage || post.featuredImage || "/assets/hero-editorial.jpg",
+  };
+
+  db.blogs.unshift(newPost);
+  writeDb(db);
+  logActivity("Admin", "Created Publication", newPost.title);
+  return newPost;
+}
+
+export function deleteBlog(id: string): boolean {
+  const db = ensureDb();
+  if (!db.blogs) return false;
+  const target = db.blogs.find((b) => b.id === id);
+  db.blogs = db.blogs.filter((b) => b.id !== id);
+  writeDb(db);
+  if (target) logActivity("Admin", "Deleted Publication", target.title);
+  return true;
+}
+
+// ------------------- GLOBAL SEO SETTINGS -------------------
+export function getGlobalSeoSettings(): GlobalSeoSettings {
+  const db = ensureDb();
+  return db.seoSettings || defaultGlobalSeoSettings;
+}
+
+export function updateGlobalSeoSettings(settings: Partial<GlobalSeoSettings>): GlobalSeoSettings {
+  const db = ensureDb();
+  db.seoSettings = {
+    ...(db.seoSettings || defaultGlobalSeoSettings),
+    ...settings,
+  };
+  writeDb(db);
+  logActivity("Admin", "Updated Global SEO Settings", "Global SEO Control Center");
+  return db.seoSettings;
+}
+
+// ------------------- PAGE-LEVEL SEO -------------------
+export function getAllPageSeo(): Record<string, PageSeoRecord> {
+  const db = ensureDb();
+  return db.seoPages || defaultPageSeoRecords;
+}
+
+export function getPageSeo(path: string): PageSeoRecord | undefined {
+  const all = getAllPageSeo();
+  return all[path];
+}
+
+export function savePageSeo(path: string, seo: Partial<PageSeoRecord>): PageSeoRecord {
+  const db = ensureDb();
+  if (!db.seoPages) db.seoPages = { ...defaultPageSeoRecords };
+
+  const existing = db.seoPages[path] || {
+    path,
+    pageName: seo.pageName || path,
+    pageNameHi: seo.pageNameHi,
+    seoTitle: seo.seoTitle || "BHAYA INDIA",
+    metaDescription: seo.metaDescription || "",
+    canonicalUrl: seo.canonicalUrl || `https://bhayaindia.com${path}`,
+    ogTitle: seo.ogTitle || seo.seoTitle || "BHAYA INDIA",
+    ogDescription: seo.ogDescription || seo.metaDescription || "",
+    ogImage: seo.ogImage || "/assets/hero-editorial.jpg",
+    twitterTitle: seo.twitterTitle || seo.seoTitle || "BHAYA INDIA",
+    twitterDescription: seo.twitterDescription || seo.metaDescription || "",
+    twitterImage: seo.twitterImage || "/assets/hero-editorial.jpg",
+    robots: (seo.robots as PageSeoRecord["robots"]) || "index, follow",
+    schemaType: (seo.schemaType as PageSeoRecord["schemaType"]) || "WebSite",
+    isIndexable: seo.isIndexable ?? true,
+    updatedAt: new Date().toISOString(),
+  };
+
+  db.seoPages[path] = {
+    ...existing,
+    ...seo,
+    updatedAt: new Date().toISOString(),
+  };
+
+  writeDb(db);
+  logActivity("Admin", "Updated Page SEO", `Route ${path}`);
+  return db.seoPages[path];
+}
+
+// ------------------- REDIRECTS -------------------
+export function getRedirects(): RedirectRule[] {
+  const db = ensureDb();
+  return db.redirects || [];
+}
+
+export function saveRedirect(rule: Omit<RedirectRule, "id" | "createdAt"> & { id?: string }): RedirectRule {
+  const db = ensureDb();
+  if (!db.redirects) db.redirects = [];
+
+  const newRule: RedirectRule = {
+    id: rule.id || `redir-${Date.now()}`,
+    source: rule.source.startsWith("/") ? rule.source : `/${rule.source}`,
+    destination: rule.destination,
+    statusCode: rule.statusCode || 301,
+    createdAt: new Date().toISOString(),
+  };
+
+  const idx = db.redirects.findIndex((r) => r.id === newRule.id || r.source === newRule.source);
+  if (idx !== -1) {
+    db.redirects[idx] = newRule;
+  } else {
+    db.redirects.unshift(newRule);
+  }
+
+  writeDb(db);
+  logActivity("Admin", "Saved 301 Redirect", `${newRule.source} → ${newRule.destination}`);
+  return newRule;
+}
+
+export function deleteRedirect(id: string): boolean {
+  const db = ensureDb();
+  if (!db.redirects) return false;
+  db.redirects = db.redirects.filter((r) => r.id !== id);
+  writeDb(db);
+  logActivity("Admin", "Deleted Redirect", `Rule ID ${id}`);
+  return true;
+}
+
+// ------------------- ACTIVITY LOGS -------------------
+export function getActivityLogs(): ActivityLogItem[] {
+  const db = ensureDb();
+  return db.activityLogs || defaultActivityLogs;
+}
+
+export function logActivity(user: string, action: string, object: string, details?: string): ActivityLogItem {
+  const db = ensureDb();
+  if (!db.activityLogs) db.activityLogs = [...defaultActivityLogs];
+
+  const log: ActivityLogItem = {
+    id: `act-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
+    user,
+    action,
+    object,
+    details: details || "",
+    timestamp: new Date().toISOString(),
+  };
+
+  db.activityLogs.unshift(log);
+  // Keep last 150 items
+  if (db.activityLogs.length > 150) {
+    db.activityLogs = db.activityLogs.slice(0, 150);
+  }
+
+  writeDb(db);
+  return log;
+}
+
+// ------------------- GLOBAL ADMIN SEARCH -------------------
+export interface AdminSearchResult {
+  type: "Product" | "Order" | "Lead" | "Blog" | "FAQ" | "Service" | "Media" | "SEO Page";
+  title: string;
+  subtitle: string;
+  href: string;
+}
+
+export function adminGlobalSearch(query: string): AdminSearchResult[] {
+  if (!query || query.trim().length === 0) return [];
+  const q = query.toLowerCase().trim();
+  const results: AdminSearchResult[] = [];
+
+  const db = ensureDb();
+
+  // Search Products
+  (db.products || []).forEach((p) => {
+    if (
+      p.name.toLowerCase().includes(q) ||
+      p.sku.toLowerCase().includes(q) ||
+      p.category.toLowerCase().includes(q)
+    ) {
+      results.push({
+        type: "Product",
+        title: p.name,
+        subtitle: `SKU: ${p.sku} • ₹${p.price || "Quote"} • ${p.category}`,
+        href: `/admin/products`,
+      });
+    }
+  });
+
+  // Search Orders
+  (db.orders || []).forEach((o) => {
+    if (
+      o.id.toLowerCase().includes(q) ||
+      o.customerName.toLowerCase().includes(q) ||
+      o.phone.toLowerCase().includes(q)
+    ) {
+      results.push({
+        type: "Order",
+        title: `${o.id} — ${o.customerName}`,
+        subtitle: `₹${o.totalAmount} • ${o.orderStatus} • ${o.paymentStatus}`,
+        href: `/admin/orders`,
+      });
+    }
+  });
+
+  // Search Leads
+  (db.enquiries || []).forEach((e) => {
+    if (
+      e.name.toLowerCase().includes(q) ||
+      e.mobile.includes(q) ||
+      e.productName.toLowerCase().includes(q) ||
+      (e.businessName && e.businessName.toLowerCase().includes(q))
+    ) {
+      results.push({
+        type: "Lead",
+        title: `${e.name} (${e.type || "Enquiry"})`,
+        subtitle: `${e.productName} • ${e.mobile} • ${e.status}`,
+        href: `/admin/enquiries`,
+      });
+    }
+  });
+
+  // Search Blogs
+  (db.blogs || defaultBlogs).forEach((b) => {
+    if (
+      b.title.toLowerCase().includes(q) ||
+      b.category.toLowerCase().includes(q) ||
+      b.slug.toLowerCase().includes(q)
+    ) {
+      results.push({
+        type: "Blog",
+        title: b.title,
+        subtitle: `${b.category} • /blog/${b.slug}`,
+        href: `/admin/blog`,
+      });
+    }
+  });
+
+  // Search FAQs
+  (db.faqs || []).forEach((f) => {
+    if (f.question.toLowerCase().includes(q) || f.answer.toLowerCase().includes(q)) {
+      results.push({
+        type: "FAQ",
+        title: f.question,
+        subtitle: `${f.category} FAQ`,
+        href: `/admin/faqs`,
+      });
+    }
+  });
+
+  // Search Services
+  (db.services || defaultServices).forEach((s) => {
+    if (s.title.toLowerCase().includes(q) || s.category.toLowerCase().includes(q)) {
+      results.push({
+        type: "Service",
+        title: s.title,
+        subtitle: s.category,
+        href: `/admin/services`,
+      });
+    }
+  });
+
+  // Search Media
+  (db.media || defaultMediaAssets).forEach((m) => {
+    if (
+      m.filename.toLowerCase().includes(q) ||
+      m.altEn.toLowerCase().includes(q) ||
+      m.altHi.includes(q) ||
+      (m.title && m.title.toLowerCase().includes(q))
+    ) {
+      results.push({
+        type: "Media",
+        title: m.filename,
+        subtitle: m.altEn || m.dimensions || "Media Asset",
+        href: `/admin/media`,
+      });
+    }
+  });
+
+  // Search SEO Records
+  const seoPages = db.seoPages || defaultPageSeoRecords;
+  Object.values(seoPages).forEach((page) => {
+    if (page.pageName.toLowerCase().includes(q) || page.path.toLowerCase().includes(q)) {
+      results.push({
+        type: "SEO Page",
+        title: `${page.pageName} (${page.path})`,
+        subtitle: page.seoTitle,
+        href: `/admin/seo?page=${encodeURIComponent(page.path)}`,
+      });
+    }
+  });
+
+  return results.slice(0, 15);
+}
+
 

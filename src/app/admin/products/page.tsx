@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import type { Product, Category, ProductSpec } from "@/lib/types";
+import { ShoppingBag, Upload, X } from "lucide-react";
 import styles from "./products.module.css";
 
 export default function AdminProductsPage() {
@@ -319,7 +320,7 @@ export default function AdminProductsPage() {
             fontSize: "1.2rem",
             color: "#C5A059"
           }}>
-            🛍️
+            <ShoppingBag size={20} color="#C5A059" />
           </div>
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
@@ -436,7 +437,7 @@ export default function AdminProductsPage() {
                         className={`${styles.toggleBtn} ${p.isFeatured ? styles.toggleActive : ""}`}
                         title="Click to toggle featured status on homepage"
                       >
-                        {p.isFeatured ? "★ Featured" : "☆ Standard"}
+                        {p.isFeatured ? "Featured" : "Standard"}
                       </button>
                     </td>
                     <td>
@@ -480,7 +481,7 @@ export default function AdminProductsPage() {
             <div className={styles.modalHeader}>
               <h2>{editingProduct ? `Edit Product: ${editingProduct.name}` : "Add New Product"}</h2>
               <button className={styles.closeBtn} onClick={() => setIsModalOpen(false)}>
-                ✕
+                <X size={18} />
               </button>
             </div>
 
@@ -623,7 +624,7 @@ export default function AdminProductsPage() {
                             className={styles.removeThumbBtn}
                             onClick={() => handleRemoveImage(idx)}
                           >
-                            ✕
+                            <X size={14} />
                           </button>
                         </div>
                       ))}
@@ -642,8 +643,10 @@ export default function AdminProductsPage() {
                       className={styles.uploadBtn}
                       onClick={() => fileInputRef.current?.click()}
                       disabled={uploadLoading}
+                      style={{ display: "inline-flex", alignItems: "center", gap: "6px", justifyContent: "center" }}
                     >
-                      {uploadLoading ? "Uploading Image..." : "📷 Upload Product Image"}
+                      <Upload size={15} />
+                      <span>{uploadLoading ? "Uploading Image..." : "Upload Product Image"}</span>
                     </button>
                     <span className={styles.uploadHint}>
                       Supports JPG, PNG, WEBP. Uploaded directly to your website server.
@@ -681,7 +684,7 @@ export default function AdminProductsPage() {
                           className={styles.rowDeleteBtn}
                           onClick={() => removeSpecRow(idx)}
                         >
-                          ✕
+                          <X size={14} />
                         </button>
                       </div>
                     ))}

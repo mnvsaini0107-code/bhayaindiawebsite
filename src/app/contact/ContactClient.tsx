@@ -70,13 +70,13 @@ export default function ContactClient() {
                     isWhatsapp: true,
                   },
                   {
-                    label: language === "hi" ? "ग्राहक सेवा / फोन" : "Customer Desk / Phone",
+                    label: language === "hi" ? "फोन" : "Phone",
                     value: "+91 87266 90926",
                     sublabel: language === "hi" ? "सोमवार–शनिवार, सुबह 9 से शाम 7 बजे तक" : "Mon–Sat, 9 AM – 7 PM",
                     href: "tel:+918726690926",
                   },
                   {
-                    label: "Email",
+                    label: language === "hi" ? "ईमेल" : "Email",
                     value: "hello@bhayaindia.com",
                     sublabel: language === "hi" ? "हम 24 घंटे के भीतर उत्तर देते हैं" : "We reply within 24 hours",
                     href: "mailto:hello@bhayaindia.com",

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/Header/Header";
@@ -9,8 +10,9 @@ import { useLanguage } from "@/context/LanguageContext";
 import styles from "./cart.module.css";
 
 export default function CartPage() {
-  const { items, updateQuantity, removeItem, clearCart, totalPrice, totalCount, checkoutUrl, isLoading } = useCart();
+  const { items, updateQuantity, removeItem, clearCart, totalPrice, totalCount, checkoutUrl, isLoading, createCheckout } = useCart();
   const { t, language } = useLanguage();
+  const [checkingOut, setCheckingOut] = useState(false);
 
   const cartWaMsg = `नमस्कार, मुझे BHAYA INDIA के इन products के बारे में जानकारी चाहिए:
 
@@ -84,6 +86,11 @@ Total Amount: ₹${totalPrice.toLocaleString("en-IN")}`;
                         <Link href={`/products/${item.slug}`} className={styles.itemName}>
                           {item.name}
                         </Link>
+                        {item.variantTitle && (
+                          <span style={{ fontSize: "0.75rem", color: "var(--gold, #C5A059)", fontWeight: 600, display: "block", marginTop: "2px" }}>
+                            {item.variantTitle}
+                          </span>
+                        )}
                         <span className={styles.unitPrice}>₹{item.price.toLocaleString("en-IN")} {language === "hi" ? "प्रति नग" : "each"}</span>
                         <button
                           className={styles.removeBtnMobile}
@@ -169,10 +176,28 @@ Total Amount: ₹${totalPrice.toLocaleString("en-IN")}`;
                 <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", margin: "1.25rem 0" }}>
                   <a
                     href={checkoutUrl || "/checkout"}
+                    onClick={async (e) => {
+                      if (!checkoutUrl) {
+                        e.preventDefault();
+                        setCheckingOut(true);
+                        try {
+                          const url = await createCheckout();
+                          if (url) {
+                            window.location.href = url;
+                          } else {
+                            window.location.href = "/checkout";
+                          }
+                        } catch {
+                          window.location.href = "/checkout";
+                        } finally {
+                          setCheckingOut(false);
+                        }
+                      }
+                    }}
                     className={`btn btn-primary ${styles.checkoutBtn}`}
                     id="cart-checkout-btn"
                   >
-                    {isLoading ? t("loadingText") : `${t("proceedToCheckout")} →`}
+                    {isLoading || checkingOut ? t("loadingText") : `${t("proceedToCheckout")} →`}
                   </a>
                   <a
                     href={cartWaUrl}

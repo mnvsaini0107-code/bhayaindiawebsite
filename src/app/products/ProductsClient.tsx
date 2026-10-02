@@ -6,25 +6,33 @@ import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import { useCart } from "@/context/CartContext";
-import type { BhayaShopifyProduct, BhayaCollection } from "@/lib/shopify/types";
+import type { BhayaShopifyProduct } from "@/lib/shopify/types";
+import {
+  CATEGORIES_TAXONOMY,
+  findCategoryBySlug,
+  findSubcategoryBySlug,
+} from "@/lib/taxonomy";
+import {
+  analyzeSearchIntent,
+  scoreAndRankProducts,
+} from "@/lib/search/intentSearch";
 import {
   getLanguageAwareProductImage,
-  getLocalizedCategoryName,
-  getLocalizedCategoryDesc,
-  getLocalizedSubcategoryName,
   getLocalizedProductName,
   getLocalizedProductCategory,
+  getLocalizedProductSubcategory,
 } from "@/lib/shopify/utils";
 import styles from "./products.module.css";
 
 function getWhatsAppUrl(product: BhayaShopifyProduct, whatsappNumber: string, language: "en" | "hi" = "hi") {
   const prodName = getLocalizedProductName(product, language);
-  const msg = language === "hi"
-    ? `नमस्कार, मुझे BHAYA INDIA के इस product के बारे में जानकारी चाहिए:
+  const msg =
+    language === "hi"
+      ? `नमस्कार, मुझे BHAYA INDIA के इस product के बारे में जानकारी चाहिए:
 
 Product Name: ${prodName}
 Quantity: 1`
-    : `Hello, I would like to enquire about this BHAYA INDIA product:
+      : `Hello, I would like to enquire about this BHAYA INDIA product:
 
 Product Name: ${prodName}
 Quantity: 1`;
@@ -33,13 +41,11 @@ Quantity: 1`;
 
 interface Props {
   allProducts: BhayaShopifyProduct[];
-  categories: BhayaCollection[];
   whatsappNumber: string;
 }
 
 export default function ProductsClient({
   allProducts,
-  categories,
   whatsappNumber,
 }: Props) {
   const { language, t } = useLanguage();
@@ -55,26 +61,51 @@ export default function ProductsClient({
 
   const [inputQuery, setInputQuery] = useState(searchQuery);
 
-  const activeCategoryObj = categories.find((c) => c.slug === activeCategory);
+  const matchedTaxonomyCategory = activeCategory !== "all" ? findCategoryBySlug(activeCategory) : null;
+  const matchedTaxonomySubcategory = activeSubcat ? findSubcategoryBySlug(activeSubcat) : null;
+
+  // Search intent analysis if search query exists
+  const searchIntent = useMemo(() => {
+    if (!searchQuery) return null;
+    return analyzeSearchIntent(searchQuery);
+  }, [searchQuery]);
 
   const filtered = useMemo(() => {
-    const list = allProducts.filter((p) => {
-      const matchesCat = activeCategory === "all" || p.categorySlug === activeCategory;
-      const matchesSubcat =
-        !activeSubcat ||
-        p.subcategory.toLowerCase() === activeSubcat.toLowerCase() ||
-        (p.subcategoryHi && p.subcategoryHi.toLowerCase() === activeSubcat.toLowerCase());
-      const matchesSearch =
-        !searchQuery ||
-        p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (p.nameHi && p.nameHi.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        p.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (p.categoryHi && p.categoryHi.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        p.subcategory.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (p.subcategoryHi && p.subcategoryHi.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (p.descriptionHi && p.descriptionHi.toLowerCase().includes(searchQuery.toLowerCase()));
+    let list = allProducts.filter((p) => {
+      // Category match
+      let matchesCat = true;
+      if (activeCategory !== "all") {
+        if (matchedTaxonomyCategory) {
+          const catSlugs = new Set([
+            matchedTaxonomyCategory.slug,
+            ...matchedTaxonomyCategory.subcategories.map((s) => s.slug),
+          ]);
+          matchesCat = Boolean(
+            catSlugs.has(p.categorySlug) ||
+            p.category.toLowerCase() === matchedTaxonomyCategory.name_en.toLowerCase() ||
+            (p.categoryHi && p.categoryHi.toLowerCase() === matchedTaxonomyCategory.name_hi.toLowerCase())
+          );
+        } else {
+          matchesCat = p.categorySlug === activeCategory;
+        }
+      }
 
+      // Subcategory match
+      let matchesSubcat = true;
+      if (activeSubcat) {
+        matchesSubcat = Boolean(
+          p.subcategory.toLowerCase() === activeSubcat.toLowerCase() ||
+          (p.subcategoryHi && p.subcategoryHi.toLowerCase() === activeSubcat.toLowerCase()) ||
+          (matchedTaxonomySubcategory &&
+            (p.subcategory.toLowerCase() === matchedTaxonomySubcategory.name_en.toLowerCase() ||
+              (p.subcategoryHi && p.subcategoryHi.toLowerCase() === matchedTaxonomySubcategory.name_hi.toLowerCase()) ||
+              matchedTaxonomySubcategory.searchAliases.some((alias) =>
+                p.subcategory.toLowerCase().includes(alias.toLowerCase())
+              )))
+        );
+      }
+
+      // Price filter
       let matchesPrice = true;
       if (priceFilter === "under-1000") {
         matchesPrice = p.price !== null && p.price < 1000;
@@ -86,8 +117,18 @@ export default function ProductsClient({
         matchesPrice = p.price === null;
       }
 
-      return matchesCat && matchesSubcat && matchesSearch && matchesPrice;
+      return matchesCat && matchesSubcat && matchesPrice;
     });
+
+    // If search query is present, rank with intelligent intent engine
+    if (searchQuery.trim()) {
+      list = scoreAndRankProducts(
+        list,
+        searchQuery,
+        searchIntent?.matchedCategory || matchedTaxonomyCategory || null,
+        searchIntent?.matchedSubcategories || []
+      );
+    }
 
     if (sortOption === "price-low") {
       list.sort((a, b) => (a.price || 999999) - (b.price || 999999));
@@ -98,7 +139,17 @@ export default function ProductsClient({
     }
 
     return list;
-  }, [allProducts, activeCategory, activeSubcat, searchQuery, priceFilter, sortOption]);
+  }, [
+    allProducts,
+    activeCategory,
+    activeSubcat,
+    searchQuery,
+    priceFilter,
+    sortOption,
+    matchedTaxonomyCategory,
+    matchedTaxonomySubcategory,
+    searchIntent,
+  ]);
 
   const updateParam = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -130,17 +181,17 @@ export default function ProductsClient({
 
           <h1 className={styles.pageTitle}>
             {activeCategory !== "all"
-              ? (activeCategoryObj ? getLocalizedCategoryName(activeCategoryObj, language) : "")
+              ? (matchedTaxonomyCategory ? (language === "hi" ? matchedTaxonomyCategory.name_hi : matchedTaxonomyCategory.name_en) : activeCategory)
               : language === "hi"
               ? "सम्पूर्ण उत्पाद संग्रह"
               : "The Complete Collection"}
           </h1>
 
           <p className={styles.pageDesc}>
-            {(activeCategoryObj ? getLocalizedCategoryDesc(activeCategoryObj, language) : null) ||
+            {(matchedTaxonomyCategory ? (language === "hi" ? matchedTaxonomyCategory.description_hi : matchedTaxonomyCategory.description_en) : null) ||
               (language === "hi"
-                ? "प्रामाणिक गुणवत्ता के साथ हस्तनिर्मित वस्त्र, एग्जीक्यूटिव स्टेशनरी, उत्सव उपहार और थोक उत्पाद।"
-                : "Handcrafted textiles, executive stationery, festive gifting trunks, and wholesale goods with authentic quality.")}
+                ? "प्रामाणिक गुणवत्ता के साथ हस्तनिर्मित वस्त्र, एग्जीक्यूटिव स्टेशनरी, उत्सव उपहार, पैकेजिंग और थोक उत्पाद।"
+                : "Handcrafted textiles, executive stationery, festive gifting trunks, packaging and wholesale goods with authentic quality.")}
           </p>
         </div>
       </div>
@@ -154,7 +205,11 @@ export default function ProductsClient({
               name="q"
               value={inputQuery}
               onChange={(e) => setInputQuery(e.target.value)}
-              placeholder={language === "hi" ? "उत्पाद खोजें..." : "Search Products..."}
+              placeholder={
+                language === "hi"
+                  ? "त्योहार, करवा चौथ, पूजा सामग्री, पैकेजिंग, उत्पाद खोजें..."
+                  : "Search festival, Karwa Chauth, puja items, packaging, products..."
+              }
               className={styles.searchInput}
               id="products-search-input"
             />
@@ -164,10 +219,93 @@ export default function ProductsClient({
           </form>
         </div>
 
-        {/* Category Filter Pills */}
+        {/* Search Intent Suggestions Strip if query present */}
+        {searchIntent && (searchIntent.matchedCategory || searchIntent.matchedSubcategories.length > 0 || searchIntent.relatedSearches.length > 0) && (
+          <div
+            style={{
+              background: "#ffffff",
+              border: "1px solid rgba(197,160,89,0.25)",
+              borderRadius: "6px",
+              padding: "16px 20px",
+              marginBottom: "24px",
+              boxShadow: "0 2px 8px rgba(18,52,86,0.04)",
+            }}
+          >
+            {/* Matched Category & Subcategories Discovery */}
+            {searchIntent.matchedCategory && (
+              <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap", marginBottom: "10px" }}>
+                <span style={{ fontSize: "12px", fontWeight: 700, color: "var(--gold-dark)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                  {language === "hi" ? "संबंधित मुख्य श्रेणी:" : "Related Category:"}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => updateParam("category", searchIntent.matchedCategory!.slug)}
+                  className="pill-control pill-control--active"
+                  style={{ fontSize: "12px", padding: "4px 12px" }}
+                >
+                  {language === "hi" ? searchIntent.matchedCategory.name_hi : searchIntent.matchedCategory.name_en} →
+                </button>
+              </div>
+            )}
+
+            {searchIntent.matchedSubcategories.length > 0 && (
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap", marginBottom: "10px" }}>
+                <span style={{ fontSize: "12px", fontWeight: 700, color: "var(--sapphire)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                  {language === "hi" ? "उप-श्रेणी सुझाव:" : "Subcategory Suggestions:"}
+                </span>
+                {searchIntent.matchedSubcategories.slice(0, 6).map((sub) => (
+                  <button
+                    key={sub.slug}
+                    type="button"
+                    onClick={() => {
+                      updateParam("category", sub.parentSlug);
+                      updateParam("subcat", sub.slug);
+                    }}
+                    className="pill-control"
+                    style={{ fontSize: "12px", padding: "4px 10px" }}
+                  >
+                    {language === "hi" ? sub.name_hi : sub.name_en}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* Related Searches */}
+            {searchIntent.relatedSearches.length > 0 && (
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+                <span style={{ fontSize: "12px", fontWeight: 600, color: "var(--gray-600)" }}>
+                  {language === "hi" ? "संबंधित खोजें:" : "Related Searches:"}
+                </span>
+                {searchIntent.relatedSearches.map((term, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => {
+                      setInputQuery(term);
+                      updateParam("q", term);
+                    }}
+                    style={{
+                      background: "rgba(197,160,89,0.1)",
+                      border: "1px solid rgba(197,160,89,0.25)",
+                      color: "var(--gold-dark)",
+                      fontSize: "12px",
+                      padding: "3px 10px",
+                      borderRadius: "16px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {term}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* 8 Primary Business Category Pills */}
         <div className={styles.filterSection}>
           <div className={styles.filterLabel}>
-            {language === "hi" ? "संग्रह:" : "Collections:"}
+            {language === "hi" ? "व्यावसायिक श्रेणियाँ:" : "Core Categories:"}
           </div>
           <div className={styles.pillsRow}>
             <button
@@ -176,11 +314,20 @@ export default function ProductsClient({
               className={`pill-control ${activeCategory === "all" ? "pill-control--active" : ""}`}
               id="filter-pill-all"
             >
-              {language === "hi" ? "सभी उत्पाद" : "All Pieces"} ({allProducts.length})
+              {language === "hi" ? "सभी श्रेणियाँ" : "All Categories"} ({allProducts.length})
             </button>
 
-            {categories.map((cat) => {
-              const count = allProducts.filter((p) => p.categorySlug === cat.slug).length;
+            {CATEGORIES_TAXONOMY.map((cat) => {
+              // Dynamic product count calculated from actual catalog
+              const count = allProducts.filter((p) => {
+                const subSlugs = new Set([cat.slug, ...cat.subcategories.map((s) => s.slug)]);
+                return (
+                  subSlugs.has(p.categorySlug) ||
+                  p.category.toLowerCase() === cat.name_en.toLowerCase() ||
+                  (p.categoryHi && p.categoryHi.toLowerCase() === cat.name_hi.toLowerCase())
+                );
+              }).length;
+
               return (
                 <button
                   key={cat.id}
@@ -189,15 +336,15 @@ export default function ProductsClient({
                   className={`pill-control ${activeCategory === cat.slug ? "pill-control--active" : ""}`}
                   id={`filter-pill-${cat.slug}`}
                 >
-                  {getLocalizedCategoryName(cat, language)} ({count})
+                  {language === "hi" ? cat.name_hi : cat.name_en} ({count})
                 </button>
               );
             })}
           </div>
         </div>
 
-        {/* Sub-category Pills (if category selected) */}
-        {activeCategoryObj?.subcategories && activeCategoryObj.subcategories.length > 0 && (
+        {/* Sub-category Pills (Shown when a category is selected) */}
+        {matchedTaxonomyCategory && matchedTaxonomyCategory.subcategories.length > 0 && (
           <div className={styles.filterSection} style={{ marginTop: "-0.5rem" }}>
             <div className={styles.filterLabel}>
               {language === "hi" ? "उप-श्रेणी:" : "Sub-Category:"}
@@ -209,19 +356,31 @@ export default function ProductsClient({
                 className={`pill-control ${!activeSubcat ? "pill-control--active" : ""}`}
               >
                 {language === "hi"
-                  ? `सभी ${getLocalizedCategoryName(activeCategoryObj, language)}`
-                  : `All ${activeCategoryObj.name}`}
+                  ? `सभी ${matchedTaxonomyCategory.name_hi}`
+                  : `All ${matchedTaxonomyCategory.name_en}`}
               </button>
-              {activeCategoryObj.subcategories.map((sub) => (
-                <button
-                  key={sub}
-                  type="button"
-                  onClick={() => updateParam("subcat", sub)}
-                  className={`pill-control ${activeSubcat.toLowerCase() === sub.toLowerCase() ? "pill-control--active" : ""}`}
-                >
-                  {getLocalizedSubcategoryName(sub, language)}
-                </button>
-              ))}
+              {matchedTaxonomyCategory.subcategories.map((sub) => {
+                const isSelected =
+                  activeSubcat.toLowerCase() === sub.slug.toLowerCase() ||
+                  activeSubcat.toLowerCase() === sub.name_en.toLowerCase();
+
+                return (
+                  <button
+                    key={sub.id}
+                    type="button"
+                    onClick={() => updateParam("subcat", sub.slug)}
+                    className={`pill-control ${isSelected ? "pill-control--active" : ""}`}
+                    id={`filter-subcat-${sub.slug}`}
+                  >
+                    {language === "hi" ? sub.name_hi : sub.name_en}
+                    {sub.status === "coming_soon" && (
+                      <span style={{ fontSize: "10px", marginLeft: "4px", opacity: 0.7 }}>
+                        ({language === "hi" ? "शीघ्र" : "Soon"})
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
             </div>
           </div>
         )}
@@ -266,55 +425,43 @@ export default function ProductsClient({
               onClick={() => updateParam("price", "quote")}
               className={`${styles.pricePill} ${priceFilter === "quote" ? styles.pricePillActive : ""}`}
             >
-              {language === "hi" ? "थोक / कोट" : "Wholesale / Quote"}
+              {language === "hi" ? "कोटेशन/थोक" : "Wholesale Quote"}
             </button>
           </div>
 
-          {/* Sort Controls */}
-          <div className={styles.sortControls}>
-            <span className={styles.subFilterLabel}>
+          {/* Sort Selector */}
+          <div className={styles.sortWrapper}>
+            <label htmlFor="sort-select" className={styles.subFilterLabel}>
               {language === "hi" ? "क्रम:" : "Sort:"}
-            </span>
-            <div className={styles.sortButtonGroup}>
-              <button
-                type="button"
-                onClick={() => updateParam("sort", "relevance")}
-                className={`${styles.sortOption} ${sortOption === "relevance" ? styles.sortOptionActive : ""}`}
-              >
-                {language === "hi" ? "विशेष" : "Featured"}
-              </button>
-              <button
-                type="button"
-                onClick={() => updateParam("sort", "price-low")}
-                className={`${styles.sortOption} ${sortOption === "price-low" ? styles.sortOptionActive : ""}`}
-              >
-                {language === "hi" ? "मूल्य: कम से अधिक" : "Price: Low → High"}
-              </button>
-              <button
-                type="button"
-                onClick={() => updateParam("sort", "price-high")}
-                className={`${styles.sortOption} ${sortOption === "price-high" ? styles.sortOptionActive : ""}`}
-              >
-                {language === "hi" ? "मूल्य: अधिक से कम" : "Price: High → Low"}
-              </button>
-              <button
-                type="button"
-                onClick={() => updateParam("sort", "newest")}
-                className={`${styles.sortOption} ${sortOption === "newest" ? styles.sortOptionActive : ""}`}
-              >
-                {language === "hi" ? "नवीनतम" : "Newest"}
-              </button>
-            </div>
+            </label>
+            <select
+              id="sort-select"
+              value={sortOption}
+              onChange={(e) => updateParam("sort", e.target.value)}
+              className={styles.sortSelect}
+            >
+              <option value="relevance">{language === "hi" ? "प्रासंगिकता" : "Relevance"}</option>
+              <option value="price-low">{language === "hi" ? "मूल्य: कम से ज्यादा" : "Price: Low to High"}</option>
+              <option value="price-high">{language === "hi" ? "मूल्य: ज्यादा से कम" : "Price: High to Low"}</option>
+              <option value="newest">{language === "hi" ? "नवीनतम उत्पाद" : "Newest Arrivals"}</option>
+            </select>
           </div>
         </div>
 
-        {/* Results Summary */}
-        <div className={styles.resultsSummary}>
-          <span>
-            {language === "hi" ? "दिखाए जा रहे हैं" : "Showing"}{" "}
-            <strong>{filtered.length}</strong>{" "}
-            {language === "hi" ? "उत्पाद" : "product" + (filtered.length !== 1 ? "s" : "")}
-            {searchQuery && ` (${searchQuery})`}
+        {/* Results Counter & Reset Action */}
+        <div className={styles.resultCountBar}>
+          <span className={styles.countText}>
+            {language === "hi" ? (
+              <>
+                <strong>{filtered.length}</strong> उत्पाद उपलब्ध
+                {searchQuery && <> (खोज: &ldquo;{searchQuery}&rdquo;)</>}
+              </>
+            ) : (
+              <>
+                Showing <strong>{filtered.length}</strong> products
+                {searchQuery && <> for &ldquo;{searchQuery}&rdquo;</>}
+              </>
+            )}
           </span>
 
           {(activeCategory !== "all" || priceFilter !== "all" || searchQuery || activeSubcat) && (
@@ -331,42 +478,71 @@ export default function ProductsClient({
           )}
         </div>
 
-        {/* Product Grid */}
+        {/* Product Grid / Empty State */}
         {filtered.length === 0 ? (
           <div className={styles.emptyState}>
+            <span
+              style={{
+                display: "inline-block",
+                padding: "4px 12px",
+                background: "rgba(197,160,89,0.15)",
+                color: "var(--gold)",
+                fontSize: "12px",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                borderRadius: "2px",
+                marginBottom: "16px",
+              }}
+            >
+              {language === "hi" ? "शीघ्र उपलब्ध • Coming Soon" : "Coming Soon"}
+            </span>
             <p className={styles.emptyTitle}>
-              {language === "hi" ? "कोई उत्पाद नहीं मिला" : "No matching products found"}
+              {matchedTaxonomyCategory || matchedTaxonomySubcategory
+                ? language === "hi"
+                  ? "उत्पाद जल्द आ रहे हैं — Products Coming Soon"
+                  : "Products Coming Soon"
+                : language === "hi"
+                ? "कोई उत्पाद नहीं मिला"
+                : "No matching products found"}
             </p>
             <p className={styles.emptySubtitle}>
               {language === "hi"
-                ? "कृपया कोई अन्य श्रेणी चुनें या खोज फ़िल्टर साफ़ करें।"
-                : "Try selecting a different category or clearing the active search filters."}
+                ? "हमारी टीम इस श्रेणी के लिए प्रमाणित भारतीय उत्पादों को तेजी से कैटलॉग में जोड़ रही है। किसी विशेष थोक या कस्टम आवश्यकता के लिए संपर्क करें।"
+                : "Our merchant team is actively onboarding certified authentic Indian products for this category. Enquire directly for wholesale or custom requirements."}
             </p>
-            <button
-              type="button"
-              onClick={() => {
-                setInputQuery("");
-                router.push("/products");
-              }}
-              className="btn btn-primary"
-            >
-              {language === "hi" ? "फ़िल्टर हटाएं" : "Clear Filters"}
-            </button>
+            <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginTop: "16px" }}>
+              <button
+                type="button"
+                onClick={() => {
+                  setInputQuery("");
+                  router.push("/products");
+                }}
+                className="btn btn-primary"
+              >
+                {language === "hi" ? "सभी श्रेणियाँ देखें" : "View All Categories"}
+              </button>
+              <Link href="/contact" className="btn btn-secondary">
+                {language === "hi" ? "कस्टम कोटेशन मांगें" : "Request Custom Quote"}
+              </Link>
+            </div>
           </div>
         ) : (
           <div className={styles.productGrid}>
             {filtered.map((product) => {
               const hasPrice = product.price !== null && product.price > 0;
-              const compPrice = product.compareAtPrice && product.compareAtPrice > (product.price || 0)
-                ? product.compareAtPrice
-                : hasPrice
-                ? Math.round(product.price! * 1.25)
-                : null;
-              const discount = hasPrice && compPrice
-                ? Math.round(((compPrice - product.price!) / compPrice) * 100)
-                : 0;
-              const rating = product.rating || 4.8;
-              const reviewsCount = product.reviewsCount || 24;
+              const compPrice =
+                product.compareAtPrice && product.compareAtPrice > (product.price || 0)
+                  ? product.compareAtPrice
+                  : hasPrice
+                  ? Math.round(product.price! * 1.25)
+                  : null;
+              const discount =
+                hasPrice && compPrice
+                  ? Math.round(((compPrice - product.price!) / compPrice) * 100)
+                  : 0;
+              const rating = product.rating;
+              const reviewsCount = product.reviewsCount;
               const currentImage = getLanguageAwareProductImage(product, language);
               const displayName = getLocalizedProductName(product, language);
               const displayCategory = getLocalizedProductCategory(product, language);
@@ -399,99 +575,82 @@ export default function ProductsClient({
                     </div>
                   </div>
 
-                  {/* Card Content */}
-                  <div className={styles.cardContent}>
-                    <div className={styles.cardMetaRow}>
-                      <span className={styles.categoryLabel}>{displayCategory}</span>
-                      <div className={styles.ratingBox}>
-                        <span style={{ color: "#FFB300" }}>★</span>
-                        <span style={{ fontWeight: 700, fontSize: "0.75rem", color: "var(--sapphire)" }}>{rating}</span>
-                        <span style={{ fontSize: "0.7rem", color: "#8E9BAE" }}>({reviewsCount})</span>
-                      </div>
-                    </div>
+                  {/* Body Content */}
+                  <div className={styles.cardBody}>
+                    <span className={styles.category}>{displayCategory}</span>
 
-                    <h2 className={styles.productName}>
+                    <h2 className={styles.title}>
                       <Link href={`/products/${product.slug}`}>{displayName}</Link>
                     </h2>
 
+                    {rating ? (
+                      <div className={styles.ratingRow}>
+                        <span className={styles.stars}>★</span>
+                        <span className={styles.ratingNum}>{rating}</span>
+                        {reviewsCount ? (
+                          <span className={styles.reviewCount}>({reviewsCount})</span>
+                        ) : null}
+                      </div>
+                    ) : null}
+
                     <div className={styles.priceRow}>
                       {hasPrice ? (
-                        <div className={styles.priceGroup}>
-                          <span className={styles.priceVal}>
+                        <>
+                          <span className={styles.price}>
                             ₹{product.price!.toLocaleString("en-IN")}
                           </span>
                           {compPrice && (
-                            <span className={styles.comparePriceVal}>
+                            <span className={styles.originalPrice}>
                               ₹{compPrice.toLocaleString("en-IN")}
                             </span>
                           )}
-                        </div>
+                        </>
                       ) : (
-                        <span className={styles.quoteVal}>
+                        <span className={styles.quoteOnly}>
                           {t("customQuoteWholesale")}
                         </span>
                       )}
                     </div>
 
-                    <div className={styles.actionsCol}>
-                      <div className={styles.commerceButtons}>
+                    {/* Actions */}
+                    <div className={styles.cardActions}>
+                      {product.inStock ? (
                         <button
                           type="button"
+                          className={styles.addToBagBtn}
                           onClick={() => {
-                            if (hasPrice) {
-                              addItem({
-                                id: product.id,
-                                variantId: product.variantId,
-                                name: displayName,
-                                slug: product.slug,
-                                price: product.price!,
-                                image: currentImage,
-                                category: displayCategory,
-                              }, 1);
-                            } else {
-                              router.push(`/products/${product.slug}`);
-                            }
+                            addItem({
+                              id: product.id,
+                              name: displayName,
+                              slug: product.slug,
+                              price: product.price || 0,
+                              image: currentImage,
+                              category: product.category || "retail",
+                              variantId: product.variantId,
+                            });
                           }}
-                          className={styles.addCartBtn}
+                          id={`add-bag-${product.id}`}
                         >
                           {t("addToBag")}
                         </button>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            if (hasPrice) {
-                              addItem({
-                                id: product.id,
-                                variantId: product.variantId,
-                                name: displayName,
-                                slug: product.slug,
-                                price: product.price!,
-                                image: currentImage,
-                                category: displayCategory,
-                              }, 1);
-                              router.push("/checkout");
-                            } else {
-                              router.push(`/products/${product.slug}`);
-                            }
-                          }}
-                          className={styles.buyNowBtn}
-                        >
-                          {t("buyNow")}
+                      ) : (
+                        <button type="button" className={styles.outOfStockBtn} disabled>
+                          {t("outOfStock")}
                         </button>
-                      </div>
+                      )}
 
                       <a
                         href={getWhatsAppUrl(product, whatsappNumber, language)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={styles.waBtn}
+                        className={styles.whatsappIconBtn}
+                        aria-label={`Enquire about ${displayName} on WhatsApp`}
                         title={t("whatsAppEnquiry")}
                       >
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-                          <path d="M11.998 2C6.477 2 2 6.484 2 12.017c0 1.99.518 3.869 1.424 5.49L2 22l4.618-1.41A9.917 9.917 0 0 0 12 22.033c5.52 0 9.998-4.484 9.998-10.016C21.998 6.484 17.52 2 11.998 2zm0 18.338a8.28 8.28 0 0 1-4.22-1.155l-.302-.18-3.13.955.832-3.048-.198-.313A8.273 8.273 0 0 1 3.72 12.017c0-4.57 3.718-8.286 8.278-8.286 4.556 0 8.275 3.716 8.275 8.286 0 4.571-3.72 8.321-8.275 8.321z"/>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                          <path d="M11.998 2C6.477 2 2 6.484 2 12.017c0 1.99.518 3.869 1.424 5.49L2 22l4.618-1.41A9.917 9.917 0 0 0 12 22.033c5.52 0 9.998-4.484 9.998-10.016C21.998 6.484 17.52 2 11.998 2zm0 18.338a8.28 8.28 0 0 1-4.22-1.155l-.302-.18-3.13.955.832-3.048-.198-.313A8.273 8.273 0 0 1 3.72 12.017c0-4.57 3.718-8.286 8.278-8.286 4.556 0 8.275 3.716 8.275 8.286 0 4.571-3.72 8.321-8.275 8.321z" />
                         </svg>
-                        {t("whatsAppEnquiry")}
                       </a>
                     </div>
                   </div>

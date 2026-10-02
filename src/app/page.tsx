@@ -15,6 +15,8 @@ import GalleryPreview from "@/components/GalleryPreview/GalleryPreview";
 import HomeFAQ from "@/components/HomeFAQ/HomeFAQ";
 import CustomerDesk from "@/components/CustomerDesk/CustomerDesk";
 
+export const dynamic = "force-dynamic";
+
 export default function HomePage() {
   return (
     <>

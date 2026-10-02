@@ -58,10 +58,11 @@ export default function ProductDetailView({
     return list.length > 0 ? list : ["/assets/category-textiles.jpg"];
   }, [activeProductImage, product.images]);
   const [added, setAdded] = useState(false);
+  const [buyingNow, setBuyingNow] = useState(false);
   const [enquiryOpen, setEnquiryOpen] = useState(false);
   const [enquiryLoading, setEnquiryLoading] = useState(false);
   const [enquirySuccess, setEnquirySuccess] = useState(false);
-  const { addItem } = useCart();
+  const { addItem, createCheckout } = useCart();
   const router = useRouter();
 
   const displayName = getLocalizedProductName(product, language);
@@ -72,6 +73,52 @@ export default function ProductDetailView({
   const displayFeatures = getLocalizedFeatures(product, language);
   const displayBenefits = getLocalizedBenefits(product, language);
   const displaySpecs = getLocalizedSpecs(product, language);
+
+  // Extract variants from product
+  const variants = useMemo(() => {
+    return "variants" in product && Array.isArray(product.variants) ? product.variants : [];
+  }, [product]);
+
+  const hasMultipleVariants = variants.length > 1;
+
+  // Selected variant state
+  const [selectedVariantId, setSelectedVariantId] = useState<string>(() => {
+    if (variants.length > 0) {
+      const firstAvail = variants.find((v) => v.available);
+      return firstAvail ? firstAvail.id : variants[0].id;
+    }
+    return "variantId" in product ? product.variantId : product.id;
+  });
+
+  const activeVariant = useMemo(() => {
+    return variants.find((v) => v.id === selectedVariantId) || variants[0] || null;
+  }, [variants, selectedVariantId]);
+
+  const activePrice =
+    activeVariant?.price !== undefined && activeVariant.price !== null
+      ? activeVariant.price
+      : product.price;
+
+  const hasPrice = activePrice !== null && activePrice > 0;
+
+  const compPrice =
+    activeVariant?.compareAtPrice && activeVariant.compareAtPrice > (activePrice || 0)
+      ? activeVariant.compareAtPrice
+      : product.compareAtPrice && product.compareAtPrice > (activePrice || 0)
+      ? product.compareAtPrice
+      : hasPrice
+      ? Math.round(activePrice! * 1.25)
+      : null;
+
+  const discount =
+    hasPrice && compPrice
+      ? Math.round(((compPrice - activePrice!) / compPrice) * 100)
+      : 0;
+
+  const rating = product.rating;
+  const reviewsCount = product.reviewsCount;
+  const activeSku = activeVariant?.sku || product.sku;
+  const isAvailable = activeVariant ? activeVariant.available : product.inStock;
 
   // Quantity and enquiry form state
   const [quantity, setQuantity] = useState("1");
@@ -84,20 +131,6 @@ export default function ProductDetailView({
       : `Hello BHAYA INDIA, I am interested in purchasing "${displayName}". Please provide availability and dispatch timeline.`
   );
 
-  const hasPrice = product.price !== null && product.price > 0;
-  const compPrice =
-    product.compareAtPrice && product.compareAtPrice > (product.price || 0)
-      ? product.compareAtPrice
-      : hasPrice
-      ? Math.round(product.price! * 1.25)
-      : null;
-  const discount =
-    hasPrice && compPrice
-      ? Math.round(((compPrice - product.price!) / compPrice) * 100)
-      : 0;
-  const rating = product.rating || 4.8;
-  const reviewsCount = product.reviewsCount || 24;
-
   const parsedQty = Math.max(1, Number(quantity) || 1);
 
   const handleAddToCart = () => {
@@ -105,14 +138,21 @@ export default function ProductDetailView({
       setEnquiryOpen(true);
       return;
     }
-    const variantId = "variantId" in product ? product.variantId : product.id;
+    if (!isAvailable) {
+      return;
+    }
+    const variantId = activeVariant?.id || ("variantId" in product ? product.variantId : product.id);
+    const variantTitle = activeVariant && activeVariant.title !== "Default Title" ? activeVariant.title : undefined;
+    const finalItemName = variantTitle ? `${displayName} — ${variantTitle}` : displayName;
+
     addItem(
       {
         id: product.id,
         variantId,
-        name: displayName,
+        variantTitle,
+        name: finalItemName,
         slug: product.slug,
-        price: product.price!,
+        price: activePrice!,
         image: selectedImage,
         category: displayCategory,
       },
@@ -122,25 +162,44 @@ export default function ProductDetailView({
     setTimeout(() => setAdded(false), 2500);
   };
 
-  const handleBuyNow = () => {
+  const handleBuyNow = async () => {
     if (!hasPrice) {
       setEnquiryOpen(true);
       return;
     }
-    const variantId = "variantId" in product ? product.variantId : product.id;
-    addItem(
-      {
-        id: product.id,
-        variantId,
-        name: displayName,
-        slug: product.slug,
-        price: product.price!,
-        image: selectedImage,
-        category: displayCategory,
-      },
-      parsedQty
-    );
-    router.push("/checkout");
+    if (!isAvailable) {
+      return;
+    }
+    const variantId = activeVariant?.id || ("variantId" in product ? product.variantId : product.id);
+    const variantTitle = activeVariant && activeVariant.title !== "Default Title" ? activeVariant.title : undefined;
+    const finalItemName = variantTitle ? `${displayName} — ${variantTitle}` : displayName;
+
+    setBuyingNow(true);
+    try {
+      await addItem(
+        {
+          id: product.id,
+          variantId,
+          variantTitle,
+          name: finalItemName,
+          slug: product.slug,
+          price: activePrice!,
+          image: selectedImage,
+          category: displayCategory,
+        },
+        parsedQty
+      );
+      const url = await createCheckout();
+      if (url) {
+        window.location.href = url;
+      } else {
+        router.push("/cart");
+      }
+    } catch {
+      router.push("/cart");
+    } finally {
+      setBuyingNow(false);
+    }
   };
 
   const handleEnquirySubmit = async (e: React.FormEvent) => {
@@ -178,9 +237,10 @@ export default function ProductDetailView({
   };
 
   // Section 8 Mandatory Exact WhatsApp format
+  const variantSuffix = activeVariant && activeVariant.title !== "Default Title" ? ` (${activeVariant.title})` : "";
   const whatsappText = language === "hi"
-    ? `नमस्कार, मुझे BHAYA INDIA के इस product के बारे में जानकारी चाहिए:\n\nProduct Name: ${displayName}\nQuantity: ${parsedQty}`
-    : `Hello, I would like to enquire about this BHAYA INDIA product:\n\nProduct Name: ${displayName}\nQuantity: ${parsedQty}`;
+    ? `नमस्कार, मुझे BHAYA INDIA के इस product के बारे में जानकारी चाहिए:\n\nProduct Name: ${displayName}${variantSuffix}\nQuantity: ${parsedQty}`
+    : `Hello, I would like to enquire about this BHAYA INDIA product:\n\nProduct Name: ${displayName}${variantSuffix}\nQuantity: ${parsedQty}`;
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     whatsappText
   )}`;
@@ -264,7 +324,11 @@ export default function ProductDetailView({
                 <span>{language === "hi" ? "सीधे निर्माता से" : "Direct Sourced"}</span>
               </div>
               <div className={styles.trustItem}>
-                <span className={styles.trustIcon}>🛡</span>
+                <span className={styles.trustIcon} aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                </span>
                 <span>{language === "hi" ? "सुरक्षित ऑल-इंडिया डिलीवरी" : "Secure All-India Delivery"}</span>
               </div>
             </div>
@@ -286,22 +350,28 @@ export default function ProductDetailView({
                 </>
               )}
               <span className={styles.dot}>·</span>
-              <span className={styles.sku}>SKU: {product.sku}</span>
+              <span className={styles.sku}>SKU: {activeSku}</span>
             </div>
 
             <h1 className={styles.productName}>{displayName}</h1>
 
             {/* Rating Box */}
             <div className={styles.ratingRow}>
-              <div className={styles.ratingBox}>
-                <span style={{ color: "#FFB300", fontSize: "1rem" }}>★</span>
-                <span className={styles.ratingVal}>{rating}</span>
-                <span className={styles.reviewsText}>
-                  ({reviewsCount} {language === "hi" ? "समीक्षाएं" : "reviews"})
-                </span>
-              </div>
-              <span className={styles.inStockBadge}>
-                {language === "hi" ? "स्टॉक में उपलब्ध" : "In Stock & Ready"}
+              {rating ? (
+                <div className={styles.ratingBox}>
+                  <span style={{ color: "#FFB300", fontSize: "1rem" }}>★</span>
+                  <span className={styles.ratingVal}>{rating}</span>
+                  {reviewsCount ? (
+                    <span className={styles.reviewsText}>
+                      ({reviewsCount} {language === "hi" ? "समीक्षाएं" : "reviews"})
+                    </span>
+                  ) : null}
+                </div>
+              ) : null}
+              <span className={isAvailable ? styles.inStockBadge : styles.outOfStockBadge}>
+                {isAvailable
+                  ? (language === "hi" ? "स्टॉक में उपलब्ध" : "In Stock & Ready")
+                  : (language === "hi" ? "स्टॉक समाप्त" : "Out of Stock")}
               </span>
             </div>
 
@@ -314,7 +384,7 @@ export default function ProductDetailView({
               {hasPrice ? (
                 <div className={styles.priceWrap}>
                   <span className={styles.currentPrice}>
-                    ₹{product.price!.toLocaleString("en-IN")}
+                    ₹{activePrice!.toLocaleString("en-IN")}
                   </span>
                   {compPrice && (
                     <span className={styles.comparePrice}>
@@ -344,6 +414,45 @@ export default function ProductDetailView({
               </p>
             </div>
 
+            {/* Variant Selection (Sizes, Colors, Options) */}
+            {hasMultipleVariants && (
+              <div className={styles.variantSelectionSection}>
+                <label className={styles.variantLabel}>
+                  {language === "hi" ? "विकल्प चुनें" : "Select Option"}:{" "}
+                  <span className={styles.selectedVariantName}>{activeVariant?.title}</span>
+                </label>
+                <div className={styles.variantChipsGrid}>
+                  {variants.map((v) => {
+                    const isSelected = v.id === selectedVariantId;
+                    return (
+                      <button
+                        key={v.id}
+                        type="button"
+                        className={`${styles.variantChip} ${isSelected ? styles.variantChipActive : ""} ${!v.available ? styles.variantChipDisabled : ""}`}
+                        onClick={() => {
+                          setSelectedVariantId(v.id);
+                          if (v.image) {
+                            setUserSelectedImage(v.image);
+                          }
+                        }}
+                        title={v.available ? v.title : `${v.title} (${language === "hi" ? "स्टॉक समाप्त" : "Out of Stock"})`}
+                      >
+                        <span>{v.title}</span>
+                        {v.price && v.price !== activePrice && (
+                          <span className={styles.variantChipPrice}>₹{v.price.toLocaleString("en-IN")}</span>
+                        )}
+                        {!v.available && (
+                          <span className={styles.variantOutOfStockPill}>
+                            {language === "hi" ? "स्टॉक समाप्त" : "Sold out"}
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
             {/* Quantity Selector */}
             <div className={styles.qtyRow}>
               <span className={styles.qtyLabel}>{t("quantity")}:</span>
@@ -351,6 +460,7 @@ export default function ProductDetailView({
                 <button
                   type="button"
                   className={styles.qtyBtn}
+                  disabled={!isAvailable}
                   onClick={() =>
                     setQuantity(String(Math.max(1, (Number(quantity) || 1) - 1)))
                   }
@@ -362,6 +472,7 @@ export default function ProductDetailView({
                 <button
                   type="button"
                   className={styles.qtyBtn}
+                  disabled={!isAvailable}
                   onClick={() =>
                     setQuantity(String((Number(quantity) || 1) + 1))
                   }
@@ -380,23 +491,31 @@ export default function ProductDetailView({
                     <button
                       type="button"
                       onClick={handleAddToCart}
-                      className={styles.addBagBtn}
-                      id={`btn-add-cart-${product.sku}`}
+                      disabled={!isAvailable}
+                      className={`${styles.addBagBtn} ${!isAvailable ? styles.btnDisabled : ""}`}
+                      id={`btn-add-cart-${activeSku}`}
                     >
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
                         <line x1="3" y1="6" x2="21" y2="6"/>
                         <path d="M16 10a4 4 0 0 1-8 0"/>
                       </svg>
-                      {added ? t("addedToBag") : t("addToBag")}
+                      {!isAvailable
+                        ? (language === "hi" ? "स्टॉक समाप्त" : "Out of Stock")
+                        : added
+                        ? t("addedToBag")
+                        : t("addToBag")}
                     </button>
                     <button
                       type="button"
                       onClick={handleBuyNow}
-                      className={styles.buyNowBtn}
-                      id={`btn-buy-now-${product.sku}`}
+                      disabled={!isAvailable || buyingNow}
+                      className={`${styles.buyNowBtn} ${!isAvailable ? styles.btnDisabled : ""}`}
+                      id={`btn-buy-now-${activeSku}`}
                     >
-                      {t("buyNow")}
+                      {buyingNow
+                        ? (language === "hi" ? "चेकआउट लोड हो रहा है..." : "Loading Checkout...")
+                        : t("buyNow")}
                     </button>
                   </>
                 ) : (
@@ -416,7 +535,7 @@ export default function ProductDetailView({
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.whatsappBtn}
-                  id={`btn-whatsapp-${product.sku}`}
+                  id={`btn-whatsapp-${activeSku}`}
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./FounderStory.module.css";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -85,10 +86,78 @@ export default function FounderStory() {
           </p>
         </div>
 
-        {/* Main Grid: Founder Story Card on Left, 5 About Dimensions on Right */}
+        {/* Main Grid: Founder Portrait & Story on Left, Vision Dimensions on Right */}
         <div className={styles.mainGrid}>
           {/* Founder Story Left Card */}
           <div className={styles.storyCard}>
+            {/* Professional Portrait Block */}
+            <div
+              style={{
+                display: "flex",
+                gap: "20px",
+                alignItems: "center",
+                marginBottom: "24px",
+                paddingBottom: "20px",
+                borderBottom: "1px solid rgba(18,52,86,0.08)",
+                flexWrap: "wrap",
+              }}
+            >
+              <div
+                style={{
+                  width: "100px",
+                  height: "100px",
+                  borderRadius: "50%",
+                  border: "3px solid var(--gold, #C5A059)",
+                  position: "relative",
+                  overflow: "hidden",
+                  background: "var(--sapphire, #123456)",
+                  boxShadow: "0 4px 14px rgba(18,52,86,0.15)",
+                  flexShrink: 0,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Image
+                  src="/assets/bhaya-india-logo.png"
+                  alt="Ram Ji Bhaya — Founder of BHAYA INDIA"
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="100px"
+                />
+              </div>
+
+              <div>
+                <span
+                  style={{
+                    display: "inline-block",
+                    fontSize: "11px",
+                    fontWeight: 700,
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: "var(--gold-dark, #a8833c)",
+                    marginBottom: "4px",
+                  }}
+                >
+                  {language === "hi" ? "संस्थापक • FOUNDER" : "FOUNDER & VISIONARY"}
+                </span>
+                <h3
+                  style={{
+                    fontFamily: "var(--font-display, serif)",
+                    fontSize: "22px",
+                    fontWeight: 700,
+                    color: "var(--sapphire, #123456)",
+                    margin: 0,
+                  }}
+                >
+                  राम जी भाया (Ram Ji Bhaya)
+                </h3>
+                <span style={{ fontSize: "13px", color: "var(--gray-500, #666)" }}>
+                  {language === "hi" ? "बलरामपुर, उत्तर प्रदेश" : "Balrampur, Uttar Pradesh"}
+                </span>
+              </div>
+            </div>
+
             <div className={styles.storyEyebrow}>
               <span className={styles.verifiedBadge}>
                 {language === "hi" ? "सत्यापित विवरण" : "VERIFIED FACTS"}
@@ -121,10 +190,14 @@ export default function FounderStory() {
                   <line x1="12" y1="8" x2="12" y2="12"/>
                   <line x1="12" y1="16" x2="12.01" y2="16"/>
                 </svg>
-                <span>{t("founderStoryPlaceholder")}</span>
+                <span>
+                  {language === "hi" ? "संस्थापक जीवन यात्रा" : "Founder Story"}
+                </span>
               </div>
               <p className={styles.placeholderText}>
-                {t("founderStoryPlaceholderNote")}
+                {language === "hi"
+                  ? "विस्तृत व्यक्तिगत जीवन यात्रा एवं कालक्रम संस्थापक द्वारा अनुमोदित प्रोफाइल के साथ अपडेट किया जाएगा।"
+                  : "Details will be updated with the founder-approved profile."}
               </p>
             </div>
 

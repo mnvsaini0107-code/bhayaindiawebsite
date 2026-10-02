@@ -2,21 +2,20 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
-import { getShopifyProducts, getShopifyCollections } from "@/lib/shopify";
+import { getShopifyProducts } from "@/lib/shopify";
 import { getSiteSettings } from "@/lib/db";
 import ProductsClient from "./ProductsClient";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Catalogue — Handcrafted Textiles, Executive Stationery & Fine Gifting | Bhaya India",
+  title: "Catalogue — Handcrafted Textiles, Executive Stationery, Festival & Packaging | Bhaya India",
   description:
-    "Explore Bhaya India's collection — pure handloom silks, fine stationery, corporate hampers and wholesale consignments across India.",
+    "Explore Bhaya India's collection — pure handloom silks, fine stationery, corporate hampers, packaging products and wholesale consignments across India.",
 };
 
 export default async function ProductsPage() {
   const allProducts = await getShopifyProducts();
-  const categories = await getShopifyCollections();
   const settings = getSiteSettings();
 
   return (
@@ -25,7 +24,6 @@ export default async function ProductsPage() {
       <Suspense fallback={<div style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center" }}>Loading catalogue...</div>}>
         <ProductsClient
           allProducts={allProducts}
-          categories={categories}
           whatsappNumber={settings.whatsapp}
         />
       </Suspense>
@@ -33,4 +31,3 @@ export default async function ProductsPage() {
     </>
   );
 }
-

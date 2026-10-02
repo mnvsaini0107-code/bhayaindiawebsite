@@ -113,8 +113,17 @@ export function reshapeProduct(product: ShopifyProduct): BhayaShopifyProduct {
     id: v.node.id,
     title: v.node.title,
     price: parseFloat(v.node.price.amount),
+    compareAtPrice: v.node.compareAtPrice ? parseFloat(v.node.compareAtPrice.amount) : null,
     available: v.node.availableForSale,
     sku: v.node.sku || "",
+    selectedOptions: v.node.selectedOptions || [],
+    image: v.node.image?.url || null,
+  }));
+
+  const options = (product.options || []).map((opt) => ({
+    id: opt.id,
+    name: opt.name,
+    values: opt.values,
   }));
 
   const nameHi = getMeta("name_hi");
@@ -193,6 +202,7 @@ export function reshapeProduct(product: ShopifyProduct): BhayaShopifyProduct {
     sku: primaryVariant?.sku || "BI-SKU",
     variantId: primaryVariant?.id || "",
     variants: variantsList,
+    options,
     seoTitle: `${product.title} — Bhaya India`,
     seoDescription: product.description,
     createdAt: new Date().toISOString(),
@@ -251,8 +261,11 @@ function fallbackToShopifyProduct(p: ReturnType<typeof getFallbackProducts>[0]):
         compareAtPrice: compPrice,
         available: p.inStock,
         sku: p.sku,
+        selectedOptions: [{ name: "Title", value: "Default Title" }],
+        image: p.images?.[0] || null,
       },
     ],
+    options: [],
     seoTitle: p.seoTitle,
     seoDescription: p.seoDescription,
     createdAt: p.createdAt,
@@ -300,7 +313,7 @@ export async function getShopifyProducts(options?: {
   try {
     let rawQuery = options?.query || "";
     if (options?.category && options.category !== "all") {
-      rawQuery = rawQuery ? `${rawQuery} AND tag:${options.category}` : `tag:${options.category}`;
+      rawQuery = rawQuery ? `${rawQuery} AND (tag:${options.category} OR product_type:${options.category})` : `(tag:${options.category} OR product_type:${options.category})`;
     }
 
     const { body } = await shopifyFetch<{
@@ -316,9 +329,15 @@ export async function getShopifyProducts(options?: {
         sortKey: options?.sortKey || "RELEVANCE",
         reverse: options?.reverse,
       },
+      cache: "no-store",
     });
 
     const products = body.data.products.edges.map((edge) => reshapeProduct(edge.node));
+    if (products.length === 0 && !options?.query && (!options?.category || options.category === "all")) {
+      // If store is newly configured and has 0 products yet in Shopify, return fallback sample catalog
+      const dbProducts = getFallbackProducts();
+      return dbProducts.map(fallbackToShopifyProduct);
+    }
     return products;
   } catch (err) {
     console.warn("Shopify fetch failed, falling back to local dataset:", err);

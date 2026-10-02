@@ -249,6 +249,16 @@
   border: 1px solid #A5D6A7;
 }
 
+.outOfStockBadge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #C62828;
+  background: #FFEBEE;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid #FFCDD2;
+}
+
 .productTagline {
   font-size: 1rem;
   font-style: italic;
@@ -318,6 +328,91 @@
   font-size: 0.75rem;
   color: #8E9BAE;
   margin: 0;
+}
+
+/* Variant Selection Section */
+.variantSelectionSection {
+  margin-bottom: 1.35rem;
+}
+
+.variantLabel {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--sapphire, #123456);
+  margin-bottom: 0.6rem;
+}
+
+.selectedVariantName {
+  color: var(--gold, #C5A059);
+  font-weight: 700;
+}
+
+.variantChipsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.variantChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.95rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--sapphire, #123456);
+  background: #FFFFFF;
+  border: 1.5px solid rgba(18, 52, 86, 0.18);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.variantChip:hover:not(.variantChipDisabled) {
+  border-color: var(--sapphire, #123456);
+  background: #F8FAFC;
+}
+
+.variantChipActive {
+  background: var(--sapphire, #123456);
+  color: #FFFFFF;
+  border-color: var(--sapphire, #123456);
+  box-shadow: 0 2px 8px rgba(18, 52, 86, 0.2);
+}
+
+.variantChipActive .variantChipPrice {
+  color: var(--gold, #C5A059);
+}
+
+.variantChipDisabled {
+  opacity: 0.55;
+  background: #F5F5F5;
+  border-color: #E0E0E0;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.variantChipPrice {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #607284;
+}
+
+.variantOutOfStockPill {
+  font-size: 0.65rem;
+  background: #FFCDD2;
+  color: #C62828;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  text-decoration: none;
+}
+
+.btnDisabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  pointer-events: none;
 }
 
 /* Quantity Row */

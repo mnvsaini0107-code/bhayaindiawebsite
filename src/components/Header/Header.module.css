@@ -64,17 +64,23 @@
   white-space: nowrap;
 }
 
-/* --- Inline Search Bar --- */
+/* --- Search Container & Dropdown --- */
+.searchContainer {
+  position: relative;
+  flex: 1;
+  max-width: 480px;
+}
+
 .searchBar {
   display: flex;
   align-items: center;
-  flex: 1;
-  max-width: 480px;
+  width: 100%;
   background: #F8F9FA;
   border: 1px solid rgba(18, 52, 86, 0.16);
   border-radius: 6px;
   overflow: hidden;
   transition: all 0.2s ease;
+  position: relative;
 }
 
 .searchBar:focus-within {
@@ -83,35 +89,222 @@
   box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.15);
 }
 
+.searchIconLeft {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 0.85rem;
+  color: #8E9BAE;
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
 .searchInput {
   flex: 1;
   border: none;
   background: transparent;
-  padding: 0.625rem 1rem;
+  padding: 0.625rem 0.65rem;
   font-size: 0.875rem;
   color: var(--sapphire, #123456);
   outline: none;
   font-family: inherit;
+  min-width: 0;
 }
 
 .searchInput::placeholder {
   color: #8E9BAE;
 }
 
+.clearBtn {
+  background: transparent;
+  border: none;
+  padding: 0.35rem;
+  margin-right: 0.25rem;
+  color: #8E9BAE;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.clearBtn:hover {
+  color: var(--sapphire, #123456);
+  background: rgba(18, 52, 86, 0.08);
+}
+
 .searchBtn {
   background: transparent;
   border: none;
   padding: 0 0.875rem;
+  height: 100%;
   color: var(--sapphire, #123456);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.15s ease;
+  transition: all 0.15s ease;
+  border-left: 1px solid rgba(18, 52, 86, 0.08);
+  flex-shrink: 0;
 }
 
 .searchBtn:hover {
+  background: rgba(197, 160, 89, 0.12);
   color: var(--gold, #C5A059);
+}
+
+/* Autocomplete Suggestions Flyout */
+.suggestionsDropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 12px 36px rgba(18, 52, 86, 0.16);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  max-height: 420px;
+  overflow-y: auto;
+  z-index: 1200;
+  padding: 6px;
+  animation: slideDown 0.15s ease-out;
+}
+
+.suggestionSectionTitle {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gold-dark, #a8833c);
+  padding: 8px 12px 4px;
+}
+
+.suggestionItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  border-radius: 5px;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--sapphire, #123456);
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
+
+.suggestionItem:hover,
+.suggestionItemActive {
+  background: rgba(197, 160, 89, 0.12);
+  color: var(--sapphire, #123456);
+}
+
+.suggestionTitleGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.suggestionIcon {
+  color: #8E9BAE;
+  flex-shrink: 0;
+}
+
+.suggestionText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+}
+
+.suggestionTag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(18, 52, 86, 0.06);
+  color: var(--sapphire, #123456);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.suggestionProductItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 6px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.suggestionProductItem:hover {
+  background: rgba(18, 52, 86, 0.05);
+}
+
+.suggestionProductThumb {
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  object-fit: cover;
+  background: #f4f6f8;
+  flex-shrink: 0;
+}
+
+.suggestionProductInfo {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.suggestionProductName {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--sapphire, #123456);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.suggestionProductPrice {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gold-dark, #a8833c);
+}
+
+.mobileSearchToggleBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  color: var(--sapphire, #123456);
+  background: #F4F6F8;
+  border: 1px solid rgba(18, 52, 86, 0.08);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.mobileSearchToggleBtn:hover {
+  background: #EAEFF4;
+  color: var(--gold, #C5A059);
+}
+
+.mobileSearchRow {
+  display: none;
+  padding: 0.5rem 1rem 0.75rem;
+  background: #FFFFFF;
+  border-top: 1px solid rgba(18, 52, 86, 0.06);
 }
 
 /* --- Right Utility Actions --- */
@@ -155,6 +348,66 @@
 .langDivider {
   color: rgba(18, 52, 86, 0.2);
   font-size: 0.7rem;
+}
+
+.langDropdownMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(18, 52, 86, 0.18);
+  border: 1px solid rgba(197, 160, 89, 0.25);
+  min-width: 220px;
+  max-height: 380px;
+  overflow-y: auto;
+  z-index: 1000;
+  padding: 6px;
+  animation: slideDown 0.15s ease-out;
+}
+
+.langDropdownItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background: none;
+  border-radius: 4px;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.82rem;
+  color: var(--sapphire, #123456);
+  transition: background 0.15s ease;
+}
+
+.langDropdownItem:hover {
+  background: rgba(18, 52, 86, 0.05);
+}
+
+.langItemActive {
+  background: rgba(197, 160, 89, 0.15);
+  font-weight: 700;
+  color: var(--gold-dark, #a8833c);
+}
+
+.langIsoTag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: rgba(18, 52, 86, 0.08);
+  color: var(--sapphire);
+}
+
+.langTagSoon {
+  font-size: 0.68rem;
+  color: var(--gray-500, #777);
+  background: #f1f3f5;
+  padding: 2px 6px;
+  border-radius: 3px;
 }
 
 /* Account Link Button */
@@ -460,8 +713,14 @@
 }
 
 @media (max-width: 840px) {
-  .searchBar {
+  .searchContainer {
     display: none;
+  }
+  .mobileSearchToggleBtn {
+    display: flex;
+  }
+  .mobileSearchRow {
+    display: block;
   }
   .ctaEnquireBtn {
     display: none;

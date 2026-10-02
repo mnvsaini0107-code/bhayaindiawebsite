@@ -58,8 +58,8 @@ function ProductCard({
     ? Math.round(((comparePrice - product.price!) / comparePrice) * 100)
     : 0;
 
-  const rating = product.rating || 4.8;
-  const reviewsCount = product.reviewsCount || 24;
+  const rating = product.rating;
+  const reviewsCount = product.reviewsCount;
 
   const handleAddToCart = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -155,11 +155,15 @@ function ProductCard({
         {/* Category & Rating Row */}
         <div className={styles.metaRow}>
           <span className={styles.categoryEyebrow}>{displayCategory}</span>
-          <div className={styles.ratingWrap} title={`${rating} / 5`}>
-            <span className={styles.starIcon}>★</span>
-            <span className={styles.ratingNumber}>{rating}</span>
-            <span className={styles.reviewsCount}>({reviewsCount})</span>
-          </div>
+          {rating ? (
+            <div className={styles.ratingWrap} title={`${rating} / 5`}>
+              <span className={styles.starIcon}>★</span>
+              <span className={styles.ratingNumber}>{rating}</span>
+              {reviewsCount ? (
+                <span className={styles.reviewsCount}>({reviewsCount})</span>
+              ) : null}
+            </div>
+          ) : null}
         </div>
 
         {/* Product Title */}

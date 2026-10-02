@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { getShopifyProducts, searchShopifyProducts, isShopifyConfigured } from "@/lib/shopify";
+import { getShopifyProducts, isShopifyConfigured } from "@/lib/shopify";
+import { executeIntentSearch } from "@/lib/search/intentSearch";
 import { createProduct } from "@/lib/db";
 
 export async function GET(request: Request) {
@@ -10,19 +11,9 @@ export async function GET(request: Request) {
     const sort = searchParams.get("sort");
     const featured = searchParams.get("featured");
 
-    if (search) {
-      // Use Shopify search
-      const results = await searchShopifyProducts(search);
-      return NextResponse.json({
-        success: true,
-        count: results.length,
-        isShopify: isShopifyConfigured(),
-        products: results,
-      });
-    }
-
+    // Fetch baseline products from Shopify
     let items = await getShopifyProducts({
-      category: category || undefined,
+      category: !search && category ? category : undefined,
       sortKey: sort === "price-low" || sort === "price-high" ? "PRICE" : "RELEVANCE",
       reverse: sort === "price-high",
     });
@@ -31,11 +22,29 @@ export async function GET(request: Request) {
       items = items.filter((p) => p.isFeatured);
     }
 
+    if (search && search.trim()) {
+      // Execute intelligent intent-based search & server-side ranking
+      const searchResult = executeIntentSearch(search.trim(), items);
+
+      return NextResponse.json({
+        success: true,
+        count: searchResult.totalFound,
+        isShopify: isShopifyConfigured(),
+        products: searchResult.products,
+        matchedCategory: searchResult.matchedCategory,
+        matchedSubcategories: searchResult.matchedSubcategories,
+        relatedSearches: searchResult.relatedSearches,
+      });
+    }
+
     return NextResponse.json({
       success: true,
       count: items.length,
       isShopify: isShopifyConfigured(),
       products: items,
+      matchedCategory: null,
+      matchedSubcategories: [],
+      relatedSearches: [],
     });
   } catch (error) {
     console.error("GET /api/products error:", error);

@@ -293,6 +293,68 @@ export default function AdminProductsPage() {
         </button>
       </div>
 
+      {/* Shopify Integration Status Banner */}
+      <div style={{
+        background: "linear-gradient(135deg, #0d233a 0%, #123456 100%)",
+        border: "1px solid #C5A059",
+        borderRadius: "8px",
+        padding: "1.25rem 1.5rem",
+        marginBottom: "1.5rem",
+        color: "#FFFFFF",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        flexWrap: "wrap",
+        gap: "1rem"
+      }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.85rem" }}>
+          <div style={{
+            width: "40px",
+            height: "40px",
+            borderRadius: "50%",
+            background: "rgba(197, 160, 89, 0.2)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "1.2rem",
+            color: "#C5A059"
+          }}>
+            🛍️
+          </div>
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+              <strong style={{ fontSize: "1rem", color: "#FDFDFD" }}>Shopify Live Catalog Backend Connected</strong>
+              <span style={{ fontSize: "0.7rem", padding: "0.15rem 0.5rem", borderRadius: "12px", background: "#2E7D32", color: "#fff", fontWeight: 700 }}>LIVE</span>
+            </div>
+            <p style={{ margin: "0.25rem 0 0", fontSize: "0.85rem", color: "#C2CBD4" }}>
+              All product titles, descriptions, images, prices, variants (sizes, colors), inventory, and collections can be managed directly in Shopify Admin. Changes reflect automatically on the customer storefront.
+            </p>
+          </div>
+        </div>
+        <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+          <a
+            href="https://admin.shopify.com/store/a3g0h2-ss/products"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.4rem",
+              background: "#C5A059",
+              color: "#123456",
+              fontWeight: 700,
+              fontSize: "0.85rem",
+              padding: "0.6rem 1.1rem",
+              borderRadius: "5px",
+              textDecoration: "none",
+              boxShadow: "0 2px 8px rgba(197, 160, 89, 0.3)"
+            }}
+          >
+            Open Shopify Products Admin ↗
+          </a>
+        </div>
+      </div>
+
       {/* Filter / Search Bar */}
       <div className={styles.filterBar}>
         <input

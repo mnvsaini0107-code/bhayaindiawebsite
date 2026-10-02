@@ -50,8 +50,8 @@ export function getShopifyStoreDomain(): string {
 export async function shopifyFetch<T>({
   query,
   variables,
-  cache = "force-cache",
-  revalidate = 60,
+  cache = "no-store",
+  revalidate = 0,
   tags,
 }: {
   query: string;

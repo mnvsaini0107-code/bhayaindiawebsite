@@ -152,105 +152,206 @@ export default function BhayaIndia2Client() {
         </div>
       </div>
 
-      {/* How It Works - The Flow */}
-      <section style={{ padding: "80px 0", background: "var(--white)" }}>
+      {/* Future Ecosystem Architecture */}
+      <section style={{ padding: "60px 0 40px", background: "var(--ivory)" }}>
         <div className="container">
-          <div style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto 56px" }}>
-            <span style={{ color: "var(--gold)", fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" }}>
-              {language === "hi" ? "हाइपरलोकल कार्यप्रणाली" : "Hyperlocal Flow"}
-            </span>
+          <div style={{ textAlign: "center", maxWidth: "780px", margin: "0 auto 40px" }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(197,160,89,0.12)", border: "1px solid var(--gold)", padding: "4px 14px", borderRadius: "20px", marginBottom: "12px" }}>
+              <span style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.08em", color: "var(--sapphire)", textTransform: "uppercase" }}>
+                {language === "hi" ? "भावी ईकोसिस्टम (Phase 3)" : "Future Ecosystem (Phase 3)"}
+              </span>
+              <span style={{ fontSize: "10px", background: "var(--gold)", color: "var(--sapphire)", padding: "2px 8px", borderRadius: "10px", fontWeight: 700 }}>
+                {language === "hi" ? "भविष्य की परिकल्पना" : "Future Vision"}
+              </span>
+            </div>
             <h2
               style={{
                 fontFamily: "var(--font-display)",
                 fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)",
-                fontWeight: 600,
+                fontWeight: 700,
                 color: "var(--sapphire)",
-                letterSpacing: "-0.02em",
-                marginTop: "8px",
+                marginBottom: "12px",
               }}
             >
-              {language === "hi" ? "ग्राहक ➔ BHAYA INDIA ➔ स्थानीय दुकानदार" : "Customer ➔ BHAYA INDIA ➔ Local Merchant"}
-            </h2>
-            <p style={{ fontSize: "15px", color: "var(--gray-500)", marginTop: "12px", lineHeight: 1.7 }}>
               {language === "hi"
-                ? "ऑनलाइन ऑर्डर मिलने पर BHAYA INDIA सिस्टम ग्राहक के सबसे निकटतम सत्यापित दुकानदार या निर्माता से संपर्क करेगा, जिससे तेज़ डिलीवरी और स्थानीय विश्वास सुनिश्चित होगा।"
-                : "When an order is placed, BHAYA INDIA routes the request to the nearest verified neighborhood retailer or supplier, securing swift delivery and authentic local reliability."}
+                ? "संपूर्ण वाणिज्य तंत्र — एक एकीकृत प्लेटफॉर्म"
+                : "One Platform Connecting the Entire Indian Commerce Spectrum"}
+            </h2>
+            <p style={{ fontSize: "15px", color: "var(--text-secondary)", lineHeight: 1.7 }}>
+              {language === "hi"
+                ? "ग्राहकों, विक्रेताओं, निर्माताओं, खुदरा व्यापारियों, वितरकों एवं लॉजिस्टिक्स पार्टनर्स को जोड़ने वाला आधुनिक मंच।"
+                : "One platform connecting customers, vendors, manufacturers, retailers, distributors and logistics partners."}
             </p>
           </div>
 
+          {/* 7 Ecosystem Participants Grid */}
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-              gap: "24px",
-              position: "relative",
+              gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
+              gap: "14px",
+              marginBottom: "48px",
             }}
           >
             {[
-              {
-                step: "01",
-                title: language === "hi" ? "ग्राहक ऑर्डर" : "Customer Places Order",
-                desc: language === "hi"
-                  ? "ग्राहक BHAYA INDIA वेबसाइट या ऐप पर उत्पाद चुनकर ऑर्डर या व्हाट्सऐप इंक्वायरी भेजते हैं।"
-                  : "Customer browses verified catalogue items and places an order or WhatsApp enquiry.",
-              },
-              {
-                step: "02",
-                title: language === "hi" ? "स्मार्ट रूटिंग" : "Smart Local Routing",
-                desc: language === "hi"
-                  ? "सिस्टम ग्राहक के पिनकोड और निकटता के आधार पर सबसे उपयुक्त सत्यापित मर्चेंट को ऑर्डर सौंपता है।"
-                  : "The system matches and routes the fulfillment request to the closest verified merchant partner.",
-              },
-              {
-                step: "03",
-                title: language === "hi" ? "गुणवत्ता जांच एवं डिस्पैच" : "Inspection & Swift Dispatch",
-                desc: language === "hi"
-                  ? "स्थानीय दुकानदार उत्पाद तैयार कर BHAYA INDIA के पैकेजिंग और गुणवत्ता मानकों के अनुसार भेजता है।"
-                  : "The local merchant prepares the goods under strict BHAYA INDIA quality standards for prompt dispatch.",
-              },
-              {
-                step: "04",
-                title: language === "hi" ? "सुरक्षित डिलीवरी" : "Trusted Delivery",
-                desc: language === "hi"
-                  ? "ग्राहक को तेज डिलीवरी मिलती है और स्थानीय व्यापारी को बिना किसी अनुचित कमीशन के सीधा व्यापार मिलता है।"
-                  : "Customer receives trusted goods faster, while the local retailer grows with fair margins.",
-              },
-            ].map((st) => (
+              { id: "customer", en: "Customer", hi: "ग्राहक", icon: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2 M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" },
+              { id: "vendor", en: "Vendor", hi: "विक्रेता", icon: "M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" },
+              { id: "manufacturer", en: "Manufacturer", hi: "निर्माता", icon: "M2 20h20 M5 20V8l5 4V8l5 4V4h4v16" },
+              { id: "retailer", en: "Retailer", hi: "खुदरा व्यापारी", icon: "M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" },
+              { id: "distributor", en: "Distributor", hi: "वितरक", icon: "M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" },
+              { id: "logistics", en: "Logistics", hi: "लॉजिस्टिक्स", icon: "M1 3h15v13H1z M16 8l4 3v5h-4z M5.5 18.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z M18.5 18.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" },
+              { id: "bhaya-platform", en: "Bhaya Platform", hi: "भाया प्लेटफॉर्म", icon: "M12 2L2 7l10 5 10-5-10-5z M2 17l10 5 10-5 M2 12l10 5 10-5", isCore: true },
+            ].map((node) => (
               <div
-                key={st.step}
+                key={node.id}
                 style={{
-                  background: "var(--ivory)",
-                  border: "1px solid rgba(18,52,86,0.08)",
-                  borderRadius: "4px",
-                  padding: "32px 24px",
-                  position: "relative",
+                  background: node.isCore ? "linear-gradient(135deg, var(--sapphire), #071523)" : "var(--white)",
+                  color: node.isCore ? "#ffffff" : "var(--sapphire)",
+                  border: node.isCore ? "1px solid var(--gold)" : "1px solid var(--border-subtle)",
+                  borderRadius: "6px",
+                  padding: "20px 14px",
+                  textAlign: "center",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "10px",
+                  boxShadow: node.isCore ? "0 8px 20px rgba(12,37,64,0.2)" : "0 2px 8px rgba(0,0,0,0.02)",
                 }}
               >
                 <div
                   style={{
-                    fontFamily: "var(--font-display)",
-                    fontSize: "36px",
-                    fontWeight: 700,
-                    color: "rgba(197,160,89,0.35)",
-                    marginBottom: "12px",
+                    width: "42px",
+                    height: "42px",
+                    borderRadius: "50%",
+                    background: node.isCore ? "rgba(197,160,89,0.2)" : "rgba(18,52,86,0.06)",
+                    color: node.isCore ? "var(--gold)" : "var(--sapphire)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                   }}
                 >
-                  {st.step}
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d={node.icon} />
+                  </svg>
                 </div>
-                <h3
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    fontSize: "18px",
-                    fontWeight: 600,
-                    color: "var(--sapphire)",
-                    marginBottom: "10px",
-                  }}
-                >
-                  {st.title}
-                </h3>
-                <p style={{ fontSize: "14px", color: "var(--gray-500)", lineHeight: 1.7, margin: 0 }}>{st.desc}</p>
+                <div>
+                  <div style={{ fontSize: "13px", fontWeight: 700 }}>
+                    {language === "hi" ? node.hi : node.en}
+                  </div>
+                  <div style={{ fontSize: "11px", opacity: 0.7 }}>
+                    {language === "hi" ? node.en : node.hi}
+                  </div>
+                </div>
               </div>
             ))}
+          </div>
+
+          {/* Visual Marketplace Transaction Flow */}
+          <div
+            style={{
+              background: "var(--white)",
+              border: "1px solid var(--border-medium)",
+              borderRadius: "8px",
+              padding: "36px 28px",
+              boxShadow: "0 6px 24px rgba(18,52,86,0.04)",
+            }}
+          >
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px", marginBottom: "28px" }}>
+              <div>
+                <span style={{ color: "var(--gold)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                  {language === "hi" ? "वाणिज्य चक्र" : "Commerce Lifecycle Flow"}
+                </span>
+                <h3 style={{ fontFamily: "var(--font-display)", fontSize: "20px", fontWeight: 600, color: "var(--sapphire)", margin: "4px 0 0" }}>
+                  {language === "hi" ? "विक्रेता से निपटान तक का प्रवाह" : "Vendor-to-Settlement Flow"}
+                </h3>
+              </div>
+              <span
+                style={{
+                  background: "rgba(197,160,89,0.15)",
+                  color: "var(--sapphire)",
+                  border: "1px solid var(--gold)",
+                  padding: "4px 12px",
+                  borderRadius: "20px",
+                  fontSize: "11px",
+                  fontWeight: 700,
+                }}
+              >
+                {language === "hi" ? "आगामी तकनीक • Coming Soon" : "Upcoming Technology • Coming Soon"}
+              </span>
+            </div>
+
+            {/* 6 Steps Linear Flow */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+                gap: "12px",
+                alignItems: "center",
+              }}
+            >
+              {[
+                { step: "01", en: "Vendor", hi: "विक्रेता", subEn: "Catalog & Stock", subHi: "कैटलॉग एवं स्टॉक" },
+                { step: "02", en: "Bhaya Platform", hi: "भाया प्लेटफॉर्म", subEn: "Discovery & Trust", subHi: "सत्यापन एवं प्रदर्शन" },
+                { step: "03", en: "Customer", hi: "ग्राहक", subEn: "Browse & Order", subHi: "चयन एवं ऑर्डर" },
+                { step: "04", en: "Payment", hi: "भुगतान", subEn: "Secure Gateway", subHi: "सुरक्षित गेटवे" },
+                { step: "05", en: "Delivery", hi: "डिलीवरी", subEn: "Hyperlocal Dispatch", subHi: "त्वरित डिस्पैच" },
+                { step: "06", en: "Vendor Settlement", hi: "विक्रेता सेटलमेंट", subEn: "Direct Remittance", subHi: "प्रत्यक्ष भुगतान" },
+              ].map((item, idx, arr) => (
+                <div
+                  key={item.step}
+                  style={{
+                    background: "var(--ivory)",
+                    border: "1px solid rgba(18,52,86,0.08)",
+                    borderRadius: "6px",
+                    padding: "16px 12px",
+                    textAlign: "center",
+                    position: "relative",
+                  }}
+                >
+                  <span
+                    style={{
+                      position: "absolute",
+                      top: "8px",
+                      right: "10px",
+                      fontSize: "10px",
+                      fontWeight: 800,
+                      color: "rgba(197,160,89,0.6)",
+                    }}
+                  >
+                    {item.step}
+                  </span>
+                  <div style={{ fontSize: "14px", fontWeight: 700, color: "var(--sapphire)", marginBottom: "4px" }}>
+                    {language === "hi" ? item.hi : item.en}
+                  </div>
+                  <div style={{ fontSize: "11px", color: "var(--gold)", fontWeight: 600, marginBottom: "4px" }}>
+                    {language === "hi" ? item.en : item.hi}
+                  </div>
+                  <div style={{ fontSize: "10px", color: "var(--text-muted)" }}>
+                    {language === "hi" ? item.subHi : item.subEn}
+                  </div>
+                  {idx < arr.length - 1 && (
+                    <div
+                      style={{
+                        position: "absolute",
+                        right: "-10px",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        zIndex: 2,
+                        display: "none",
+                      }}
+                    >
+                      →
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <p style={{ fontSize: "12px", color: "var(--text-muted)", marginTop: "20px", marginBottom: 0, textAlign: "center" }}>
+              {language === "hi"
+                ? "* स्वचालित ऑर्डर विभाजन, कमीशन गणना और डायरेक्ट सेलर सेटलमेंट वर्तमान में विकास के अधीन है। वर्तमान में ऑर्डर ग्राहक डेस्क एवं प्रत्यक्ष सत्यापन द्वारा प्रबंधित होते हैं।"
+                : "* Automated multi-seller order splitting, commission deduction, and digital vendor settlements are in technical roadmap. Current orders are processed through active direct customer desk."}
+            </p>
           </div>
         </div>
       </section>

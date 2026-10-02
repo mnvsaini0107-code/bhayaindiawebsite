@@ -12,16 +12,16 @@ export default function CategoryShowcaseClient({ categories }: { categories: Bha
 
   if (!categories || categories.length === 0) return null;
 
-  // Circular strip items representing the 8 client-mandated categories
+  // Circular strip items representing the client-mandated categories
   const circularItems = [
+    { name: t("catFestival"), slug: "festival", image: "/assets/hero-editorial.jpg" },
+    { name: t("catPackaging"), slug: "packaging", image: "/assets/category-stationery.jpg" },
     { name: t("catPujaSamagri"), slug: "puja-samagri", image: "/assets/hero-editorial.jpg" },
     { name: t("catFestivalDecoration"), slug: "festival-decoration", image: "/assets/category-textiles.jpg" },
     { name: t("catWeddingMarriage"), slug: "wedding-marriage-items", image: "/assets/category-textiles.jpg" },
     { name: t("catHandicraft"), slug: "handicraft", image: "/assets/category-stationery.jpg" },
-    { name: t("catHomeDecoration"), slug: "home-decoration", image: "/assets/hero-editorial.jpg" },
     { name: t("catGiftItems"), slug: "gift-items", image: "/assets/hero-editorial.jpg" },
     { name: t("catHouseholdProducts"), slug: "household-products", image: "/assets/category-textiles.jpg" },
-    { name: t("catOtherCategories"), slug: "other-categories", image: "/assets/category-stationery.jpg" },
   ];
 
   return (

@@ -1,0 +1,306 @@
+/* BHAYA INDIA — Standard Product Card Styling */
+/* Strict adherence to Sapphire Navy (#123456), Imperial Gold (#C5A059), and Warm Ivory */
+
+.card {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  border: 1px solid rgba(18, 52, 86, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 10px rgba(18, 52, 86, 0.03);
+  position: relative;
+  height: 100%;
+}
+
+.card:hover {
+  border-color: rgba(197, 160, 89, 0.4);
+  box-shadow: 0 10px 28px rgba(18, 52, 86, 0.09);
+  transform: translateY(-4px);
+}
+
+/* Image Frame */
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.08;
+  background-color: #F7F6F2;
+  overflow: hidden;
+}
+
+.imageLink {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.productImage {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.card:hover .productImage {
+  transform: scale(1.05);
+}
+
+/* Badges Cluster */
+.badgeCluster {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  z-index: 3;
+}
+
+.badgeDiscount {
+  background: #E53935;
+  color: #FFFFFF;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  box-shadow: 0 2px 6px rgba(229, 57, 53, 0.25);
+  letter-spacing: 0.03em;
+}
+
+.badgeNew {
+  background-color: var(--sapphire, #123456);
+  color: #FFFFFF;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+}
+
+/* Wishlist Button */
+.wishlistBtn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 4;
+  color: #6C7A89;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.wishlistBtn:hover {
+  background: #FFFFFF;
+  color: #E53935;
+  transform: scale(1.1);
+}
+
+.wishlistBtn.wishlisted {
+  color: #E53935;
+  background: #FFFFFF;
+}
+
+/* Card Body */
+.cardBody {
+  padding: 1.15rem 1.15rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+
+.categoryEyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--gold, #C5A059);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Rating Badge */
+.ratingWrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.75rem;
+}
+
+.starIcon {
+  color: #FFB300;
+  font-size: 0.85rem;
+}
+
+.ratingNumber {
+  font-weight: 700;
+  color: var(--sapphire, #123456);
+}
+
+.reviewsCount {
+  color: #8E9BAE;
+  font-size: 0.7rem;
+}
+
+/* Product Title */
+.cardName {
+  font-family: var(--font-primary, sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 0.65rem;
+  color: var(--sapphire, #123456);
+}
+
+.cardName a {
+  color: inherit;
+  text-decoration: none;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.15s ease;
+}
+
+.cardName a:hover {
+  color: var(--gold, #C5A059);
+}
+
+/* Pricing Row */
+.priceRow {
+  margin-top: auto;
+  margin-bottom: 0.9rem;
+}
+
+.priceWrap {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.priceCurrent {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--sapphire, #123456);
+  letter-spacing: -0.01em;
+}
+
+.priceCompare {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #8E9BAE;
+  text-decoration: line-through;
+}
+
+.priceQuote {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gold, #C5A059);
+}
+
+/* Action Buttons */
+.cardActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.commerceBtnRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+}
+
+.btnAddBag {
+  padding: 0.55rem 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--sapphire, #123456);
+  background: #F4F6F8;
+  border: 1px solid rgba(18, 52, 86, 0.14);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.btnAddBag:hover {
+  background: #EAEFF4;
+  border-color: var(--sapphire, #123456);
+}
+
+.btnAddBag.btnAdded {
+  background: #E8F5E9;
+  color: #2E7D32;
+  border-color: #A5D6A7;
+}
+
+.btnBuyNow {
+  padding: 0.55rem 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  background: var(--gold, #C5A059);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.btnBuyNow:hover {
+  background: #B38E46;
+  box-shadow: 0 2px 8px rgba(197, 160, 89, 0.35);
+}
+
+.btnOutOfStock {
+  width: 100%;
+  padding: 0.55rem 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #8E9BAE;
+  background: #F4F6F8;
+  border: 1px dashed rgba(18, 52, 86, 0.2);
+  border-radius: 5px;
+  text-align: center;
+  cursor: not-allowed;
+}
+
+/* WhatsApp Enquiry Button */
+.btnWhatsapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 0.45rem 0.5rem;
+  background: #25D366;
+  color: #FFFFFF;
+  border-radius: 5px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btnWhatsapp:hover {
+  background: #20BA59;
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+}

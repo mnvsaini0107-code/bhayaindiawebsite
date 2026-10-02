@@ -230,6 +230,50 @@ export default function BecomeSellerClient() {
                 </div>
               ))}
             </div>
+
+            {/* Vendor Portal Capabilities (Phase 3 Roadmap) */}
+            <div style={{ marginTop: "32px", background: "rgba(197,160,89,0.06)", border: "1px solid rgba(197,160,89,0.25)", borderRadius: "6px", padding: "24px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px", flexWrap: "wrap", gap: "8px" }}>
+                <h4 style={{ fontFamily: "var(--font-display)", fontSize: "16px", fontWeight: 700, color: "var(--sapphire)", margin: 0 }}>
+                  {language === "hi" ? "आगामी विक्रेता पोर्टल सुविधाएं" : "Upcoming Vendor Portal Capabilities"}
+                </h4>
+                <span style={{ fontSize: "10px", background: "var(--gold)", color: "var(--sapphire)", padding: "2px 8px", borderRadius: "10px", fontWeight: 700 }}>
+                  {language === "hi" ? "शीघ्र उपलब्ध • Coming Soon" : "Coming Soon"}
+                </span>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "10px" }}>
+                {[
+                  { en: "Register", hi: "पंजीकरण" },
+                  { en: "KYC", hi: "KYC" },
+                  { en: "Product Upload", hi: "उत्पाद अपलोड" },
+                  { en: "Set Price", hi: "कीमत दर्ज करें" },
+                  { en: "Manage Stock", hi: "स्टॉक प्रबंधित करें" },
+                  { en: "View Orders", hi: "ऑर्डर देखें" },
+                  { en: "View Sales", hi: "बिक्री देखें" },
+                  { en: "View Payments", hi: "भुगतान देखें" },
+                  { en: "View Commission", hi: "कमीशन देखें" },
+                ].map((cap) => (
+                  <div
+                    key={cap.en}
+                    style={{
+                      background: "var(--white)",
+                      border: "1px solid rgba(18,52,86,0.08)",
+                      borderRadius: "4px",
+                      padding: "10px 8px",
+                      textAlign: "center",
+                      fontSize: "12px",
+                      fontWeight: 600,
+                      color: "var(--sapphire)",
+                    }}
+                  >
+                    <div>{language === "hi" ? cap.hi : cap.en}</div>
+                    <div style={{ fontSize: "10px", color: "var(--text-muted)", marginTop: "2px" }}>
+                      {language === "hi" ? cap.en : cap.hi}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Form */}

@@ -64,6 +64,11 @@ export const PRODUCT_FRAGMENT = `
         }
       }
     }
+    options {
+      id
+      name
+      values
+    }
     metafields(identifiers: [
       { namespace: "custom", key: "tagline" },
       { namespace: "custom", key: "price_note" },

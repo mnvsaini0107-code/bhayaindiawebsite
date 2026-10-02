@@ -13,6 +13,10 @@ export default function ManufacturersClient() {
   const [location, setLocation] = useState("");
   const [productDetails, setProductDetails] = useState("");
   const [capacity, setCapacity] = useState("");
+  const [moq, setMoq] = useState("");
+  const [priceRange, setPriceRange] = useState("");
+  const [companyProfile, setCompanyProfile] = useState("");
+  const [documents, setDocuments] = useState("");
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -32,7 +36,7 @@ export default function ManufacturersClient() {
           businessName: companyName,
           city: location,
           type: "manufacturer",
-          message: `Manufacturer Partnership Form. Factory/Unit: ${companyName}, Capacity: ${capacity}, Location: ${location}. Products: ${productDetails}`,
+          message: `Manufacturer Partnership Form. Company: ${companyName}, Profile: ${companyProfile}, Capacity: ${capacity}, MOQ: ${moq}, Price: ${priceRange}, Location: ${location}, Documents/Reg: ${documents}. Products: ${productDetails}`,
         }),
       });
 
@@ -106,7 +110,7 @@ export default function ManufacturersClient() {
               marginBottom: "16px",
             }}
           >
-            {language === "hi" ? "निर्माताओं के लिए BHAYA INDIA" : "BHAYA INDIA For Manufacturers"}
+            {language === "hi" ? "भाया इंडिया पार्टनर बनें" : "Become a Bhaya India Partner"}
           </h1>
 
           <div
@@ -217,6 +221,39 @@ export default function ManufacturersClient() {
                   </div>
                 ))}
               </div>
+
+              {/* Future Concepts Card */}
+              <div style={{ marginTop: "24px", background: "rgba(197,160,89,0.08)", border: "1px solid rgba(197,160,89,0.3)", borderRadius: "6px", padding: "20px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px", flexWrap: "wrap", gap: "8px" }}>
+                  <h4 style={{ fontFamily: "var(--font-display)", fontSize: "16px", fontWeight: 700, color: "var(--sapphire)", margin: 0 }}>
+                    {language === "hi" ? "भावी साझेदारी मॉडल" : "Future Partnership Models"}
+                  </h4>
+                  <span style={{ fontSize: "10px", background: "var(--gold)", color: "var(--sapphire)", padding: "2px 8px", borderRadius: "10px", fontWeight: 700 }}>
+                    {language === "hi" ? "भविष्य की परिकल्पना • Future Vision" : "Future Vision"}
+                  </span>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                  {[
+                    {
+                      title: language === "hi" ? "भाया ब्रांड साझेदारी (Bhaya Brand Partnership)" : "Bhaya Brand Partnership",
+                      desc: language === "hi" ? "प्रमाणित निर्माताओं के साथ सह-ब्रांडेड उत्पाद वितरण।" : "Co-branded national distribution with certified producers.",
+                    },
+                    {
+                      title: language === "hi" ? "प्राइवेट लेबल (Private Label)" : "Private Label Manufacturing",
+                      desc: language === "hi" ? "BHAYA INDIA विशिष्ट विनिर्देशों के अनुसार विशेष उत्पाद निर्माण।" : "Custom OEM production meeting verified Bhaya India design standards.",
+                    },
+                    {
+                      title: language === "hi" ? "ब्रांड लाइसेंसिंग (Brand Licensing)" : "Brand Licensing",
+                      desc: language === "hi" ? "मानकीकृत गुणवत्ता के साथ क्षेत्रीय लाइसेंसिंग व्यवस्था।" : "Regional production franchising under standardized quality protocols.",
+                    },
+                  ].map((m) => (
+                    <div key={m.title} style={{ background: "var(--white)", border: "1px solid rgba(18,52,86,0.06)", borderRadius: "4px", padding: "12px" }}>
+                      <div style={{ fontSize: "13px", fontWeight: 700, color: "var(--sapphire)" }}>{m.title}</div>
+                      <div style={{ fontSize: "12px", color: "var(--text-secondary)", marginTop: "2px" }}>{m.desc}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* Form */}
@@ -238,12 +275,12 @@ export default function ManufacturersClient() {
                   marginBottom: "8px",
                 }}
               >
-                {language === "hi" ? "निर्माता ऑनबोर्डिंग फॉर्म" : "Manufacturer Direct Enquiry"}
+                {language === "hi" ? "भाया इंडिया पार्टनर आवेदन फॉर्म" : "Become a Partner — Application Form"}
               </h3>
               <p style={{ fontSize: "13px", color: "var(--text-muted)", marginBottom: "24px" }}>
                 {language === "hi"
-                  ? "अपनी निर्माण इकाई का विवरण दर्ज करें। हमारी B2B सोर्सिंग टीम आपसे संपर्क करेगी।"
-                  : "Submit your production credentials. Our industrial sourcing team will contact you promptly."}
+                  ? "अपनी निर्माण इकाई का प्रोफ़ाइल, क्षमता एवं उत्पाद विवरण दर्ज करें। हमारी B2B सोर्सिंग टीम आपसे संपर्क करेगी।"
+                  : "Submit your factory profile, production capacity, and catalogue. Our industrial sourcing team will contact you."}
               </p>
 
               {submitted ? (
@@ -269,9 +306,10 @@ export default function ManufacturersClient() {
                 <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
                   {errorMsg && <p style={{ color: "#dc2626", fontSize: "14px", margin: 0 }}>{errorMsg}</p>}
 
+                  {/* Company Profile */}
                   <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                     <label style={{ fontSize: "13px", fontWeight: 600, color: "var(--text-primary)" }}>
-                      {language === "hi" ? "फैक्टरी / यूनिट / कंपनी का नाम" : "Factory / Manufacturing Unit Name"} *
+                      {language === "hi" ? "कंपनी प्रोफ़ाइल / इकाई का नाम (Company Profile)" : "Company Profile / Factory Name"} *
                     </label>
                     <input
                       type="text"
@@ -288,10 +326,11 @@ export default function ManufacturersClient() {
                     />
                   </div>
 
+                  {/* Contact Person & Phone */}
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
                     <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                       <label style={{ fontSize: "13px", fontWeight: 600, color: "var(--text-primary)" }}>
-                        {language === "hi" ? "संपर्क व्यक्ति" : "Contact Person"} *
+                        {language === "hi" ? "संपर्क व्यक्ति (Contact Person)" : "Contact Person"} *
                       </label>
                       <input
                         type="text"
@@ -309,7 +348,7 @@ export default function ManufacturersClient() {
                     </div>
                     <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                       <label style={{ fontSize: "13px", fontWeight: 600, color: "var(--text-primary)" }}>
-                        {language === "hi" ? "मोबाइल नंबर (व्हाट्सऐप)" : "Mobile (WhatsApp)"} *
+                        {language === "hi" ? "संपर्क नंबर / व्हाट्सऐप (Contact Phone)" : "Contact (WhatsApp)"} *
                       </label>
                       <input
                         type="tel"
@@ -327,10 +366,11 @@ export default function ManufacturersClient() {
                     </div>
                   </div>
 
+                  {/* Location & Capacity */}
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
                     <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                       <label style={{ fontSize: "13px", fontWeight: 600, color: "var(--text-primary)" }}>
-                        {language === "hi" ? "इकाई का स्थान (शहर, राज्य)" : "Factory Location (City, State)"} *
+                        {language === "hi" ? "स्थान - शहर, राज्य (Location)" : "Location (City, State)"} *
                       </label>
                       <input
                         type="text"
@@ -348,7 +388,47 @@ export default function ManufacturersClient() {
                     </div>
                     <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                       <label style={{ fontSize: "13px", fontWeight: 600, color: "var(--text-primary)" }}>
-                        {language === "hi" ? "मासिक उत्पादन क्षमता" : "Monthly Capacity (approx)"}
+                        {language === "hi" ? "उत्पादन क्षमता (Manufacturing Capacity)" : "Manufacturing Capacity"} *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        style={{
+                          padding: "10px 14px",
+                          border: "1px solid var(--border-medium)",
+                          borderRadius: "2px",
+                          fontSize: "14px",
+                        }}
+                        value={capacity}
+                        onChange={(e) => setCapacity(e.target.value)}
+                        placeholder="e.g. 10,000 units / month"
+                      />
+                    </div>
+                  </div>
+
+                  {/* MOQ & Price */}
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                      <label style={{ fontSize: "13px", fontWeight: 600, color: "var(--text-primary)" }}>
+                        {language === "hi" ? "न्यूनतम ऑर्डर मात्रा (MOQ)" : "MOQ (Min Order Qty)"} *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        style={{
+                          padding: "10px 14px",
+                          border: "1px solid var(--border-medium)",
+                          borderRadius: "2px",
+                          fontSize: "14px",
+                        }}
+                        value={moq}
+                        onChange={(e) => setMoq(e.target.value)}
+                        placeholder="e.g. 100 units or 1 Pallet"
+                      />
+                    </div>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                      <label style={{ fontSize: "13px", fontWeight: 600, color: "var(--text-primary)" }}>
+                        {language === "hi" ? "कीमत / एक्स-फैक्ट्री दर (Price / Target Price)" : "Price / Ex-Factory Range"}
                       </label>
                       <input
                         type="text"
@@ -358,19 +438,20 @@ export default function ManufacturersClient() {
                           borderRadius: "2px",
                           fontSize: "14px",
                         }}
-                        value={capacity}
-                        onChange={(e) => setCapacity(e.target.value)}
-                        placeholder="e.g. 5,000 units / month"
+                        value={priceRange}
+                        onChange={(e) => setPriceRange(e.target.value)}
+                        placeholder="e.g. ₹150 - ₹450 / unit"
                       />
                     </div>
                   </div>
 
+                  {/* Products */}
                   <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                     <label style={{ fontSize: "13px", fontWeight: 600, color: "var(--text-primary)" }}>
-                      {language === "hi" ? "उत्पाद विवरण एवं विशेषताएं" : "Products Manufactured & Specifications"} *
+                      {language === "hi" ? "उत्पाद विवरण एवं विशेषताएं (Product)" : "Product Details & Specifications"} *
                     </label>
                     <textarea
-                      rows={3}
+                      rows={2}
                       required
                       style={{
                         padding: "10px 14px",
@@ -381,7 +462,26 @@ export default function ManufacturersClient() {
                       }}
                       value={productDetails}
                       onChange={(e) => setProductDetails(e.target.value)}
-                      placeholder="List key product types, materials used, OEM/custom branding availability..."
+                      placeholder="List key product types, materials, packaging types, and categories..."
+                    />
+                  </div>
+
+                  {/* Documents */}
+                  <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                    <label style={{ fontSize: "13px", fontWeight: 600, color: "var(--text-primary)" }}>
+                      {language === "hi" ? "दस्तावेज़ / पंजीकरण विवरण (Documents - GST/MSME/Certifications)" : "Documents (GST / MSME / Certificates)"}
+                    </label>
+                    <input
+                      type="text"
+                      style={{
+                        padding: "10px 14px",
+                        border: "1px solid var(--border-medium)",
+                        borderRadius: "2px",
+                        fontSize: "14px",
+                      }}
+                      value={documents}
+                      onChange={(e) => setDocuments(e.target.value)}
+                      placeholder="GSTIN, MSME Reg, ISO certification details..."
                     />
                   </div>
 
@@ -393,7 +493,7 @@ export default function ManufacturersClient() {
                   >
                     {loading
                       ? language === "hi" ? "जमा हो रहा है..." : "Submitting..."
-                      : language === "hi" ? "निर्माता विवरण जमा करें →" : "Submit Manufacturer Profile →"}
+                      : language === "hi" ? "पार्टनर आवेदन जमा करें →" : "Submit Partner Application →"}
                   </button>
                 </form>
               )}

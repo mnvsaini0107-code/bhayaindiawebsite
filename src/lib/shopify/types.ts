@@ -64,6 +64,11 @@ export interface ShopifyProduct {
       node: ShopifyProductVariant;
     }>;
   };
+  options?: Array<{
+    id: string;
+    name: string;
+    values: string[];
+  }>;
   metafields?: Array<ShopifyMetafield | null>;
   collections?: {
     edges: Array<{
@@ -132,6 +137,20 @@ export interface BhayaProductSpec {
   value: string;
 }
 
+export interface BhayaProductVariant {
+  id: string;
+  title: string;
+  price: number;
+  compareAtPrice?: number | null;
+  available: boolean;
+  sku: string;
+  selectedOptions?: Array<{
+    name: string;
+    value: string;
+  }>;
+  image?: string | null;
+}
+
 export interface BhayaShopifyProduct {
   id: string;
   shopifyId: string;
@@ -169,13 +188,11 @@ export interface BhayaShopifyProduct {
   minOrder: number;
   sku: string;
   variantId: string;
-  variants: Array<{
+  variants: BhayaProductVariant[];
+  options?: Array<{
     id: string;
-    title: string;
-    price: number;
-    compareAtPrice?: number | null;
-    available: boolean;
-    sku: string;
+    name: string;
+    values: string[];
   }>;
   seoTitle?: string;
   seoDescription?: string;

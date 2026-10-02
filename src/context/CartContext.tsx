@@ -5,6 +5,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 export interface CartItem {
   id: string;
   variantId?: string; // Shopify variant GID
+  variantTitle?: string; // e.g. "Small / Blue"
   lineId?: string; // Shopify Cart line GID
   name: string;
   slug: string;
@@ -20,6 +21,7 @@ interface CartContextType {
   removeItem: (id: string) => Promise<void>;
   updateQuantity: (id: string, qty: number) => Promise<void>;
   clearCart: () => void;
+  createCheckout: () => Promise<string | null>;
   totalCount: number;
   totalPrice: number;
   checkoutUrl: string | null;
@@ -48,6 +50,25 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       if (data.success && data.isShopify && data.cart) {
         setIsShopify(true);
         setCheckoutUrl(data.cart.checkoutUrl);
+
+        // Update items with latest lineId from Shopify cart lines
+        const lines = data.cart.lines?.edges || [];
+        setItems((prev) =>
+          prev.map((item) => {
+            const matchedLine = lines.find(
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              (edge: any) =>
+                edge.node.merchandise?.id === item.variantId ||
+                edge.node.merchandise?.id === item.id
+            );
+            return matchedLine ? { ...item, lineId: matchedLine.node.id } : item;
+          })
+        );
+      } else if (!data.success || !data.cart) {
+        // Stale or expired cart session, clean up
+        setCartId(null);
+        setCheckoutUrl(null);
+        localStorage.removeItem("bhaya_shopify_cart_id");
       }
     } catch (err) {
       console.warn("Could not sync with Shopify cart:", err);
@@ -64,7 +85,6 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       const savedCartId = localStorage.getItem("bhaya_shopify_cart_id");
       if (savedCartId) {
         setCartId(savedCartId);
-        // Verify and fetch latest Shopify cart
         fetchShopifyCart(savedCartId);
       }
     } catch (e) {
@@ -92,14 +112,19 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const addItem = async (product: Omit<CartItem, "quantity">, qty = 1) => {
     setIsLoading(true);
 
+    const matchFn = (item: CartItem) => {
+      if (product.variantId && item.variantId) {
+        return item.variantId === product.variantId;
+      }
+      return item.id === product.id;
+    };
+
     // Optimistic UI update
     setItems((prev) => {
-      const existing = prev.find((item) => item.id === product.id || (product.variantId && item.variantId === product.variantId));
+      const existing = prev.find(matchFn);
       if (existing) {
         return prev.map((item) =>
-          item.id === product.id || (product.variantId && item.variantId === product.variantId)
-            ? { ...item, quantity: item.quantity + qty }
-            : item
+          matchFn(item) ? { ...item, quantity: item.quantity + qty } : item
         );
       }
       return [...prev, { ...product, quantity: qty }];
@@ -107,7 +132,10 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
     // Shopify Cart sync
     try {
-      const merchandiseId = product.variantId || (product.id.startsWith("gid://shopify/") ? product.id : null);
+      const merchandiseId =
+        product.variantId ||
+        (product.id.startsWith("gid://shopify/") ? product.id : null);
+
       if (merchandiseId) {
         const res = await fetch("/api/cart", {
           method: "POST",
@@ -123,6 +151,23 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
           setIsShopify(true);
           setCartId(data.cart.id);
           setCheckoutUrl(data.cart.checkoutUrl);
+
+          // Update items with lineId from returned Shopify cart
+          const lines = data.cart.lines?.edges || [];
+          setItems((prev) =>
+            prev.map((item) => {
+              const matchedLine = lines.find(
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (edge: any) =>
+                  edge.node.merchandise?.id === item.variantId ||
+                  edge.node.merchandise?.id === item.id
+              );
+              if (matchedLine) {
+                return { ...item, lineId: matchedLine.node.id };
+              }
+              return item;
+            })
+          );
         }
       }
     } catch (e) {
@@ -133,10 +178,11 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   };
 
   const removeItem = async (id: string) => {
-    const itemToRemove = items.find((i) => i.id === id);
-    setItems((prev) => prev.filter((item) => item.id !== id));
+    const itemToRemove = items.find((i) => i.id === id || i.variantId === id);
+    setItems((prev) => prev.filter((item) => item.id !== id && item.variantId !== id));
 
-    if (cartId && itemToRemove?.lineId) {
+    const lineIdToRemove = itemToRemove?.lineId;
+    if (cartId && lineIdToRemove) {
       try {
         const res = await fetch("/api/cart", {
           method: "POST",
@@ -144,7 +190,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
           body: JSON.stringify({
             action: "remove",
             cartId,
-            lineIds: [itemToRemove.lineId],
+            lineIds: [lineIdToRemove],
           }),
         });
         const data = await res.json();
@@ -163,9 +209,11 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    const itemToUpdate = items.find((i) => i.id === id);
+    const itemToUpdate = items.find((i) => i.id === id || i.variantId === id);
     setItems((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, quantity: qty } : item))
+      prev.map((item) =>
+        item.id === id || item.variantId === id ? { ...item, quantity: qty } : item
+      )
     );
 
     if (cartId && itemToUpdate?.lineId) {
@@ -197,6 +245,41 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     localStorage.removeItem("bhaya_shopify_cart_id");
   };
 
+  const createCheckout = async (): Promise<string | null> => {
+    if (checkoutUrl) return checkoutUrl;
+    if (items.length === 0) return null;
+
+    setIsLoading(true);
+    try {
+      const lines = items
+        .filter((i) => i.variantId || i.id.startsWith("gid://shopify/"))
+        .map((i) => ({
+          merchandiseId: (i.variantId || i.id) as string,
+          quantity: i.quantity,
+        }));
+
+      if (lines.length > 0) {
+        const res = await fetch("/api/cart", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action: "create", lines }),
+        });
+        const data = await res.json();
+        if (data.success && data.cart) {
+          setCartId(data.cart.id);
+          setCheckoutUrl(data.cart.checkoutUrl);
+          setIsShopify(true);
+          return data.cart.checkoutUrl;
+        }
+      }
+    } catch (e) {
+      console.warn("Failed to create checkout URL:", e);
+    } finally {
+      setIsLoading(false);
+    }
+    return null;
+  };
+
   const totalCount = items.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
@@ -208,6 +291,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         removeItem,
         updateQuantity,
         clearCart,
+        createCheckout,
         totalCount,
         totalPrice,
         checkoutUrl,
@@ -227,3 +311,4 @@ export function useCart() {
   }
   return context;
 }
+

@@ -8,8 +8,9 @@ import type { SiteSettings } from "@/lib/types";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer({ settings = DEFAULT_SITE_SETTINGS }: { settings?: SiteSettings }) {
-  const { t } = useLanguage();
-  const whatsappUrl = `https://wa.me/${settings.whatsapp}?text=Hi%20Bhaya%20India%2C%20I%20would%20like%20to%20enquire%20about%20your%20products.`;
+  const { t, language } = useLanguage();
+  const customerDeskNumber = "+91 87266 90926";
+  const whatsappUrl = `https://wa.me/918726690926?text=${encodeURIComponent("Hi BHAYA INDIA, I would like to enquire about your products and services.")}`;
 
   return (
     <footer className={styles.footer}>
@@ -31,7 +32,7 @@ export default function Footer({ settings = DEFAULT_SITE_SETTINGS }: { settings?
                 </span>
               </Link>
               <span className={`${styles.footerTagline} font-devanagari`}>
-                {settings.tagline}
+                जहाँ भाया, वहाँ भरोसा
               </span>
             </div>
             <p className={styles.footerDesc}>
@@ -59,17 +60,44 @@ export default function Footer({ settings = DEFAULT_SITE_SETTINGS }: { settings?
             </div>
           </div>
 
-          {/* Company & Profile */}
+          {/* Core Business Verticals & Packaging Column */}
+          <div>
+            <p className={styles.colTitle}>
+              {language === "hi" ? "व्यावसायिक दिशाएं" : "Business Directions"}
+            </p>
+            <ul className={styles.linkList}>
+              {[
+                { label: language === "hi" ? "1. त्योहार (Festival)" : "1. Festival", href: "/products?category=festival" },
+                { label: language === "hi" ? "2. खुदरा (Retail)" : "2. Retail", href: "/products?category=retail" },
+                { label: language === "hi" ? "3. कृषि (Agro)" : "3. Agro", href: "/products?category=agro" },
+                { label: language === "hi" ? "4. विनिर्माण (Manufacturing)" : "4. Manufacturing", href: "/products?category=manufacturing" },
+                { label: language === "hi" ? "5. लॉजिस्टिक्स (Logistics)" : "5. Logistics", href: "/services" },
+                { label: language === "hi" ? "6. निर्यात (Exports)" : "6. Exports", href: "/wholesale" },
+                { label: language === "hi" ? "7. ई-कॉमर्स (E-commerce)" : "7. E-commerce", href: "/products" },
+                { label: language === "hi" ? "8. पैकेजिंग एवं पेपर उत्पाद" : "8. Packaging & Paper Products", href: "/products?category=packaging" },
+              ].map((link) => (
+                <li key={link.label}>
+                  <Link href={link.href} className={styles.footerLink}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Ecosystem & Company Links */}
           <div>
             <p className={styles.colTitle}>{t("footerCompanyTitle")}</p>
             <ul className={styles.linkList}>
               {[
                 { label: t("navAbout"), href: "/about" },
-                { label: t("navBhaya2"), href: "/bhaya-india-2" },
-                { label: t("footerCompanyTitle"), href: "/company-profile" },
-                { label: t("whyEyebrow"), href: "/why-choose-us" },
-                { label: t("navGallery"), href: "/gallery" },
-                { label: t("footerReviews"), href: "/testimonials" },
+                { label: "BHAYA INDIA 2.0", href: "/bhaya-india-2" },
+                { label: language === "hi" ? "कंपनी का विज़न" : "Company Vision", href: "/company-profile" },
+                { label: language === "hi" ? "भाया इंडिया क्यों चुनें?" : "Why Bhaya India", href: "/why-choose-us" },
+                { label: language === "hi" ? "बी2बी एवं थोक पोर्टल" : "B2B & Wholesale", href: "/wholesale" },
+                { label: language === "hi" ? "विक्रेता बनें" : "Sell on Bhaya India", href: "/become-a-seller" },
+                { label: language === "hi" ? "निर्माता पार्टनर" : "Become a Partner", href: "/manufacturers" },
+                { label: language === "hi" ? "ग्राहक समीक्षाएं" : "Customer Reviews", href: "/testimonials" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className={styles.footerLink}>
@@ -80,41 +108,20 @@ export default function Footer({ settings = DEFAULT_SITE_SETTINGS }: { settings?
             </ul>
           </div>
 
-          {/* Business & Partnerships */}
-          <div>
-            <p className={styles.colTitle}>{t("footerEcosystemTitle")}</p>
-            <ul className={styles.linkList}>
-              {[
-                { label: t("allPieces"), href: "/products" },
-                { label: t("navWholesale"), href: "/wholesale" },
-                { label: t("navSeller"), href: "/become-a-seller" },
-                { label: t("navManufacturer"), href: "/manufacturers" },
-                { label: t("navServices"), href: "/services" },
-                { label: t("navAccount"), href: "/account" },
-              ].map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className={styles.footerLink}>
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact & Support */}
+          {/* Contact & Customer Desk */}
           <div>
             <p className={styles.colTitle}>{t("footerHelpTitle")}</p>
             <ul className={styles.contactList}>
               <li className={styles.contactItem}>
                 <span className={styles.contactLabel}>{t("footerCustomerDesk")}</span>
-                <a href={`tel:${settings.phone.replace(/\s+/g, "")}`} className={styles.contactValue}>
-                  {settings.phone}
+                <a href={`tel:${customerDeskNumber.replace(/\s+/g, "")}`} className={styles.contactValue} style={{ fontWeight: 700, color: "var(--gold-light, #deb86d)" }}>
+                  {customerDeskNumber}
                 </a>
               </li>
               <li className={styles.contactItem}>
                 <span className={styles.contactLabel}>{t("footerWhatsappInquiry")}</span>
                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className={styles.contactValue}>
-                  +{settings.whatsapp}
+                  {customerDeskNumber}
                 </a>
               </li>
               <li className={styles.contactItem}>

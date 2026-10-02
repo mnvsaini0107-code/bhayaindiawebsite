@@ -117,6 +117,22 @@ export default function BusinessVerticals() {
         </svg>
       ),
     },
+    {
+      id: "v8-packaging",
+      title: t("v8Title"),
+      desc: t("v8Desc"),
+      status: t("v8Status"),
+      link: "/products?category=packaging",
+      isFeatured: false,
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="m7.5 4.27 9 5.15"/>
+          <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+          <path d="m3.3 7 8.7 5 8.7-5"/>
+          <path d="M12 22V12"/>
+        </svg>
+      ),
+    },
   ];
 
   return (
@@ -136,7 +152,7 @@ export default function BusinessVerticals() {
           </p>
         </div>
 
-        {/* 7 Verticals Grid */}
+        {/* 8 Verticals Grid */}
         <div className={styles.grid}>
           {verticals.map((v) => (
             <div

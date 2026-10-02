@@ -40,6 +40,7 @@
   padding: 1.25rem 1.4rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(0, 0, 0, 0.25);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
 
@@ -172,6 +173,7 @@
   flex-direction: column;
   gap: 0.4rem;
   background: rgba(0, 0, 0, 0.25);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
 
@@ -327,6 +329,7 @@
   background: #e2e8f0;
   color: #64748b;
   border: 1px solid #cbd5e1;
+  -webkit-user-select: none;
   user-select: none;
 }
 
@@ -579,6 +582,7 @@
   position: fixed;
   inset: 0;
   background: rgba(7, 27, 43, 0.6);
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   z-index: 99;
 }

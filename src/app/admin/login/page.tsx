@@ -93,7 +93,7 @@ export default function AdminLoginPage() {
         </form>
 
         <div className={styles.cardFooter}>
-          <p>Default credentials: <strong>admin</strong> / <strong>bhaya@2026</strong></p>
+          <p>Protected Corporate System · Authorized Access Only</p>
         </div>
       </div>
     </div>

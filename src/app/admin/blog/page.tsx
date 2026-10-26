@@ -52,7 +52,7 @@ export default function AdminBlogPage() {
       contentHi: "",
       author: "BHAYA INDIA Editorial Desk",
       publishedAt: new Date().toISOString(),
-      featuredImage: "/assets/hero-editorial.jpg",
+      featuredImage: "/assets/bhaya-india-logo.png",
       category: "Festive Heritage",
       tags: ["Heritage", "Crafts"],
       status: "Published",
@@ -207,7 +207,7 @@ export default function AdminBlogPage() {
                     <td style={{ padding: "1rem" }}>
                       <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
                         <div style={{ width: "48px", height: "48px", borderRadius: "6px", overflow: "hidden", position: "relative", background: "#f1f5f9" }}>
-                          <Image src={b.featuredImage || "/assets/hero-editorial.jpg"} alt={b.title} fill style={{ objectFit: "cover" }} sizes="48px" />
+                          <Image src={b.featuredImage || "/assets/bhaya-india-logo.png"} alt={b.title} fill style={{ objectFit: "cover" }} sizes="48px" />
                         </div>
                         <div>
                           <strong style={{ color: "var(--navy)", display: "block", fontSize: "0.9rem" }}>{b.title}</strong>

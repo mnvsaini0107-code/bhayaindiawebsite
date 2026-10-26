@@ -1,0 +1,2695 @@
+{
+  "settings": {
+    "businessName": "BHAYA INDIA",
+    "tagline": "जहाँ भाया, वहाँ भरोसा",
+    "phone": "+91 87266 90926",
+    "whatsapp": "918726690926",
+    "email": "hello@bhayaindia.com",
+    "address": "BHAYA INDIA — Business & E-commerce Desk, India",
+    "businessHours": "Monday – Saturday: 9:30 AM – 7:00 PM IST",
+    "socialLinks": {
+      "instagram": "https://instagram.com/bhayaindia",
+      "facebook": "https://facebook.com/bhayaindia",
+      "youtube": "https://youtube.com/@bhayaindia",
+      "linkedin": "https://linkedin.com/company/bhayaindia"
+    },
+    "mapsEmbedUrl": ""
+  },
+  "content": {
+    "hero": {
+      "eyebrow": "BHAYA INDIA • जहाँ भाया, वहाँ भरोसा",
+      "headline": "Quality Products. Honest Business.",
+      "subheadline": "BHAYA INDIA is an Indian business and e-commerce platform connecting customers, regional merchants, and verified manufacturers with genuine trust.",
+      "ctaPrimaryText": "Explore Products",
+      "ctaSecondaryText": "Wholesale & B2B"
+    },
+    "brandStory": {
+      "eyebrow": "OUR STORY",
+      "headline": "Local to Online • Local to India",
+      "paragraph1": "BHAYA INDIA एक भारतीय Business & E-commerce Platform है, जिसका उद्देश्य ग्राहकों, स्थानीय व्यवसायों और manufacturers को एक भरोसेमंद digital platform से जोड़ना है।",
+      "paragraph2": "Built on the foundational promise of 'जहाँ भाया, वहाँ भरोसा', we provide an authentic e-commerce and business ecosystem honoring quality products and reliable customer relationships.",
+      "stats": [
+        {
+          "label": "Our Foundation",
+          "value": "भरोसा"
+        },
+        {
+          "label": "Vision",
+          "value": "Local to India"
+        },
+        {
+          "label": "Sourcing",
+          "value": "Authentic"
+        },
+        {
+          "label": "Platform",
+          "value": "B2B & Retail"
+        }
+      ]
+    },
+    "whyBhaya": {
+      "eyebrow": "WHY CHOOSE BHAYA INDIA",
+      "headline": "Built on Values That Stand the Test of Time",
+      "pillars": [
+        {
+          "title": "Authentic Craftsmanship",
+          "desc": "Every product in our catalogue is sourced directly from vetted master weavers, craft houses, and certified manufacturers.",
+          "icon": "shield"
+        },
+        {
+          "title": "Honest & Transparent Value",
+          "desc": "No hidden surcharges. Direct factory-to-door pricing that honors both our artisans and our customers.",
+          "icon": "tag"
+        },
+        {
+          "title": "Comprehensive Range",
+          "desc": "From delicate Banarasi silks to corporate executive hampers and bulk stationery, discover curated variety under one roof.",
+          "icon": "layers"
+        },
+        {
+          "title": "Dedicated Client Concierge",
+          "desc": "Personalized assistance for corporate orders, custom branding, wholesale enquiries, and timely dispatch.",
+          "icon": "headset"
+        }
+      ]
+    },
+    "sellerCta": {
+      "headline": "Partner With Bhaya India",
+      "body": "Are you a master manufacturer, textile artisan, or premium product creator? Expand your reach through Bhaya India's nationwide distribution network.",
+      "ctaText": "Become a Business Partner"
+    },
+    "bhaya2": {
+      "headline": "Bhaya India 2.0 — The Future Vision",
+      "subheadline": "A Unified Multi-Vendor B2B & B2C Marketplace",
+      "body": "We are architecting the next generation of digital commerce — connecting verified regional manufacturers directly with bulk buyers, institutional clients, and global shoppers under the trusted umbrella of Bhaya India."
+    }
+  },
+  "categories": [
+    {
+      "id": "cat-puja-mala",
+      "name": "Puja Mala",
+      "nameHi": "पूजा माला",
+      "slug": "puja-mala",
+      "description": "Decorative flower garlands and traditional malas for worship, home mandir, and sacred rituals.",
+      "descriptionHi": "पूजा, गृह मंदिर और धार्मिक अनुष्ठानों के लिए आकर्षक सजावटी फूल मालाएँ।",
+      "image": "/assets/products/puja-mala-rose-yellow-pink.jpg",
+      "productCount": 3,
+      "subcategories": [
+        "Rose Flower Mala",
+        "Bud Flower Mala",
+        "Mandir Garlands"
+      ]
+    },
+    {
+      "id": "cat-bhagwan-jaymala",
+      "name": "Bhagwan Jaymala",
+      "nameHi": "भगवान की जयमाला",
+      "slug": "bhagwan-jaymala",
+      "description": "Special sacred garlands and malas for deity shringar, temples, and religious occasions.",
+      "descriptionHi": "देव मूर्तियों के शृंगार, मंदिरों और धार्मिक आयोजनों के लिए विशेष भगवान जयमाला।",
+      "image": "/assets/products/bhagwan-jaymala-royal-blue-pearl.jpg",
+      "productCount": 3,
+      "subcategories": [
+        "Deity Shringar Mala",
+        "Marigold Sacred Mala",
+        "Pastel Jaymala"
+      ]
+    },
+    {
+      "id": "cat-large-flower-garlands",
+      "name": "Large Flower Garlands",
+      "nameHi": "बड़ा फूल माला",
+      "slug": "large-flower-garlands",
+      "description": "Grand decorative multicolour flower garlands for festival gates, stage decor, and celebrations.",
+      "descriptionHi": "समारोहों, तोरण, प्रवेश द्वारों और मंच सज्जा के लिए भव्य बहुरंगी बड़ा फूल माला।",
+      "image": "/assets/products/large-flower-garland-grand-multicolour.jpg",
+      "productCount": 3,
+      "subcategories": [
+        "Conical Festival Garlands",
+        "Marigold Jasmine Garlands",
+        "Tiered Event Garlands"
+      ]
+    },
+    {
+      "id": "cat-moti-mala",
+      "name": "Moti Mala",
+      "nameHi": "मोती माला",
+      "slug": "moti-mala",
+      "description": "Pearl-style decorative garlands with crystal beads, antique filigree metalwork, and pearl drops.",
+      "descriptionHi": "श्वेत मोती, क्रिस्टल बीड्स, सुनहरी जालीदार नक्काशी और मोती लटकन वाली पारंपरिक माला।",
+      "image": "/assets/products/moti-mala-emerald-green-crystal-pearl.jpg",
+      "productCount": 2,
+      "subcategories": [
+        "Crystal Pearl Mala",
+        "Antique Filigree Mala"
+      ]
+    },
+    {
+      "id": "cat-sherwani-mala",
+      "name": "Sherwani Mala",
+      "nameHi": "शेरवानी माला",
+      "slug": "sherwani-mala",
+      "description": "Royal multi-strand pearl and bead garlands designed for groom wedding sherwanis with ornate brooches.",
+      "descriptionHi": "वर शेरवानी हेतु बहु-लड़ी शाही मोती व स्टोन ब्रोच युक्त शेरवानी माला।",
+      "image": "/assets/products/sherwani-mala-peacock-brooch-detail.jpg",
+      "productCount": 2,
+      "subcategories": [
+        "Peacock Brooch Sherwani Mala",
+        "Ruby Brooch Sherwani Mala"
+      ]
+    },
+    {
+      "id": "cat-groom-garland",
+      "name": "Groom Garland",
+      "nameHi": "दूल्हा माला",
+      "slug": "groom-garland",
+      "description": "Traditional wedding groom garlands, tiered haar, kundan pendants, and decorative necklaces.",
+      "descriptionHi": "विवाह समारोह हेतु पारंपरिक दूल्हा हार, कुंदन ब्रोच व लटकन वाली आकर्षक मालाएँ।",
+      "image": "/assets/products/dulha-haar-kundan-floral-brooch.jpg",
+      "productCount": 3,
+      "subcategories": [
+        "Kundan Brooch Dulha Haar",
+        "Heart Pendant Haar",
+        "Multi-Tier Pearl Haar"
+      ]
+    },
+    {
+      "id": "cat-puja",
+      "name": "Puja Samagri",
+      "nameHi": "पूजा सामग्री",
+      "slug": "puja-samagri",
+      "description": "Pure and authentic puja samagri, brassware, diya lamps, camphor, dhoop, and sacred ritual offerings.",
+      "descriptionHi": "शुद्ध एवं प्रामाणिक पूजा सामग्री, पीतल के दीये, धूप, हवन सामग्री और पारंपरिक पूजा अनुष्ठान सामग्री।",
+      "image": "/assets/hero-editorial.jpg",
+      "productCount": 45,
+      "subcategories": [
+        "Brassware & Diyas",
+        "Dhoop & Agarbatti",
+        "Havan Samagri",
+        "Pooja Aasan & Cloth"
+      ],
+      "subcategoriesHi": [
+        "पीतल के दीये व थाली",
+        "धूप एवं अगरबत्ती",
+        "हवन सामग्री",
+        "पूजा आसन व वस्त्र"
+      ]
+    },
+    {
+      "id": "cat-fest-decor",
+      "name": "Festival Decoration",
+      "nameHi": "त्योहार सजावट",
+      "slug": "festival-decoration",
+      "description": "Traditional festival decor, decorative torans, bandhanwars, handcrafted festive hangings, and lights.",
+      "descriptionHi": "पारंपरिक त्योहार सजावट, तोरण, बंदनवार, हस्तशिल्प झालरें, शुभ-लाभ हैंगिंग्स और उत्सव सामग्री।",
+      "image": "/assets/category-textiles.jpg",
+      "productCount": 38,
+      "subcategories": [
+        "Torans & Bandhanwars",
+        "Festive Hangings",
+        "Decorative Lights",
+        "Rangoli & Accents"
+      ],
+      "subcategoriesHi": [
+        "तोरण एवं बंदनवार",
+        "उत्सव हैंगिंग्स",
+        "सजावटी लाइट्स",
+        "रंगोली व सजावट"
+      ]
+    },
+    {
+      "id": "cat-wedding",
+      "name": "Wedding & Marriage Items",
+      "nameHi": "विवाह एवं शादी सामग्री",
+      "slug": "wedding-marriage-items",
+      "description": "Essential marriage ritual items, bridal accessories, ornate wedding trunks, and gift boxes.",
+      "descriptionHi": "विवाह एवं शुभ वैवाहिक संस्कार सामग्री, शगुन लिफाफे, वर-वधू पूजन सामग्री और शादी के विशेष उपहार बक्से।",
+      "image": "/assets/category-textiles.jpg",
+      "productCount": 32,
+      "subcategories": [
+        "Ritual Essentials",
+        "Shagun & Gift Boxes",
+        "Bridal Accessories",
+        "Ceremonial Trunks"
+      ],
+      "subcategoriesHi": [
+        "विवाह संस्कार सामग्री",
+        "शगुन एवं उपहार बॉक्स",
+        "विवाह परिधान व श्रृंगार",
+        "वैवाहिक बक्से"
+      ]
+    },
+    {
+      "id": "cat-handicraft",
+      "name": "Handicraft",
+      "nameHi": "हस्तशिल्प",
+      "slug": "handicraft",
+      "description": "Authentic Indian handicrafts, brass artifacts, hand-carved woodwork, terracotta, and folk art.",
+      "descriptionHi": "प्रामाणिक भारतीय हस्तशिल्प, पीतल शिल्प, नक्काशीदार काष्ठ कला, टेराकोटा कलाकृतियां और क्षेत्रीय लोक शिल्प।",
+      "image": "/assets/category-stationery.jpg",
+      "productCount": 54,
+      "subcategories": [
+        "Brass & Metal Craft",
+        "Wood Crafts",
+        "Folk Art & Paintings",
+        "Terracotta Art"
+      ],
+      "subcategoriesHi": [
+        "पीतल एवं धातु शिल्प",
+        "काष्ठ कला",
+        "लोक कला एवं पेंटिंग्स",
+        "टेराकोटा शिल्प"
+      ]
+    },
+    {
+      "id": "cat-home-decor",
+      "name": "Home Decoration",
+      "nameHi": "घर की सजावट",
+      "slug": "home-decoration",
+      "description": "Artisan homeware, wall decor, brass urns, decorative figurines, and aesthetic interior accents.",
+      "descriptionHi": "पारंपरिक एवं आधुनिक घर की सजावट, वॉल डेकोर, पीतल के शोपीस, लैंप्स और सुरुचिपूर्ण कलाकृतियां।",
+      "image": "/assets/hero-editorial.jpg",
+      "productCount": 42,
+      "subcategories": [
+        "Wall Hangings & Clocks",
+        "Brass Showpieces",
+        "Tabletop Decor",
+        "Vases & Urns"
+      ],
+      "subcategoriesHi": [
+        "दीवार सजावट व घड़ियां",
+        "पीतल शोपीस",
+        "टेबल सजावट",
+        "फूलदान एवं पात्र"
+      ]
+    },
+    {
+      "id": "cat-gifts",
+      "name": "Gift Items",
+      "nameHi": "उपहार सामग्री",
+      "slug": "gift-items",
+      "description": "Curated gift items, festive hampers, corporate tokens, and customized bespoke presentation boxes.",
+      "descriptionHi": "विचारशील उपहार सामग्री, त्योहार उपहार हैम्पर्स, कॉर्पोरेट उपहार सेट, रिटर्न गिफ्ट्स और कस्टम उपहार।",
+      "image": "/assets/hero-editorial.jpg",
+      "productCount": 49,
+      "subcategories": [
+        "Festival Hampers",
+        "Corporate Gifts",
+        "Return Gifts",
+        "Personalized Boxes"
+      ],
+      "subcategoriesHi": [
+        "त्योहार हैम्पर्स",
+        "कॉर्पोरेट उपहार",
+        "रिटर्न गिफ्ट्स",
+        "कस्टम बॉक्सेज"
+      ]
+    },
+    {
+      "id": "cat-household",
+      "name": "Household Products",
+      "nameHi": "घरेलू उत्पाद",
+      "slug": "household-products",
+      "description": "Everyday household essentials, kitchenware, copper bottles, storage organizers, and home utility.",
+      "descriptionHi": "दैनिक घरेलू उत्पाद, रसोई सामग्री, तांबे के बर्तन व बोतलें, स्टोरेज वस्तुएं और पारिवारिक दैनिक उपयोग की वस्तुएं।",
+      "image": "/assets/category-textiles.jpg",
+      "productCount": 65,
+      "subcategories": [
+        "Copper & Brass Utensils",
+        "Storage & Utility",
+        "Kitchen Essentials",
+        "Home Textiles"
+      ],
+      "subcategoriesHi": [
+        "तांबे व पीतल के बर्तन",
+        "स्टोरेज एवं उपयोगिता",
+        "रसोई उपयोगी वस्तुएं",
+        "घरेलू वस्त्र"
+      ]
+    },
+    {
+      "id": "cat-other",
+      "name": "Other Categories",
+      "nameHi": "अन्य श्रेणियाँ",
+      "slug": "other-categories",
+      "description": "Textiles, fabrics, fine stationery, Agro produce, packaging materials, and general merchandise.",
+      "descriptionHi": "वस्त्र, स्टेशनरी, कृषि उत्पाद, पैकेजिंग सामग्री और हमारे 7 व्यावसायिक क्षेत्रों के विविध उत्पाद।",
+      "image": "/assets/category-stationery.jpg",
+      "productCount": 88,
+      "subcategories": [
+        "Textiles & Fabrics",
+        "Stationery & Office",
+        "Agro Produce",
+        "Commercial Packaging"
+      ],
+      "subcategoriesHi": [
+        "वस्त्र एवं परिधान",
+        "स्टेशनरी व कार्यालय",
+        "कृषि उपज",
+        "व्यावसायिक पैकेजिंग"
+      ]
+    },
+    {
+      "id": "cat-1",
+      "name": "Textiles & Fabrics",
+      "nameHi": "वस्त्र एवं परिधान",
+      "slug": "textiles-fabrics",
+      "description": "Handcrafted sarees, pure silks, heritage shawls, and premium tailored linens.",
+      "descriptionHi": "हस्तनिर्मित साड़ियाँ, शुद्ध रेशम, विरासती शॉल और प्रीमियम परिधान।",
+      "image": "/assets/category-textiles.jpg",
+      "productCount": 46,
+      "subcategories": [
+        "Sarees",
+        "Silk Dupattas",
+        "Handloom Shawls",
+        "Unstitched Suits"
+      ],
+      "subcategoriesHi": [
+        "साड़ियाँ",
+        "सिल्क दुपट्टे",
+        "हथकरघा शॉल",
+        "अनस्टिच्ड सूट"
+      ]
+    },
+    {
+      "id": "cat-2",
+      "name": "Stationery & Office",
+      "nameHi": "स्टेशनरी एवं कार्यालय सामग्री",
+      "slug": "stationery-office",
+      "description": "Fine leather journals, executive desk accessories, and corporate paper supplies.",
+      "descriptionHi": "उत्कृष्ट लेदर जर्नल्स, एग्जीक्यूटिव डेस्क एक्सेसरीज़ और कॉर्पोरेट स्टेशनरी सामग्री।",
+      "image": "/assets/category-stationery.jpg",
+      "productCount": 35,
+      "subcategories": [
+        "Notebooks",
+        "Executive Pens",
+        "Desk Organizers",
+        "Paper Sets"
+      ],
+      "subcategoriesHi": [
+        "नोटबुक्स",
+        "एग्जीक्यूटिव पेन",
+        "डेस्क आयोजक",
+        "पेपर सेट्स"
+      ]
+    },
+    {
+      "id": "cat-3",
+      "name": "Gift Hampers",
+      "nameHi": "उपहार हैम्पर्स",
+      "slug": "gift-hampers",
+      "description": "Bespoke curated gifting for festive celebrations, weddings, and corporate recognition.",
+      "descriptionHi": "त्योहारों, शादियों और कॉर्पोरेट आयोजनों के लिए विशेष रूप से तैयार किए गए उपहार।",
+      "image": "/assets/hero-editorial.jpg",
+      "productCount": 23,
+      "subcategories": [
+        "Corporate Gifts",
+        "Festival Hampers",
+        "Wedding Favours",
+        "Custom Hampers"
+      ],
+      "subcategoriesHi": [
+        "कॉर्पोरेट उपहार",
+        "त्योहार उपहार",
+        "विवाह उपहार",
+        "कस्टम उपहार"
+      ]
+    },
+    {
+      "id": "cat-4",
+      "name": "Home & Living",
+      "nameHi": "घर एवं जीवनशैली",
+      "slug": "home-living",
+      "description": "Artisanal brassware, hand-carved accessories, and luxury home decor accents.",
+      "descriptionHi": "पारंपरिक पीतल के बर्तन, दस्तकारी सजावट और सुरुचिपूर्ण होम डेकोर।",
+      "image": "/assets/hero-editorial.jpg",
+      "productCount": 41,
+      "subcategories": [
+        "Brass Decor",
+        "Bedding",
+        "Tableware",
+        "Artisanal Accents"
+      ],
+      "subcategoriesHi": [
+        "पीतल सजावट",
+        "बिस्तर एवं चादरें",
+        "टेबलवेयर",
+        "शिल्प कलाकृतियाँ"
+      ]
+    },
+    {
+      "id": "cat-5",
+      "name": "Wholesale & Bulk",
+      "nameHi": "थोक एवं बड़ी मात्रा में आपूर्ति",
+      "slug": "wholesale-bulk",
+      "description": "Institutional supply, commercial fabrics, corporate supplies, and bulk packaging.",
+      "descriptionHi": "संस्थागत आपूर्ति, वाणिज्यिक वस्त्र, कॉर्पोरेट स्टेशनरी और थोक पैकेजिंग।",
+      "image": "/assets/category-stationery.jpg",
+      "productCount": 64,
+      "subcategories": [
+        "Institutional Textiles",
+        "Bulk Stationery",
+        "Custom Merchandise"
+      ],
+      "subcategoriesHi": [
+        "संस्थागत वस्त्र",
+        "थोक स्टेशनरी",
+        "कस्टम मर्चेंडाइज"
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-pm-001",
+      "name": "Rose Decorative Flower Puja Mala",
+      "nameHi": "गुलाब फूल पूजा माला",
+      "slug": "rose-decorative-flower-puja-mala",
+      "category": "Puja Mala",
+      "categoryHi": "पूजा माला",
+      "categorySlug": "puja-mala",
+      "subcategory": "Rose Flower Mala",
+      "subcategoryHi": "गुलाब माला",
+      "tagline": "Vibrant yellow and pink roses for daily worship",
+      "taglineHi": "नित्य पूजा व मंदिर शृंगार हेतु सुंदर गुलाब माला",
+      "description": "Hand-crafted artificial floral puja mala featuring vibrant yellow and deep pink rose blossoms strung with golden spacer accents, green calyx leaves, decorative cluster drops, and red ribbon hanging ties. Suitable for home mandir, daily worship, and festive rituals.",
+      "descriptionHi": "पीले व गहरे गुलाबी कृत्रिम गुलाब के फूलों से तैयार की गई सुंदर पूजा माला। सुनहरे मोती के जोड़ों, हरी पत्तियों, लटकन और लाल रिबन हैंगर के साथ। नित्य पूजा, गृह मंदिर एवं उत्सवों के लिए उपयुक्त।",
+      "images": [
+        "/assets/products/puja-mala-rose-yellow-pink.jpg"
+      ],
+      "image_en": "/assets/products/puja-mala-rose-yellow-pink.jpg",
+      "image_hi": "/assets/products/puja-mala-rose-yellow-pink.jpg",
+      "price": null,
+      "priceNote": "Price to be configured in Shopify Admin",
+      "specs": [
+        {
+          "label": "Design",
+          "value": "Dual-tone Rose with Golden Spacers"
+        },
+        {
+          "label": "Colours",
+          "value": "Yellow, Magenta Pink, Green & Gold"
+        },
+        {
+          "label": "Closure",
+          "value": "Red Ribbon Hanging Ties"
+        },
+        {
+          "label": "Occasion",
+          "value": "Puja, Home Mandir, Festivals"
+        }
+      ],
+      "specsHi": [
+        {
+          "label": "डिज़ाइन",
+          "value": "गुलाब फूल व सुनहरे मोती"
+        },
+        {
+          "label": "रंग",
+          "value": "पीला, गहरा गुलाबी, हरा व सुनहरा"
+        },
+        {
+          "label": "हैंगर",
+          "value": "लाल रिबन टाई"
+        },
+        {
+          "label": "उपयोग",
+          "value": "नित्य पूजा, गृह मंदिर, त्योहार"
+        }
+      ],
+      "features": [
+        "Vibrant yellow & deep pink artificial rose petals",
+        "Golden bead spacers and green leaf accents",
+        "Hanging bell drops at the garland ends",
+        "Protective clear sleeve packaging"
+      ],
+      "featuresHi": [
+        "खिले हुए पीले व गुलाबी कृत्रिम गुलाब के फूल",
+        "सुनहरे मोती और हरी पत्तियों का संयोजन",
+        "माला के निचले सिरे पर आकर्षक लटकन",
+        "सुरक्षित पारदर्शी पैकेजिंग"
+      ],
+      "benefits": [
+        "Durable non-wilting blooms for long-lasting mandir decor",
+        "Lightweight and easy to hang on deities and frames"
+      ],
+      "benefitsHi": [
+        "लंबे समय तक ताज़ा दिखने वाली टिकाऊ माला",
+        "मूर्तियों एवं फोटो फ्रेम पर आसानी से लगाने योग्य"
+      ],
+      "isFeatured": true,
+      "isPublished": true,
+      "isNew": true,
+      "inStock": true,
+      "minOrder": 1,
+      "sku": "BI-PM-001",
+      "seoTitle": "Rose Decorative Flower Puja Mala — Bhaya India",
+      "seoDescription": "Hand-crafted artificial rose flower puja mala in yellow and pink for home mandir and worship. Buy authentic garlands from Bhaya India.",
+      "createdAt": "2026-10-15T10:59:14.868Z",
+      "shopifyId": "gid://shopify/Product/15463934263389",
+      "shopifyCdnImages": [
+        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/puja-mala-rose-yellow-pink.jpg?v=1792062972"
+      ]
+    },
+    {
+      "id": "prod-pm-002",
+      "name": "Red Rose & Yellow Bud Decorative Puja Mala",
+      "nameHi": "लाल गुलाब व पीली कली पूजा माला",
+      "slug": "red-rose-yellow-bud-puja-mala",
+      "category": "Puja Mala",
+      "categoryHi": "पूजा माला",
+      "categorySlug": "puja-mala",
+      "subcategory": "Bud Flower Mala",
+      "subcategoryHi": "कली फूल माला",
+      "tagline": "Bold crimson roses paired with yellow floral buds",
+      "taglineHi": "लाल गुलाब व पीली कलियों का मनमोहक संगम",
+      "description": "Traditional layered flower garland combining bold crimson artificial roses, bright yellow tubular floral buds, green fern foliage accents, and hanging white floral drops with red ribbon hanging ties.",
+      "descriptionHi": "लाल गुलाब के फूलों, पीली कलियों, हरी पत्तियों और श्वेत लटकन से सुसज्जित पारंपरिक पूजा माला। नित्य पूजा एवं धार्मिक अनुष्ठानों के लिए।",
+      "images": [
+        "/assets/products/puja-mala-red-rose-yellow-bud.jpg"
+      ],
+      "image_en": "/assets/products/puja-mala-red-rose-yellow-bud.jpg",
+      "image_hi": "/assets/products/puja-mala-red-rose-yellow-bud.jpg",
+      "price": null,
+      "priceNote": "Price to be configured in Shopify Admin",
+      "specs": [
+        {
+          "label": "Design",
+          "value": "Crimson Rose with Tubular Bud Sections"
+        },
+        {
+          "label": "Colours",
+          "value": "Red, Lemon Yellow, Green & White"
+        },
+        {
+          "label": "Closure",
+          "value": "Red Ribbon Ties"
+        },
+        {
+          "label": "Occasion",
+          "value": "Puja, Religious Functions, Mandir"
+        }
+      ],
+      "specsHi": [
+        {
+          "label": "डिज़ाइन",
+          "value": "लाल गुलाब व पीली कली संयोजन"
+        },
+        {
+          "label": "रंग",
+          "value": "लाल, नींबू पीला, हरा व सफ़ेद"
+        },
+        {
+          "label": "हैंगर",
+          "value": "लाल रिबन टाई"
+        },
+        {
+          "label": "उपयोग",
+          "value": "पूजा, धार्मिक अनुष्ठान, मंदिर"
+        }
+      ],
+      "features": [
+        "Layered red roses and dense yellow floral buds",
+        "Fern-style green leaves for natural aesthetic",
+        "Hanging white floral tassels at the bottom"
+      ],
+      "featuresHi": [
+        "सघन लाल गुलाब और पीली कलियों की बुनावट",
+        "प्राकृतिक हरी पत्तियों की सजावट",
+        "निचले सिरे पर सफेद लटकन की लड़ियाँ"
+      ],
+      "benefits": [
+        "Bold festive contrast ideal for temple decoration",
+        "Maintains vibrant colors without fading"
+      ],
+      "benefitsHi": [
+        "मंदिर व मूर्तियों के लिए आकर्षक व चटख रंग",
+        "रंग नहीं उड़ते और लंबे समय तक सुरक्षित रहते हैं"
+      ],
+      "isFeatured": true,
+      "isPublished": true,
+      "isNew": true,
+      "inStock": true,
+      "minOrder": 1,
+      "sku": "BI-PM-002",
+      "seoTitle": "Red Rose & Yellow Bud Decorative Puja Mala — Bhaya India",
+      "seoDescription": "Traditional red rose and yellow bud garland for mandir and deity worship from Bhaya India.",
+      "createdAt": "2026-10-15T10:59:14.869Z",
+      "shopifyId": "gid://shopify/Product/15463934296157",
+      "shopifyCdnImages": [
+        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/puja-mala-red-rose-yellow-bud.jpg?v=1792062976"
+      ]
+    },
+    {
+      "id": "prod-pm-003",
+      "name": "Mint White & Blush Pink Rose Puja Mala",
+      "nameHi": "श्वेत-गुलाबी गुलाब पूजा माला",
+      "slug": "mint-white-blush-pink-rose-mala",
+      "category": "Puja Mala",
+      "categoryHi": "पूजा माला",
+      "categorySlug": "puja-mala",
+      "subcategory": "Rose Flower Mala",
+      "subcategoryHi": "गुलाब माला",
+      "tagline": "Serene pastel roses for peaceful temple ambiance",
+      "taglineHi": "सौम्य श्वेत व गुलाबी गुलाब से सजी पूजा माला",
+      "description": "Elegant soft pastel rose garland bunch featuring delicate mint-white and blush-pink layered fabric roses with green calyx leaves and red satin hanging ribbons.",
+      "descriptionHi": "श्वेत एवं हल्के गुलाबी कृत्रिम गुलाब के फूलों से गूंथी गई सौम्य पूजा माला। मंदिर सजावट और धार्मिक आयोजनों के लिए।",
+      "images": [
+        "/assets/products/puja-mala-mint-white-blush-rose.jpg"
+      ],
+      "image_en": "/assets/products/puja-mala-mint-white-blush-rose.jpg",
+      "image_hi": "/assets/products/puja-mala-mint-white-blush-rose.jpg",
+      "price": null,
+      "priceNote": "Price to be configured in Shopify Admin",
+      "specs": [
+        {
+          "label": "Design",
+          "value": "Layered Pastel Fabric Roses"
+        },
+        {
+          "label": "Colours",
+          "value": "Mint White, Blush Pink & Green"
+        },
+        {
+          "label": "Closure",
+          "value": "Red Ribbon Ties"
+        },
+        {
+          "label": "Occasion",
+          "value": "Daily Puja, Spiritual Events"
+        }
+      ],
+      "specsHi": [
+        {
+          "label": "डिज़ाइन",
+          "value": "हल्के रंगों के गुलाब फूल"
+        },
+        {
+          "label": "रंग",
+          "value": "श्वेत, हल्का गुलाबी व हरा"
+        },
+        {
+          "label": "हैंगर",
+          "value": "लाल रिबन टाई"
+        },
+        {
+          "label": "उपयोग",
+          "value": "नित्य पूजा, शांत मंदिर वातावरण"
+        }
+      ],
+      "features": [
+        "Soft petal texture with mint white and blush tones",
+        "Clean individual flower spacing with green sepals",
+        "Multiple garland bunch in clear protective wrap"
+      ],
+      "featuresHi": [
+        "मुलायम पंखुड़ियों वाली श्वेत व गुलाबी गुलाब माला",
+        "हरी पत्तियों के साथ सुंदर फूलों की बनावट",
+        "पारदर्शी सुरक्षात्मक पैकिंग"
+      ],
+      "benefits": [
+        "Soothes mandir visual space with serene pastel aesthetic",
+        "Washable and reusable across multiple rituals"
+      ],
+      "benefitsHi": [
+        "मंदिर में शांत व भक्तिमय वातावरण निर्मित करता है",
+        "धोने योग्य और पुनः उपयोग में लाने योग्य"
+      ],
+      "isFeatured": false,
+      "isPublished": true,
+      "isNew": true,
+      "inStock": true,
+      "minOrder": 1,
+      "sku": "BI-PM-003",
+      "seoTitle": "Mint White & Blush Pink Rose Puja Mala — Bhaya India",
+      "seoDescription": "Pastel white and blush pink rose garland for sacred worship and mandir decor from Bhaya India.",
+      "createdAt": "2026-10-15T10:59:14.869Z",
+      "shopifyId": "gid://shopify/Product/15463934328925",
+      "shopifyCdnImages": [
+        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/puja-mala-mint-white-blush-rose.jpg?v=1792062980"
+      ]
+    },
+    {
+      "id": "prod-bj-001",
+      "name": "Royal Blue & Pearl Deity Jaymala",
+      "nameHi": "नीली व श्वेत मोती भगवान जयमाला",
+      "slug": "royal-blue-pearl-bhagwan-jaymala",
+      "category": "Bhagwan Jaymala",
+      "categoryHi": "भगवान की जयमाला",
+      "categorySlug": "bhagwan-jaymala",
+      "subcategory": "Deity Shringar Mala",
+      "subcategoryHi": "मूर्ति शृंगार माला",
+      "tagline": "Lustrous blue crystal beads and ivory pearls for deity shringar",
+      "taglineHi": "देव मूर्तियों के शृंगार हेतु नीली व श्वेत मोती जयमाला",
+      "description": "Sacred decorative garland featuring rich metallic royal-blue beads with sparkling crystal stone rondelles, woven white pearls, fluted golden caps, pearl drop tassels, and red hanging ribbons. Ideal for deity shringar and religious festivities.",
+      "descriptionHi": "भगवान के शृंगार हेतु विशेष जयमाला। चमकदार रॉयल ब्लू मोती, श्वेत मोती, क्रिस्टल रिंग्स और सुनहरी कैप्स से सजी सुंदर माला।",
+      "images": [
+        "/assets/products/bhagwan-jaymala-royal-blue-pearl.jpg"
+      ],
+      "image_en": "/assets/products/bhagwan-jaymala-royal-blue-pearl.jpg",
+      "image_hi": "/assets/products/bhagwan-jaymala-royal-blue-pearl.jpg",
+      "price": null,
+      "priceNote": "Price to be configured in Shopify Admin",
+      "specs": [
+        {
+          "label": "Material Details",
+          "value": "Faux Pearls, Blue Beads, Crystal Rings"
+        },
+        {
+          "label": "Accent",
+          "value": "Gold-tone Bead Caps & Pearl Tassels"
+        },
+        {
+          "label": "Colours",
+          "value": "Royal Blue, Ivory White & Gold"
+        },
+        {
+          "label": "Use",
+          "value": "Bhagwan Jaymala, Deity Shringar"
+        }
+      ],
+      "specsHi": [
+        {
+          "label": "सामग्री",
+          "value": "मोती, नीले बीड्स, क्रिस्टल रिंग्स"
+        },
+        {
+          "label": "विशेषता",
+          "value": "सुनहरी कैप्स व मोती लटकन"
+        },
+        {
+          "label": "रंग",
+          "value": "रॉयल ब्लू, श्वेत व सुनहरा"
+        },
+        {
+          "label": "उपयोग",
+          "value": "भगवान जयमाला, मूर्ति शृंगार"
+        }
+      ],
+      "features": [
+        "Deep royal blue metallic beads alternating with crystal rings",
+        "Dense strands of lustrous ivory pearls",
+        "Pearl bell clusters at the lower drop",
+        "Red ribbon top loops for secure hanging"
+      ],
+      "featuresHi": [
+        "रॉयल ब्लू बीड्स और क्रिस्टल स्टोन रिंग्स",
+        "चमकदार श्वेत मोतियों की लड़ियाँ",
+        "निचले सिरे पर मोतियों के गुच्छेदार झुमके",
+        "टांगने के लिए लाल रिबन लूप"
+      ],
+      "benefits": [
+        "Elevates idol shringar during Janmashtami, Navratri and temple events",
+        "Pristine finish that withstands regular use"
+      ],
+      "benefitsHi": [
+        "त्योहारों व मंदिर में भगवान के शृंगार की शोभा बढ़ाता है",
+        "नियमित उपयोग में भी चमक बनाए रखता है"
+      ],
+      "isFeatured": true,
+      "isPublished": true,
+      "isNew": true,
+      "inStock": true,
+      "minOrder": 1,
+      "sku": "BI-BJ-001",
+      "seoTitle": "Royal Blue & Pearl Deity Jaymala — Bhaya India",
+      "seoDescription": "Exquisite royal blue and pearl jaymala for deity shringar and religious celebrations by Bhaya India.",
+      "createdAt": "2026-10-15T10:59:14.869Z",
+      "shopifyId": "gid://shopify/Product/15463934361693",
+      "shopifyCdnImages": [
+        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/bhagwan-jaymala-royal-blue-pearl.jpg?v=1792062984"
+      ]
+    },
+    {
+      "id": "prod-bj-002",
+      "name": "Marigold & Maroon Sacred Flower Jaymala",
+      "nameHi": "गेंदा व मैरून फूल भगवान जयमाला",
+      "slug": "marigold-maroon-flower-jaymala",
+      "category": "Bhagwan Jaymala",
+      "categoryHi": "भगवान की जयमाला",
+      "categorySlug": "bhagwan-jaymala",
+      "subcategory": "Marigold Sacred Mala",
+      "subcategoryHi": "गेंदा पुष्प माला",
+      "tagline": "Dense marigold ruffles and maroon bands for grand celebrations",
+      "taglineHi": "सुनहरे गेंदे व मैरून फूलों की सघन भगवान जयमाला",
+      "description": "Heavy layered sacred jaymala crafted with dense golden-yellow marigold ruffles, contrasting deep maroon floral bands, and white accent cluster drops with red hanging cords.",
+      "descriptionHi": "सुनहरे पीले गेंदे के फूलों और गहरे मैरून फूलों से निर्मित सघन व भव्य भगवान जयमाला। धार्मिक उत्सवों एवं मूर्ति शृंगार के लिए।",
+      "images": [
+        "/assets/products/bhagwan-jaymala-marigold-maroon.jpg"
+      ],
+      "image_en": "/assets/products/bhagwan-jaymala-marigold-maroon.jpg",
+      "image_hi": "/assets/products/bhagwan-jaymala-marigold-maroon.jpg",
+      "price": null,
+      "priceNote": "Price to be configured in Shopify Admin",
+      "specs": [
+        {
+          "label": "Design",
+          "value": "Tiered Marigold with Maroon Bands"
+        },
+        {
+          "label": "Colours",
+          "value": "Golden Yellow, Maroon & White"
+        },
+        {
+          "label": "Attachment",
+          "value": "Red Hanging Cords"
+        },
+        {
+          "label": "Use",
+          "value": "Temples, Deity Statues, Grand Pujas"
+        }
+      ],
+      "specsHi": [
+        {
+          "label": "डिज़ाइन",
+          "value": "गेंदा व मैरून फूलों की बहुस्तरीय बनावट"
+        },
+        {
+          "label": "रंग",
+          "value": "सुनहरा पीला, मैरून व सफ़ेद"
+        },
+        {
+          "label": "हैंगर",
+          "value": "लाल धागे व हैंगर"
+        },
+        {
+          "label": "उपयोग",
+          "value": "मंदिर, भगवान की मूर्तियाँ, महापूजा"
+        }
+      ],
+      "features": [
+        "High density ruffled marigold petal clusters",
+        "Deep wine maroon contrasting mid-sections",
+        "Hanging white floral tassels at the bottom base"
+      ],
+      "featuresHi": [
+        "घने गेंदा फूलों की पंखुड़ियों की बुनावट",
+        "गहरे मैरून रंग की कंट्रास्ट पट्टियाँ",
+        "निचले सिरे पर सफेद लटकन"
+      ],
+      "benefits": [
+        "Creates an authentic traditional temple aesthetic",
+        "Heavy look without the weight and perishable mess of fresh flowers"
+      ],
+      "benefitsHi": [
+        "पारंपरिक मंदिर और पूजा का भव्य स्वरूप प्रस्तुत करता है",
+        "ताजे फूलों की तरह मुरझाता नहीं और हमेशा तैयार रहता है"
+      ],
+      "isFeatured": false,
+      "isPublished": true,
+      "isNew": true,
+      "inStock": true,
+      "minOrder": 1,
+      "sku": "BI-BJ-002",
+      "seoTitle": "Marigold & Maroon Sacred Flower Jaymala — Bhaya India",
+      "seoDescription": "Traditional marigold and maroon jaymala for deities and temple celebrations by Bhaya India.",
+      "createdAt": "2026-10-15T10:59:14.869Z",
+      "shopifyId": "gid://shopify/Product/15463934394461",
+      "shopifyCdnImages": [
+        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/bhagwan-jaymala-marigold-maroon.jpg?v=1792062989"
+      ]
+    },
+    {
+      "id": "prod-bj-003",
+      "name": "Peach & Yellow Rose Religious Jaymala",
+      "nameHi": "पीच-गुलाबी व पीली गुलाब जयमाला",
+      "slug": "peach-yellow-rose-jaymala",
+      "category": "Bhagwan Jaymala",
+      "categoryHi": "भगवान की जयमाला",
+      "categorySlug": "bhagwan-jaymala",
+      "subcategory": "Pastel Jaymala",
+      "subcategoryHi": "पेस्टल जयमाला",
+      "tagline": "Harmonious peach and yellow roses with gold bead accents",
+      "taglineHi": "पीच और पीले गुलाब के फूलों की पावन जयमाला",
+      "description": "Auspicious dual-tone rose jaymala combining sunny yellow and soft peach-pink layered fabric roses with golden spacer beads, green leaves, and hanging bells in protective packaging.",
+      "descriptionHi": "पीली और पीच-गुलाबी गुलाब की पंखुड़ियों से निर्मित मनमोहक भगवान जयमाला। सुनहरे मोतियों और घंटियों के साथ।",
+      "images": [
+        "/assets/products/bhagwan-jaymala-peach-yellow-rose.jpg"
+      ],
+      "image_en": "/assets/products/bhagwan-jaymala-peach-yellow-rose.jpg",
+      "image_hi": "/assets/products/bhagwan-jaymala-peach-yellow-rose.jpg",
+      "price": null,
+      "priceNote": "Price to be configured in Shopify Admin",
+      "specs": [
+        {
+          "label": "Design",
+          "value": "Peach and Yellow Rose Floral Garland"
+        },
+        {
+          "label": "Colours",
+          "value": "Peach, Yellow, Gold & Green"
+        },
+        {
+          "label": "Details",
+          "value": "Golden Bead Bells at Terminal End"
+        }
+      ],
+      "specsHi": [
+        {
+          "label": "डिज़ाइन",
+          "value": "पीच व पीले गुलाब की माला"
+        },
+        {
+          "label": "रंग",
+          "value": "पीच, पीला, सुनहरा व हरा"
+        },
+        {
+          "label": "लटकन",
+          "value": "सुनहरे मोती व घंटियाँ"
+        }
+      ],
+      "features": [
+        "Layered artificial roses in pastel peach and bright yellow",
+        "Golden bead accents between blooms",
+        "Packaged in clean transparent hanging sleeve"
+      ],
+      "featuresHi": [
+        "पीच और चटख पीले गुलाब के फूलों की परतें",
+        "फूलों के बीच सुनहरे मोतियों के जोड़",
+        "स्वच्छ पारदर्शी हैंगिंग कवर में पैक"
+      ],
+      "benefits": [
+        "Ideal for religious giftings and temple offerings",
+        "Graceful color harmony suitable for all deity altars"
+      ],
+      "benefitsHi": [
+        "धार्मिक भेंट एवं मंदिर में अर्पण हेतु उत्तम",
+        "सभी प्रकार की देव वेदियों के लिए सौम्य रंग संयोजन"
+      ],
+      "isFeatured": false,
+      "isPublished": true,
+      "isNew": true,
+      "inStock": true,
+      "minOrder": 1,
+      "sku": "BI-BJ-003",
+      "seoTitle": "Peach & Yellow Rose Religious Jaymala — Bhaya India",
+      "seoDescription": "Dual-tone peach and yellow rose deity garland for religious occasions by Bhaya India.",
+      "createdAt": "2026-10-15T10:59:14.869Z",
+      "shopifyId": "gid://shopify/Product/15463934427229",
+      "shopifyCdnImages": [
+        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/bhagwan-jaymala-peach-yellow-rose.jpg?v=1792062992"
+      ]
+    },
+    {
+      "id": "prod-lfg-001",
+      "name": "Grand Multicolour Decorative Large Flower Garland",
+      "nameHi": "भव्य बहुरंगी बड़ा फूल माला",
+      "slug": "grand-multicolour-large-flower-garland",
+      "category": "Large Flower Garlands",
+      "categoryHi": "बड़ा फूल माला",
+      "categorySlug": "large-flower-garlands",
+      "subcategory": "Conical Festival Garlands",
+      "subcategoryHi": "उत्सव बड़ा माला",
+      "tagline": "Spectacular multicolour garland with gold crown apex",
+      "taglineHi": "सुनहरी छतरी व बहुरंगी फूलों वाला भव्य बड़ा माला",
+      "description": "Monumental grand decorative flower garland featuring a shimmering golden conical top canopy, layered cascades of crimson red, magenta pink, bright yellow flowers, green leaves, white spherical beads, and hanging floral tassels.",
+      "descriptionHi": "उत्सवों, द्वारों एवं विशेष समारोहों के लिए भव्य बड़ा फूल माला। सुनहरी छतरी, लाल, गुलाबी, पीले फूलों और मोतियों की आकर्षक लड़ियाँ।",
+      "images": [
+        "/assets/products/large-flower-garland-grand-multicolour.jpg"
+      ],
+      "image_en": "/assets/products/large-flower-garland-grand-multicolour.jpg",
+      "image_hi": "/assets/products/large-flower-garland-grand-multicolour.jpg",
+      "price": null,
+      "priceNote": "Price to be configured in Shopify Admin",
+      "specs": [
+        {
+          "label": "Type",
+          "value": "Grand Multicolour Large Flower Garland"
+        },
+        {
+          "label": "Top Finish",
+          "value": "Shimmering Golden Conical Tassels"
+        },
+        {
+          "label": "Elements",
+          "value": "Roses, Yellow Flowers, White Spheres, Green Leaves"
+        },
+        {
+          "label": "Occasion",
+          "value": "Festivals, Weddings, Doorways, Stage Decor"
+        }
+      ],
+      "specsHi": [
+        {
+          "label": "प्रकार",
+          "value": "भव्य बहुरंगी बड़ा फूल माला"
+        },
+        {
+          "label": "शीर्ष भाग",
+          "value": "सुनहरी कोनिकल झालर"
+        },
+        {
+          "label": "तत्व",
+          "value": "गुलाब, पीले फूल, सफेद मोती, हरी पत्तियाँ"
+        },
+        {
+          "label": "उपयोग",
+          "value": "त्योहार, विवाह द्वार, मंच सज्जा"
+        }
+      ],
+      "features": [
+        "Elaborate multi-tier construction with golden top crown",
+        "Vibrant tiers of red, yellow, magenta and green foliage",
+        "White spherical bead spacers between floral layers",
+        "Long hanging yellow and pink flower tassel drops"
+      ],
+      "featuresHi": [
+        "सुनहरी छतरी के साथ भव्य बहुस्तरीय बनावट",
+        "लाल, पीले, गुलाबी फूलों और हरी पत्तियों की परतें",
+        "फूलों के बीच सफेद गोल मोतियों की सजावट",
+        "नीचे की ओर झूलती हुई लंबी पुष्प लड़ियाँ"
+      ],
+      "benefits": [
+        "Creates an unforgettable grand entrance and ceremonial stage presence",
+        "Stands out in photographs and video recordings of events"
+      ],
+      "benefitsHi": [
+        "प्रवेश द्वार और मंच को भव्य व आकर्षक स्वरूप प्रदान करता है",
+        "विवाह व समारोह की तस्वीरों में अत्यंत सुंदर दिखाई देता है"
+      ],
+      "isFeatured": true,
+      "isPublished": true,
+      "isNew": true,
+      "inStock": true,
+      "minOrder": 1,
+      "sku": "BI-LG-001",
+      "seoTitle": "Grand Multicolour Large Flower Garland — Bhaya India",
+      "seoDescription": "Spectacular large multicolour flower garland with golden canopy for festivals and celebrations by Bhaya India.",
+      "createdAt": "2026-10-15T10:59:14.869Z",
+      "shopifyId": "gid://shopify/Product/15463934459997",
+      "shopifyCdnImages": [
+        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/large-flower-garland-grand-multicolour.jpg?v=1792062997"
+      ]
+    },
+    {
+      "id": "prod-lfg-002",
+      "name": "Grand Orange Marigold & Jasmine Bead Large Flower Garland",
+      "nameHi": "नारंगी गेंदा व चमेली बड़ा फूल माला",
+      "slug": "grand-orange-marigold-jasmine-large-garland",
+      "category": "Large Flower Garlands",
+      "categoryHi": "बड़ा फूल माला",
+      "categorySlug": "large-flower-garlands",
+      "subcategory": "Marigold Jasmine Garlands",
+      "subcategoryHi": "गेंदा चमेली बड़ा माला",
+      "tagline": "Vibrant orange marigold ruffles with cascading white jasmine beads",
+      "taglineHi": "नारंगी गेंदा व श्वेत लड़ियों का भव्य संगम",
+      "description": "Broad grand ceremonial garland featuring thick orange marigold ruffles, rich magenta floral borders, and dense cascading white jasmine-style beaded drop strands with red hanging ribbons.",
+      "descriptionHi": "नारंगी गेंदा, मैरून बॉर्डर और श्वेत मोगरा/चमेली शैली की घनी लड़ियों से निर्मित भव्य बड़ा फूल माला।",
+      "images": [
+        "/assets/products/large-flower-garland-orange-marigold-jasmine.jpg"
+      ],
+      "image_en": "/assets/products/large-flower-garland-orange-marigold-jasmine.jpg",
+      "image_hi": "/assets/products/large-flower-garland-orange-marigold-jasmine.jpg",
+      "price": null,
+      "priceNote": "Price to be configured in Shopify Admin",
+      "specs": [
+        {
+          "label": "Style",
+          "value": "Traditional Marigold & Jasmine Cascades"
+        },
+        {
+          "label": "Colors",
+          "value": "Bright Orange, Magenta, White & Green"
+        },
+        {
+          "label": "Closure",
+          "value": "Multiple Red Hanging Cords"
+        }
+      ],
+      "specsHi": [
+        {
+          "label": "शैली",
+          "value": "पारंपरिक गेंदा व चमेली लड़ियाँ"
+        },
+        {
+          "label": "रंग",
+          "value": "चटख नारंगी, मैरून, सफ़ेद व हरा"
+        },
+        {
+          "label": "हैंगर",
+          "value": "मजबूत लाल हैंगिंग धागे"
+        }
+      ],
+      "features": [
+        "Dense tiered orange marigold petal ruffles",
+        "Cascading white jasmine-style beaded strands",
+        "Magenta floral borders and lower foliage trim"
+      ],
+      "featuresHi": [
+        "घने नारंगी गेंदा फूलों की परतें",
+        "सफेद चमेली/मोगरा शैली की लटकती लड़ियाँ",
+        "मैरून फूलों का बॉर्डर और हरी पत्तियाँ"
+      ],
+      "benefits": [
+        "Traditional auspicious aesthetic ideal for Diwali, weddings, and welcome gates",
+        "Stays pristine and reusable year after year"
+      ],
+      "benefitsHi": [
+        "दीपावली, विवाह एवं स्वागत द्वार हेतु मांगलिक सजावट",
+        "हर वर्ष पुनः उपयोग में लाने योग्य"
+      ],
+      "isFeatured": false,
+      "isPublished": true,
+      "isNew": true,
+      "inStock": true,
+      "minOrder": 1,
+      "sku": "BI-LG-002",
+      "seoTitle": "Grand Orange Marigold & Jasmine Large Flower Garland — Bhaya India",
+      "seoDescription": "Grand orange marigold and cascading jasmine garland for celebrations by Bhaya India.",
+      "createdAt": "2026-10-15T10:59:14.869Z",
+      "shopifyId": "gid://shopify/Product/15463934525533",
+      "shopifyCdnImages": [
+        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/large-flower-garland-orange-marigold-jasmine.jpg?v=1792063001"
+      ]
+    },
+    {
+      "id": "prod-lfg-003",
+      "name": "Grand Tiered Festive Large Flower Garland",
+      "nameHi": "भव्य बहुस्तरीय उत्सव बड़ा फूल माला",
+      "slug": "grand-tiered-festive-large-garland",
+      "category": "Large Flower Garlands",
+      "categoryHi": "बड़ा फूल माला",
+      "categorySlug": "large-flower-garlands",
+      "subcategory": "Tiered Event Garlands",
+      "subcategoryHi": "बहुस्तरीय बड़ा माला",
+      "tagline": "Elaborate multi-layer floral garland with gold foil canopy",
+      "taglineHi": "सुनहरी छतरी व बहुस्तरीय फूलों का भव्य उत्सव माला",
+      "description": "Elaborate grand multi-tier hanging flower garland showcasing bright golden-yellow flower ruffles, rich purple-magenta floral tiers, dense green foliage trims, and multi-tier cascading floral pendants.",
+      "descriptionHi": "भव्य बहुस्तरीय उत्सव बड़ा फूल माला। पीले-सुनहरे, जामुनी-मैरून फूल एवं हरी पत्तियों के साथ शानदार सजावटी माला।",
+      "images": [
+        "/assets/products/large-flower-garland-grand-tiered-festive.jpg",
+        "/assets/products/large-flower-garland-orange-magenta-drape.jpg"
+      ],
+      "image_en": "/assets/products/large-flower-garland-grand-tiered-festive.jpg",
+      "image_hi": "/assets/products/large-flower-garland-grand-tiered-festive.jpg",
+      "price": null,
+      "priceNote": "Price to be configured in Shopify Admin",
+      "specs": [
+        {
+          "label": "Type",
+          "value": "Broad Arc Festive Large Garland"
+        },
+        {
+          "label": "Colours",
+          "value": "Yellow, Orange, Purple-Magenta, Green"
+        },
+        {
+          "label": "Apex",
+          "value": "Golden Ray Canopy Top"
+        }
+      ],
+      "specsHi": [
+        {
+          "label": "प्रकार",
+          "value": "विशाल बहुस्तरीय उत्सव माला"
+        },
+        {
+          "label": "रंग",
+          "value": "पीला, नारंगी, जामुनी-गुलाबी, हरा"
+        },
+        {
+          "label": "शीर्ष",
+          "value": "सुनहरी किरणों वाली छतरी"
+        }
+      ],
+      "features": [
+        "Broad expansive arc design covering large wall or entrance widths",
+        "Contrasting layers of warm orange, bright yellow, and deep purple blooms",
+        "Dense green foliage accents and dangling floral bells"
+      ],
+      "featuresHi": [
+        "चौड़े द्वारों व दीवारों को ढकने वाला विशाल अर्द्धचंद्राकार डिज़ाइन",
+        "नारंगी, पीले और गहरे जामुनी फूलों का सुंदर संतुलन",
+        "घनी हरी पत्तियाँ और नीचे झूलती पुष्प घंटियाँ"
+      ],
+      "benefits": [
+        "Transforms plain event walls into vibrant cultural focal points",
+        "High visual density that covers wide spaces effortlessly"
+      ],
+      "benefitsHi": [
+        "साधारण दीवार या प्रवेश द्वार को तुरंत उत्सवमय बना देता है",
+        "विशाल आकार जो दूर से ही ध्यान आकर्षित करता है"
+      ],
+      "isFeatured": false,
+      "isPublished": true,
+      "isNew": true,
+      "inStock": true,
+      "minOrder": 1,
+      "sku": "BI-LG-003",
+      "seoTitle": "Grand Tiered Festive Large Flower Garland — Bhaya India",
+      "seoDescription": "Grand multi-tier festive flower garland for event gates and celebrations by Bhaya India.",
+      "createdAt": "2026-10-15T10:59:14.869Z",
+      "shopifyId": "gid://shopify/Product/15463934558301",
+      "shopifyCdnImages": [
+        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/large-flower-garland-grand-tiered-festive.jpg?v=1792063007",
+        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/large-flower-garland-orange-magenta-drape.jpg?v=1792063007"
+      ]
+    },
+    {
+      "id": "prod-mm-001",
+      "name": "Emerald Green Crystal & Pearl Moti Mala",
+      "nameHi": "पन्ना हरा क्रिस्टल व मोती माला",
+      "slug": "emerald-green-crystal-pearl-moti-mala",
+      "category": "Moti Mala",
+      "categoryHi": "मोती माला",
+      "categorySlug": "moti-mala",
+      "subcategory": "Crystal Pearl Mala",
+      "subcategoryHi": "क्रिस्टल मोती माला",
+      "tagline": "Sparkling emerald green faceted crystal beads and ivory pearls",
+      "taglineHi": "पन्ना हरे क्रिस्टल और श्वेत मोतियों की मनोहारी माला",
+      "description": "Beautifully strung decorative garland pack featuring faceted emerald-green crystal beads, woven ivory white pearl layers, fluted golden spacers, and pearl cluster tassel bell drops with red ribbon ties.",
+      "descriptionHi": "पन्ना हरे कट-क्रिस्टल मोती, बुने हुए श्वेत मोती, सुनहरी कैप्स और मोतियों के झुमकेनुमा लटकन से सुसज्जित मोती माला।",
+      "images": [
+        "/assets/products/moti-mala-emerald-green-crystal-pearl.jpg"
+      ],
+      "image_en": "/assets/products/moti-mala-emerald-green-crystal-pearl.jpg",
+      "image_hi": "/assets/products/moti-mala-emerald-green-crystal-pearl.jpg",
+      "price": null,
+      "priceNote": "Price to be configured in Shopify Admin",
+      "specs": [
+        {
+          "label": "Beads",
+          "value": "Faceted Emerald Green Crystals & White Pearls"
+        },
+        {
+          "label": "Spacers",
+          "value": "Fluted Gold-Tone Caps"
+        },
+        {
+          "label": "End Detail",
+          "value": "Pearl Bell Clusters"
+        },
+        {
+          "label": "Closure",
+          "value": "Red Satin Ties"
+        }
+      ],
+      "specsHi": [
+        {
+          "label": "मोती",
+          "value": "कट-क्रिस्टल हरा पन्ना बीड्स व श्वेत मोती"
+        },
+        {
+          "label": "जोड़",
+          "value": "सुनहरी नक्काशीदार कैप्स"
+        },
+        {
+          "label": "लटकन",
+          "value": "मोतियों के झुमकेनुमा गुच्छे"
+        },
+        {
+          "label": "हैंगर",
+          "value": "लाल साटन रिबन"
+        }
+      ],
+      "features": [
+        "Emerald green faceted crystals that catch light from every angle",
+        "Double strands of woven ivory pearls",
+        "Pearl pom-pom cluster bells at the end",
+        "Sold as protective multi-garland pack"
+      ],
+      "featuresHi": [
+        "रोशनी में चमकने वाले पन्ना हरे कट-क्रिस्टल",
+        "बुने हुए श्वेत मोतियों की दोहरी लड़ियाँ",
+        "निचले सिरे पर मोतियों के झुमके",
+        "सुरक्षित मल्टी-पैक में उपलब्ध"
+      ],
+      "benefits": [
+        "Adds royal opulence to religious ceremonies, deity altars, and festive decor",
+        "Smooth pearl finish with zero rough edges"
+      ],
+      "benefitsHi": [
+        "पूजा स्थल एवं मूर्तियों को शाही व भव्य आकर्षण प्रदान करता है",
+        "चिकनी फिनिशिंग और उच्च गुणवत्ता"
+      ],
+      "isFeatured": true,
+      "isPublished": true,
+      "isNew": true,
+      "inStock": true,
+      "minOrder": 1,
+      "sku": "BI-MM-001",
+      "seoTitle": "Emerald Green Crystal & Pearl Moti Mala — Bhaya India",
+      "seoDescription": "Exquisite emerald green crystal and pearl moti mala for decor and worship by Bhaya India.",
+      "createdAt": "2026-10-15T10:59:14.869Z",
+      "shopifyId": "gid://shopify/Product/15463934591069",
+      "shopifyCdnImages": [
+        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/moti-mala-emerald-green-crystal-pearl.jpg?v=1792063011"
+      ]
+    },
+    {
+      "id": "prod-mm-002",
+      "name": "Antique Gold Filigree & Pearl Moti Mala",
+      "nameHi": "जालीदार सुनहरी व मोती माला",
+      "slug": "antique-gold-filigree-pearl-moti-mala",
+      "category": "Moti Mala",
+      "categoryHi": "मोती माला",
+      "categorySlug": "moti-mala",
+      "subcategory": "Antique Filigree Mala",
+      "subcategoryHi": "जालीदार मोती माला",
+      "tagline": "Intricate antique gold filigree mesh cage beads with lustrous pearls",
+      "taglineHi": "बारीक जालीदार सुनहरे मोती और श्वेत मोतियों का अद्भुत शिल्प",
+      "description": "Exquisite decorative garland bundle featuring intricate hollow antique gold filigree mesh cage beads, cream pearls, fluted golden caps, and pearl drop cluster bells with red ribbon ties.",
+      "descriptionHi": "बारीक जालीदार सुनहरे बीड्स (Filigree), क्रीम मोती और सुनहरी घंटियों से तैयार की गई पारंपरिक मोती माला।",
+      "images": [
+        "/assets/products/moti-mala-antique-gold-filigree-pearl.jpg"
+      ],
+      "image_en": "/assets/products/moti-mala-antique-gold-filigree-pearl.jpg",
+      "image_hi": "/assets/products/moti-mala-antique-gold-filigree-pearl.jpg",
+      "price": null,
+      "priceNote": "Price to be configured in Shopify Admin",
+      "specs": [
+        {
+          "label": "Craft Detail",
+          "value": "Hollow Gold Mesh Filigree Beads"
+        },
+        {
+          "label": "Pearls",
+          "value": "Cream White Round Pearls"
+        },
+        {
+          "label": "Finishing",
+          "value": "Fluted Caps & Pearl Cluster Drops"
+        }
+      ],
+      "specsHi": [
+        {
+          "label": "शिल्प",
+          "value": "जालीदार खोखले सुनहरे बीड्स"
+        },
+        {
+          "label": "मोती",
+          "value": "क्रीम श्वेत गोल मोती"
+        },
+        {
+          "label": "लटकन",
+          "value": "सुनहरी कैप्स व मोतियों के झुमके"
+        }
+      ],
+      "features": [
+        "Intricate metal wire mesh filigree beads (जालीदार मोती)",
+        "Alternating lustrous white pearls and golden fluted rings",
+        "Pearl bell tassels at the bottom terminal"
+      ],
+      "featuresHi": [
+        "बारीक नक्काशीदार सुनहरे जालीदार मोती",
+        "श्वेत मोतियों और सुनहरी रिंग्स का क्रमबद्ध क्रम",
+        "निचले सिरे पर मोतियों के झुमकेनुमा लटकन"
+      ],
+      "benefits": [
+        "Heirloom-style metallic elegance that never goes out of style",
+        "Versatile application for mandir idols, wedding safas, and festive gifts"
+      ],
+      "benefitsHi": [
+        "पारंपरिक विरासती शैली जो कभी पुरानी नहीं होती",
+        "मंदिर की मूर्तियों, साफे और त्योहारों पर उपहार हेतु उपयुक्त"
+      ],
+      "isFeatured": false,
+      "isPublished": true,
+      "isNew": true,
+      "inStock": true,
+      "minOrder": 1,
+      "sku": "BI-MM-002",
+      "seoTitle": "Antique Gold Filigree & Pearl Moti Mala — Bhaya India",
+      "seoDescription": "Traditional antique gold filigree mesh and pearl garland from Bhaya India.",
+      "createdAt": "2026-10-15T10:59:14.869Z",
+      "shopifyId": "gid://shopify/Product/15463934623837",
+      "shopifyCdnImages": [
+        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/moti-mala-antique-gold-filigree-pearl.jpg?v=1792063016"
+      ]
+    },
+    {
+      "id": "prod-sm-001",
+      "name": "Royal Peacock Brooch Pearl & Maroon Sherwani Mala",
+      "nameHi": "राजसी मोर ब्रोच मोती व मैरून शेरवानी माला",
+      "slug": "royal-peacock-brooch-sherwani-mala",
+      "category": "Sherwani Mala",
+      "categoryHi": "शेरवानी माला",
+      "categorySlug": "sherwani-mala",
+      "subcategory": "Peacock Brooch Sherwani Mala",
+      "subcategoryHi": "मोर ब्रोच शेरवानी माला",
+      "tagline": "4-strand groom sherwani mala with ornate gold peacock brooch",
+      "taglineHi": "दूल्हे की शेरवानी हेतु 4-लड़ी मोर ब्रोच शेरवानी माला",
+      "description": "4-strand royal groom sherwani garland featuring high-lustre ivory pearls and deep maroon beads, accented with an ornate gold-plated peacock side brooch encrusted with sparkling crystal rhinestones and an adjustable gold cord.",
+      "descriptionHi": "दूल्हे की शेरवानी हेतु 4-लड़ी राजसी माला। श्वेत व मैरून मोती, बारीक नक्काशीदार मोर ब्रोच और चमकीले पत्थरों के साथ।",
+      "images": [
+        "/assets/products/sherwani-mala-peacock-brooch-detail.jpg",
+        "/assets/products/sherwani-mala-peacock-brooch-pack.jpg"
+      ],
+      "image_en": "/assets/products/sherwani-mala-peacock-brooch-detail.jpg",
+      "image_hi": "/assets/products/sherwani-mala-peacock-brooch-detail.jpg",
+      "price": null,
+      "priceNote": "Price to be configured in Shopify Admin",
+      "specs": [
+        {
+          "label": "Strands",
+          "value": "4 Multi-Layer Cascading Strands"
+        },
+        {
+          "label": "Brooch Motif",
+          "value": "Royal Peacock Studded with White Crystals"
+        },
+        {
+          "label": "Beads",
+          "value": "High-Lustre Ivory Pearls & Maroon Accents"
+        },
+        {
+          "label": "Closure",
+          "value": "Adjustable Gold Dori (Cord) with Tassel"
+        }
+      ],
+      "specsHi": [
+        {
+          "label": "लड़ियाँ",
+          "value": "4 बहुस्तरीय लड़ियाँ"
+        },
+        {
+          "label": "ब्रोच",
+          "value": "क्रिस्टल जड़ा हुआ सुनहरी मोर ब्रोच"
+        },
+        {
+          "label": "मोती",
+          "value": "चमकदार श्वेत मोती व मैरून बीड्स"
+        },
+        {
+          "label": "डोरी",
+          "value": "एडजस्टेबल सुनहरी डोरी"
+        }
+      ],
+      "features": [
+        "Authentic asymmetrical royal side brooch with peacock carving",
+        "Tiered 4-strand drape tailored for groom sherwanis and achkans",
+        "Contrasting maroon and ivory pearls with fluted gold caps",
+        "Packaged in retail presentation card with model groom display"
+      ],
+      "featuresHi": [
+        "बाईं ओर नक्काशीदार मोर ब्रोच का शाही डिज़ाइन",
+        "शेरवानी और अचकन के लिए विशेष रूप से तैयार 4-लड़ी ड्रेप",
+        "मैरून और श्वेत मोतियों के साथ सुनहरी कैप्स",
+        "मॉडल ग्रूम डिस्प्ले वाले सुंदर कार्ड पर पैक"
+      ],
+      "benefits": [
+        "Completes the traditional Indian groom wedding attire with aristocratic elegance",
+        "Adjustable gold dori fits all collar heights and neck measurements comfortably"
+      ],
+      "benefitsHi": [
+        "वर की शेरवानी को संपूर्ण व राजसी स्वरूप प्रदान करता है",
+        "एडजस्टेबल डोरी सभी साइज़ के कॉलर व गले पर आराम से फिट होती है"
+      ],
+      "isFeatured": true,
+      "isPublished": true,
+      "isNew": true,
+      "inStock": true,
+      "minOrder": 1,
+      "sku": "BI-SM-001",
+      "seoTitle": "Royal Peacock Brooch Sherwani Mala — Bhaya India",
+      "seoDescription": "Exquisite 4-strand royal peacock brooch groom sherwani mala with maroon and pearl beads by Bhaya India.",
+      "createdAt": "2026-10-15T10:59:14.869Z",
+      "shopifyId": "gid://shopify/Product/15463934656605",
+      "shopifyCdnImages": [
+        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/sherwani-mala-peacock-brooch-detail.jpg?v=1792063021",
+        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/sherwani-mala-peacock-brooch-pack.jpg?v=1792063021"
+      ]
+    },
+    {
+      "id": "prod-sm-002",
+      "name": "Royal Ruby Brooch & Gold Bead Sherwani Mala",
+      "nameHi": "रूबी ब्रोच व सुनहरे मोती शेरवानी माला",
+      "slug": "royal-ruby-brooch-sherwani-mala",
+      "category": "Sherwani Mala",
+      "categoryHi": "शेरवानी माला",
+      "categorySlug": "sherwani-mala",
+      "subcategory": "Ruby Brooch Sherwani Mala",
+      "subcategoryHi": "रूबी ब्रोच शेरवानी माला",
+      "tagline": "Multi-tier groom necklace with ruby-red brooch and gold beads",
+      "taglineHi": "रूबी-लाल स्टोन ब्रोच व सुनहरे मोतियों वाला राजसी दूल्हा हार",
+      "description": "Multi-layer royal groom sherwani garland combining ivory pearls, golden spherical beads, cascading maroon bead accents, and an elaborate circular rhinestone halo side brooch with an oval ruby-red centre gem.",
+      "descriptionHi": "दूल्हे की शेरवानी के लिए मल्टी-लेयर शाही माला। सुनहरे मोती, श्वेत मोती और लाल रूबी स्टोन ब्रोच के साथ।",
+      "images": [
+        "/assets/products/sherwani-mala-ruby-brooch-detail.jpg",
+        "/assets/products/sherwani-mala-ruby-brooch-pack.jpg"
+      ],
+      "image_en": "/assets/products/sherwani-mala-ruby-brooch-detail.jpg",
+      "image_hi": "/assets/products/sherwani-mala-ruby-brooch-detail.jpg",
+      "price": null,
+      "priceNote": "Price to be configured in Shopify Admin",
+      "specs": [
+        {
+          "label": "Brooch",
+          "value": "Circular Rhinestone Halo with Oval Ruby-Red Gem"
+        },
+        {
+          "label": "Strands",
+          "value": "4 Draped Pearl & Gold Bead Tiers"
+        },
+        {
+          "label": "Colours",
+          "value": "Ivory Pearl, Gold, Ruby Red & Maroon"
+        },
+        {
+          "label": "Fastening",
+          "value": "Adjustable Gold Cord"
+        }
+      ],
+      "specsHi": [
+        {
+          "label": "ब्रोच",
+          "value": "क्रिस्टल रिंग व अंडाकार लाल रूबी स्टोन ब्रोच"
+        },
+        {
+          "label": "लड़ियाँ",
+          "value": "4 लेयर्ड मोती व सुनहरे बीड्स"
+        },
+        {
+          "label": "रंग",
+          "value": "श्वेत मोती, सुनहरा, रूबी लाल व मैरून"
+        },
+        {
+          "label": "डोरी",
+          "value": "एडजस्टेबल सुनहरी डोरी"
+        }
+      ],
+      "features": [
+        "Striking ruby-red oval gem centerpiece surrounded by crystal pavé halo",
+        "Sections of polished gold sphere beads alternating with white pearls",
+        "Cascading maroon bead accents at the base tiers",
+        "Available both unpacked and on 'ABC दुल्हा हार' presentation card"
+      ],
+      "featuresHi": [
+        "लाल रूबी स्टोन के चारों ओर चमकीले क्रिस्टल का घेरा",
+        "चमकदार सुनहरे गोल मोती और श्वेत मोतियों का क्रम",
+        "निचली लड़ियों पर मैरून मोतियों की सुंदर सजावट",
+        "विवाह उपहार एवं शेरवानी के लिए उत्तम"
+      ],
+      "benefits": [
+        "Ruby red jewel provides a regal color accent matching bridal lehenga tones",
+        "Comfortable weight distribution across shoulders"
+      ],
+      "benefitsHi": [
+        "लाल रूबी स्टोन दुल्हन के लहंगे के साथ मैचिंग लुक देता है",
+        "गले पर हल्का व आरामदायक"
+      ],
+      "isFeatured": true,
+      "isPublished": true,
+      "isNew": true,
+      "inStock": true,
+      "minOrder": 1,
+      "sku": "BI-SM-002",
+      "seoTitle": "Royal Ruby Brooch & Gold Bead Sherwani Mala — Bhaya India",
+      "seoDescription": "Regal ruby-red brooch and gold pearl groom sherwani mala by Bhaya India.",
+      "createdAt": "2026-10-15T10:59:14.869Z",
+      "shopifyId": "gid://shopify/Product/15463934689373",
+      "shopifyCdnImages": [
+        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/sherwani-mala-ruby-brooch-detail.jpg?v=1792063027",
+        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/sherwani-mala-ruby-brooch-pack.jpg?v=1792063027"
+      ]
+    },
+    {
+      "id": "prod-dg-001",
+      "name": "Kundan Floral Brooch Maroon-Pearl Dulha Haar",
+      "nameHi": "कुंदन फ्लोरल ब्रोच मैरून-मोती दूल्हा हार",
+      "slug": "kundan-floral-brooch-dulha-haar",
+      "category": "Groom Garland",
+      "categoryHi": "दूल्हा माला",
+      "categorySlug": "groom-garland",
+      "subcategory": "Kundan Brooch Dulha Haar",
+      "subcategoryHi": "कुंदन ब्रोच दूल्हा हार",
+      "tagline": "4-strand groom garland with gold Kundan leaf brooch",
+      "taglineHi": "कुंदन की पत्तियों वाले ब्रोच से सजा 4-लड़ी दूल्हा हार",
+      "description": "4-strand groom garland featuring ivory white pearls, cascading lower maroon bead drape, gold floral spacer beads, and an asymmetrical gold Kundan floral-leaf brooch studded with clear teardrop stones.",
+      "descriptionHi": "4-लड़ी दूल्हा हार, श्वेत मोती और मैरून मोतियों की भव्य लटकन के साथ। बाईं ओर आकर्षक कुंदन पत्ती-फूल ब्रोच।",
+      "images": [
+        "/assets/products/dulha-haar-kundan-floral-brooch.jpg"
+      ],
+      "image_en": "/assets/products/dulha-haar-kundan-floral-brooch.jpg",
+      "image_hi": "/assets/products/dulha-haar-kundan-floral-brooch.jpg",
+      "price": null,
+      "priceNote": "Price to be configured in Shopify Admin",
+      "specs": [
+        {
+          "label": "Brooch Style",
+          "value": "Kundan Leaf & Teardrop Floral Motif"
+        },
+        {
+          "label": "Strand Count",
+          "value": "4-Strand Layered Cascade"
+        },
+        {
+          "label": "Packaging",
+          "value": "Mounted on ABC दुल्हा हार Presentation Card"
+        }
+      ],
+      "specsHi": [
+        {
+          "label": "ब्रोच शैली",
+          "value": "कुंदन पत्ती व फूल मोटिफ"
+        },
+        {
+          "label": "लड़ियाँ",
+          "value": "4-लड़ी लेयर्ड बनावट"
+        },
+        {
+          "label": "पैकेजिंग",
+          "value": "'ABC दुल्हा हार' कार्ड पर माउंटेड"
+        }
+      ],
+      "features": [
+        "Traditional Kundan-style floral brooch with clear faceted stones",
+        "Ivory pearl upper tiers with deep maroon lower drape",
+        "Gold ribbed spacer elements",
+        "Adjustable gold thread fastening"
+      ],
+      "featuresHi": [
+        "पारंपरिक कुंदन शैली का फ्लोरल ब्रोच",
+        "ऊपरी भाग में श्वेत मोती और नीचे मैरून मोतियों की लड़ियाँ",
+        "सुनहरे बीड्स के जोड़",
+        "एडजस्टेबल सुनहरी डोरी"
+      ],
+      "benefits": [
+        "Complements heavy zardozi embroidered wedding sherwanis",
+        "Ready-to-wear retail card presentation ideal for gifting"
+      ],
+      "benefitsHi": [
+        "जरदोजी व भारी कढ़ाई वाली शेरवानी पर बेहद आकर्षक लगता है",
+        "उपहार देने के लिए सुंदर कार्ड पैकिंग में तैयार"
+      ],
+      "isFeatured": false,
+      "isPublished": true,
+      "isNew": true,
+      "inStock": true,
+      "minOrder": 1,
+      "sku": "BI-DG-001",
+      "seoTitle": "Kundan Floral Brooch Dulha Haar — Bhaya India",
+      "seoDescription": "Exquisite Kundan floral brooch groom garland with pearl and maroon beads from Bhaya India.",
+      "createdAt": "2026-10-15T10:59:14.869Z",
+      "shopifyId": "gid://shopify/Product/15463934722141",
+      "shopifyCdnImages": [
+        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/dulha-haar-kundan-floral-brooch.jpg?v=1792063032"
+      ]
+    },
+    {
+      "id": "prod-dg-002",
+      "name": "Golden Heart Pendant Tiered Pearl Dulha Haar",
+      "nameHi": "गोल्डन हार्ट लटकन बहुस्तरीय मोती दूल्हा हार",
+      "slug": "golden-heart-pendant-dulha-haar",
+      "category": "Groom Garland",
+      "categoryHi": "दूल्हा माला",
+      "categorySlug": "groom-garland",
+      "subcategory": "Heart Pendant Haar",
+      "subcategoryHi": "हार्ट पेंडेंट दूल्हा हार",
+      "tagline": "4-tier layered pearl garland adorned with gold heart pendants",
+      "taglineHi": "सुनहरे हार्ट पेंडेंट से सुसज्जित 4-लड़ी मोती दूल्हा हार",
+      "description": "Multi-tiered layered groom necklace featuring four cascading pearl strands accented with golden ball beads, each lower tier embellished with an ornate hanging gold heart-shaped pendant with pearl centre inlay.",
+      "descriptionHi": "बहुस्तरीय दूल्हा हार, जिसमें प्रत्येक लड़ी पर सुंदर सुनहरे हार्ट पेंडेंट और श्वेत मोती जड़े हैं।",
+      "images": [
+        "/assets/products/dulha-haar-golden-heart-pendant.jpg"
+      ],
+      "image_en": "/assets/products/dulha-haar-golden-heart-pendant.jpg",
+      "image_hi": "/assets/products/dulha-haar-golden-heart-pendant.jpg",
+      "price": null,
+      "priceNote": "Price to be configured in Shopify Admin",
+      "specs": [
+        {
+          "label": "Pendants",
+          "value": "4 Cascading Gold Heart Charms with Pearl Inlay"
+        },
+        {
+          "label": "Tiers",
+          "value": "4 Graduated Length Pearl Strands"
+        },
+        {
+          "label": "Spacers",
+          "value": "Polished Gold Ball Beads"
+        }
+      ],
+      "specsHi": [
+        {
+          "label": "पेंडेंट",
+          "value": "4 लटकते हुए सुनहरे हार्ट पेंडेंट"
+        },
+        {
+          "label": "लड़ियाँ",
+          "value": "4 बहुस्तरीय मोती की लड़ियाँ"
+        },
+        {
+          "label": "जोड़",
+          "value": "पॉलिश किए गए सुनहरे गोल मोती"
+        }
+      ],
+      "features": [
+        "Unique heart-shaped golden drop pendants on each layer",
+        "Evenly spaced white pearls and gold metal beads",
+        "Symmetrical cascade creating balanced groom necklines",
+        "Packaged on traditional groom display card"
+      ],
+      "featuresHi": [
+        "प्रत्येक लड़ी पर अनोखे सुनहरे दिल के आकार के पेंडेंट",
+        "श्वेत मोतियों और सुनहरे बीड्स का संतुलित संयोजन",
+        "गले पर सममित व संतुलित ड्रेप",
+        "पारंपरिक दुल्हा हार डिस्प्ले कार्ड पर पैक"
+      ],
+      "benefits": [
+        "Symbolizes wedding love and celebration with delicate heart charms",
+        "Youthful modern twist on traditional groom jewellery"
+      ],
+      "benefitsHi": [
+        "विवाह के पावन प्रेम का प्रतीक सुंदर हार्ट मोटिफ",
+        "पारंपरिक आभूषण में आधुनिक व मनमोहक डिज़ाइन"
+      ],
+      "isFeatured": false,
+      "isPublished": true,
+      "isNew": true,
+      "inStock": true,
+      "minOrder": 1,
+      "sku": "BI-DG-002",
+      "seoTitle": "Golden Heart Pendant Tiered Pearl Dulha Haar — Bhaya India",
+      "seoDescription": "Unique 4-tier pearl groom garland with cascading gold heart pendants from Bhaya India.",
+      "createdAt": "2026-10-15T10:59:14.869Z",
+      "shopifyId": "gid://shopify/Product/15463934754909",
+      "shopifyCdnImages": [
+        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/dulha-haar-golden-heart-pendant.jpg?v=1792063036"
+      ]
+    },
+    {
+      "id": "prod-dg-003",
+      "name": "Multi-Tier Pearl Dulha Haar with Side Ruby Brooch",
+      "nameHi": "मल्टी-लेयर मोती व रूबी ब्रोच दूल्हा हार",
+      "slug": "multi-tier-pearl-ruby-brooch-dulha-haar",
+      "category": "Groom Garland",
+      "categoryHi": "दूल्हा माला",
+      "categorySlug": "groom-garland",
+      "subcategory": "Multi-Tier Pearl Haar",
+      "subcategoryHi": "मल्टी-टियर मोती हार",
+      "tagline": "5-tier draped pearl garland with cylindrical gold beads & ruby brooch",
+      "taglineHi": "5-लड़ी मोती हार, सुनहरे बेलनाकार मोती व रूबी ब्रोच के साथ",
+      "description": "5-tier draped groom necklace with lustrous white pearls, cylindrical textured gold spacer barrels, and an ornate circular crystal brooch with oval red centre stone.",
+      "descriptionHi": "5-लड़ी भव्य दूल्हा हार, बारीक नक्काशीदार सुनहरे बेलनाकार बीड्स और लाल स्टोन वाले गोलाकार क्रिस्टल ब्रोच के साथ।",
+      "images": [
+        "/assets/products/dulha-haar-multi-tier-pearl-ruby.jpg"
+      ],
+      "image_en": "/assets/products/dulha-haar-multi-tier-pearl-ruby.jpg",
+      "image_hi": "/assets/products/dulha-haar-multi-tier-pearl-ruby.jpg",
+      "price": null,
+      "priceNote": "Price to be configured in Shopify Admin",
+      "specs": [
+        {
+          "label": "Strand Count",
+          "value": "5 Cascading Pearl Layers"
+        },
+        {
+          "label": "Spacers",
+          "value": "Cylindrical Textured Gold Barrels"
+        },
+        {
+          "label": "Brooch",
+          "value": "Rhinestone Halo with Red Centre Gem"
+        }
+      ],
+      "specsHi": [
+        {
+          "label": "लड़ियाँ",
+          "value": "5 बहुस्तरीय मोती लड़ियाँ"
+        },
+        {
+          "label": "जोड़",
+          "value": "बेलनाकार टेक्सचर्ड सुनहरे बीड्स"
+        },
+        {
+          "label": "ब्रोच",
+          "value": "क्रिस्टल हेलो व लाल स्टोन"
+        }
+      ],
+      "features": [
+        "Extensive 5-strand graduated pearl cascade for royal volume",
+        "Textured cylindrical gold barrel spacers",
+        "Side crystal brooch providing royal focal point",
+        "Mounted on 'ABC दुल्हा हार' display card"
+      ],
+      "featuresHi": [
+        "5-लड़ी सघन व भव्य मोतियों का ड्रेप",
+        "सुनहरे बेलनाकार टेक्सचर्ड बीड्स",
+        "बाईं ओर लाल स्टोन वाला चमकदार क्रिस्टल ब्रोच",
+        "'ABC दुल्हा हार' डिस्प्ले कार्ड पर माउंटेड"
+      ],
+      "benefits": [
+        "Provides rich full-chest coverage ideal for high-neck sherwanis",
+        "Heavy traditional bridal look without excessive weight"
+      ],
+      "benefitsHi": [
+        "शेरवानी के सीने पर पूरा व भव्य भराव प्रदान करता है",
+        "देखने में अत्यंत भारी पर पहनने में हल्का व आरामदायक"
+      ],
+      "isFeatured": false,
+      "isPublished": true,
+      "isNew": true,
+      "inStock": true,
+      "minOrder": 1,
+      "sku": "BI-DG-003",
+      "seoTitle": "Multi-Tier Pearl Dulha Haar with Ruby Brooch — Bhaya India",
+      "seoDescription": "Royal 5-tier pearl groom garland with cylindrical gold spacers and ruby brooch from Bhaya India.",
+      "createdAt": "2026-10-15T10:59:14.869Z",
+      "shopifyId": "gid://shopify/Product/15463934787677",
+      "shopifyCdnImages": [
+        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/dulha-haar-multi-tier-pearl-ruby.jpg?v=1792063040"
+      ]
+    }
+  ],
+  "enquiries": [
+    {
+      "name": "Test Client",
+      "mobile": "+91 98765 00000",
+      "email": "test@example.com",
+      "productName": "Premium Banarasi Silk Saree",
+      "productId": "",
+      "quantity": 2,
+      "message": "Testing commercial inquiry submission via API",
+      "id": "enq-1789101822013",
+      "status": "New",
+      "createdAt": "2026-09-11T04:43:42.013Z"
+    },
+    {
+      "id": "enq-101",
+      "name": "Rajesh Sharma",
+      "mobile": "+91 98200 12345",
+      "email": "rajesh@sharmatraders.in",
+      "productName": "Royal Heritage Festival Hamper",
+      "productId": "prod-003",
+      "quantity": 50,
+      "message": "Looking for 50 corporate Diwali gift hampers with custom company logo embossing. Need delivery in Mumbai by next month.",
+      "status": "In Progress",
+      "createdAt": "2026-09-09T04:16:21.960Z"
+    },
+    {
+      "id": "enq-102",
+      "name": "Pooja Verma",
+      "mobile": "+91 97111 89012",
+      "email": "pooja.v@delhidesigns.org",
+      "productName": "Premium Banarasi Silk Saree",
+      "productId": "prod-001",
+      "quantity": 5,
+      "message": "Interested in sample swatches for bridal orders. Please confirm if red and emerald green colourways are available.",
+      "status": "New",
+      "createdAt": "2026-09-11T00:16:21.960Z"
+    }
+  ],
+  "orders": [
+    {
+      "customerName": "Automated Tester",
+      "email": "test@bhayaindia.com",
+      "phone": "+91 9988776655",
+      "address": "123 Heritage Lane",
+      "city": "Lucknow",
+      "state": "Uttar Pradesh",
+      "pincode": "226001",
+      "items": [
+        {
+          "productId": "prod-001",
+          "name": "Test Banarasi Silk Saree",
+          "price": 3800,
+          "quantity": 1,
+          "image": "/assets/category-textiles.jpg"
+        }
+      ],
+      "totalAmount": 3800,
+      "paymentMethod": "UPI",
+      "paymentStatus": "Pending",
+      "orderStatus": "Shipped",
+      "orderType": "standard",
+      "id": "ORD-163317",
+      "history": [
+        {
+          "timestamp": "2026-10-21T10:32:40.144Z",
+          "status": "Order Placed",
+          "note": "Order placed via UPI"
+        },
+        {
+          "timestamp": "2026-10-21T10:32:40.156Z",
+          "status": "Shipped",
+          "note": "Dispatched via surface express"
+        }
+      ],
+      "createdAt": "2026-10-21T10:32:40.144Z",
+      "updatedAt": "2026-10-21T10:32:40.156Z",
+      "carrier": "Delhivery",
+      "trackingNumber": "DEL123456789IN",
+      "trackingUrl": "https://www.delhivery.com/track/package/DEL123456789IN",
+      "internalNotes": "Dispatched via surface express"
+    },
+    {
+      "customerName": "Automated Tester",
+      "email": "test@bhayaindia.com",
+      "phone": "+91 9988776655",
+      "address": "123 Heritage Lane",
+      "city": "Lucknow",
+      "state": "Uttar Pradesh",
+      "pincode": "226001",
+      "items": [
+        {
+          "productId": "prod-001",
+          "name": "Test Banarasi Silk Saree",
+          "price": 3800,
+          "quantity": 1,
+          "image": "/assets/category-textiles.jpg"
+        }
+      ],
+      "totalAmount": 3800,
+      "paymentMethod": "UPI",
+      "paymentStatus": "Pending",
+      "orderStatus": "Shipped",
+      "orderType": "standard",
+      "id": "ORD-224524",
+      "history": [
+        {
+          "timestamp": "2026-10-21T10:31:59.230Z",
+          "status": "Order Placed",
+          "note": "Order placed via UPI"
+        },
+        {
+          "timestamp": "2026-10-21T10:31:59.251Z",
+          "status": "Shipped",
+          "note": "Dispatched via surface express"
+        }
+      ],
+      "createdAt": "2026-10-21T10:31:59.230Z",
+      "updatedAt": "2026-10-21T10:31:59.251Z",
+      "carrier": "Delhivery",
+      "trackingNumber": "DEL123456789IN",
+      "trackingUrl": "https://www.delhivery.com/track/package/DEL123456789IN",
+      "internalNotes": "Dispatched via surface express"
+    },
+    {
+      "id": "ORD-9012",
+      "customerName": "Ananya Gupta",
+      "email": "ananya.g@gmail.com",
+      "phone": "+91 98101 22334",
+      "address": "Flat 402, Lotus Heights, Indiranagar",
+      "city": "Bengaluru",
+      "state": "Karnataka",
+      "pincode": "560038",
+      "items": [
+        {
+          "productId": "prod-002",
+          "name": "Leather-Bound Executive Notebook",
+          "price": 650,
+          "quantity": 2,
+          "image": "/assets/category-stationery.jpg"
+        }
+      ],
+      "totalAmount": 1300,
+      "paymentMethod": "UPI",
+      "paymentStatus": "Paid",
+      "orderStatus": "Processing",
+      "createdAt": "2026-09-10T10:16:21.960Z"
+    }
+  ],
+  "testimonials": [],
+  "faqs": [
+    {
+      "id": "faq-1",
+      "question": "What is BHAYA INDIA?",
+      "questionHi": "BHAYA INDIA क्या है?",
+      "answer": "BHAYA INDIA is an Indian Business & E-commerce Platform connecting customers, local businesses, and manufacturers on a trusted digital platform.",
+      "answerHi": "BHAYA INDIA एक भारतीय Business & E-commerce Platform है, जिसका उद्देश्य ग्राहकों, स्थानीय व्यवसायों और manufacturers को एक भरोसेमंद digital platform से जोड़ना है।",
+      "category": "General",
+      "isPublished": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "faq-2",
+      "question": "How to purchase products?",
+      "questionHi": "Product कैसे खरीदें?",
+      "answer": "Browse our catalogue, select your desired quantity, and click 'Add to Bag' or 'Buy Now'. You can also enquire directly on WhatsApp for instant assistance.",
+      "answerHi": "हमारी वेबसाइट पर products browse करें, आवश्यक संख्या चुनें, और 'Add to Bag' या 'Buy Now' पर क्लिक करें। आप सीधे WhatsApp पर भी Enquiry कर सकते हैं।",
+      "category": "Product",
+      "isPublished": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "faq-3",
+      "question": "How to make a wholesale or bulk enquiry?",
+      "questionHi": "Wholesale enquiry कैसे करें?",
+      "answer": "Visit our dedicated Wholesale & B2B page and fill out the enquiry form with your product and quantity details, or connect with our team via WhatsApp.",
+      "answerHi": "हमारे Wholesale & B2B पेज पर जाकर enquiry form भरें या WhatsApp पर संपर्क करें। हमारी टीम आपकी आवश्यकतानुसार कोटेशन प्रदान करेगी।",
+      "category": "Service",
+      "isPublished": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "faq-4",
+      "question": "How to become a seller?",
+      "questionHi": "Seller कैसे बनें?",
+      "answer": "Shopkeepers and retailers can submit their interest on our 'Become a Seller' page for the upcoming BHAYA INDIA digital marketplace.",
+      "answerHi": "'Become a Seller' पेज पर जाकर अपना interest फॉर्म दर्ज करें। भविष्य के BHAYA INDIA Marketplace के लिए हमारी टीम आपसे संपर्क करेगी।",
+      "category": "General",
+      "isPublished": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "faq-5",
+      "question": "How can manufacturers partner with BHAYA INDIA?",
+      "questionHi": "Manufacturer कैसे जुड़ें?",
+      "answer": "Manufacturers can submit their product categories and factory details on our dedicated 'For Manufacturers' page to register interest for distribution.",
+      "answerHi": "'For Manufacturers' पेज पर जाकर अपने उत्पाद और उत्पादन क्षमता का विवरण दर्ज करें। हमारी मर्चेंट टीम आपसे संपर्क करेगी।",
+      "category": "General",
+      "isPublished": true,
+      "sortOrder": 5
+    },
+    {
+      "id": "faq-6",
+      "question": "What payment methods are available?",
+      "questionHi": "Payment कैसे करें?",
+      "answer": "We support UPI, Debit & Credit Cards, Net Banking, and Order Confirmation with verification upon delivery.",
+      "answerHi": "हम UPI, डेबिट/क्रेडिट कार्ड, नेट बैंकिंग और डिलीवरी सत्यापन के साथ आर्डर स्वीकार करते हैं।",
+      "category": "Payment",
+      "isPublished": true,
+      "sortOrder": 6
+    },
+    {
+      "id": "faq-7",
+      "question": "How to track an order?",
+      "questionHi": "Order कैसे track करें?",
+      "answer": "You can track your order status anytime in the 'My Account' section using your registered mobile number or Order ID.",
+      "answerHi": "'My Account' सेक्शन में जाकर अपने रजिस्टर्ड मोबाइल नंबर या Order ID के माध्यम से अपने आर्डर का status देख सकते हैं।",
+      "category": "Delivery",
+      "isPublished": true,
+      "sortOrder": 7
+    }
+  ],
+  "gallery": [],
+  "media": [
+    {
+      "id": "media-logo",
+      "filename": "bhaya-india-logo.png",
+      "originalName": "BHAYA INDIA Official Brand Emblem",
+      "fileType": "image/png",
+      "dimensions": "512 × 512 px",
+      "fileSize": 714936,
+      "url": "/assets/bhaya-india-logo.png",
+      "altEn": "Official BHAYA INDIA Logo — Local to Online, Local to India",
+      "altHi": "भाया इंडिया आधिकारिक लोगो — जहाँ भाया, वहाँ भरोसा",
+      "title": "BHAYA INDIA Official Seal",
+      "caption": "Primary brand mark and corporate insignia.",
+      "usage": "Header & Brand Identity",
+      "uploadedAt": "2026-09-15T10:00:00.000Z"
+    },
+    {
+      "id": "media-hero",
+      "filename": "hero-editorial.jpg",
+      "originalName": "Royal Heritage Festival Trunk & Brass Artifacts",
+      "fileType": "image/jpeg",
+      "dimensions": "1920 × 1080 px",
+      "fileSize": 719934,
+      "url": "/assets/hero-editorial.jpg",
+      "altEn": "Artisanal handcrafted festive gifting trunk and brass urns by Bhaya India",
+      "altHi": "भाया इंडिया द्वारा हस्तनिर्मित उत्सव उपहार ट्रंक और पीतल के कलात्मक बर्तन",
+      "title": "Heritage Gifting Editorial Showcase",
+      "caption": "Curated festive collection representing authentic Indian craftsmanship.",
+      "usage": "Homepage Hero & Editorial Showcase",
+      "uploadedAt": "2026-09-18T14:30:00.000Z"
+    },
+    {
+      "id": "media-textiles",
+      "filename": "category-textiles.jpg",
+      "originalName": "Chanderi Handloom Silk & Fine Cotton Dupattas",
+      "fileType": "image/jpeg",
+      "dimensions": "1200 × 800 px",
+      "fileSize": 794847,
+      "url": "/assets/category-textiles.jpg",
+      "altEn": "Authentic Indian heritage woven textiles and silk dupattas from Bhaya India",
+      "altHi": "भाया इंडिया प्रामाणिक भारतीय हथकरघा वस्त्र और सिल्क दुपट्टे",
+      "title": "Indian Handlooms & Fabrics",
+      "caption": "Direct cluster-sourced textiles preserving ancient regional weaving traditions.",
+      "usage": "Textiles Category & Catalogue",
+      "uploadedAt": "2026-09-20T11:15:00.000Z"
+    },
+    {
+      "id": "media-stationery",
+      "filename": "category-stationery.jpg",
+      "originalName": "Handmade Cotton Rag Paper Journals with Brass Accents",
+      "fileType": "image/jpeg",
+      "dimensions": "1200 × 800 px",
+      "fileSize": 597957,
+      "url": "/assets/category-stationery.jpg",
+      "altEn": "Handmade eco-friendly cotton rag paper journals with brass closures by Bhaya India",
+      "altHi": "भाया इंडिया पर्यावरण-अनुकूल हस्तनिर्मित कॉटन रैग पेपर डायरी",
+      "title": "Sustainable Artisanal Stationery",
+      "caption": "Recycled cotton rag deckle-edge journals bound in vegetable-tanned leather.",
+      "usage": "Stationery Category & Corporate Gifting",
+      "uploadedAt": "2026-09-22T09:45:00.000Z"
+    }
+  ],
+  "services": [
+    {
+      "id": "srv-001",
+      "title": "Authentic Product Sourcing & Cluster Curation",
+      "titleHi": "प्रामाणिक उत्पाद सोर्सिंग एवं क्लस्टर चयन",
+      "description": "Direct procurement from vetted artisan clusters, master weavers, and certified regional workshops with zero middleman markups.",
+      "descriptionHi": "बिना बिचौलियों के सीधे कारीगरों, बुनकरों और प्रमाणित विनिर्माण इकाइयों से पारदर्शी खरीद।",
+      "category": "Sourcing & Supply Chain",
+      "image": "/assets/category-textiles.jpg",
+      "featured": true,
+      "status": "Published",
+      "order": 1,
+      "seoTitle": "Authentic Product Sourcing Services — BHAYA INDIA",
+      "seoDescription": "Direct cluster procurement and artisanal sourcing across India by BHAYA INDIA. Verified craft clusters and transparent supply chain.",
+      "createdAt": "2026-09-10T10:00:00.000Z"
+    },
+    {
+      "id": "srv-002",
+      "title": "Wholesale & Institutional B2B Supply",
+      "titleHi": "थोक एवं संस्थागत बी2बी आपूर्ति",
+      "description": "Tiered volume pricing, scheduled dispatches, and GST compliance for retail stores, hospitality chains, and institutions.",
+      "descriptionHi": "खुदरा दुकानों, होटलों और कॉर्पोरेट संस्थानों के लिए पारदर्शी थोक मूल्य और जीएसटी बिलिंग।",
+      "category": "Wholesale & Commerce",
+      "image": "/assets/hero-editorial.jpg",
+      "featured": true,
+      "status": "Published",
+      "order": 2,
+      "seoTitle": "Wholesale B2B Supply & Institutional Procurement — BHAYA INDIA",
+      "seoDescription": "Reliable wholesale procurement for retail stores, hospitality, and corporate institutions. Direct Indian factory sourcing.",
+      "createdAt": "2026-09-10T10:00:00.000Z"
+    },
+    {
+      "id": "srv-003",
+      "title": "Bespoke Corporate Gifting & Festive Hampers",
+      "titleHi": "कस्टम कॉर्पोरेट उपहार एवं उत्सव हैंपर्स",
+      "description": "Custom foil-stamped corporate ribbons, bespoke wood trunks, and curated artisanal delicacies for executive and festive occasions.",
+      "descriptionHi": "कॉर्पोरेट कंपनियों के लिए विशेष ब्रांडिंग, लकड़ी के ट्रंक और प्रामाणिक उपहार हैंपर्स।",
+      "category": "Corporate Solutions",
+      "image": "/assets/hero-editorial.jpg",
+      "featured": true,
+      "status": "Published",
+      "order": 3,
+      "seoTitle": "Luxury Corporate & Festive Gifting Hampers — BHAYA INDIA",
+      "seoDescription": "Bespoke corporate gifting solutions and handcrafted festive hampers curated by BHAYA INDIA with personalized branding.",
+      "createdAt": "2026-09-12T10:00:00.000Z"
+    },
+    {
+      "id": "srv-004",
+      "title": "Sustainable Packaging & Paper Products",
+      "titleHi": "सतत पैकेजिंग एवं हस्तनिर्मित पेपर उत्पाद",
+      "description": "Recycled cotton-rag paper boxes, rigid festive trunks, and eco-friendly protective packaging for premium lifestyle brands.",
+      "descriptionHi": "पर्यावरण अनुकूल कॉटन रैग पेपर बॉक्स, मजबूत क्राफ्ट ट्रंक और प्रीमियम ब्रांड्स के लिए टिकाऊ पैकेजिंग।",
+      "category": "Packaging & Manufacturing",
+      "image": "/assets/category-stationery.jpg",
+      "featured": true,
+      "status": "Published",
+      "order": 4,
+      "seoTitle": "Sustainable Packaging & Custom Paper Products — BHAYA INDIA",
+      "seoDescription": "Eco-friendly rigid boxes, handmade paper products, and custom packaging solutions for businesses by BHAYA INDIA.",
+      "createdAt": "2026-09-14T10:00:00.000Z"
+    },
+    {
+      "id": "srv-005",
+      "title": "BHAYA INDIA 2.0 — Hyperlocal Merchant Fulfillment",
+      "titleHi": "भाया इंडिया 2.0 — हाइपरलोकल मर्चेंट डिलीवरी",
+      "description": "Future vision: Linking local neighborhood retail stores to high-intent regional shoppers with automated order routing and trusted local delivery.",
+      "descriptionHi": "भविष्य की योजना: स्थानीय खुदरा दुकानों को डिजिटल ग्राहकों से जोड़ना और उसी दिन सुरक्षित डिलीवरी सुनिश्चित करना।",
+      "category": "Future Vision & Technology",
+      "image": "/assets/hero-editorial.jpg",
+      "featured": false,
+      "status": "Draft",
+      "order": 5,
+      "seoTitle": "BHAYA INDIA 2.0 Hyperlocal Platform Vision",
+      "seoDescription": "Empowering local Indian brick-and-mortar merchants with digital storefronts and unified customer trust.",
+      "createdAt": "2026-09-20T10:00:00.000Z"
+    }
+  ],
+  "team": [
+    {
+      "id": "team-001",
+      "name": "Merchant Operations Desk",
+      "nameHi": "मर्चेंट ऑपरेशंस डेस्क",
+      "role": "Merchant Partnerships & Seller Verification",
+      "roleHi": "व्यापारी साझेदारी एवं सत्यापन",
+      "bio": "Dedicated team overseeing transparent vendor onboarding, factory inspections, and product authenticity verification.",
+      "bioHi": "व्यापारियों के सत्यापन, गुणवत्ता जांच और पारदर्शी समन्वय के लिए समर्पित टीम।",
+      "image": "/assets/bhaya-india-logo.png",
+      "order": 1,
+      "status": "Active",
+      "createdAt": "2026-09-01T10:00:00.000Z"
+    },
+    {
+      "id": "team-002",
+      "name": "Craft Curation & Quality Desk",
+      "nameHi": "शिल्प चयन एवं गुणवत्ता टीम",
+      "role": "Regional Cluster Liaison & Quality Control",
+      "roleHi": "क्षेत्रीय शिल्प समन्वय एवं गुणवत्ता नियंत्रण",
+      "bio": "Working hand-in-hand with hereditary artisans, weavers, and metal smiths across Indian craft centers.",
+      "bioHi": "देश भर के शिल्प केंद्रों, बुनकरों और कारीगरों के साथ मिलकर प्रामाणिक गुणवत्ता सुनिश्चित करने वाली टीम।",
+      "image": "/assets/bhaya-india-logo.png",
+      "order": 2,
+      "status": "Active",
+      "createdAt": "2026-09-01T10:00:00.000Z"
+    }
+  ],
+  "blogs": [
+    {
+      "id": "blog-001",
+      "title": "The Art of Authentic Indian Gifting: Behind Our Heritage Hampers",
+      "titleHi": "भारतीय उपहार परंपरा: प्रामाणिक उत्सव हैंपर्स की कहानी",
+      "slug": "art-of-authentic-indian-gifting",
+      "excerpt": "How genuine Indian festivities, handcrafted bell-metal artifacts, and wholesome treats create an unforgettable impression for corporate and personal celebrations.",
+      "excerptHi": "भारतीय त्योहारों में प्रामाणिक उपहारों, पीतल शिल्पों और शुद्ध मिष्ठानों का महत्व और कॉर्पोरेट आयोजनों पर इसका प्रभाव।",
+      "content": "Indian celebrations have always been grounded in personal warmth, shared abundance, and timeless craftsmanship. When selecting a festive or corporate gift, the packaging and contents tell a lasting story of respect and genuine care.\n\n### Sourcing Without Compromise\nAt BHAYA INDIA, every festive hamper begins with authentic artisan partnerships. We combine reusable handcrafted wooden trunks lined with textured vegan leather and antique brass clasps. Inside, stone-ground dry fruits, pure saffron delicacies, and heirloom brass keepsakes ensure that nothing is transient or disposable.\n\n### The Return to Meaningful Keepsakes\nModern gifting has often suffered from generic disposable merchandise. By contrast, a hand-beaten bell-brass urli bowl or a solid cast incense burner stays in the recipient's home for decades, continuing to radiate serene positive energy long after the festival concludes.\n\n### Transparent B2B Coordination\nFor corporate partners seeking custom branded foil ribbons and specialized volume dispatches, our merchant desk coordinates nationwide temperature-controlled deliveries with complete GST compliance and order tracking.",
+      "author": "BHAYA INDIA Editorial Desk",
+      "publishedAt": "2026-09-25T10:00:00.000Z",
+      "featuredImage": "/assets/hero-editorial.jpg",
+      "category": "Festive Heritage",
+      "tags": [
+        "Festivals",
+        "Corporate Gifting",
+        "Artisanal",
+        "B2B"
+      ],
+      "status": "Published",
+      "seoTitle": "The Art of Authentic Indian Gifting — BHAYA INDIA Heritage",
+      "seoDescription": "Discover the heritage behind handcrafted Indian festive hampers and corporate gifting solutions by BHAYA INDIA.",
+      "canonical": "https://bhayaindia.com/blog/art-of-authentic-indian-gifting",
+      "ogImage": "/assets/hero-editorial.jpg"
+    },
+    {
+      "id": "blog-002",
+      "title": "Local to Online: Empowering Regional Indian Manufacturers",
+      "titleHi": "लोकल से ऑनलाइन: क्षेत्रीय भारतीय निर्माताओं का सशक्तिकरण",
+      "slug": "local-to-online-empowering-regional-manufacturers",
+      "excerpt": "Bridging the critical gap between authentic Indian factory floors and high-intent nationwide buyers with transparent commerce and trust.",
+      "excerptHi": "स्थानीय भारतीय कारखानों और देश भर के खरीदारों के बीच पारदर्शी व्यापार और भरोसे का सेतु।",
+      "content": "India is home to thousands of extraordinary manufacturing clusters: precision bell-metal artisans, heritage handloom cooperatives, sustainable paper fabricators, and agro processors. However, many remain disconnected from direct digital distribution due to predatory intermediaries.\n\n### The Foundational Promise: जहाँ भाया, वहाँ भरोसा\nBHAYA INDIA was founded on a simple premise: local commerce thrives when trust and transparency are preserved. Rather than burying manufacturers under opaque commissions or competing private labels, our platform provides a direct showcase.\n\n### Direct Sourcing Advantages for Businesses\n1. **Verifiable Quality:** Every partner factory is vetted for manufacturing capacity, raw material authenticity, and ethical labor practices.\n2. **Transparent Factory Pricing:** Buyers access truthful wholesale rates without multiple broker markups.\n3. **Streamlined Fulfillment:** Scheduled bulk shipments and consolidated regional dispatches reduce transit losses and delivery delays.\n\nWe welcome factory owners and regional craft centers to join our growing merchant network.",
+      "author": "Merchant Advisory Desk",
+      "publishedAt": "2026-09-28T11:00:00.000Z",
+      "featuredImage": "/assets/category-textiles.jpg",
+      "category": "Business & Industry",
+      "tags": [
+        "Manufacturing",
+        "Local to Online",
+        "B2B",
+        "Make in India"
+      ],
+      "status": "Published",
+      "seoTitle": "Local to Online: Empowering Regional Indian Manufacturers | BHAYA INDIA",
+      "seoDescription": "How BHAYA INDIA bridges regional manufacturers with transparent nationwide wholesale and consumer demand.",
+      "canonical": "https://bhayaindia.com/blog/local-to-online-empowering-regional-manufacturers",
+      "ogImage": "/assets/category-textiles.jpg"
+    },
+    {
+      "id": "blog-003",
+      "title": "Traditional Brass Urli: Craftsmanship, Vastu & Home Care",
+      "titleHi": "पारंपरिक पीतल उरली: शिल्प, वास्तु एवं रख-रखाव",
+      "slug": "traditional-brass-urli-craft-and-care",
+      "excerpt": "An in-depth guide to traditional bell-metal brass urli bowls, their spiritual significance at home entrances, and proper natural maintenance.",
+      "excerptHi": "पीतल की पारंपरिक उरली का महत्व, प्रवेश द्वार पर वास्तु लाभ और प्राकृतिक चमक बनाए रखने के सरल उपाय।",
+      "content": "The Urli is an ancient vessel deeply rooted in traditional South and Central Indian heritage. Originally used for Ayurvedic preparations, its wide, shallow form has evolved into an auspicious home and hospitality centerpiece.\n\n### Vastu Significance of Water and Flowers\nIn Indian Vastu Shastra and traditional architectural design, water elements placed near the northeast or main entryway attract tranquil energy and prosperity. Floating fresh flower petals with natural camphor or tealights in a virgin brass urli purifies the atmospheric vibration and offers a serene welcome to guests.\n\n### Hand-Beaten Craftsmanship\nAuthentic urli vessels are hand-beaten by hereditary smiths using virgin cast brass (85% copper, 15% zinc). This alloy produces a resonant bell tone when struck and exhibits superior tarnish resistance compared to thin pressed sheet metal.\n\n### Natural Cleaning and Long-Term Care\nTo maintain the warm golden luster of pure brass without using harmful abrasive chemicals:\n- Apply a paste of fresh tamarind or lemon juice mixed with table salt.\n- Gently rub along the contour with a soft cotton cloth.\n- Rinse thoroughly with lukewarm water and dry immediately to prevent water spots.",
+      "author": "Craft Curation Team",
+      "publishedAt": "2026-09-30T09:30:00.000Z",
+      "featuredImage": "/assets/hero-editorial.jpg",
+      "category": "Craft & Culture",
+      "tags": [
+        "Home Decor",
+        "Brass Craft",
+        "Vastu",
+        "Handmade"
+      ],
+      "status": "Published",
+      "seoTitle": "Traditional Brass Urli: Craftsmanship, Vastu & Care — BHAYA INDIA",
+      "seoDescription": "Learn the heritage, Vastu benefits, and natural cleaning tips for handcrafted pure brass urli bowls by BHAYA INDIA.",
+      "canonical": "https://bhayaindia.com/blog/traditional-brass-urli-craft-and-care",
+      "ogImage": "/assets/hero-editorial.jpg"
+    }
+  ],
+  "seoSettings": {
+    "homepageTitle": "BHAYA INDIA — जहाँ भाया, वहाँ भरोसा | Indian Business & E-commerce Platform",
+    "homepageDescription": "BHAYA INDIA connects consumers, regional retailers, and verified manufacturers across India. Authentic festival essentials, handlooms, corporate gifting, and wholesale sourcing.",
+    "homepageKeywords": "BHAYA INDIA, Indian business platform, Indian e-commerce, Festival products, Puja products, Retail products, Agro products, Manufacturing, Logistics, Exports, Wholesale, B2B, Local to Online, Local to India",
+    "defaultTitle": "BHAYA INDIA — जहाँ भाया, वहाँ भरोसा",
+    "defaultDescription": "BHAYA INDIA is an Indian Business & E-commerce Platform connecting customers, local businesses and manufacturers on a trusted digital platform.",
+    "defaultOgImage": "/assets/hero-editorial.jpg",
+    "defaultTwitterImage": "/assets/hero-editorial.jpg",
+    "defaultCanonical": "https://bhayaindia.com",
+    "siteName": "BHAYA INDIA",
+    "organizationName": "BHAYA INDIA",
+    "defaultRobots": "index, follow",
+    "googleVerificationTag": "",
+    "ga4MeasurementId": "",
+    "gtmId": "",
+    "cookieConsentEnabled": true
+  },
+  "seoPages": {
+    "/": {
+      "path": "/",
+      "pageName": "Home",
+      "pageNameHi": "होम",
+      "seoTitle": "BHAYA INDIA — जहाँ भाया, वहाँ भरोसा | Indian Business & E-commerce Platform",
+      "metaDescription": "BHAYA INDIA is an Indian Business & E-commerce Platform connecting customers, regional retailers, and verified manufacturers with genuine trust.",
+      "canonicalUrl": "https://bhayaindia.com",
+      "ogTitle": "BHAYA INDIA — Quality Products. Honest Business.",
+      "ogDescription": "Explore curated Indian festival gifts, handlooms, and direct B2B manufacturer supply. Built on the promise of trust.",
+      "ogImage": "/assets/hero-editorial.jpg",
+      "twitterTitle": "BHAYA INDIA — Indian Business & E-commerce Platform",
+      "twitterDescription": "Local to Online • Local to India. Authentic products and verified manufacturers.",
+      "twitterImage": "/assets/hero-editorial.jpg",
+      "robots": "index, follow",
+      "schemaType": "Organization",
+      "isIndexable": true
+    },
+    "/about": {
+      "path": "/about",
+      "pageName": "About Bhaya India",
+      "pageNameHi": "हमारे बारे में",
+      "seoTitle": "About BHAYA INDIA — Mission, Vision & Core Values",
+      "metaDescription": "Learn about the mission, values, and ethical business pillars of BHAYA INDIA. Connecting local businesses, manufacturers, and customers on a trusted platform.",
+      "canonicalUrl": "https://bhayaindia.com/about",
+      "ogTitle": "About BHAYA INDIA — जहाँ भाया, वहाँ भरोसा",
+      "ogDescription": "Our mission is to empower authentic Indian makers and regional merchants through transparent, technology-enabled commerce.",
+      "ogImage": "/assets/hero-editorial.jpg",
+      "twitterTitle": "About BHAYA INDIA — Trusted Indian Commerce",
+      "twitterDescription": "Our mission, ethical pillars, and commitment to genuine Indian craftsmanship.",
+      "twitterImage": "/assets/hero-editorial.jpg",
+      "robots": "index, follow",
+      "schemaType": "Organization",
+      "isIndexable": true
+    },
+    "/bhaya-india-2": {
+      "path": "/bhaya-india-2",
+      "pageName": "BHAYA INDIA 2.0 Vision",
+      "pageNameHi": "भाया इंडिया 2.0",
+      "seoTitle": "BHAYA INDIA 2.0 — एक प्लेटफॉर्म, हजारों दुकानें, एक भरोसा",
+      "metaDescription": "BHAYA INDIA 2.0 empowers neighborhood shops with digital storefronts, verified local inventory, and hyper-reliable customer fulfillment.",
+      "canonicalUrl": "https://bhayaindia.com/bhaya-india-2",
+      "ogTitle": "BHAYA INDIA 2.0 — Future of Indian Local Commerce",
+      "ogDescription": "Transforming neighborhood retail with digital power. Join our early access merchant onboarding network.",
+      "ogImage": "/assets/hero-editorial.jpg",
+      "twitterTitle": "BHAYA INDIA 2.0 — Local Retail Revolution",
+      "twitterDescription": "Empowering local shopkeepers with digital technology and customer trust.",
+      "twitterImage": "/assets/hero-editorial.jpg",
+      "robots": "index, follow",
+      "schemaType": "WebSite",
+      "isIndexable": true
+    },
+    "/why-choose-us": {
+      "path": "/why-choose-us",
+      "pageName": "Why Bhaya India",
+      "pageNameHi": "भाया इंडिया क्यों चुनें",
+      "seoTitle": "Why Choose BHAYA INDIA — Authentic Sourcing & Genuine Trust",
+      "metaDescription": "Discover the foundational pillars that make BHAYA INDIA the preferred partner for corporate gifting, B2B wholesale, and authentic products.",
+      "canonicalUrl": "https://bhayaindia.com/why-choose-us",
+      "ogTitle": "Why Choose BHAYA INDIA — Built on Enduring Trust",
+      "ogDescription": "Vetted artisan sourcing, honest pricing, and dedicated customer support across India.",
+      "ogImage": "/assets/hero-editorial.jpg",
+      "twitterTitle": "Why BHAYA INDIA — Built on Trust",
+      "twitterDescription": "Vetted makers, genuine pricing, and zero middleman markups.",
+      "twitterImage": "/assets/hero-editorial.jpg",
+      "robots": "index, follow",
+      "schemaType": "Organization",
+      "isIndexable": true
+    },
+    "/products": {
+      "path": "/products",
+      "pageName": "Products & Catalogue",
+      "pageNameHi": "उत्पाद एवं कैटलॉग",
+      "seoTitle": "Product Catalogue — Authentic Indian Crafts & Gifts | BHAYA INDIA",
+      "metaDescription": "Shop curated Indian handlooms, brass home decor, festive gift hampers, and artisanal stationery with nationwide delivery.",
+      "canonicalUrl": "https://bhayaindia.com/products",
+      "ogTitle": "Curated Indian Products — BHAYA INDIA Catalogue",
+      "ogDescription": "Handcrafted Chanderi dupattas, pure brass urli bowls, eco-friendly journals, and luxury corporate gift trunks.",
+      "ogImage": "/assets/hero-editorial.jpg",
+      "twitterTitle": "Shop Authentic Indian Products | BHAYA INDIA",
+      "twitterDescription": "Curated gifts, festive essentials, and heritage craftsmanship.",
+      "twitterImage": "/assets/hero-editorial.jpg",
+      "robots": "index, follow",
+      "schemaType": "WebSite",
+      "isIndexable": true
+    },
+    "/services": {
+      "path": "/services",
+      "pageName": "Services & Solutions",
+      "pageNameHi": "सेवाएँ एवं समाधान",
+      "seoTitle": "Business Services — Sourcing, Wholesale & Corporate Solutions | BHAYA INDIA",
+      "metaDescription": "Explore BHAYA INDIA services: authentic product sourcing, corporate gifting, wholesale supply, sustainable packaging, and regional distribution.",
+      "canonicalUrl": "https://bhayaindia.com/services",
+      "ogTitle": "Services & Solutions — BHAYA INDIA B2B & Retail",
+      "ogDescription": "Tailored sourcing, corporate hampers, and factory-direct wholesale procurement.",
+      "ogImage": "/assets/category-textiles.jpg",
+      "twitterTitle": "Business Services — BHAYA INDIA",
+      "twitterDescription": "Direct sourcing, corporate gifts, and bulk supply solutions.",
+      "twitterImage": "/assets/category-textiles.jpg",
+      "robots": "index, follow",
+      "schemaType": "Organization",
+      "isIndexable": true
+    },
+    "/wholesale": {
+      "path": "/wholesale",
+      "pageName": "Wholesale & B2B",
+      "pageNameHi": "थोक एवं बी2बी",
+      "seoTitle": "Wholesale & B2B Procurement — Direct Factory Supply | BHAYA INDIA",
+      "metaDescription": "Partner with BHAYA INDIA for bulk purchasing, institutional gifting, and factory-direct pricing with verified GST billing and nationwide logistics.",
+      "canonicalUrl": "https://bhayaindia.com/wholesale",
+      "ogTitle": "Wholesale & B2B Sourcing — BHAYA INDIA",
+      "ogDescription": "Direct factory wholesale pricing, minimum order flexibility, and dedicated B2B account management.",
+      "ogImage": "/assets/hero-editorial.jpg",
+      "twitterTitle": "B2B Wholesale Procurement | BHAYA INDIA",
+      "twitterDescription": "Factory direct supply, bulk discounts, and prompt dispatch.",
+      "twitterImage": "/assets/hero-editorial.jpg",
+      "robots": "index, follow",
+      "schemaType": "Organization",
+      "isIndexable": true
+    },
+    "/manufacturers": {
+      "path": "/manufacturers",
+      "pageName": "For Manufacturers",
+      "pageNameHi": "निर्माताओं के लिए",
+      "seoTitle": "For Manufacturers — Direct Distribution & Factory Growth | BHAYA INDIA",
+      "metaDescription": "Manufacturers and production units can connect directly with nationwide institutional and retail demand without broker markups.",
+      "canonicalUrl": "https://bhayaindia.com/manufacturers",
+      "ogTitle": "Partner as a Manufacturer — BHAYA INDIA",
+      "ogDescription": "बिना बिचौलियों के सीधा व्यापार. Register your production capacity and expand nationwide.",
+      "ogImage": "/assets/category-textiles.jpg",
+      "twitterTitle": "Direct Factory Partnerships | BHAYA INDIA",
+      "twitterDescription": "Join the verified BHAYA INDIA manufacturing network.",
+      "twitterImage": "/assets/category-textiles.jpg",
+      "robots": "index, follow",
+      "schemaType": "Organization",
+      "isIndexable": true
+    },
+    "/become-a-seller": {
+      "path": "/become-a-seller",
+      "pageName": "Become a Seller",
+      "pageNameHi": "विक्रेता बनें",
+      "seoTitle": "Become a Seller — Expand Your Local Shop Online | BHAYA INDIA",
+      "metaDescription": "Local shopkeepers and retailers can register for the upcoming BHAYA INDIA marketplace. Grow your customer base with genuine trust.",
+      "canonicalUrl": "https://bhayaindia.com/become-a-seller",
+      "ogTitle": "Become a Seller on BHAYA INDIA — Local to Online",
+      "ogDescription": "Digital tools, zero upfront barrier, and genuine customer trust for local Indian retail businesses.",
+      "ogImage": "/assets/hero-editorial.jpg",
+      "twitterTitle": "Become a Seller | BHAYA INDIA",
+      "twitterDescription": "Empower your neighborhood store with digital reach.",
+      "twitterImage": "/assets/hero-editorial.jpg",
+      "robots": "index, follow",
+      "schemaType": "Organization",
+      "isIndexable": true
+    },
+    "/faq": {
+      "path": "/faq",
+      "pageName": "FAQs",
+      "pageNameHi": "अक्सर पूछे जाने वाले प्रश्न",
+      "seoTitle": "Frequently Asked Questions — Orders, Wholesale & Services | BHAYA INDIA",
+      "metaDescription": "Find quick answers to common questions about BHAYA INDIA ordering, wholesale enquiries, payments, deliveries, and merchant partnerships.",
+      "canonicalUrl": "https://bhayaindia.com/faq",
+      "ogTitle": "Frequently Asked Questions — BHAYA INDIA Help Desk",
+      "ogDescription": "Answers regarding product authenticity, bulk quotations, delivery schedules, and platform support.",
+      "ogImage": "/assets/hero-editorial.jpg",
+      "twitterTitle": "BHAYA INDIA FAQ — Helpful Answers",
+      "twitterDescription": "Orders, shipping, payment methods, and wholesale help.",
+      "twitterImage": "/assets/hero-editorial.jpg",
+      "robots": "index, follow",
+      "schemaType": "FAQPage",
+      "isIndexable": true
+    },
+    "/blog": {
+      "path": "/blog",
+      "pageName": "Blog & Publications",
+      "pageNameHi": "ब्लॉग एवं प्रकाशन",
+      "seoTitle": "Publications & Insights — Craftsmanship, Commerce & Heritage | BHAYA INDIA",
+      "metaDescription": "Read articles on Indian heritage crafts, regional manufacturing insights, Vastu decor tips, and modern e-commerce trends by BHAYA INDIA.",
+      "canonicalUrl": "https://bhayaindia.com/blog",
+      "ogTitle": "BHAYA INDIA Publications & Editorial Insights",
+      "ogDescription": "Stories behind authentic Indian artisans, festival gifting guides, and manufacturer spotlights.",
+      "ogImage": "/assets/hero-editorial.jpg",
+      "twitterTitle": "Publications & Heritage Insights | BHAYA INDIA",
+      "twitterDescription": "Authentic stories of Indian crafts and commerce.",
+      "twitterImage": "/assets/hero-editorial.jpg",
+      "robots": "index, follow",
+      "schemaType": "Article",
+      "isIndexable": true
+    },
+    "/gallery": {
+      "path": "/gallery",
+      "pageName": "Visual Gallery",
+      "pageNameHi": "विजुअल गैलरी",
+      "seoTitle": "Visual Gallery — Artisan Workshops & Product Chronicles | BHAYA INDIA",
+      "metaDescription": "Explore authentic visual chronicles of master workshops, handcrafted collections, and partner manufacturing facilities.",
+      "canonicalUrl": "https://bhayaindia.com/gallery",
+      "ogTitle": "Visual Gallery — BHAYA INDIA Crafts & Facilities",
+      "ogDescription": "Authentic photographic documentation of artisan ateliers and production excellence.",
+      "ogImage": "/assets/hero-editorial.jpg",
+      "twitterTitle": "Visual Gallery | BHAYA INDIA",
+      "twitterDescription": "Authentic workshops and craft photography.",
+      "twitterImage": "/assets/hero-editorial.jpg",
+      "robots": "index, follow",
+      "schemaType": "WebSite",
+      "isIndexable": true
+    },
+    "/testimonials": {
+      "path": "/testimonials",
+      "pageName": "Reviews & Testimonials",
+      "pageNameHi": "समीक्षाएं एवं अनुभव",
+      "seoTitle": "Verified Reviews & Client Experiences | BHAYA INDIA",
+      "metaDescription": "Read genuine feedback from verified customers, corporate gifting clients, and retail partners of BHAYA INDIA.",
+      "canonicalUrl": "https://bhayaindia.com/testimonials",
+      "ogTitle": "Client Reviews & Trust — BHAYA INDIA",
+      "ogDescription": "Transparent customer reviews and feedback on product quality and delivery reliability.",
+      "ogImage": "/assets/hero-editorial.jpg",
+      "twitterTitle": "Client Reviews | BHAYA INDIA",
+      "twitterDescription": "Verified client feedback and experiences.",
+      "twitterImage": "/assets/hero-editorial.jpg",
+      "robots": "index, follow",
+      "schemaType": "Organization",
+      "isIndexable": true
+    },
+    "/contact": {
+      "path": "/contact",
+      "pageName": "Contact Us",
+      "pageNameHi": "संपर्क करें",
+      "seoTitle": "Contact Us — Business Desk & Customer Support | BHAYA INDIA",
+      "metaDescription": "Get in touch with the BHAYA INDIA merchant desk. Connect via phone, WhatsApp, or email for order enquiries, corporate quotations, and support.",
+      "canonicalUrl": "https://bhayaindia.com/contact",
+      "ogTitle": "Contact BHAYA INDIA — We're Here to Help",
+      "ogDescription": "Helpline: +91 87266 90926 • Official WhatsApp • Business Desk support Monday through Saturday.",
+      "ogImage": "/assets/hero-editorial.jpg",
+      "twitterTitle": "Contact BHAYA INDIA",
+      "twitterDescription": "Reach our customer desk and business enquiry support.",
+      "twitterImage": "/assets/hero-editorial.jpg",
+      "robots": "index, follow",
+      "schemaType": "LocalBusiness",
+      "isIndexable": true
+    },
+    "/company-profile": {
+      "path": "/company-profile",
+      "pageName": "Company Profile",
+      "pageNameHi": "कंपनी प्रोफाइल",
+      "seoTitle": "Corporate Profile & Credentials — BHAYA INDIA",
+      "metaDescription": "Official corporate profile of BHAYA INDIA. Governance, ethical sourcing principles, and registered business information.",
+      "canonicalUrl": "https://bhayaindia.com/company-profile",
+      "ogTitle": "Corporate Profile — BHAYA INDIA",
+      "ogDescription": "A trusted Indian business and e-commerce platform dedicated to quality and reliable merchant partnerships.",
+      "ogImage": "/assets/hero-editorial.jpg",
+      "twitterTitle": "Company Profile | BHAYA INDIA",
+      "twitterDescription": "Corporate overview and ethical business foundation.",
+      "twitterImage": "/assets/hero-editorial.jpg",
+      "robots": "index, follow",
+      "schemaType": "Organization",
+      "isIndexable": true
+    },
+    "/account": {
+      "path": "/account",
+      "pageName": "My Account & Orders",
+      "pageNameHi": "खाता एवं आर्डर",
+      "seoTitle": "My Account & Order Tracking — BHAYA INDIA",
+      "metaDescription": "Track order dispatches, manage saved delivery addresses, and view order history on BHAYA INDIA.",
+      "canonicalUrl": "https://bhayaindia.com/account",
+      "ogTitle": "My Account — BHAYA INDIA Customer Portal",
+      "ogDescription": "Fast order lookup and personalized account management.",
+      "ogImage": "/assets/bhaya-india-logo.png",
+      "twitterTitle": "Account & Order Tracking | BHAYA INDIA",
+      "twitterDescription": "Track your orders and manage saved addresses.",
+      "twitterImage": "/assets/bhaya-india-logo.png",
+      "robots": "noindex, follow",
+      "schemaType": "WebSite",
+      "isIndexable": false
+    },
+    "/cart": {
+      "path": "/cart",
+      "pageName": "Shopping Bag",
+      "pageNameHi": "शॉपिंग बैग",
+      "seoTitle": "Shopping Bag — Review Your Order | BHAYA INDIA",
+      "metaDescription": "Review selected artisanal products, adjust quantities, and proceed to secure checkout or WhatsApp order confirmation.",
+      "canonicalUrl": "https://bhayaindia.com/cart",
+      "ogTitle": "Shopping Bag — BHAYA INDIA",
+      "ogDescription": "Review your selected items and complete your order.",
+      "ogImage": "/assets/bhaya-india-logo.png",
+      "twitterTitle": "Shopping Bag | BHAYA INDIA",
+      "twitterDescription": "Review selected items and checkout securely.",
+      "twitterImage": "/assets/bhaya-india-logo.png",
+      "robots": "noindex, follow",
+      "schemaType": "WebSite",
+      "isIndexable": false
+    },
+    "/privacy-policy": {
+      "path": "/privacy-policy",
+      "pageName": "Privacy Policy",
+      "pageNameHi": "गोपनीयता नीति",
+      "seoTitle": "Privacy Policy — Data Protection & Trust | BHAYA INDIA",
+      "metaDescription": "Our privacy policy outlines how BHAYA INDIA protects and respects your personal data, order details, and privacy.",
+      "canonicalUrl": "https://bhayaindia.com/privacy-policy",
+      "ogTitle": "Privacy Policy — BHAYA INDIA",
+      "ogDescription": "Transparent data protection and privacy practices.",
+      "ogImage": "/assets/bhaya-india-logo.png",
+      "twitterTitle": "Privacy Policy | BHAYA INDIA",
+      "twitterDescription": "How we protect your data and privacy.",
+      "twitterImage": "/assets/bhaya-india-logo.png",
+      "robots": "index, follow",
+      "schemaType": "WebSite",
+      "isIndexable": true
+    },
+    "/terms-conditions": {
+      "path": "/terms-conditions",
+      "pageName": "Terms & Conditions",
+      "pageNameHi": "नियम एवं शर्तें",
+      "seoTitle": "Terms & Conditions — Platform Agreement | BHAYA INDIA",
+      "metaDescription": "Read the terms, conditions, and customer service standards governing the use of BHAYA INDIA.",
+      "canonicalUrl": "https://bhayaindia.com/terms-conditions",
+      "ogTitle": "Terms & Conditions — BHAYA INDIA",
+      "ogDescription": "Platform policies and customer terms of service.",
+      "ogImage": "/assets/bhaya-india-logo.png",
+      "twitterTitle": "Terms & Conditions | BHAYA INDIA",
+      "twitterDescription": "Platform guidelines and conditions of use.",
+      "twitterImage": "/assets/bhaya-india-logo.png",
+      "robots": "index, follow",
+      "schemaType": "WebSite",
+      "isIndexable": true
+    }
+  },
+  "redirects": [],
+  "activityLogs": [
+    {
+      "id": "act-001",
+      "user": "System Administrator",
+      "action": "Platform Initialization",
+      "object": "BHAYA INDIA Core CMS",
+      "details": "Initialized Next.js 16 Admin Control Center and SEO management layer.",
+      "timestamp": "2026-10-01T08:00:00.000Z"
+    },
+    {
+      "id": "act-002",
+      "user": "System Administrator",
+      "action": "Shopify Storefront Sync",
+      "object": "Commerce Catalog",
+      "details": "Verified live Storefront API connection and primary commerce source of truth.",
+      "timestamp": "2026-10-01T09:30:00.000Z"
+    },
+    {
+      "id": "act-003",
+      "user": "Content Editor",
+      "action": "Media Asset Audit",
+      "object": "Brand Assets",
+      "details": "Audited brand logos, hero editorials, and indexed dual-language alt text.",
+      "timestamp": "2026-10-01T11:15:00.000Z"
+    },
+    {
+      "id": "act-004",
+      "user": "SEO Manager",
+      "action": "Page SEO Calibration",
+      "object": "19 Core Pages",
+      "details": "Configured unique title, description, canonical and schema records.",
+      "timestamp": "2026-10-01T14:45:00.000Z"
+    }
+  ]
+}

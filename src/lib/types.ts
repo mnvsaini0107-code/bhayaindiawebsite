@@ -37,8 +37,19 @@ export interface Product {
   inStock: boolean;
   minOrder?: number;
   sku: string;
+  stockQuantity?: number;
+  status?: "published" | "draft" | "archived" | "approved" | "needs_review" | "unpublished";
+  reviewStatus?: "Approved" | "Needs Review" | "Unpublished";
+  shopifyReferenceId?: string | number | null;
+  discountPercent?: number | null;
   seoTitle?: string;
   seoDescription?: string;
+  altText?: string;
+  whatsappMessage?: string;
+  showCta?: boolean;
+  relatedProductIds?: string[];
+  productFaqs?: Array<{ question: string; answer: string; questionHi?: string; answerHi?: string }>;
+  variants?: Array<{ id: string; title: string; price?: number | null; compareAtPrice?: number | null; sku?: string; stock?: number; inStock?: boolean; available?: boolean; image?: string }>;
   createdAt: string;
   updatedAt?: string;
 }
@@ -54,6 +65,12 @@ export interface Category {
   productCount: number;
   subcategories: string[];
   subcategoriesHi?: string[];
+  isPublished?: boolean;
+  status?: "published" | "draft" | "archived";
+  sortOrder?: number;
+  seoTitle?: string;
+  seoDescription?: string;
+  coverAltText?: string;
 }
 
 export interface Enquiry {
@@ -108,6 +125,13 @@ export interface OrderItem {
   image?: string;
 }
 
+export interface OrderHistoryItem {
+  timestamp: string;
+  status: string;
+  note?: string;
+  updatedBy?: string;
+}
+
 export interface Order {
   id: string;
   customerName: string;
@@ -122,7 +146,14 @@ export interface Order {
   paymentMethod: "UPI" | "Card" | "NetBanking" | "COD";
   paymentStatus: "Pending" | "Paid" | "Failed";
   orderStatus: "Order Placed" | "Processing" | "Shipped" | "Delivered" | "Cancelled" | "New" | "Completed";
+  orderType?: "standard" | "cod" | "enquiry" | "online_paid";
+  carrier?: string;
+  trackingNumber?: string;
+  trackingUrl?: string;
+  internalNotes?: string;
+  history?: OrderHistoryItem[];
   createdAt: string;
+  updatedAt?: string;
 }
 
 export interface Testimonial {
@@ -320,6 +351,19 @@ export interface PageContent {
     body: string;
     ctaText: string;
   };
+  founder?: {
+    heading: string;
+    name: string;
+    title: string;
+    tagline: string;
+    intro: string;
+    portraitUrl: string;
+    bioParagraph1?: string;
+    bioParagraph2?: string;
+    visionParagraph1?: string;
+    visionParagraph2?: string;
+    closingMotto?: string;
+  };
   bhaya2: {
     headline: string;
     subheadline: string;
@@ -337,6 +381,15 @@ export interface ExtendedSiteSettings extends SiteSettings {
   currencyCode?: string;
   minimumOrderValue?: number;
   codEnabled?: boolean;
+  commerceMode?: "standalone" | "shopify";
+  upiId?: string;
+  upiQrCodeUrl?: string;
+  bankDetails?: {
+    accountName: string;
+    accountNumber: string;
+    ifsc: string;
+    bankName: string;
+  };
   shippingNotes?: string;
   smtpHost?: string;
   smtpPort?: string;

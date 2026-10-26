@@ -1,0 +1,301 @@
+.categorySection {
+  background-color: var(--color-surface-warm, #FAF9F6);
+  padding: var(--space-16, 4rem) 0;
+  border-bottom: 1px solid rgba(18, 52, 86, 0.08);
+}
+
+.sectionHeader {
+  margin-bottom: 2rem;
+}
+
+.headerRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.sectionHeading {
+  font-family: var(--font-heading, "Playfair Display", serif);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  color: var(--sapphire, #123456);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.exploreAllLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gold, #C5A059);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.exploreAllLink:hover {
+  color: #B38E46;
+  transform: translateX(3px);
+}
+
+/* --- Circular Category Strip --- */
+.circularStrip {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.75rem;
+  overflow-x: auto;
+  padding: 0.75rem 0.25rem 2rem;
+  margin-bottom: 2rem;
+  -ms-overflow-style: none;
+}
+
+@supports (scrollbar-width: none) {
+  .circularStrip {
+    scrollbar-width: none;
+  }
+}
+
+.circularStrip::-webkit-scrollbar {
+  display: none;
+}
+
+.circularCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.625rem;
+  text-decoration: none;
+  flex-shrink: 0;
+  width: 96px;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.circularCard:hover {
+  transform: translateY(-4px);
+}
+
+.circularRing {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, var(--gold, #C5A059), #E6D0A7, var(--sapphire, #123456));
+  box-shadow: 0 4px 14px rgba(18, 52, 86, 0.1);
+  transition: all 0.25s ease;
+}
+
+.circularCard:hover .circularRing {
+  box-shadow: 0 6px 18px rgba(197, 160, 89, 0.35);
+  transform: scale(1.05);
+}
+
+.circularThumb {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #EAEAE6;
+  border: 2px solid #FFFFFF;
+}
+
+.circularImg {
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.circularCard:hover .circularImg {
+  transform: scale(1.1);
+}
+
+.circularIconBadge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #FFFFFF;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+}
+
+.circularLabel {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--sapphire, #123456);
+  text-align: center;
+  line-height: 1.25;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.circularCard:hover .circularLabel {
+  color: var(--gold, #C5A059);
+}
+
+/* --- Main Grid Showcase --- */
+.gridShowcase {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.categoryCard {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 320px;
+  display: block;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(18, 52, 86, 0.08);
+  transition: all 0.3s ease;
+}
+
+.categoryCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(18, 52, 86, 0.15);
+}
+
+.cardImageWrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.cardImg {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.categoryCard:hover .cardImg {
+  transform: scale(1.06);
+}
+
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 52, 86, 0.1) 0%,
+    rgba(18, 52, 86, 0.5) 50%,
+    rgba(18, 52, 86, 0.9) 100%
+  );
+  transition: background 0.3s ease;
+}
+
+.categoryCard:hover .cardOverlay {
+  background: linear-gradient(
+    180deg,
+    rgba(18, 52, 86, 0.2) 0%,
+    rgba(18, 52, 86, 0.6) 50%,
+    rgba(18, 52, 86, 0.94) 100%
+  );
+}
+
+.cardContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  z-index: 2;
+  color: #FFFFFF;
+}
+
+.countBadge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(197, 160, 89, 0.9);
+  color: #FFFFFF;
+  padding: 0.25rem 0.6rem;
+  border-radius: 3px;
+  margin-bottom: 0.5rem;
+}
+
+.cardTitle {
+  font-family: var(--font-heading, "Playfair Display", serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 0.4rem;
+  line-height: 1.25;
+}
+
+.cardDesc {
+  font-size: 0.84rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 0.75rem;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cardCta {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gold, #C5A059);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.categoryCard:hover .cardCta {
+  color: #FFFFFF;
+  transform: translateX(4px);
+}
+
+/* --- Responsive Breakpoints --- */
+@media (max-width: 1024px) {
+  .gridShowcase {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .headerRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .sectionHeading {
+    font-size: clamp(1.5rem, 5.5vw, 2rem);
+  }
+  .gridShowcase {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .categoryCard {
+    height: 260px;
+  }
+  .circularStrip {
+    gap: 1.25rem;
+  }
+  .circularRing {
+    width: 74px;
+    height: 74px;
+  }
+  .circularCard {
+    width: 82px;
+  }
+}

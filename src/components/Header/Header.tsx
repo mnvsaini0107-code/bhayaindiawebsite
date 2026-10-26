@@ -32,19 +32,14 @@ export default function Header() {
   const navLinks = [
     { label: t("navHome"), href: "/" },
     { label: t("navAbout"), href: "/about" },
+    { label: language === "hi" ? "संस्थापक प्रोफ़ाइल" : "Founder Profile", href: "/founder-profile" },
     { label: language === "hi" ? "दुकान" : "Shop", href: "/products" },
-    { label: t("catFestival"), href: "/products?category=festival" },
-    { label: t("catRetail"), href: "/products?category=retail" },
-    { label: t("catAgro"), href: "/products?category=agro" },
-    { label: t("catManufacturing"), href: "/products?category=manufacturing" },
+    { label: "B2B / " + (language === "hi" ? "थोक" : "Wholesale"), href: "/wholesale" },
     { label: t("catLogistics"), href: "/services" },
-    { label: t("catExports"), href: "/wholesale" },
-    { label: t("catEcommerce"), href: "/products" },
-    { label: t("catPackaging"), href: "/products?category=packaging" },
-    { label: "B2B", href: "/wholesale" },
     { label: language === "hi" ? "भाया इंडिया पर बेचें" : "Sell on Bhaya India", href: "/become-a-seller" },
     { label: language === "hi" ? "पार्टनर बनें" : "Become a Partner", href: "/manufacturers" },
     { label: "BHAYA INDIA 2.0", href: "/bhaya-india-2" },
+    { label: language === "hi" ? "ऑर्डर ट्रैक करें" : "Track Order", href: "/track-order" },
     { label: t("navContact"), href: "/contact" },
   ];
 
@@ -648,9 +643,9 @@ export default function Header() {
         {/* Mobile Navigation Links */}
         <div className={styles.drawerNav}>
           <div className={styles.drawerGroupTitle}>{t("allPieces")}</div>
-          {navLinks.map((link) => (
+          {navLinks.map((link, idx) => (
             <Link
-              key={link.href}
+              key={`${link.href}-${idx}`}
               href={link.href}
               className={styles.drawerNavLink}
               onClick={() => setMobileOpen(false)}

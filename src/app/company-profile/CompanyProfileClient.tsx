@@ -6,7 +6,7 @@ import CredibilityStrip from "@/components/CredibilityStrip/CredibilityStrip";
 import styles from "./company-profile.module.css";
 
 export default function CompanyProfileClient() {
-  const { language, t } = useLanguage();
+  const { language } = useLanguage();
   const whatsappNumber = "918726690926";
 
   const visionPillars = [

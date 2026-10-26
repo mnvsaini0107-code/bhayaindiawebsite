@@ -5,7 +5,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import styles from "./Testimonials.module.css";
 
 export default function Testimonials() {
-  const { language, t } = useLanguage();
+  const { language } = useLanguage();
 
   return (
     <section className={`section ${styles.testimonialsSection}`} aria-labelledby="testimonials-heading">

@@ -1,7 +1,15 @@
 import { NextResponse } from "next/server";
 import { getActivityLogs, logActivity } from "@/lib/db";
+import { verifyAdminRequest } from "@/lib/auth";
 
-export async function GET() {
+export async function GET(request: Request) {
+  if (!(await verifyAdminRequest(request))) {
+    return NextResponse.json(
+      { success: false, error: "Unauthorized: Admin session required." },
+      { status: 401 }
+    );
+  }
+
   try {
     const logs = getActivityLogs();
     return NextResponse.json({ success: true, logs });
@@ -12,6 +20,13 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  if (!(await verifyAdminRequest(request))) {
+    return NextResponse.json(
+      { success: false, error: "Unauthorized: Admin session required." },
+      { status: 401 }
+    );
+  }
+
   try {
     const body = await request.json();
     if (!body.action || !body.object) {

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#081421"/>
+      <stop offset="50%" stop-color="#123456"/>
+      <stop offset="100%" stop-color="#081421"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F2D283"/>
+      <stop offset="50%" stop-color="#C5A059"/>
+      <stop offset="100%" stop-color="#8F6B27"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Deep Navy Background -->
+  <rect width="800" height="800" fill="url(#bgGrad)"/>
+
+  <!-- Ornate Border -->
+  <rect x="28" y="28" width="744" height="744" rx="20" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" opacity="0.85"/>
+  <rect x="40" y="40" width="720" height="720" rx="14" fill="none" stroke="url(#goldGrad)" stroke-width="1" stroke-dasharray="8 6" opacity="0.4"/>
+
+  <!-- Corner Flourishes -->
+  <path d="M 40 70 L 70 70 L 70 40" fill="none" stroke="url(#goldGrad)" stroke-width="2"/>
+  <path d="M 760 70 L 730 70 L 730 40" fill="none" stroke="url(#goldGrad)" stroke-width="2"/>
+  <path d="M 40 730 L 70 730 L 70 760" fill="none" stroke="url(#goldGrad)" stroke-width="2"/>
+  <path d="M 760 730 L 730 730 L 730 760" fill="none" stroke="url(#goldGrad)" stroke-width="2"/>
+
+  <!-- Central Icon: Textile Fabric Weave -->
+  <g transform="translate(400, 310)">
+    <circle cx="0" cy="0" r="76" fill="#0C2035" stroke="url(#goldGrad)" stroke-width="2"/>
+    <!-- Fabric rolls and loom pattern -->
+    <path d="M -42 -22 C -42 -38, 42 -38, 42 -22 C 42 -6, -42 -6, -42 -22 Z" fill="none" stroke="url(#goldGrad)" stroke-width="3"/>
+    <path d="M -42 -6 C -42 10, 42 10, 42 -6 C 42 10, -42 10, -42 -6 Z" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" opacity="0.85"/>
+    <path d="M -42 10 C -42 26, 42 26, 42 10 C 42 26, -42 26, -42 10 Z" fill="none" stroke="url(#goldGrad)" stroke-width="2" opacity="0.7"/>
+    <!-- Folded drape tail -->
+    <path d="M 28 -14 L 38 36 L -8 36 L -18 -14" fill="none" stroke="url(#goldGrad)" stroke-width="2.5"/>
+    <line x1="-3" y1="-14" x2="8" y2="36" stroke="url(#goldGrad)" stroke-width="1.5" stroke-dasharray="3 3"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="400" y="445" text-anchor="middle" font-family="'Outfit', 'Inter', -apple-system, sans-serif" font-size="16" font-weight="700" fill="#C5A059" letter-spacing="5">
+    BHAYA INDIA • COLLECTION
+  </text>
+  <text x="400" y="488" text-anchor="middle" font-family="'Outfit', 'Inter', -apple-system, sans-serif" font-size="30" font-weight="700" fill="#FFFFFF" letter-spacing="2">
+    TEXTILES &amp; FABRICS
+  </text>
+  <text x="400" y="525" text-anchor="middle" font-family="'Outfit', 'Inter', -apple-system, sans-serif" font-size="18" font-weight="600" fill="#E8C982" letter-spacing="1.5">
+    वस्त्र एवं परिधान
+  </text>
+
+  <!-- Status pill -->
+  <g transform="translate(400, 560)">
+    <rect x="-190" y="0" width="380" height="36" rx="18" fill="rgba(197, 160, 89, 0.12)" stroke="url(#goldGrad)" stroke-width="1"/>
+    <text x="0" y="23" text-anchor="middle" font-family="'Outfit', 'Inter', -apple-system, sans-serif" font-size="12" font-weight="600" fill="#F2D283" letter-spacing="2">
+      PHOTO AWAITING CLIENT SUPPLY
+    </text>
+  </g>
+
+  <!-- Motto footer -->
+  <text x="400" y="650" text-anchor="middle" font-family="'Outfit', 'Inter', -apple-system, sans-serif" font-size="14" fill="#9FB3C8" letter-spacing="1">
+    No Stock Photography Used • जहाँ भाया, वहाँ भरोसा
+  </text>
+</svg>

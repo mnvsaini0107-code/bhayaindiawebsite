@@ -68,21 +68,21 @@ export default function FounderStory() {
   ];
 
   return (
-    <section className={styles.section} aria-labelledby="founder-story-heading">
+    <section className={styles.section} id="founder-story-section" aria-labelledby="founder-story-heading">
       <div className="container">
         {/* Header */}
         <div className={styles.header}>
           <div className="eyebrow eyebrow--gold">
             <span className="eyebrow-line" />
-            {language === "hi" ? "संस्थापक एवं विज़न" : "FOUNDER & HERITAGE"}
+            {language === "hi" ? "संस्थापक एवं विज़न" : "FOUNDER & VISIONARY"}
           </div>
 
           <h2 className={styles.title} id="founder-story-heading">
-            {t("founderStoryTitle")}
+            {t("founderSectionHeading")}
           </h2>
 
           <p className={styles.subtitle}>
-            {t("founderStorySubtitle")}
+            {t("founderTagline")}
           </p>
         </div>
 
@@ -119,10 +119,10 @@ export default function FounderStory() {
                 }}
               >
                 <Image
-                  src="/assets/bhaya-india-logo.png"
-                  alt="Ram Ji Bhaya — Founder of BHAYA INDIA"
+                  src="/ram-ji-bhaya-founder.jpg"
+                  alt="राम जी भाया — Founder & Visionary, Bhaya India"
                   fill
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: "cover", objectPosition: "center 15%" }}
                   sizes="100px"
                 />
               </div>
@@ -150,17 +150,17 @@ export default function FounderStory() {
                     margin: 0,
                   }}
                 >
-                  राम जी भाया (Ram Ji Bhaya)
+                  {t("founderName")}
                 </h3>
                 <span style={{ fontSize: "13px", color: "var(--gray-500, #666)" }}>
-                  {language === "hi" ? "बलरामपुर, उत्तर प्रदेश" : "Balrampur, Uttar Pradesh"}
+                  {t("founderTitle")}
                 </span>
               </div>
             </div>
 
             <div className={styles.storyEyebrow}>
               <span className={styles.verifiedBadge}>
-                {language === "hi" ? "सत्यापित विवरण" : "VERIFIED FACTS"}
+                {language === "hi" ? "संस्थापक परिचय" : "FOUNDER INTRODUCTION"}
               </span>
               <span className={styles.originTag}>
                 {language === "hi" ? "बलरामपुर, उत्तर प्रदेश" : "Balrampur, Uttar Pradesh"}
@@ -168,45 +168,26 @@ export default function FounderStory() {
             </div>
 
             <p className={styles.narrativeText}>
-              {t("founderStoryVerifiedText")}
+              {t("founderIntro")}
             </p>
 
             <div className={styles.pullQuoteBox}>
               <span className={`${styles.pullQuoteText} font-devanagari`}>
-                “जहाँ भाया, वहाँ भरोसा।”
+                {t("founderTagline")}
               </span>
               <p className={styles.pullQuoteNote}>
                 {language === "hi"
-                  ? "पारंपरिक विश्वास और आधुनिक वाणिज्य का सेतु — लोकल टू ऑनलाइन, लोकल टू इंडिया।"
-                  : "Bridging time-honored integrity with modern digital trade — Local to Online, Local to India."}
-              </p>
-            </div>
-
-            {/* Strict Truthful Policy Placeholder for unverified personal biography */}
-            <div className={styles.placeholderBox}>
-              <div className={styles.placeholderHeader}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <line x1="12" y1="8" x2="12" y2="12"/>
-                  <line x1="12" y1="16" x2="12.01" y2="16"/>
-                </svg>
-                <span>
-                  {language === "hi" ? "संस्थापक जीवन यात्रा" : "Founder Story"}
-                </span>
-              </div>
-              <p className={styles.placeholderText}>
-                {language === "hi"
-                  ? "विस्तृत व्यक्तिगत जीवन यात्रा एवं कालक्रम संस्थापक द्वारा अनुमोदित प्रोफाइल के साथ अपडेट किया जाएगा।"
-                  : "Details will be updated with the founder-approved profile."}
+                  ? "विश्वास, गुणवत्ता और जिम्मेदार व्यापार — लोकल टू ऑनलाइन, लोकल टू इंडिया।"
+                  : "Trust, Quality, and Responsible Commerce — Local to Online, Local to India."}
               </p>
             </div>
 
             <div className={styles.actionRow}>
-              <Link href="/about" className="btn btn-primary" id="founder-about-readmore-btn">
-                {language === "hi" ? "विस्तृत यात्रा पढ़ें" : "Read Full Story"} →
+              <Link href="/founder-profile" className="btn btn-primary" id="founder-about-readmore-btn">
+                {t("founderButton")}
               </Link>
               <Link href="/contact" className="btn btn-secondary">
-                {language === "hi" ? "डेस्क से संपर्क करें" : "Contact Founder Desk"}
+                {language === "hi" ? "डेस्क से संपर्क करें" : "Contact Desk"}
               </Link>
             </div>
           </div>

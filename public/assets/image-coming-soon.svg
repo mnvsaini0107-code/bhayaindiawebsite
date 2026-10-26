@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <rect width="800" height="800" fill="#0A1828"/>
+  <rect x="20" y="20" width="760" height="760" rx="16" fill="none" stroke="#C5A059" stroke-width="2" stroke-dasharray="6 6" opacity="0.6"/>
+  <g transform="translate(400, 340)">
+    <!-- Camera / Frame Icon -->
+    <rect x="-60" y="-45" width="120" height="90" rx="12" fill="#123456" stroke="#C5A059" stroke-width="3"/>
+    <path d="M -20 -45 L -10 -60 L 10 -60 L 20 -45 Z" fill="#123456" stroke="#C5A059" stroke-width="3"/>
+    <circle cx="0" cy="0" r="26" fill="none" stroke="#C5A059" stroke-width="3"/>
+    <circle cx="0" cy="0" r="10" fill="#C5A059" opacity="0.8"/>
+    <circle cx="38" cy="-24" r="5" fill="#C5A059"/>
+  </g>
+  <!-- Text Hierarchy -->
+  <text x="400" y="440" text-anchor="middle" font-family="'Outfit', 'Inter', -apple-system, sans-serif" font-size="20" font-weight="700" fill="#C5A059" letter-spacing="4">
+    BHAYA INDIA
+  </text>
+  <text x="400" y="475" text-anchor="middle" font-family="'Outfit', 'Inter', -apple-system, sans-serif" font-size="24" font-weight="600" fill="#FFFFFF" letter-spacing="1">
+    Authentic Image Coming Soon
+  </text>
+  <text x="400" y="510" text-anchor="middle" font-family="'Outfit', 'Inter', -apple-system, sans-serif" font-size="15" fill="#A0AEC0" letter-spacing="0.5">
+    Under Artisan Catalog Verification • जहाँ भाया, वहाँ भरोसा
+  </text>
+</svg>

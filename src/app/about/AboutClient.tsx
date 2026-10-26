@@ -190,8 +190,8 @@ export default function AboutClient() {
             }}
           >
             <Image
-              src="/assets/hero-editorial.jpg"
-              alt="Bhaya India — quality products and trusted service"
+              src="/assets/products/shubh-vivah-soop-okhali-set.jpg"
+              alt="Bhaya India — authentic Indian products and trusted service"
               fill
               style={{ objectFit: "cover" }}
               sizes="(max-width: 768px) 100vw, 50vw"

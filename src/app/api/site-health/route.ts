@@ -1,8 +1,16 @@
 import { NextResponse } from "next/server";
 import { getMedia, getAllPageSeo, getGlobalSeoSettings, getProducts } from "@/lib/db";
 import { isShopifyConfigured, isShopifyAdminConfigured, getShopifyStoreDomain } from "@/lib/shopify";
+import { verifyAdminRequest } from "@/lib/auth";
 
-export async function GET() {
+export async function GET(request: Request) {
+  if (!(await verifyAdminRequest(request))) {
+    return NextResponse.json(
+      { success: false, error: "Unauthorized: Admin session required." },
+      { status: 401 }
+    );
+  }
+
   try {
     const media = getMedia();
     const pages = getAllPageSeo();
@@ -78,7 +86,7 @@ export async function GET() {
         name: "Open Graph & Social Cards",
         status: pagesMissingOgImage === 0 ? "PASS" : "WARNING",
         summary: "Social share tags (og:title, og:description, og:image, twitter:card) configured.",
-        details: `Default OG asset: ${globalSeo.defaultOgImage || "/assets/hero-editorial.jpg"}`,
+        details: `Default OG asset: ${globalSeo.defaultOgImage || "/assets/bhaya-india-logo.png"}`,
       },
       {
         id: "structured-data",

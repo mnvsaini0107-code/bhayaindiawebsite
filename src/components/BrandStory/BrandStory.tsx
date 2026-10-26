@@ -16,8 +16,8 @@ export default function BrandStory() {
           <div className={styles.visualCol}>
             <div className={styles.imageFrame}>
               <Image
-                src="/assets/category-textiles.jpg"
-                alt="Bhaya India — heritage craftsmanship, textiles and authentic trade"
+                src="/assets/products/traditional-vivah-soop-collection.jpg"
+                alt="Bhaya India — authentic Indian craft, heritage ceremonial items and trusted trade"
                 fill
                 className={styles.storyImage}
                 sizes="(max-width: 1024px) 100vw, 50vw"

@@ -24,7 +24,7 @@ import type {
   BhayaCollection,
 } from "./types";
 export type { BhayaCollection };
-import { getProducts as getFallbackProducts, getCategories as getFallbackCategories } from "@/lib/db";
+import { getProducts as getFallbackProducts, getCategories as getFallbackCategories, isProductPubliclyVisible } from "@/lib/db";
 
 // Helper to safely parse Shopify metafields into Bhaya India product format
 export function reshapeProduct(product: ShopifyProduct): BhayaShopifyProduct {
@@ -33,7 +33,7 @@ export function reshapeProduct(product: ShopifyProduct): BhayaShopifyProduct {
     images.push(product.featuredImage.url);
   }
   if (images.length === 0) {
-    images.push("/assets/category-textiles.jpg");
+    images.push("/assets/image-coming-soon.svg");
   }
 
   const minPrice = parseFloat(product.priceRange.minVariantPrice.amount);
@@ -182,11 +182,9 @@ export function reshapeProduct(product: ShopifyProduct): BhayaShopifyProduct {
     price: minPrice > 0 ? minPrice : null,
     compareAtPrice: primaryVariant?.compareAtPrice?.amount
       ? parseFloat(primaryVariant.compareAtPrice.amount)
-      : minPrice > 0
-      ? Math.round(minPrice * 1.25)
       : null,
-    rating: Number((4.7 + ((product.id.charCodeAt(product.id.length - 1) % 4) * 0.1)).toFixed(1)),
-    reviewsCount: 16 + (product.id.charCodeAt(product.id.length - 1) % 35),
+    rating: undefined,
+    reviewsCount: 0,
     priceNote,
     specs,
     specsHi,
@@ -211,10 +209,9 @@ export function reshapeProduct(product: ShopifyProduct): BhayaShopifyProduct {
 
 // Convert fallback database Product to BhayaShopifyProduct
 function fallbackToShopifyProduct(p: ReturnType<typeof getFallbackProducts>[0]): BhayaShopifyProduct {
-  const compPrice = p.price ? Math.round(p.price * 1.25) : null;
-  const hash = p.id.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
-  const rating = Number((4.7 + ((hash % 4) * 0.1)).toFixed(1));
-  const reviewsCount = 14 + (hash % 38);
+  const compPrice = p.compareAtPrice ?? null;
+  const rating = p.rating ?? undefined;
+  const reviewsCount = p.reviewsCount ?? 0;
 
   return {
     id: p.id,
@@ -232,9 +229,9 @@ function fallbackToShopifyProduct(p: ReturnType<typeof getFallbackProducts>[0]):
     description: p.description,
     descriptionHi: p.descriptionHi,
     descriptionHtml: `<p>${p.description}</p>`,
-    images: p.images,
-    image_en: p.image_en,
-    image_hi: p.image_hi,
+    images: (p.images && p.images.length > 0) ? p.images : ["/assets/image-coming-soon.svg"],
+    image_en: p.image_en || (p.images && p.images[0]) || "/assets/image-coming-soon.svg",
+    image_hi: p.image_hi || (p.images && p.images[0]) || "/assets/image-coming-soon.svg",
     price: p.price,
     compareAtPrice: compPrice,
     rating,
@@ -283,8 +280,8 @@ export async function getShopifyProducts(options?: {
   reverse?: boolean;
 }): Promise<BhayaShopifyProduct[]> {
   if (!isShopifyConfigured()) {
-    // Return formatted fallback products
-    const dbProducts = getFallbackProducts();
+    // Return formatted fallback products filtered by public approval/visibility
+    const dbProducts = getFallbackProducts().filter(isProductPubliclyVisible);
     let res = dbProducts.map(fallbackToShopifyProduct);
 
     if (options?.category && options.category !== "all") {
@@ -347,7 +344,7 @@ export async function getShopifyProducts(options?: {
 
 export async function getShopifyProductBySlug(slug: string): Promise<BhayaShopifyProduct | null> {
   if (!isShopifyConfigured()) {
-    const p = getFallbackProducts().find((item) => item.slug === slug);
+    const p = getFallbackProducts().find((item) => item.slug === slug && isProductPubliclyVisible(item));
     return p ? fallbackToShopifyProduct(p) : null;
   }
 
@@ -363,14 +360,14 @@ export async function getShopifyProductBySlug(slug: string): Promise<BhayaShopif
 
     if (!body.data.product) {
       // Check fallback in case it's a seed slug
-      const p = getFallbackProducts().find((item) => item.slug === slug);
+      const p = getFallbackProducts().find((item) => item.slug === slug && isProductPubliclyVisible(item));
       return p ? fallbackToShopifyProduct(p) : null;
     }
 
     return reshapeProduct(body.data.product);
   } catch (err) {
     console.warn("Shopify single product fetch failed:", err);
-    const p = getFallbackProducts().find((item) => item.slug === slug);
+    const p = getFallbackProducts().find((item) => item.slug === slug && isProductPubliclyVisible(item));
     return p ? fallbackToShopifyProduct(p) : null;
   }
 }
@@ -455,7 +452,15 @@ export async function getShopifyCollections(): Promise<BhayaCollection[]> {
       variables: { first: 20 },
     });
 
-    return body.data.collections.edges.map((edge) => {
+    const validEdges = (body.data.collections.edges || []).filter(
+      (edge) => edge.node.handle !== "frontpage"
+    );
+
+    if (validEdges.length === 0) {
+      return fallbackCats;
+    }
+
+    return validEdges.map((edge) => {
       const match = fallbackCats.find((f) => f.slug === edge.node.handle);
       return {
         id: edge.node.id,
@@ -464,7 +469,7 @@ export async function getShopifyCollections(): Promise<BhayaCollection[]> {
         nameHi: match?.nameHi,
         description: edge.node.description || match?.description || "",
         descriptionHi: match?.descriptionHi,
-        image: edge.node.image?.url || match?.image || "/assets/category-textiles.jpg",
+        image: edge.node.image?.url || match?.image || "/assets/bhaya-india-logo.png",
         productCount: match?.productCount || 0,
         subcategories: match?.subcategories || [],
         subcategoriesHi: match?.subcategoriesHi || [],

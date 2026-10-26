@@ -1,0 +1,3544 @@
+diff --git a/data/db.json b/data/db.json
+index 62a5fc4..20c108c 100644
+--- a/data/db.json
++++ b/data/db.json
+@@ -85,6 +85,94 @@
+     }
+   },
+   "categories": [
++    {
++      "id": "cat-puja-mala",
++      "name": "Puja Mala",
++      "nameHi": "पूजा माला",
++      "slug": "puja-mala",
++      "description": "Decorative flower garlands and traditional malas for worship, home mandir, and sacred rituals.",
++      "descriptionHi": "पूजा, गृह मंदिर और धार्मिक अनुष्ठानों के लिए आकर्षक सजावटी फूल मालाएँ।",
++      "image": "/assets/products/puja-mala-rose-yellow-pink.jpg",
++      "productCount": 3,
++      "subcategories": [
++        "Rose Flower Mala",
++        "Bud Flower Mala",
++        "Mandir Garlands"
++      ]
++    },
++    {
++      "id": "cat-bhagwan-jaymala",
++      "name": "Bhagwan Jaymala",
++      "nameHi": "भगवान की जयमाला",
++      "slug": "bhagwan-jaymala",
++      "description": "Special sacred garlands and malas for deity shringar, temples, and religious occasions.",
++      "descriptionHi": "देव मूर्तियों के शृंगार, मंदिरों और धार्मिक आयोजनों के लिए विशेष भगवान जयमाला।",
++      "image": "/assets/products/bhagwan-jaymala-royal-blue-pearl.jpg",
++      "productCount": 3,
++      "subcategories": [
++        "Deity Shringar Mala",
++        "Marigold Sacred Mala",
++        "Pastel Jaymala"
++      ]
++    },
++    {
++      "id": "cat-large-flower-garlands",
++      "name": "Large Flower Garlands",
++      "nameHi": "बड़ा फूल माला",
++      "slug": "large-flower-garlands",
++      "description": "Grand decorative multicolour flower garlands for festival gates, stage decor, and celebrations.",
++      "descriptionHi": "समारोहों, तोरण, प्रवेश द्वारों और मंच सज्जा के लिए भव्य बहुरंगी बड़ा फूल माला।",
++      "image": "/assets/products/large-flower-garland-grand-multicolour.jpg",
++      "productCount": 3,
++      "subcategories": [
++        "Conical Festival Garlands",
++        "Marigold Jasmine Garlands",
++        "Tiered Event Garlands"
++      ]
++    },
++    {
++      "id": "cat-moti-mala",
++      "name": "Moti Mala",
++      "nameHi": "मोती माला",
++      "slug": "moti-mala",
++      "description": "Pearl-style decorative garlands with crystal beads, antique filigree metalwork, and pearl drops.",
++      "descriptionHi": "श्वेत मोती, क्रिस्टल बीड्स, सुनहरी जालीदार नक्काशी और मोती लटकन वाली पारंपरिक माला।",
++      "image": "/assets/products/moti-mala-emerald-green-crystal-pearl.jpg",
++      "productCount": 2,
++      "subcategories": [
++        "Crystal Pearl Mala",
++        "Antique Filigree Mala"
++      ]
++    },
++    {
++      "id": "cat-sherwani-mala",
++      "name": "Sherwani Mala",
++      "nameHi": "शेरवानी माला",
++      "slug": "sherwani-mala",
++      "description": "Royal multi-strand pearl and bead garlands designed for groom wedding sherwanis with ornate brooches.",
++      "descriptionHi": "वर शेरवानी हेतु बहु-लड़ी शाही मोती व स्टोन ब्रोच युक्त शेरवानी माला।",
++      "image": "/assets/products/sherwani-mala-peacock-brooch-detail.jpg",
++      "productCount": 2,
++      "subcategories": [
++        "Peacock Brooch Sherwani Mala",
++        "Ruby Brooch Sherwani Mala"
++      ]
++    },
++    {
++      "id": "cat-groom-garland",
++      "name": "Groom Garland",
++      "nameHi": "दूल्हा माला",
++      "slug": "groom-garland",
++      "description": "Traditional wedding groom garlands, tiered haar, kundan pendants, and decorative necklaces.",
++      "descriptionHi": "विवाह समारोह हेतु पारंपरिक दूल्हा हार, कुंदन ब्रोच व लटकन वाली आकर्षक मालाएँ।",
++      "image": "/assets/products/dulha-haar-kundan-floral-brooch.jpg",
++      "productCount": 3,
++      "subcategories": [
++        "Kundan Brooch Dulha Haar",
++        "Heart Pendant Haar",
++        "Multi-Tier Pearl Haar"
++      ]
++    },
+     {
+       "id": "cat-puja",
+       "name": "Puja Samagri",
+@@ -371,6 +459,1398 @@
+     }
+   ],
+   "products": [
++    {
++      "id": "prod-pm-001",
++      "name": "Rose Decorative Flower Puja Mala",
++      "nameHi": "गुलाब फूल पूजा माला",
++      "slug": "rose-decorative-flower-puja-mala",
++      "category": "Puja Mala",
++      "categoryHi": "पूजा माला",
++      "categorySlug": "puja-mala",
++      "subcategory": "Rose Flower Mala",
++      "subcategoryHi": "गुलाब माला",
++      "tagline": "Vibrant yellow and pink roses for daily worship",
++      "taglineHi": "नित्य पूजा व मंदिर शृंगार हेतु सुंदर गुलाब माला",
++      "description": "Hand-crafted artificial floral puja mala featuring vibrant yellow and deep pink rose blossoms strung with golden spacer accents, green calyx leaves, decorative cluster drops, and red ribbon hanging ties. Suitable for home mandir, daily worship, and festive rituals.",
++      "descriptionHi": "पीले व गहरे गुलाबी कृत्रिम गुलाब के फूलों से तैयार की गई सुंदर पूजा माला। सुनहरे मोती के जोड़ों, हरी पत्तियों, लटकन और लाल रिबन हैंगर के साथ। नित्य पूजा, गृह मंदिर एवं उत्सवों के लिए उपयुक्त।",
++      "images": [
++        "/assets/products/puja-mala-rose-yellow-pink.jpg"
++      ],
++      "image_en": "/assets/products/puja-mala-rose-yellow-pink.jpg",
++      "image_hi": "/assets/products/puja-mala-rose-yellow-pink.jpg",
++      "price": null,
++      "priceNote": "Price to be configured in Shopify Admin",
++      "specs": [
++        {
++          "label": "Design",
++          "value": "Dual-tone Rose with Golden Spacers"
++        },
++        {
++          "label": "Colours",
++          "value": "Yellow, Magenta Pink, Green & Gold"
++        },
++        {
++          "label": "Closure",
++          "value": "Red Ribbon Hanging Ties"
++        },
++        {
++          "label": "Occasion",
++          "value": "Puja, Home Mandir, Festivals"
++        }
++      ],
++      "specsHi": [
++        {
++          "label": "डिज़ाइन",
++          "value": "गुलाब फूल व सुनहरे मोती"
++        },
++        {
++          "label": "रंग",
++          "value": "पीला, गहरा गुलाबी, हरा व सुनहरा"
++        },
++        {
++          "label": "हैंगर",
++          "value": "लाल रिबन टाई"
++        },
++        {
++          "label": "उपयोग",
++          "value": "नित्य पूजा, गृह मंदिर, त्योहार"
++        }
++      ],
++      "features": [
++        "Vibrant yellow & deep pink artificial rose petals",
++        "Golden bead spacers and green leaf accents",
++        "Hanging bell drops at the garland ends",
++        "Protective clear sleeve packaging"
++      ],
++      "featuresHi": [
++        "खिले हुए पीले व गुलाबी कृत्रिम गुलाब के फूल",
++        "सुनहरे मोती और हरी पत्तियों का संयोजन",
++        "माला के निचले सिरे पर आकर्षक लटकन",
++        "सुरक्षित पारदर्शी पैकेजिंग"
++      ],
++      "benefits": [
++        "Durable non-wilting blooms for long-lasting mandir decor",
++        "Lightweight and easy to hang on deities and frames"
++      ],
++      "benefitsHi": [
++        "लंबे समय तक ताज़ा दिखने वाली टिकाऊ माला",
++        "मूर्तियों एवं फोटो फ्रेम पर आसानी से लगाने योग्य"
++      ],
++      "isFeatured": true,
++      "isPublished": true,
++      "isNew": true,
++      "inStock": true,
++      "minOrder": 1,
++      "sku": "BI-PM-001",
++      "seoTitle": "Rose Decorative Flower Puja Mala — Bhaya India",
++      "seoDescription": "Hand-crafted artificial rose flower puja mala in yellow and pink for home mandir and worship. Buy authentic garlands from Bhaya India.",
++      "createdAt": "2026-10-15T10:59:14.868Z",
++      "shopifyId": "gid://shopify/Product/15463934263389",
++      "shopifyCdnImages": [
++        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/puja-mala-rose-yellow-pink.jpg?v=1792062972"
++      ]
++    },
++    {
++      "id": "prod-pm-002",
++      "name": "Red Rose & Yellow Bud Decorative Puja Mala",
++      "nameHi": "लाल गुलाब व पीली कली पूजा माला",
++      "slug": "red-rose-yellow-bud-puja-mala",
++      "category": "Puja Mala",
++      "categoryHi": "पूजा माला",
++      "categorySlug": "puja-mala",
++      "subcategory": "Bud Flower Mala",
++      "subcategoryHi": "कली फूल माला",
++      "tagline": "Bold crimson roses paired with yellow floral buds",
++      "taglineHi": "लाल गुलाब व पीली कलियों का मनमोहक संगम",
++      "description": "Traditional layered flower garland combining bold crimson artificial roses, bright yellow tubular floral buds, green fern foliage accents, and hanging white floral drops with red ribbon hanging ties.",
++      "descriptionHi": "लाल गुलाब के फूलों, पीली कलियों, हरी पत्तियों और श्वेत लटकन से सुसज्जित पारंपरिक पूजा माला। नित्य पूजा एवं धार्मिक अनुष्ठानों के लिए।",
++      "images": [
++        "/assets/products/puja-mala-red-rose-yellow-bud.jpg"
++      ],
++      "image_en": "/assets/products/puja-mala-red-rose-yellow-bud.jpg",
++      "image_hi": "/assets/products/puja-mala-red-rose-yellow-bud.jpg",
++      "price": null,
++      "priceNote": "Price to be configured in Shopify Admin",
++      "specs": [
++        {
++          "label": "Design",
++          "value": "Crimson Rose with Tubular Bud Sections"
++        },
++        {
++          "label": "Colours",
++          "value": "Red, Lemon Yellow, Green & White"
++        },
++        {
++          "label": "Closure",
++          "value": "Red Ribbon Ties"
++        },
++        {
++          "label": "Occasion",
++          "value": "Puja, Religious Functions, Mandir"
++        }
++      ],
++      "specsHi": [
++        {
++          "label": "डिज़ाइन",
++          "value": "लाल गुलाब व पीली कली संयोजन"
++        },
++        {
++          "label": "रंग",
++          "value": "लाल, नींबू पीला, हरा व सफ़ेद"
++        },
++        {
++          "label": "हैंगर",
++          "value": "लाल रिबन टाई"
++        },
++        {
++          "label": "उपयोग",
++          "value": "पूजा, धार्मिक अनुष्ठान, मंदिर"
++        }
++      ],
++      "features": [
++        "Layered red roses and dense yellow floral buds",
++        "Fern-style green leaves for natural aesthetic",
++        "Hanging white floral tassels at the bottom"
++      ],
++      "featuresHi": [
++        "सघन लाल गुलाब और पीली कलियों की बुनावट",
++        "प्राकृतिक हरी पत्तियों की सजावट",
++        "निचले सिरे पर सफेद लटकन की लड़ियाँ"
++      ],
++      "benefits": [
++        "Bold festive contrast ideal for temple decoration",
++        "Maintains vibrant colors without fading"
++      ],
++      "benefitsHi": [
++        "मंदिर व मूर्तियों के लिए आकर्षक व चटख रंग",
++        "रंग नहीं उड़ते और लंबे समय तक सुरक्षित रहते हैं"
++      ],
++      "isFeatured": false,
++      "isPublished": true,
++      "isNew": true,
++      "inStock": true,
++      "minOrder": 1,
++      "sku": "BI-PM-002",
++      "seoTitle": "Red Rose & Yellow Bud Decorative Puja Mala — Bhaya India",
++      "seoDescription": "Traditional red rose and yellow bud garland for mandir and deity worship from Bhaya India.",
++      "createdAt": "2026-10-15T10:59:14.869Z",
++      "shopifyId": "gid://shopify/Product/15463934296157",
++      "shopifyCdnImages": [
++        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/puja-mala-red-rose-yellow-bud.jpg?v=1792062976"
++      ]
++    },
++    {
++      "id": "prod-pm-003",
++      "name": "Mint White & Blush Pink Rose Puja Mala",
++      "nameHi": "श्वेत-गुलाबी गुलाब पूजा माला",
++      "slug": "mint-white-blush-pink-rose-mala",
++      "category": "Puja Mala",
++      "categoryHi": "पूजा माला",
++      "categorySlug": "puja-mala",
++      "subcategory": "Rose Flower Mala",
++      "subcategoryHi": "गुलाब माला",
++      "tagline": "Serene pastel roses for peaceful temple ambiance",
++      "taglineHi": "सौम्य श्वेत व गुलाबी गुलाब से सजी पूजा माला",
++      "description": "Elegant soft pastel rose garland bunch featuring delicate mint-white and blush-pink layered fabric roses with green calyx leaves and red satin hanging ribbons.",
++      "descriptionHi": "श्वेत एवं हल्के गुलाबी कृत्रिम गुलाब के फूलों से गूंथी गई सौम्य पूजा माला। मंदिर सजावट और धार्मिक आयोजनों के लिए।",
++      "images": [
++        "/assets/products/puja-mala-mint-white-blush-rose.jpg"
++      ],
++      "image_en": "/assets/products/puja-mala-mint-white-blush-rose.jpg",
++      "image_hi": "/assets/products/puja-mala-mint-white-blush-rose.jpg",
++      "price": null,
++      "priceNote": "Price to be configured in Shopify Admin",
++      "specs": [
++        {
++          "label": "Design",
++          "value": "Layered Pastel Fabric Roses"
++        },
++        {
++          "label": "Colours",
++          "value": "Mint White, Blush Pink & Green"
++        },
++        {
++          "label": "Closure",
++          "value": "Red Ribbon Ties"
++        },
++        {
++          "label": "Occasion",
++          "value": "Daily Puja, Spiritual Events"
++        }
++      ],
++      "specsHi": [
++        {
++          "label": "डिज़ाइन",
++          "value": "हल्के रंगों के गुलाब फूल"
++        },
++        {
++          "label": "रंग",
++          "value": "श्वेत, हल्का गुलाबी व हरा"
++        },
++        {
++          "label": "हैंगर",
++          "value": "लाल रिबन टाई"
++        },
++        {
++          "label": "उपयोग",
++          "value": "नित्य पूजा, शांत मंदिर वातावरण"
++        }
++      ],
++      "features": [
++        "Soft petal texture with mint white and blush tones",
++        "Clean individual flower spacing with green sepals",
++        "Multiple garland bunch in clear protective wrap"
++      ],
++      "featuresHi": [
++        "मुलायम पंखुड़ियों वाली श्वेत व गुलाबी गुलाब माला",
++        "हरी पत्तियों के साथ सुंदर फूलों की बनावट",
++        "पारदर्शी सुरक्षात्मक पैकिंग"
++      ],
++      "benefits": [
++        "Soothes mandir visual space with serene pastel aesthetic",
++        "Washable and reusable across multiple rituals"
++      ],
++      "benefitsHi": [
++        "मंदिर में शांत व भक्तिमय वातावरण निर्मित करता है",
++        "धोने योग्य और पुनः उपयोग में लाने योग्य"
++      ],
++      "isFeatured": false,
++      "isPublished": true,
++      "isNew": true,
++      "inStock": true,
++      "minOrder": 1,
++      "sku": "BI-PM-003",
++      "seoTitle": "Mint White & Blush Pink Rose Puja Mala — Bhaya India",
++      "seoDescription": "Pastel white and blush pink rose garland for sacred worship and mandir decor from Bhaya India.",
++      "createdAt": "2026-10-15T10:59:14.869Z",
++      "shopifyId": "gid://shopify/Product/15463934328925",
++      "shopifyCdnImages": [
++        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/puja-mala-mint-white-blush-rose.jpg?v=1792062980"
++      ]
++    },
++    {
++      "id": "prod-bj-001",
++      "name": "Royal Blue & Pearl Deity Jaymala",
++      "nameHi": "नीली व श्वेत मोती भगवान जयमाला",
++      "slug": "royal-blue-pearl-bhagwan-jaymala",
++      "category": "Bhagwan Jaymala",
++      "categoryHi": "भगवान की जयमाला",
++      "categorySlug": "bhagwan-jaymala",
++      "subcategory": "Deity Shringar Mala",
++      "subcategoryHi": "मूर्ति शृंगार माला",
++      "tagline": "Lustrous blue crystal beads and ivory pearls for deity shringar",
++      "taglineHi": "देव मूर्तियों के शृंगार हेतु नीली व श्वेत मोती जयमाला",
++      "description": "Sacred decorative garland featuring rich metallic royal-blue beads with sparkling crystal stone rondelles, woven white pearls, fluted golden caps, pearl drop tassels, and red hanging ribbons. Ideal for deity shringar and religious festivities.",
++      "descriptionHi": "भगवान के शृंगार हेतु विशेष जयमाला। चमकदार रॉयल ब्लू मोती, श्वेत मोती, क्रिस्टल रिंग्स और सुनहरी कैप्स से सजी सुंदर माला।",
++      "images": [
++        "/assets/products/bhagwan-jaymala-royal-blue-pearl.jpg"
++      ],
++      "image_en": "/assets/products/bhagwan-jaymala-royal-blue-pearl.jpg",
++      "image_hi": "/assets/products/bhagwan-jaymala-royal-blue-pearl.jpg",
++      "price": null,
++      "priceNote": "Price to be configured in Shopify Admin",
++      "specs": [
++        {
++          "label": "Material Details",
++          "value": "Faux Pearls, Blue Beads, Crystal Rings"
++        },
++        {
++          "label": "Accent",
++          "value": "Gold-tone Bead Caps & Pearl Tassels"
++        },
++        {
++          "label": "Colours",
++          "value": "Royal Blue, Ivory White & Gold"
++        },
++        {
++          "label": "Use",
++          "value": "Bhagwan Jaymala, Deity Shringar"
++        }
++      ],
++      "specsHi": [
++        {
++          "label": "सामग्री",
++          "value": "मोती, नीले बीड्स, क्रिस्टल रिंग्स"
++        },
++        {
++          "label": "विशेषता",
++          "value": "सुनहरी कैप्स व मोती लटकन"
++        },
++        {
++          "label": "रंग",
++          "value": "रॉयल ब्लू, श्वेत व सुनहरा"
++        },
++        {
++          "label": "उपयोग",
++          "value": "भगवान जयमाला, मूर्ति शृंगार"
++        }
++      ],
++      "features": [
++        "Deep royal blue metallic beads alternating with crystal rings",
++        "Dense strands of lustrous ivory pearls",
++        "Pearl bell clusters at the lower drop",
++        "Red ribbon top loops for secure hanging"
++      ],
++      "featuresHi": [
++        "रॉयल ब्लू बीड्स और क्रिस्टल स्टोन रिंग्स",
++        "चमकदार श्वेत मोतियों की लड़ियाँ",
++        "निचले सिरे पर मोतियों के गुच्छेदार झुमके",
++        "टांगने के लिए लाल रिबन लूप"
++      ],
++      "benefits": [
++        "Elevates idol shringar during Janmashtami, Navratri and temple events",
++        "Pristine finish that withstands regular use"
++      ],
++      "benefitsHi": [
++        "त्योहारों व मंदिर में भगवान के शृंगार की शोभा बढ़ाता है",
++        "नियमित उपयोग में भी चमक बनाए रखता है"
++      ],
++      "isFeatured": true,
++      "isPublished": true,
++      "isNew": true,
++      "inStock": true,
++      "minOrder": 1,
++      "sku": "BI-BJ-001",
++      "seoTitle": "Royal Blue & Pearl Deity Jaymala — Bhaya India",
++      "seoDescription": "Exquisite royal blue and pearl jaymala for deity shringar and religious celebrations by Bhaya India.",
++      "createdAt": "2026-10-15T10:59:14.869Z",
++      "shopifyId": "gid://shopify/Product/15463934361693",
++      "shopifyCdnImages": [
++        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/bhagwan-jaymala-royal-blue-pearl.jpg?v=1792062984"
++      ]
++    },
++    {
++      "id": "prod-bj-002",
++      "name": "Marigold & Maroon Sacred Flower Jaymala",
++      "nameHi": "गेंदा व मैरून फूल भगवान जयमाला",
++      "slug": "marigold-maroon-flower-jaymala",
++      "category": "Bhagwan Jaymala",
++      "categoryHi": "भगवान की जयमाला",
++      "categorySlug": "bhagwan-jaymala",
++      "subcategory": "Marigold Sacred Mala",
++      "subcategoryHi": "गेंदा पुष्प माला",
++      "tagline": "Dense marigold ruffles and maroon bands for grand celebrations",
++      "taglineHi": "सुनहरे गेंदे व मैरून फूलों की सघन भगवान जयमाला",
++      "description": "Heavy layered sacred jaymala crafted with dense golden-yellow marigold ruffles, contrasting deep maroon floral bands, and white accent cluster drops with red hanging cords.",
++      "descriptionHi": "सुनहरे पीले गेंदे के फूलों और गहरे मैरून फूलों से निर्मित सघन व भव्य भगवान जयमाला। धार्मिक उत्सवों एवं मूर्ति शृंगार के लिए।",
++      "images": [
++        "/assets/products/bhagwan-jaymala-marigold-maroon.jpg"
++      ],
++      "image_en": "/assets/products/bhagwan-jaymala-marigold-maroon.jpg",
++      "image_hi": "/assets/products/bhagwan-jaymala-marigold-maroon.jpg",
++      "price": null,
++      "priceNote": "Price to be configured in Shopify Admin",
++      "specs": [
++        {
++          "label": "Design",
++          "value": "Tiered Marigold with Maroon Bands"
++        },
++        {
++          "label": "Colours",
++          "value": "Golden Yellow, Maroon & White"
++        },
++        {
++          "label": "Attachment",
++          "value": "Red Hanging Cords"
++        },
++        {
++          "label": "Use",
++          "value": "Temples, Deity Statues, Grand Pujas"
++        }
++      ],
++      "specsHi": [
++        {
++          "label": "डिज़ाइन",
++          "value": "गेंदा व मैरून फूलों की बहुस्तरीय बनावट"
++        },
++        {
++          "label": "रंग",
++          "value": "सुनहरा पीला, मैरून व सफ़ेद"
++        },
++        {
++          "label": "हैंगर",
++          "value": "लाल धागे व हैंगर"
++        },
++        {
++          "label": "उपयोग",
++          "value": "मंदिर, भगवान की मूर्तियाँ, महापूजा"
++        }
++      ],
++      "features": [
++        "High density ruffled marigold petal clusters",
++        "Deep wine maroon contrasting mid-sections",
++        "Hanging white floral tassels at the bottom base"
++      ],
++      "featuresHi": [
++        "घने गेंदा फूलों की पंखुड़ियों की बुनावट",
++        "गहरे मैरून रंग की कंट्रास्ट पट्टियाँ",
++        "निचले सिरे पर सफेद लटकन"
++      ],
++      "benefits": [
++        "Creates an authentic traditional temple aesthetic",
++        "Heavy look without the weight and perishable mess of fresh flowers"
++      ],
++      "benefitsHi": [
++        "पारंपरिक मंदिर और पूजा का भव्य स्वरूप प्रस्तुत करता है",
++        "ताजे फूलों की तरह मुरझाता नहीं और हमेशा तैयार रहता है"
++      ],
++      "isFeatured": false,
++      "isPublished": true,
++      "isNew": true,
++      "inStock": true,
++      "minOrder": 1,
++      "sku": "BI-BJ-002",
++      "seoTitle": "Marigold & Maroon Sacred Flower Jaymala — Bhaya India",
++      "seoDescription": "Traditional marigold and maroon jaymala for deities and temple celebrations by Bhaya India.",
++      "createdAt": "2026-10-15T10:59:14.869Z",
++      "shopifyId": "gid://shopify/Product/15463934394461",
++      "shopifyCdnImages": [
++        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/bhagwan-jaymala-marigold-maroon.jpg?v=1792062989"
++      ]
++    },
++    {
++      "id": "prod-bj-003",
++      "name": "Peach & Yellow Rose Religious Jaymala",
++      "nameHi": "पीच-गुलाबी व पीली गुलाब जयमाला",
++      "slug": "peach-yellow-rose-jaymala",
++      "category": "Bhagwan Jaymala",
++      "categoryHi": "भगवान की जयमाला",
++      "categorySlug": "bhagwan-jaymala",
++      "subcategory": "Pastel Jaymala",
++      "subcategoryHi": "पेस्टल जयमाला",
++      "tagline": "Harmonious peach and yellow roses with gold bead accents",
++      "taglineHi": "पीच और पीले गुलाब के फूलों की पावन जयमाला",
++      "description": "Auspicious dual-tone rose jaymala combining sunny yellow and soft peach-pink layered fabric roses with golden spacer beads, green leaves, and hanging bells in protective packaging.",
++      "descriptionHi": "पीली और पीच-गुलाबी गुलाब की पंखुड़ियों से निर्मित मनमोहक भगवान जयमाला। सुनहरे मोतियों और घंटियों के साथ।",
++      "images": [
++        "/assets/products/bhagwan-jaymala-peach-yellow-rose.jpg"
++      ],
++      "image_en": "/assets/products/bhagwan-jaymala-peach-yellow-rose.jpg",
++      "image_hi": "/assets/products/bhagwan-jaymala-peach-yellow-rose.jpg",
++      "price": null,
++      "priceNote": "Price to be configured in Shopify Admin",
++      "specs": [
++        {
++          "label": "Design",
++          "value": "Peach and Yellow Rose Floral Garland"
++        },
++        {
++          "label": "Colours",
++          "value": "Peach, Yellow, Gold & Green"
++        },
++        {
++          "label": "Details",
++          "value": "Golden Bead Bells at Terminal End"
++        }
++      ],
++      "specsHi": [
++        {
++          "label": "डिज़ाइन",
++          "value": "पीच व पीले गुलाब की माला"
++        },
++        {
++          "label": "रंग",
++          "value": "पीच, पीला, सुनहरा व हरा"
++        },
++        {
++          "label": "लटकन",
++          "value": "सुनहरे मोती व घंटियाँ"
++        }
++      ],
++      "features": [
++        "Layered artificial roses in pastel peach and bright yellow",
++        "Golden bead accents between blooms",
++        "Packaged in clean transparent hanging sleeve"
++      ],
++      "featuresHi": [
++        "पीच और चटख पीले गुलाब के फूलों की परतें",
++        "फूलों के बीच सुनहरे मोतियों के जोड़",
++        "स्वच्छ पारदर्शी हैंगिंग कवर में पैक"
++      ],
++      "benefits": [
++        "Ideal for religious giftings and temple offerings",
++        "Graceful color harmony suitable for all deity altars"
++      ],
++      "benefitsHi": [
++        "धार्मिक भेंट एवं मंदिर में अर्पण हेतु उत्तम",
++        "सभी प्रकार की देव वेदियों के लिए सौम्य रंग संयोजन"
++      ],
++      "isFeatured": false,
++      "isPublished": true,
++      "isNew": true,
++      "inStock": true,
++      "minOrder": 1,
++      "sku": "BI-BJ-003",
++      "seoTitle": "Peach & Yellow Rose Religious Jaymala — Bhaya India",
++      "seoDescription": "Dual-tone peach and yellow rose deity garland for religious occasions by Bhaya India.",
++      "createdAt": "2026-10-15T10:59:14.869Z",
++      "shopifyId": "gid://shopify/Product/15463934427229",
++      "shopifyCdnImages": [
++        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/bhagwan-jaymala-peach-yellow-rose.jpg?v=1792062992"
++      ]
++    },
++    {
++      "id": "prod-lfg-001",
++      "name": "Grand Multicolour Decorative Large Flower Garland",
++      "nameHi": "भव्य बहुरंगी बड़ा फूल माला",
++      "slug": "grand-multicolour-large-flower-garland",
++      "category": "Large Flower Garlands",
++      "categoryHi": "बड़ा फूल माला",
++      "categorySlug": "large-flower-garlands",
++      "subcategory": "Conical Festival Garlands",
++      "subcategoryHi": "उत्सव बड़ा माला",
++      "tagline": "Spectacular multicolour garland with gold crown apex",
++      "taglineHi": "सुनहरी छतरी व बहुरंगी फूलों वाला भव्य बड़ा माला",
++      "description": "Monumental grand decorative flower garland featuring a shimmering golden conical top canopy, layered cascades of crimson red, magenta pink, bright yellow flowers, green leaves, white spherical beads, and hanging floral tassels.",
++      "descriptionHi": "उत्सवों, द्वारों एवं विशेष समारोहों के लिए भव्य बड़ा फूल माला। सुनहरी छतरी, लाल, गुलाबी, पीले फूलों और मोतियों की आकर्षक लड़ियाँ।",
++      "images": [
++        "/assets/products/large-flower-garland-grand-multicolour.jpg"
++      ],
++      "image_en": "/assets/products/large-flower-garland-grand-multicolour.jpg",
++      "image_hi": "/assets/products/large-flower-garland-grand-multicolour.jpg",
++      "price": null,
++      "priceNote": "Price to be configured in Shopify Admin",
++      "specs": [
++        {
++          "label": "Type",
++          "value": "Grand Multicolour Large Flower Garland"
++        },
++        {
++          "label": "Top Finish",
++          "value": "Shimmering Golden Conical Tassels"
++        },
++        {
++          "label": "Elements",
++          "value": "Roses, Yellow Flowers, White Spheres, Green Leaves"
++        },
++        {
++          "label": "Occasion",
++          "value": "Festivals, Weddings, Doorways, Stage Decor"
++        }
++      ],
++      "specsHi": [
++        {
++          "label": "प्रकार",
++          "value": "भव्य बहुरंगी बड़ा फूल माला"
++        },
++        {
++          "label": "शीर्ष भाग",
++          "value": "सुनहरी कोनिकल झालर"
++        },
++        {
++          "label": "तत्व",
++          "value": "गुलाब, पीले फूल, सफेद मोती, हरी पत्तियाँ"
++        },
++        {
++          "label": "उपयोग",
++          "value": "त्योहार, विवाह द्वार, मंच सज्जा"
++        }
++      ],
++      "features": [
++        "Elaborate multi-tier construction with golden top crown",
++        "Vibrant tiers of red, yellow, magenta and green foliage",
++        "White spherical bead spacers between floral layers",
++        "Long hanging yellow and pink flower tassel drops"
++      ],
++      "featuresHi": [
++        "सुनहरी छतरी के साथ भव्य बहुस्तरीय बनावट",
++        "लाल, पीले, गुलाबी फूलों और हरी पत्तियों की परतें",
++        "फूलों के बीच सफेद गोल मोतियों की सजावट",
++        "नीचे की ओर झूलती हुई लंबी पुष्प लड़ियाँ"
++      ],
++      "benefits": [
++        "Creates an unforgettable grand entrance and ceremonial stage presence",
++        "Stands out in photographs and video recordings of events"
++      ],
++      "benefitsHi": [
++        "प्रवेश द्वार और मंच को भव्य व आकर्षक स्वरूप प्रदान करता है",
++        "विवाह व समारोह की तस्वीरों में अत्यंत सुंदर दिखाई देता है"
++      ],
++      "isFeatured": true,
++      "isPublished": true,
++      "isNew": true,
++      "inStock": true,
++      "minOrder": 1,
++      "sku": "BI-LG-001",
++      "seoTitle": "Grand Multicolour Large Flower Garland — Bhaya India",
++      "seoDescription": "Spectacular large multicolour flower garland with golden canopy for festivals and celebrations by Bhaya India.",
++      "createdAt": "2026-10-15T10:59:14.869Z",
++      "shopifyId": "gid://shopify/Product/15463934459997",
++      "shopifyCdnImages": [
++        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/large-flower-garland-grand-multicolour.jpg?v=1792062997"
++      ]
++    },
++    {
++      "id": "prod-lfg-002",
++      "name": "Grand Orange Marigold & Jasmine Bead Large Flower Garland",
++      "nameHi": "नारंगी गेंदा व चमेली बड़ा फूल माला",
++      "slug": "grand-orange-marigold-jasmine-large-garland",
++      "category": "Large Flower Garlands",
++      "categoryHi": "बड़ा फूल माला",
++      "categorySlug": "large-flower-garlands",
++      "subcategory": "Marigold Jasmine Garlands",
++      "subcategoryHi": "गेंदा चमेली बड़ा माला",
++      "tagline": "Vibrant orange marigold ruffles with cascading white jasmine beads",
++      "taglineHi": "नारंगी गेंदा व श्वेत लड़ियों का भव्य संगम",
++      "description": "Broad grand ceremonial garland featuring thick orange marigold ruffles, rich magenta floral borders, and dense cascading white jasmine-style beaded drop strands with red hanging ribbons.",
++      "descriptionHi": "नारंगी गेंदा, मैरून बॉर्डर और श्वेत मोगरा/चमेली शैली की घनी लड़ियों से निर्मित भव्य बड़ा फूल माला।",
++      "images": [
++        "/assets/products/large-flower-garland-orange-marigold-jasmine.jpg"
++      ],
++      "image_en": "/assets/products/large-flower-garland-orange-marigold-jasmine.jpg",
++      "image_hi": "/assets/products/large-flower-garland-orange-marigold-jasmine.jpg",
++      "price": null,
++      "priceNote": "Price to be configured in Shopify Admin",
++      "specs": [
++        {
++          "label": "Style",
++          "value": "Traditional Marigold & Jasmine Cascades"
++        },
++        {
++          "label": "Colors",
++          "value": "Bright Orange, Magenta, White & Green"
++        },
++        {
++          "label": "Closure",
++          "value": "Multiple Red Hanging Cords"
++        }
++      ],
++      "specsHi": [
++        {
++          "label": "शैली",
++          "value": "पारंपरिक गेंदा व चमेली लड़ियाँ"
++        },
++        {
++          "label": "रंग",
++          "value": "चटख नारंगी, मैरून, सफ़ेद व हरा"
++        },
++        {
++          "label": "हैंगर",
++          "value": "मजबूत लाल हैंगिंग धागे"
++        }
++      ],
++      "features": [
++        "Dense tiered orange marigold petal ruffles",
++        "Cascading white jasmine-style beaded strands",
++        "Magenta floral borders and lower foliage trim"
++      ],
++      "featuresHi": [
++        "घने नारंगी गेंदा फूलों की परतें",
++        "सफेद चमेली/मोगरा शैली की लटकती लड़ियाँ",
++        "मैरून फूलों का बॉर्डर और हरी पत्तियाँ"
++      ],
++      "benefits": [
++        "Traditional auspicious aesthetic ideal for Diwali, weddings, and welcome gates",
++        "Stays pristine and reusable year after year"
++      ],
++      "benefitsHi": [
++        "दीपावली, विवाह एवं स्वागत द्वार हेतु मांगलिक सजावट",
++        "हर वर्ष पुनः उपयोग में लाने योग्य"
++      ],
++      "isFeatured": false,
++      "isPublished": true,
++      "isNew": true,
++      "inStock": true,
++      "minOrder": 1,
++      "sku": "BI-LG-002",
++      "seoTitle": "Grand Orange Marigold & Jasmine Large Flower Garland — Bhaya India",
++      "seoDescription": "Grand orange marigold and cascading jasmine garland for celebrations by Bhaya India.",
++      "createdAt": "2026-10-15T10:59:14.869Z",
++      "shopifyId": "gid://shopify/Product/15463934525533",
++      "shopifyCdnImages": [
++        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/large-flower-garland-orange-marigold-jasmine.jpg?v=1792063001"
++      ]
++    },
++    {
++      "id": "prod-lfg-003",
++      "name": "Grand Tiered Festive Large Flower Garland",
++      "nameHi": "भव्य बहुस्तरीय उत्सव बड़ा फूल माला",
++      "slug": "grand-tiered-festive-large-garland",
++      "category": "Large Flower Garlands",
++      "categoryHi": "बड़ा फूल माला",
++      "categorySlug": "large-flower-garlands",
++      "subcategory": "Tiered Event Garlands",
++      "subcategoryHi": "बहुस्तरीय बड़ा माला",
++      "tagline": "Elaborate multi-layer floral garland with gold foil canopy",
++      "taglineHi": "सुनहरी छतरी व बहुस्तरीय फूलों का भव्य उत्सव माला",
++      "description": "Elaborate grand multi-tier hanging flower garland showcasing bright golden-yellow flower ruffles, rich purple-magenta floral tiers, dense green foliage trims, and multi-tier cascading floral pendants.",
++      "descriptionHi": "भव्य बहुस्तरीय उत्सव बड़ा फूल माला। पीले-सुनहरे, जामुनी-मैरून फूल एवं हरी पत्तियों के साथ शानदार सजावटी माला।",
++      "images": [
++        "/assets/products/large-flower-garland-grand-tiered-festive.jpg",
++        "/assets/products/large-flower-garland-orange-magenta-drape.jpg"
++      ],
++      "image_en": "/assets/products/large-flower-garland-grand-tiered-festive.jpg",
++      "image_hi": "/assets/products/large-flower-garland-grand-tiered-festive.jpg",
++      "price": null,
++      "priceNote": "Price to be configured in Shopify Admin",
++      "specs": [
++        {
++          "label": "Type",
++          "value": "Broad Arc Festive Large Garland"
++        },
++        {
++          "label": "Colours",
++          "value": "Yellow, Orange, Purple-Magenta, Green"
++        },
++        {
++          "label": "Apex",
++          "value": "Golden Ray Canopy Top"
++        }
++      ],
++      "specsHi": [
++        {
++          "label": "प्रकार",
++          "value": "विशाल बहुस्तरीय उत्सव माला"
++        },
++        {
++          "label": "रंग",
++          "value": "पीला, नारंगी, जामुनी-गुलाबी, हरा"
++        },
++        {
++          "label": "शीर्ष",
++          "value": "सुनहरी किरणों वाली छतरी"
++        }
++      ],
++      "features": [
++        "Broad expansive arc design covering large wall or entrance widths",
++        "Contrasting layers of warm orange, bright yellow, and deep purple blooms",
++        "Dense green foliage accents and dangling floral bells"
++      ],
++      "featuresHi": [
++        "चौड़े द्वारों व दीवारों को ढकने वाला विशाल अर्द्धचंद्राकार डिज़ाइन",
++        "नारंगी, पीले और गहरे जामुनी फूलों का सुंदर संतुलन",
++        "घनी हरी पत्तियाँ और नीचे झूलती पुष्प घंटियाँ"
++      ],
++      "benefits": [
++        "Transforms plain event walls into vibrant cultural focal points",
++        "High visual density that covers wide spaces effortlessly"
++      ],
++      "benefitsHi": [
++        "साधारण दीवार या प्रवेश द्वार को तुरंत उत्सवमय बना देता है",
++        "विशाल आकार जो दूर से ही ध्यान आकर्षित करता है"
++      ],
++      "isFeatured": false,
++      "isPublished": true,
++      "isNew": true,
++      "inStock": true,
++      "minOrder": 1,
++      "sku": "BI-LG-003",
++      "seoTitle": "Grand Tiered Festive Large Flower Garland — Bhaya India",
++      "seoDescription": "Grand multi-tier festive flower garland for event gates and celebrations by Bhaya India.",
++      "createdAt": "2026-10-15T10:59:14.869Z",
++      "shopifyId": "gid://shopify/Product/15463934558301",
++      "shopifyCdnImages": [
++        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/large-flower-garland-grand-tiered-festive.jpg?v=1792063007",
++        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/large-flower-garland-orange-magenta-drape.jpg?v=1792063007"
++      ]
++    },
++    {
++      "id": "prod-mm-001",
++      "name": "Emerald Green Crystal & Pearl Moti Mala",
++      "nameHi": "पन्ना हरा क्रिस्टल व मोती माला",
++      "slug": "emerald-green-crystal-pearl-moti-mala",
++      "category": "Moti Mala",
++      "categoryHi": "मोती माला",
++      "categorySlug": "moti-mala",
++      "subcategory": "Crystal Pearl Mala",
++      "subcategoryHi": "क्रिस्टल मोती माला",
++      "tagline": "Sparkling emerald green faceted crystal beads and ivory pearls",
++      "taglineHi": "पन्ना हरे क्रिस्टल और श्वेत मोतियों की मनोहारी माला",
++      "description": "Beautifully strung decorative garland pack featuring faceted emerald-green crystal beads, woven ivory white pearl layers, fluted golden spacers, and pearl cluster tassel bell drops with red ribbon ties.",
++      "descriptionHi": "पन्ना हरे कट-क्रिस्टल मोती, बुने हुए श्वेत मोती, सुनहरी कैप्स और मोतियों के झुमकेनुमा लटकन से सुसज्जित मोती माला।",
++      "images": [
++        "/assets/products/moti-mala-emerald-green-crystal-pearl.jpg"
++      ],
++      "image_en": "/assets/products/moti-mala-emerald-green-crystal-pearl.jpg",
++      "image_hi": "/assets/products/moti-mala-emerald-green-crystal-pearl.jpg",
++      "price": null,
++      "priceNote": "Price to be configured in Shopify Admin",
++      "specs": [
++        {
++          "label": "Beads",
++          "value": "Faceted Emerald Green Crystals & White Pearls"
++        },
++        {
++          "label": "Spacers",
++          "value": "Fluted Gold-Tone Caps"
++        },
++        {
++          "label": "End Detail",
++          "value": "Pearl Bell Clusters"
++        },
++        {
++          "label": "Closure",
++          "value": "Red Satin Ties"
++        }
++      ],
++      "specsHi": [
++        {
++          "label": "मोती",
++          "value": "कट-क्रिस्टल हरा पन्ना बीड्स व श्वेत मोती"
++        },
++        {
++          "label": "जोड़",
++          "value": "सुनहरी नक्काशीदार कैप्स"
++        },
++        {
++          "label": "लटकन",
++          "value": "मोतियों के झुमकेनुमा गुच्छे"
++        },
++        {
++          "label": "हैंगर",
++          "value": "लाल साटन रिबन"
++        }
++      ],
++      "features": [
++        "Emerald green faceted crystals that catch light from every angle",
++        "Double strands of woven ivory pearls",
++        "Pearl pom-pom cluster bells at the end",
++        "Sold as protective multi-garland pack"
++      ],
++      "featuresHi": [
++        "रोशनी में चमकने वाले पन्ना हरे कट-क्रिस्टल",
++        "बुने हुए श्वेत मोतियों की दोहरी लड़ियाँ",
++        "निचले सिरे पर मोतियों के झुमके",
++        "सुरक्षित मल्टी-पैक में उपलब्ध"
++      ],
++      "benefits": [
++        "Adds royal opulence to religious ceremonies, deity altars, and festive decor",
++        "Smooth pearl finish with zero rough edges"
++      ],
++      "benefitsHi": [
++        "पूजा स्थल एवं मूर्तियों को शाही व भव्य आकर्षण प्रदान करता है",
++        "चिकनी फिनिशिंग और उच्च गुणवत्ता"
++      ],
++      "isFeatured": true,
++      "isPublished": true,
++      "isNew": true,
++      "inStock": true,
++      "minOrder": 1,
++      "sku": "BI-MM-001",
++      "seoTitle": "Emerald Green Crystal & Pearl Moti Mala — Bhaya India",
++      "seoDescription": "Exquisite emerald green crystal and pearl moti mala for decor and worship by Bhaya India.",
++      "createdAt": "2026-10-15T10:59:14.869Z",
++      "shopifyId": "gid://shopify/Product/15463934591069",
++      "shopifyCdnImages": [
++        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/moti-mala-emerald-green-crystal-pearl.jpg?v=1792063011"
++      ]
++    },
++    {
++      "id": "prod-mm-002",
++      "name": "Antique Gold Filigree & Pearl Moti Mala",
++      "nameHi": "जालीदार सुनहरी व मोती माला",
++      "slug": "antique-gold-filigree-pearl-moti-mala",
++      "category": "Moti Mala",
++      "categoryHi": "मोती माला",
++      "categorySlug": "moti-mala",
++      "subcategory": "Antique Filigree Mala",
++      "subcategoryHi": "जालीदार मोती माला",
++      "tagline": "Intricate antique gold filigree mesh cage beads with lustrous pearls",
++      "taglineHi": "बारीक जालीदार सुनहरे मोती और श्वेत मोतियों का अद्भुत शिल्प",
++      "description": "Exquisite decorative garland bundle featuring intricate hollow antique gold filigree mesh cage beads, cream pearls, fluted golden caps, and pearl drop cluster bells with red ribbon ties.",
++      "descriptionHi": "बारीक जालीदार सुनहरे बीड्स (Filigree), क्रीम मोती और सुनहरी घंटियों से तैयार की गई पारंपरिक मोती माला।",
++      "images": [
++        "/assets/products/moti-mala-antique-gold-filigree-pearl.jpg"
++      ],
++      "image_en": "/assets/products/moti-mala-antique-gold-filigree-pearl.jpg",
++      "image_hi": "/assets/products/moti-mala-antique-gold-filigree-pearl.jpg",
++      "price": null,
++      "priceNote": "Price to be configured in Shopify Admin",
++      "specs": [
++        {
++          "label": "Craft Detail",
++          "value": "Hollow Gold Mesh Filigree Beads"
++        },
++        {
++          "label": "Pearls",
++          "value": "Cream White Round Pearls"
++        },
++        {
++          "label": "Finishing",
++          "value": "Fluted Caps & Pearl Cluster Drops"
++        }
++      ],
++      "specsHi": [
++        {
++          "label": "शिल्प",
++          "value": "जालीदार खोखले सुनहरे बीड्स"
++        },
++        {
++          "label": "मोती",
++          "value": "क्रीम श्वेत गोल मोती"
++        },
++        {
++          "label": "लटकन",
++          "value": "सुनहरी कैप्स व मोतियों के झुमके"
++        }
++      ],
++      "features": [
++        "Intricate metal wire mesh filigree beads (जालीदार मोती)",
++        "Alternating lustrous white pearls and golden fluted rings",
++        "Pearl bell tassels at the bottom terminal"
++      ],
++      "featuresHi": [
++        "बारीक नक्काशीदार सुनहरे जालीदार मोती",
++        "श्वेत मोतियों और सुनहरी रिंग्स का क्रमबद्ध क्रम",
++        "निचले सिरे पर मोतियों के झुमकेनुमा लटकन"
++      ],
++      "benefits": [
++        "Heirloom-style metallic elegance that never goes out of style",
++        "Versatile application for mandir idols, wedding safas, and festive gifts"
++      ],
++      "benefitsHi": [
++        "पारंपरिक विरासती शैली जो कभी पुरानी नहीं होती",
++        "मंदिर की मूर्तियों, साफे और त्योहारों पर उपहार हेतु उपयुक्त"
++      ],
++      "isFeatured": false,
++      "isPublished": true,
++      "isNew": true,
++      "inStock": true,
++      "minOrder": 1,
++      "sku": "BI-MM-002",
++      "seoTitle": "Antique Gold Filigree & Pearl Moti Mala — Bhaya India",
++      "seoDescription": "Traditional antique gold filigree mesh and pearl garland from Bhaya India.",
++      "createdAt": "2026-10-15T10:59:14.869Z",
++      "shopifyId": "gid://shopify/Product/15463934623837",
++      "shopifyCdnImages": [
++        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/moti-mala-antique-gold-filigree-pearl.jpg?v=1792063016"
++      ]
++    },
++    {
++      "id": "prod-sm-001",
++      "name": "Royal Peacock Brooch Pearl & Maroon Sherwani Mala",
++      "nameHi": "राजसी मोर ब्रोच मोती व मैरून शेरवानी माला",
++      "slug": "royal-peacock-brooch-sherwani-mala",
++      "category": "Sherwani Mala",
++      "categoryHi": "शेरवानी माला",
++      "categorySlug": "sherwani-mala",
++      "subcategory": "Peacock Brooch Sherwani Mala",
++      "subcategoryHi": "मोर ब्रोच शेरवानी माला",
++      "tagline": "4-strand groom sherwani mala with ornate gold peacock brooch",
++      "taglineHi": "दूल्हे की शेरवानी हेतु 4-लड़ी मोर ब्रोच शेरवानी माला",
++      "description": "4-strand royal groom sherwani garland featuring high-lustre ivory pearls and deep maroon beads, accented with an ornate gold-plated peacock side brooch encrusted with sparkling crystal rhinestones and an adjustable gold cord.",
++      "descriptionHi": "दूल्हे की शेरवानी हेतु 4-लड़ी राजसी माला। श्वेत व मैरून मोती, बारीक नक्काशीदार मोर ब्रोच और चमकीले पत्थरों के साथ।",
++      "images": [
++        "/assets/products/sherwani-mala-peacock-brooch-detail.jpg",
++        "/assets/products/sherwani-mala-peacock-brooch-pack.jpg"
++      ],
++      "image_en": "/assets/products/sherwani-mala-peacock-brooch-detail.jpg",
++      "image_hi": "/assets/products/sherwani-mala-peacock-brooch-detail.jpg",
++      "price": null,
++      "priceNote": "Price to be configured in Shopify Admin",
++      "specs": [
++        {
++          "label": "Strands",
++          "value": "4 Multi-Layer Cascading Strands"
++        },
++        {
++          "label": "Brooch Motif",
++          "value": "Royal Peacock Studded with White Crystals"
++        },
++        {
++          "label": "Beads",
++          "value": "High-Lustre Ivory Pearls & Maroon Accents"
++        },
++        {
++          "label": "Closure",
++          "value": "Adjustable Gold Dori (Cord) with Tassel"
++        }
++      ],
++      "specsHi": [
++        {
++          "label": "लड़ियाँ",
++          "value": "4 बहुस्तरीय लड़ियाँ"
++        },
++        {
++          "label": "ब्रोच",
++          "value": "क्रिस्टल जड़ा हुआ सुनहरी मोर ब्रोच"
++        },
++        {
++          "label": "मोती",
++          "value": "चमकदार श्वेत मोती व मैरून बीड्स"
++        },
++        {
++          "label": "डोरी",
++          "value": "एडजस्टेबल सुनहरी डोरी"
++        }
++      ],
++      "features": [
++        "Authentic asymmetrical royal side brooch with peacock carving",
++        "Tiered 4-strand drape tailored for groom sherwanis and achkans",
++        "Contrasting maroon and ivory pearls with fluted gold caps",
++        "Packaged in retail presentation card with model groom display"
++      ],
++      "featuresHi": [
++        "बाईं ओर नक्काशीदार मोर ब्रोच का शाही डिज़ाइन",
++        "शेरवानी और अचकन के लिए विशेष रूप से तैयार 4-लड़ी ड्रेप",
++        "मैरून और श्वेत मोतियों के साथ सुनहरी कैप्स",
++        "मॉडल ग्रूम डिस्प्ले वाले सुंदर कार्ड पर पैक"
++      ],
++      "benefits": [
++        "Completes the traditional Indian groom wedding attire with aristocratic elegance",
++        "Adjustable gold dori fits all collar heights and neck measurements comfortably"
++      ],
++      "benefitsHi": [
++        "वर की शेरवानी को संपूर्ण व राजसी स्वरूप प्रदान करता है",
++        "एडजस्टेबल डोरी सभी साइज़ के कॉलर व गले पर आराम से फिट होती है"
++      ],
++      "isFeatured": true,
++      "isPublished": true,
++      "isNew": true,
++      "inStock": true,
++      "minOrder": 1,
++      "sku": "BI-SM-001",
++      "seoTitle": "Royal Peacock Brooch Sherwani Mala — Bhaya India",
++      "seoDescription": "Exquisite 4-strand royal peacock brooch groom sherwani mala with maroon and pearl beads by Bhaya India.",
++      "createdAt": "2026-10-15T10:59:14.869Z",
++      "shopifyId": "gid://shopify/Product/15463934656605",
++      "shopifyCdnImages": [
++        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/sherwani-mala-peacock-brooch-detail.jpg?v=1792063021",
++        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/sherwani-mala-peacock-brooch-pack.jpg?v=1792063021"
++      ]
++    },
++    {
++      "id": "prod-sm-002",
++      "name": "Royal Ruby Brooch & Gold Bead Sherwani Mala",
++      "nameHi": "रूबी ब्रोच व सुनहरे मोती शेरवानी माला",
++      "slug": "royal-ruby-brooch-sherwani-mala",
++      "category": "Sherwani Mala",
++      "categoryHi": "शेरवानी माला",
++      "categorySlug": "sherwani-mala",
++      "subcategory": "Ruby Brooch Sherwani Mala",
++      "subcategoryHi": "रूबी ब्रोच शेरवानी माला",
++      "tagline": "Multi-tier groom necklace with ruby-red brooch and gold beads",
++      "taglineHi": "रूबी-लाल स्टोन ब्रोच व सुनहरे मोतियों वाला राजसी दूल्हा हार",
++      "description": "Multi-layer royal groom sherwani garland combining ivory pearls, golden spherical beads, cascading maroon bead accents, and an elaborate circular rhinestone halo side brooch with an oval ruby-red centre gem.",
++      "descriptionHi": "दूल्हे की शेरवानी के लिए मल्टी-लेयर शाही माला। सुनहरे मोती, श्वेत मोती और लाल रूबी स्टोन ब्रोच के साथ।",
++      "images": [
++        "/assets/products/sherwani-mala-ruby-brooch-detail.jpg",
++        "/assets/products/sherwani-mala-ruby-brooch-pack.jpg"
++      ],
++      "image_en": "/assets/products/sherwani-mala-ruby-brooch-detail.jpg",
++      "image_hi": "/assets/products/sherwani-mala-ruby-brooch-detail.jpg",
++      "price": null,
++      "priceNote": "Price to be configured in Shopify Admin",
++      "specs": [
++        {
++          "label": "Brooch",
++          "value": "Circular Rhinestone Halo with Oval Ruby-Red Gem"
++        },
++        {
++          "label": "Strands",
++          "value": "4 Draped Pearl & Gold Bead Tiers"
++        },
++        {
++          "label": "Colours",
++          "value": "Ivory Pearl, Gold, Ruby Red & Maroon"
++        },
++        {
++          "label": "Fastening",
++          "value": "Adjustable Gold Cord"
++        }
++      ],
++      "specsHi": [
++        {
++          "label": "ब्रोच",
++          "value": "क्रिस्टल रिंग व अंडाकार लाल रूबी स्टोन ब्रोच"
++        },
++        {
++          "label": "लड़ियाँ",
++          "value": "4 लेयर्ड मोती व सुनहरे बीड्स"
++        },
++        {
++          "label": "रंग",
++          "value": "श्वेत मोती, सुनहरा, रूबी लाल व मैरून"
++        },
++        {
++          "label": "डोरी",
++          "value": "एडजस्टेबल सुनहरी डोरी"
++        }
++      ],
++      "features": [
++        "Striking ruby-red oval gem centerpiece surrounded by crystal pavé halo",
++        "Sections of polished gold sphere beads alternating with white pearls",
++        "Cascading maroon bead accents at the base tiers",
++        "Available both unpacked and on 'ABC दुल्हा हार' presentation card"
++      ],
++      "featuresHi": [
++        "लाल रूबी स्टोन के चारों ओर चमकीले क्रिस्टल का घेरा",
++        "चमकदार सुनहरे गोल मोती और श्वेत मोतियों का क्रम",
++        "निचली लड़ियों पर मैरून मोतियों की सुंदर सजावट",
++        "विवाह उपहार एवं शेरवानी के लिए उत्तम"
++      ],
++      "benefits": [
++        "Ruby red jewel provides a regal color accent matching bridal lehenga tones",
++        "Comfortable weight distribution across shoulders"
++      ],
++      "benefitsHi": [
++        "लाल रूबी स्टोन दुल्हन के लहंगे के साथ मैचिंग लुक देता है",
++        "गले पर हल्का व आरामदायक"
++      ],
++      "isFeatured": true,
++      "isPublished": true,
++      "isNew": true,
++      "inStock": true,
++      "minOrder": 1,
++      "sku": "BI-SM-002",
++      "seoTitle": "Royal Ruby Brooch & Gold Bead Sherwani Mala — Bhaya India",
++      "seoDescription": "Regal ruby-red brooch and gold pearl groom sherwani mala by Bhaya India.",
++      "createdAt": "2026-10-15T10:59:14.869Z",
++      "shopifyId": "gid://shopify/Product/15463934689373",
++      "shopifyCdnImages": [
++        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/sherwani-mala-ruby-brooch-detail.jpg?v=1792063027",
++        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/sherwani-mala-ruby-brooch-pack.jpg?v=1792063027"
++      ]
++    },
++    {
++      "id": "prod-dg-001",
++      "name": "Kundan Floral Brooch Maroon-Pearl Dulha Haar",
++      "nameHi": "कुंदन फ्लोरल ब्रोच मैरून-मोती दूल्हा हार",
++      "slug": "kundan-floral-brooch-dulha-haar",
++      "category": "Groom Garland",
++      "categoryHi": "दूल्हा माला",
++      "categorySlug": "groom-garland",
++      "subcategory": "Kundan Brooch Dulha Haar",
++      "subcategoryHi": "कुंदन ब्रोच दूल्हा हार",
++      "tagline": "4-strand groom garland with gold Kundan leaf brooch",
++      "taglineHi": "कुंदन की पत्तियों वाले ब्रोच से सजा 4-लड़ी दूल्हा हार",
++      "description": "4-strand groom garland featuring ivory white pearls, cascading lower maroon bead drape, gold floral spacer beads, and an asymmetrical gold Kundan floral-leaf brooch studded with clear teardrop stones.",
++      "descriptionHi": "4-लड़ी दूल्हा हार, श्वेत मोती और मैरून मोतियों की भव्य लटकन के साथ। बाईं ओर आकर्षक कुंदन पत्ती-फूल ब्रोच।",
++      "images": [
++        "/assets/products/dulha-haar-kundan-floral-brooch.jpg"
++      ],
++      "image_en": "/assets/products/dulha-haar-kundan-floral-brooch.jpg",
++      "image_hi": "/assets/products/dulha-haar-kundan-floral-brooch.jpg",
++      "price": null,
++      "priceNote": "Price to be configured in Shopify Admin",
++      "specs": [
++        {
++          "label": "Brooch Style",
++          "value": "Kundan Leaf & Teardrop Floral Motif"
++        },
++        {
++          "label": "Strand Count",
++          "value": "4-Strand Layered Cascade"
++        },
++        {
++          "label": "Packaging",
++          "value": "Mounted on ABC दुल्हा हार Presentation Card"
++        }
++      ],
++      "specsHi": [
++        {
++          "label": "ब्रोच शैली",
++          "value": "कुंदन पत्ती व फूल मोटिफ"
++        },
++        {
++          "label": "लड़ियाँ",
++          "value": "4-लड़ी लेयर्ड बनावट"
++        },
++        {
++          "label": "पैकेजिंग",
++          "value": "'ABC दुल्हा हार' कार्ड पर माउंटेड"
++        }
++      ],
++      "features": [
++        "Traditional Kundan-style floral brooch with clear faceted stones",
++        "Ivory pearl upper tiers with deep maroon lower drape",
++        "Gold ribbed spacer elements",
++        "Adjustable gold thread fastening"
++      ],
++      "featuresHi": [
++        "पारंपरिक कुंदन शैली का फ्लोरल ब्रोच",
++        "ऊपरी भाग में श्वेत मोती और नीचे मैरून मोतियों की लड़ियाँ",
++        "सुनहरे बीड्स के जोड़",
++        "एडजस्टेबल सुनहरी डोरी"
++      ],
++      "benefits": [
++        "Complements heavy zardozi embroidered wedding sherwanis",
++        "Ready-to-wear retail card presentation ideal for gifting"
++      ],
++      "benefitsHi": [
++        "जरदोजी व भारी कढ़ाई वाली शेरवानी पर बेहद आकर्षक लगता है",
++        "उपहार देने के लिए सुंदर कार्ड पैकिंग में तैयार"
++      ],
++      "isFeatured": false,
++      "isPublished": true,
++      "isNew": true,
++      "inStock": true,
++      "minOrder": 1,
++      "sku": "BI-DG-001",
++      "seoTitle": "Kundan Floral Brooch Dulha Haar — Bhaya India",
++      "seoDescription": "Exquisite Kundan floral brooch groom garland with pearl and maroon beads from Bhaya India.",
++      "createdAt": "2026-10-15T10:59:14.869Z",
++      "shopifyId": "gid://shopify/Product/15463934722141",
++      "shopifyCdnImages": [
++        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/dulha-haar-kundan-floral-brooch.jpg?v=1792063032"
++      ]
++    },
++    {
++      "id": "prod-dg-002",
++      "name": "Golden Heart Pendant Tiered Pearl Dulha Haar",
++      "nameHi": "गोल्डन हार्ट लटकन बहुस्तरीय मोती दूल्हा हार",
++      "slug": "golden-heart-pendant-dulha-haar",
++      "category": "Groom Garland",
++      "categoryHi": "दूल्हा माला",
++      "categorySlug": "groom-garland",
++      "subcategory": "Heart Pendant Haar",
++      "subcategoryHi": "हार्ट पेंडेंट दूल्हा हार",
++      "tagline": "4-tier layered pearl garland adorned with gold heart pendants",
++      "taglineHi": "सुनहरे हार्ट पेंडेंट से सुसज्जित 4-लड़ी मोती दूल्हा हार",
++      "description": "Multi-tiered layered groom necklace featuring four cascading pearl strands accented with golden ball beads, each lower tier embellished with an ornate hanging gold heart-shaped pendant with pearl centre inlay.",
++      "descriptionHi": "बहुस्तरीय दूल्हा हार, जिसमें प्रत्येक लड़ी पर सुंदर सुनहरे हार्ट पेंडेंट और श्वेत मोती जड़े हैं।",
++      "images": [
++        "/assets/products/dulha-haar-golden-heart-pendant.jpg"
++      ],
++      "image_en": "/assets/products/dulha-haar-golden-heart-pendant.jpg",
++      "image_hi": "/assets/products/dulha-haar-golden-heart-pendant.jpg",
++      "price": null,
++      "priceNote": "Price to be configured in Shopify Admin",
++      "specs": [
++        {
++          "label": "Pendants",
++          "value": "4 Cascading Gold Heart Charms with Pearl Inlay"
++        },
++        {
++          "label": "Tiers",
++          "value": "4 Graduated Length Pearl Strands"
++        },
++        {
++          "label": "Spacers",
++          "value": "Polished Gold Ball Beads"
++        }
++      ],
++      "specsHi": [
++        {
++          "label": "पेंडेंट",
++          "value": "4 लटकते हुए सुनहरे हार्ट पेंडेंट"
++        },
++        {
++          "label": "लड़ियाँ",
++          "value": "4 बहुस्तरीय मोती की लड़ियाँ"
++        },
++        {
++          "label": "जोड़",
++          "value": "पॉलिश किए गए सुनहरे गोल मोती"
++        }
++      ],
++      "features": [
++        "Unique heart-shaped golden drop pendants on each layer",
++        "Evenly spaced white pearls and gold metal beads",
++        "Symmetrical cascade creating balanced groom necklines",
++        "Packaged on traditional groom display card"
++      ],
++      "featuresHi": [
++        "प्रत्येक लड़ी पर अनोखे सुनहरे दिल के आकार के पेंडेंट",
++        "श्वेत मोतियों और सुनहरे बीड्स का संतुलित संयोजन",
++        "गले पर सममित व संतुलित ड्रेप",
++        "पारंपरिक दुल्हा हार डिस्प्ले कार्ड पर पैक"
++      ],
++      "benefits": [
++        "Symbolizes wedding love and celebration with delicate heart charms",
++        "Youthful modern twist on traditional groom jewellery"
++      ],
++      "benefitsHi": [
++        "विवाह के पावन प्रेम का प्रतीक सुंदर हार्ट मोटिफ",
++        "पारंपरिक आभूषण में आधुनिक व मनमोहक डिज़ाइन"
++      ],
++      "isFeatured": false,
++      "isPublished": true,
++      "isNew": true,
++      "inStock": true,
++      "minOrder": 1,
++      "sku": "BI-DG-002",
++      "seoTitle": "Golden Heart Pendant Tiered Pearl Dulha Haar — Bhaya India",
++      "seoDescription": "Unique 4-tier pearl groom garland with cascading gold heart pendants from Bhaya India.",
++      "createdAt": "2026-10-15T10:59:14.869Z",
++      "shopifyId": "gid://shopify/Product/15463934754909",
++      "shopifyCdnImages": [
++        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/dulha-haar-golden-heart-pendant.jpg?v=1792063036"
++      ]
++    },
++    {
++      "id": "prod-dg-003",
++      "name": "Multi-Tier Pearl Dulha Haar with Side Ruby Brooch",
++      "nameHi": "मल्टी-लेयर मोती व रूबी ब्रोच दूल्हा हार",
++      "slug": "multi-tier-pearl-ruby-brooch-dulha-haar",
++      "category": "Groom Garland",
++      "categoryHi": "दूल्हा माला",
++      "categorySlug": "groom-garland",
++      "subcategory": "Multi-Tier Pearl Haar",
++      "subcategoryHi": "मल्टी-टियर मोती हार",
++      "tagline": "5-tier draped pearl garland with cylindrical gold beads & ruby brooch",
++      "taglineHi": "5-लड़ी मोती हार, सुनहरे बेलनाकार मोती व रूबी ब्रोच के साथ",
++      "description": "5-tier draped groom necklace with lustrous white pearls, cylindrical textured gold spacer barrels, and an ornate circular crystal brooch with oval red centre stone.",
++      "descriptionHi": "5-लड़ी भव्य दूल्हा हार, बारीक नक्काशीदार सुनहरे बेलनाकार बीड्स और लाल स्टोन वाले गोलाकार क्रिस्टल ब्रोच के साथ।",
++      "images": [
++        "/assets/products/dulha-haar-multi-tier-pearl-ruby.jpg"
++      ],
++      "image_en": "/assets/products/dulha-haar-multi-tier-pearl-ruby.jpg",
++      "image_hi": "/assets/products/dulha-haar-multi-tier-pearl-ruby.jpg",
++      "price": null,
++      "priceNote": "Price to be configured in Shopify Admin",
++      "specs": [
++        {
++          "label": "Strand Count",
++          "value": "5 Cascading Pearl Layers"
++        },
++        {
++          "label": "Spacers",
++          "value": "Cylindrical Textured Gold Barrels"
++        },
++        {
++          "label": "Brooch",
++          "value": "Rhinestone Halo with Red Centre Gem"
++        }
++      ],
++      "specsHi": [
++        {
++          "label": "लड़ियाँ",
++          "value": "5 बहुस्तरीय मोती लड़ियाँ"
++        },
++        {
++          "label": "जोड़",
++          "value": "बेलनाकार टेक्सचर्ड सुनहरे बीड्स"
++        },
++        {
++          "label": "ब्रोच",
++          "value": "क्रिस्टल हेलो व लाल स्टोन"
++        }
++      ],
++      "features": [
++        "Extensive 5-strand graduated pearl cascade for royal volume",
++        "Textured cylindrical gold barrel spacers",
++        "Side crystal brooch providing royal focal point",
++        "Mounted on 'ABC दुल्हा हार' display card"
++      ],
++      "featuresHi": [
++        "5-लड़ी सघन व भव्य मोतियों का ड्रेप",
++        "सुनहरे बेलनाकार टेक्सचर्ड बीड्स",
++        "बाईं ओर लाल स्टोन वाला चमकदार क्रिस्टल ब्रोच",
++        "'ABC दुल्हा हार' डिस्प्ले कार्ड पर माउंटेड"
++      ],
++      "benefits": [
++        "Provides rich full-chest coverage ideal for high-neck sherwanis",
++        "Heavy traditional bridal look without excessive weight"
++      ],
++      "benefitsHi": [
++        "शेरवानी के सीने पर पूरा व भव्य भराव प्रदान करता है",
++        "देखने में अत्यंत भारी पर पहनने में हल्का व आरामदायक"
++      ],
++      "isFeatured": false,
++      "isPublished": true,
++      "isNew": true,
++      "inStock": true,
++      "minOrder": 1,
++      "sku": "BI-DG-003",
++      "seoTitle": "Multi-Tier Pearl Dulha Haar with Ruby Brooch — Bhaya India",
++      "seoDescription": "Royal 5-tier pearl groom garland with cylindrical gold spacers and ruby brooch from Bhaya India.",
++      "createdAt": "2026-10-15T10:59:14.869Z",
++      "shopifyId": "gid://shopify/Product/15463934787677",
++      "shopifyCdnImages": [
++        "https://cdn.shopify.com/s/files/1/0753/3507/3885/files/dulha-haar-multi-tier-pearl-ruby.jpg?v=1792063040"
++      ]
++    },
+     {
+       "id": "prod-001",
+       "name": "Premium Banarasi Silk Saree",
+diff --git a/data/shopify_products_import.csv b/data/shopify_products_import.csv
+index 4dd9028..ac4974f 100644
+--- a/data/shopify_products_import.csv
++++ b/data/shopify_products_import.csv
+@@ -1,96 +1,26 @@
+ Handle,Title,Body (HTML),Vendor,Product Category,Type,Tags,Published,Option1 Name,Option1 Value,Variant SKU,Variant Grams,Variant Inventory Tracker,Variant Inventory Qty,Variant Inventory Policy,Variant Fulfillment Service,Variant Price,Variant Requires Shipping,Variant Taxable,Image Src,Image Position,SEO Title,SEO Description,Status
+-premium-banarasi-silk-saree,Premium Banarasi Silk Saree,"<p><strong>Heritage weave, contemporary grace</strong></p>
+-<p>Handwoven Banarasi silk saree crafted with genuine gold-tone zari embellishment along the borders and ornate pallu. Blends timeless Indian craftsmanship with modern refinement, ideal for weddings, family milestones, and auspicious celebrations.</p>
+-<h3>Key Features</h3>
+-<ul>
+-  <li>Pure mulberry silk foundation</li>
+-  <li>Authentic Banarasi Kadhwa weave</li>
+-  <li>Rich zari borders and heavy ornamental pallu</li>
+-  <li>Silk Mark certified quality assurance</li>
+-</ul>
+-<h3>Specifications</h3>
+-<table>
+-  <tr><td><strong>Material</strong></td><td>Pure Katan Silk</td></tr>
+-  <tr><td><strong>Length</strong></td><td>6.5 metres (with blouse)</td></tr>
+-  <tr><td><strong>Blouse Piece</strong></td><td>Included (0.8m)</td></tr>
+-  <tr><td><strong>Weave Technique</strong></td><td>Kadhwa Handloom</td></tr>
+-  <tr><td><strong>Care Instructions</strong></td><td>Dry Clean Only</td></tr>
+-</table>",BHAYA INDIA,Textiles & Fabrics,Textiles & Fabrics,"textiles-fabrics, sarees, featured, bhaya-india",true,Title,Default Title,BI-TX-001,500,shopify,50,deny,manual,3800,true,true,/assets/category-textiles.jpg,1,Premium Banarasi Silk Saree — Bhaya India,Authentic handwoven Banarasi pure silk saree with zari border. Pan-India delivery from Bhaya India.,active
+-leather-bound-executive-notebook,Leather-Bound Executive Notebook,"<p><strong>Write your legacy with intention</strong></p>
+-<p>Handcrafted top-grain leather journal with 200 pages of 90 GSM archival-grade ivory paper. Featuring lay-flat bookbinding, gilded edge accents, and a satin bookmark ribbon. Built for leaders, thinkers, and discerning professionals.</p>
+-<h3>Key Features</h3>
+-<ul>
+-  <li>Supple genuine leather finish that patinas with age</li>
+-  <li>Zero bleed-through on fountain pens and rollers</li>
+-  <li>Integrated dual bookmark ribbons</li>
+-  <li>Custom hot-foil gold monogramming available on bulk orders</li>
+-</ul>
+-<h3>Specifications</h3>
+-<table>
+-  <tr><td><strong>Cover Material</strong></td><td>Genuine Full-Grain Leather</td></tr>
+-  <tr><td><strong>Paper</strong></td><td>90 GSM Fountain-pen friendly Ivory</td></tr>
+-  <tr><td><strong>Page Count</strong></td><td>200 Ruled Pages</td></tr>
+-  <tr><td><strong>Dimensions</strong></td><td>A5 (148 × 210 mm)</td></tr>
+-  <tr><td><strong>Binding</strong></td><td>Hand-stitched Lay-flat</td></tr>
+-</table>",BHAYA INDIA,Stationery & Office,Stationery & Office,"stationery-office, notebooks, featured, new, bhaya-india",true,Title,Default Title,BI-ST-002,500,shopify,50,deny,manual,650,true,true,/assets/category-stationery.jpg,1,Leather-Bound Executive Notebook — Bhaya India,Fine genuine leather notebook with archival paper. Shop luxury office stationery at Bhaya India.,active
+-royal-heritage-festival-hamper,Royal Heritage Festival Hamper,"<p><strong>Thoughtful gifting made effortless</strong></p>
+-<p>An opulent gift trunk handcrafted in wooden casing with gold-embossed faux leather trim. Includes artisanal saffron treats, stone-ground dry fruits, pure brass incense holder, hand-poured soy candle, and personalized greeting scroll.</p>
+-<h3>Key Features</h3>
+-<ul>
+-  <li>Curated assortment of premium dry fruits and sweets</li>
+-  <li>Brass handcrafted artifact for lasting keepsake</li>
+-  <li>Custom foil-stamped corporate company ribbon option</li>
+-  <li>Express temperature-controlled shipping</li>
+-</ul>
+-<h3>Specifications</h3>
+-<table>
+-  <tr><td><strong>Trunk Dimensions</strong></td><td>32 × 24 × 12 cm</td></tr>
+-  <tr><td><strong>Trunk Material</strong></td><td>Textured Vegan Leather & Brass Clasps</td></tr>
+-  <tr><td><strong>Shelf Life</strong></td><td>6 Months for Food Items</td></tr>
+-  <tr><td><strong>Packaging</strong></td><td>Individual air-sealed containers</td></tr>
+-</table>",BHAYA INDIA,Gift Hampers,Gift Hampers,"gift-hampers, festival-hampers, featured, new, bhaya-india",true,Title,Default Title,BI-GH-003,500,shopify,50,deny,manual,2450,true,true,/assets/hero-editorial.jpg,1,Royal Heritage Festival Hamper — Bhaya India,Luxury corporate and festive gifting hampers by Bhaya India. Nationwide delivery.,active
+-handcrafted-brass-urli-bowl,Handcrafted Brass Urli Bowl,"<p><strong>Spiritual serenity in pure metal</strong></p>
+-<p>Traditional bell-metal brass urli bowl hand-beaten by hereditary artisans. Perfectly sized for floating flower petals, aromatic water, and tealights at the entrance of homes and luxury office receptions.</p>
+-<h3>Key Features</h3>
+-<ul>
+-  <li>Hand-carved floral edge filigree</li>
+-  <li>Heavy stable base prevents tipping</li>
+-  <li>Coated with natural tarnish-resistant lacquer</li>
+-</ul>
+-<h3>Specifications</h3>
+-<table>
+-  <tr><td><strong>Metal</strong></td><td>Virgin Cast Brass (85% Copper, 15% Zinc)</td></tr>
+-  <tr><td><strong>Diameter</strong></td><td>12 inches (30 cm)</td></tr>
+-  <tr><td><strong>Weight</strong></td><td>2.1 kg</td></tr>
+-  <tr><td><strong>Finish</strong></td><td>Traditional Antique Gold Polish</td></tr>
+-</table>",BHAYA INDIA,Home & Living,Home & Living,"home-living, brass-decor, featured, bhaya-india",true,Title,Default Title,BI-HL-004,500,shopify,50,deny,manual,1850,true,true,/assets/hero-editorial.jpg,1,Handcrafted Brass Urli Bowl — Bhaya India Home,Pure brass hand-carved urli bowl for floating flowers. Buy authentic home decor at Bhaya India.,active
+-chanderi-silk-cotton-dupatta,Chanderi Silk Cotton Dupatta,"<p><strong>Breezy elegance woven with grace</strong></p>
+-<p>Lightweight authentic Chanderi fabric combining raw silk warp with fine combed cotton weft. Embellished with delicate hand-block gold motifs (boota) and sheer pallu detailing.</p>
+-<h3>Key Features</h3>
+-<ul>
+-  <li>Authentic Madhya Pradesh Chanderi cluster weave</li>
+-  <li>Zari tissue borders</li>
+-  <li>Subtle shimmer in natural daylight</li>
+-</ul>
+-<h3>Specifications</h3>
+-<table>
+-  <tr><td><strong>Composition</strong></td><td>70% Cotton, 30% Silk</td></tr>
+-  <tr><td><strong>Length</strong></td><td>2.5 metres</td></tr>
+-  <tr><td><strong>Width</strong></td><td>36 inches</td></tr>
+-  <tr><td><strong>Care</strong></td><td>Gentle Hand Wash or Dry Clean</td></tr>
+-</table>",BHAYA INDIA,Textiles & Fabrics,Textiles & Fabrics,"textiles-fabrics, silk-dupattas, bhaya-india",true,Title,Default Title,BI-TX-005,500,shopify,50,deny,manual,1250,true,true,/assets/category-textiles.jpg,1,Chanderi Silk Cotton Dupatta — Bhaya India,Authentic handwoven Chanderi dupatta with gold boota motifs. Bhaya India textiles.,active
+-institutional-bulk-uniform-fabric,Institutional Bulk Uniform Fabric,"<p><strong>Industrial durability meets comfort</strong></p>
+-<p>High-density poly-viscose and combed cotton blended textiles tailored for institutional uniforms, corporate workforce attire, and hospitality garments. Available in roll bolts of 50m to 500m.</p>
+-<h3>Key Features</h3>
+-<ul>
+-  <li>Wrinkle-resistant and sweat-wicking breathability</li>
+-  <li>Tested for 100+ commercial wash cycles</li>
+-  <li>Custom Pantone dyeing available for 500m+ orders</li>
+-</ul>
+-<h3>Specifications</h3>
+-<table>
+-  <tr><td><strong>Blend</strong></td><td>65% Poly, 35% Viscose</td></tr>
+-  <tr><td><strong>GSM</strong></td><td>210 GSM</td></tr>
+-  <tr><td><strong>Bolt Width</strong></td><td>58 inches (147 cm)</td></tr>
+-  <tr><td><strong>Colour Fastness</strong></td><td>Grade 4.5 Certified</td></tr>
+-</table>",BHAYA INDIA,Wholesale & Bulk,Wholesale & Bulk,"wholesale-bulk, institutional-textiles, bhaya-india",true,Title,Default Title,BI-WB-006,500,shopify,50,deny,manual,0,true,true,/assets/category-textiles.jpg,1,Institutional Bulk Uniform Fabric — Bhaya India Wholesale,Commercial and institutional uniform textiles in bulk rolls. Request quotation from Bhaya India.,active
+\ No newline at end of file
++rose-decorative-flower-puja-mala,Rose Decorative Flower Puja Mala / गुलाब फूल पूजा माला,"<p><strong>Vibrant yellow and pink roses for daily worship | नित्य पूजा व मंदिर शृंगार हेतु सुंदर गुलाब माला</strong></p><p>Hand-crafted artificial floral puja mala featuring vibrant yellow and deep pink rose blossoms strung with golden spacer accents, green calyx leaves, decorative cluster drops, and red ribbon hanging ties. Suitable for home mandir, daily worship, and festive rituals.</p><p><em>पीले व गहरे गुलाबी कृत्रिम गुलाब के फूलों से तैयार की गई सुंदर पूजा माला। सुनहरे मोती के जोड़ों, हरी पत्तियों, लटकन और लाल रिबन हैंगर के साथ। नित्य पूजा, गृह मंदिर एवं उत्सवों के लिए उपयुक्त।</em></p><h3>Key Features</h3><ul><li>Vibrant yellow & deep pink artificial rose petals</li><li>Golden bead spacers and green leaf accents</li><li>Hanging bell drops at the garland ends</li><li>Protective clear sleeve packaging</li></ul>",BHAYA INDIA,Home & Living > Religious & Ceremonial > Garlands,Puja Mala,"garlands, puja-mala, featured, bhaya-india, real-products, handcrafted",false,Title,Default Title,BI-PM-001,250,shopify,,deny,manual,,true,true,https://cdn.shopify.com/s/files/1/0753/3507/3885/files/puja-mala-rose-yellow-pink.jpg?v=1792062972,1,Rose Decorative Flower Puja Mala — Bhaya India,Hand-crafted artificial rose flower puja mala in yellow and pink for home mandir and worship. Buy authentic garlands from Bhaya India.,draft
++red-rose-yellow-bud-puja-mala,Red Rose & Yellow Bud Decorative Puja Mala / लाल गुलाब व पीली कली पूजा माला,"<p><strong>Bold crimson roses paired with yellow floral buds | लाल गुलाब व पीली कलियों का मनमोहक संगम</strong></p><p>Traditional layered flower garland combining bold crimson artificial roses, bright yellow tubular floral buds, green fern foliage accents, and hanging white floral drops with red ribbon hanging ties.</p><p><em>लाल गुलाब के फूलों, पीली कलियों, हरी पत्तियों और श्वेत लटकन से सुसज्जित पारंपरिक पूजा माला। नित्य पूजा एवं धार्मिक अनुष्ठानों के लिए।</em></p><h3>Key Features</h3><ul><li>Layered red roses and dense yellow floral buds</li><li>Fern-style green leaves for natural aesthetic</li><li>Hanging white floral tassels at the bottom</li></ul>",BHAYA INDIA,Home & Living > Religious & Ceremonial > Garlands,Puja Mala,"garlands, puja-mala, featured, bhaya-india, real-products, handcrafted",false,Title,Default Title,BI-PM-002,250,shopify,,deny,manual,,true,true,https://cdn.shopify.com/s/files/1/0753/3507/3885/files/puja-mala-red-rose-yellow-bud.jpg?v=1792062976,1,Red Rose & Yellow Bud Decorative Puja Mala — Bhaya India,Traditional red rose and yellow bud garland for mandir and deity worship from Bhaya India.,draft
++mint-white-blush-pink-rose-mala,Mint White & Blush Pink Rose Puja Mala / श्वेत-गुलाबी गुलाब पूजा माला,<p><strong>Serene pastel roses for peaceful temple ambiance | सौम्य श्वेत व गुलाबी गुलाब से सजी पूजा माला</strong></p><p>Elegant soft pastel rose garland bunch featuring delicate mint-white and blush-pink layered fabric roses with green calyx leaves and red satin hanging ribbons.</p><p><em>श्वेत एवं हल्के गुलाबी कृत्रिम गुलाब के फूलों से गूंथी गई सौम्य पूजा माला। मंदिर सजावट और धार्मिक आयोजनों के लिए।</em></p><h3>Key Features</h3><ul><li>Soft petal texture with mint white and blush tones</li><li>Clean individual flower spacing with green sepals</li><li>Multiple garland bunch in clear protective wrap</li></ul>,BHAYA INDIA,Home & Living > Religious & Ceremonial > Garlands,Puja Mala,"garlands, puja-mala, featured, bhaya-india, real-products, handcrafted",false,Title,Default Title,BI-PM-003,250,shopify,,deny,manual,,true,true,https://cdn.shopify.com/s/files/1/0753/3507/3885/files/puja-mala-mint-white-blush-rose.jpg?v=1792062980,1,Mint White & Blush Pink Rose Puja Mala — Bhaya India,Pastel white and blush pink rose garland for sacred worship and mandir decor from Bhaya India.,draft
++royal-blue-pearl-bhagwan-jaymala,Royal Blue & Pearl Deity Jaymala / नीली व श्वेत मोती भगवान जयमाला,"<p><strong>Lustrous blue crystal beads and ivory pearls for deity shringar | देव मूर्तियों के शृंगार हेतु नीली व श्वेत मोती जयमाला</strong></p><p>Sacred decorative garland featuring rich metallic royal-blue beads with sparkling crystal stone rondelles, woven white pearls, fluted golden caps, pearl drop tassels, and red hanging ribbons. Ideal for deity shringar and religious festivities.</p><p><em>भगवान के शृंगार हेतु विशेष जयमाला। चमकदार रॉयल ब्लू मोती, श्वेत मोती, क्रिस्टल रिंग्स और सुनहरी कैप्स से सजी सुंदर माला।</em></p><h3>Key Features</h3><ul><li>Deep royal blue metallic beads alternating with crystal rings</li><li>Dense strands of lustrous ivory pearls</li><li>Pearl bell clusters at the lower drop</li><li>Red ribbon top loops for secure hanging</li></ul>",BHAYA INDIA,Home & Living > Religious & Ceremonial > Garlands,Bhagwan Jaymala,"garlands, bhagwan-jaymala, featured, bhaya-india, real-products, handcrafted",false,Title,Default Title,BI-BJ-001,250,shopify,,deny,manual,,true,true,https://cdn.shopify.com/s/files/1/0753/3507/3885/files/bhagwan-jaymala-royal-blue-pearl.jpg?v=1792062984,1,Royal Blue & Pearl Deity Jaymala — Bhaya India,Exquisite royal blue and pearl jaymala for deity shringar and religious celebrations by Bhaya India.,draft
++marigold-maroon-flower-jaymala,Marigold & Maroon Sacred Flower Jaymala / गेंदा व मैरून फूल भगवान जयमाला,"<p><strong>Dense marigold ruffles and maroon bands for grand celebrations | सुनहरे गेंदे व मैरून फूलों की सघन भगवान जयमाला</strong></p><p>Heavy layered sacred jaymala crafted with dense golden-yellow marigold ruffles, contrasting deep maroon floral bands, and white accent cluster drops with red hanging cords.</p><p><em>सुनहरे पीले गेंदे के फूलों और गहरे मैरून फूलों से निर्मित सघन व भव्य भगवान जयमाला। धार्मिक उत्सवों एवं मूर्ति शृंगार के लिए।</em></p><h3>Key Features</h3><ul><li>High density ruffled marigold petal clusters</li><li>Deep wine maroon contrasting mid-sections</li><li>Hanging white floral tassels at the bottom base</li></ul>",BHAYA INDIA,Home & Living > Religious & Ceremonial > Garlands,Bhagwan Jaymala,"garlands, bhagwan-jaymala, featured, bhaya-india, real-products, handcrafted",false,Title,Default Title,BI-BJ-002,250,shopify,,deny,manual,,true,true,https://cdn.shopify.com/s/files/1/0753/3507/3885/files/bhagwan-jaymala-marigold-maroon.jpg?v=1792062989,1,Marigold & Maroon Sacred Flower Jaymala — Bhaya India,Traditional marigold and maroon jaymala for deities and temple celebrations by Bhaya India.,draft
++peach-yellow-rose-jaymala,Peach & Yellow Rose Religious Jaymala / पीच-गुलाबी व पीली गुलाब जयमाला,"<p><strong>Harmonious peach and yellow roses with gold bead accents | पीच और पीले गुलाब के फूलों की पावन जयमाला</strong></p><p>Auspicious dual-tone rose jaymala combining sunny yellow and soft peach-pink layered fabric roses with golden spacer beads, green leaves, and hanging bells in protective packaging.</p><p><em>पीली और पीच-गुलाबी गुलाब की पंखुड़ियों से निर्मित मनमोहक भगवान जयमाला। सुनहरे मोतियों और घंटियों के साथ।</em></p><h3>Key Features</h3><ul><li>Layered artificial roses in pastel peach and bright yellow</li><li>Golden bead accents between blooms</li><li>Packaged in clean transparent hanging sleeve</li></ul>",BHAYA INDIA,Home & Living > Religious & Ceremonial > Garlands,Bhagwan Jaymala,"garlands, bhagwan-jaymala, featured, bhaya-india, real-products, handcrafted",false,Title,Default Title,BI-BJ-003,250,shopify,,deny,manual,,true,true,https://cdn.shopify.com/s/files/1/0753/3507/3885/files/bhagwan-jaymala-peach-yellow-rose.jpg?v=1792062992,1,Peach & Yellow Rose Religious Jaymala — Bhaya India,Dual-tone peach and yellow rose deity garland for religious occasions by Bhaya India.,draft
++grand-multicolour-large-flower-garland,Grand Multicolour Decorative Large Flower Garland / भव्य बहुरंगी बड़ा फूल माला,"<p><strong>Spectacular multicolour garland with gold crown apex | सुनहरी छतरी व बहुरंगी फूलों वाला भव्य बड़ा माला</strong></p><p>Monumental grand decorative flower garland featuring a shimmering golden conical top canopy, layered cascades of crimson red, magenta pink, bright yellow flowers, green leaves, white spherical beads, and hanging floral tassels.</p><p><em>उत्सवों, द्वारों एवं विशेष समारोहों के लिए भव्य बड़ा फूल माला। सुनहरी छतरी, लाल, गुलाबी, पीले फूलों और मोतियों की आकर्षक लड़ियाँ।</em></p><h3>Key Features</h3><ul><li>Elaborate multi-tier construction with golden top crown</li><li>Vibrant tiers of red, yellow, magenta and green foliage</li><li>White spherical bead spacers between floral layers</li><li>Long hanging yellow and pink flower tassel drops</li></ul>",BHAYA INDIA,Home & Living > Religious & Ceremonial > Garlands,Large Flower Garlands,"garlands, large-flower-garlands, featured, bhaya-india, real-products, handcrafted",false,Title,Default Title,BI-LG-001,250,shopify,,deny,manual,,true,true,https://cdn.shopify.com/s/files/1/0753/3507/3885/files/large-flower-garland-grand-multicolour.jpg?v=1792062997,1,Grand Multicolour Large Flower Garland — Bhaya India,Spectacular large multicolour flower garland with golden canopy for festivals and celebrations by Bhaya India.,draft
++grand-orange-marigold-jasmine-large-garland,Grand Orange Marigold & Jasmine Bead Large Flower Garland / नारंगी गेंदा व चमेली बड़ा फूल माला,"<p><strong>Vibrant orange marigold ruffles with cascading white jasmine beads | नारंगी गेंदा व श्वेत लड़ियों का भव्य संगम</strong></p><p>Broad grand ceremonial garland featuring thick orange marigold ruffles, rich magenta floral borders, and dense cascading white jasmine-style beaded drop strands with red hanging ribbons.</p><p><em>नारंगी गेंदा, मैरून बॉर्डर और श्वेत मोगरा/चमेली शैली की घनी लड़ियों से निर्मित भव्य बड़ा फूल माला।</em></p><h3>Key Features</h3><ul><li>Dense tiered orange marigold petal ruffles</li><li>Cascading white jasmine-style beaded strands</li><li>Magenta floral borders and lower foliage trim</li></ul>",BHAYA INDIA,Home & Living > Religious & Ceremonial > Garlands,Large Flower Garlands,"garlands, large-flower-garlands, featured, bhaya-india, real-products, handcrafted",false,Title,Default Title,BI-LG-002,250,shopify,,deny,manual,,true,true,https://cdn.shopify.com/s/files/1/0753/3507/3885/files/large-flower-garland-orange-marigold-jasmine.jpg?v=1792063001,1,Grand Orange Marigold & Jasmine Large Flower Garland — Bhaya India,Grand orange marigold and cascading jasmine garland for celebrations by Bhaya India.,draft
++grand-tiered-festive-large-garland,Grand Tiered Festive Large Flower Garland / भव्य बहुस्तरीय उत्सव बड़ा फूल माला,"<p><strong>Elaborate multi-layer floral garland with gold foil canopy | सुनहरी छतरी व बहुस्तरीय फूलों का भव्य उत्सव माला</strong></p><p>Elaborate grand multi-tier hanging flower garland showcasing bright golden-yellow flower ruffles, rich purple-magenta floral tiers, dense green foliage trims, and multi-tier cascading floral pendants.</p><p><em>भव्य बहुस्तरीय उत्सव बड़ा फूल माला। पीले-सुनहरे, जामुनी-मैरून फूल एवं हरी पत्तियों के साथ शानदार सजावटी माला।</em></p><h3>Key Features</h3><ul><li>Broad expansive arc design covering large wall or entrance widths</li><li>Contrasting layers of warm orange, bright yellow, and deep purple blooms</li><li>Dense green foliage accents and dangling floral bells</li></ul>",BHAYA INDIA,Home & Living > Religious & Ceremonial > Garlands,Large Flower Garlands,"garlands, large-flower-garlands, featured, bhaya-india, real-products, handcrafted",false,Title,Default Title,BI-LG-003,250,shopify,,deny,manual,,true,true,https://cdn.shopify.com/s/files/1/0753/3507/3885/files/large-flower-garland-grand-tiered-festive.jpg?v=1792063007,1,Grand Tiered Festive Large Flower Garland — Bhaya India,Grand multi-tier festive flower garland for event gates and celebrations by Bhaya India.,draft
++grand-tiered-festive-large-garland,,,,,,,,,,,,,,,,,,,https://cdn.shopify.com/s/files/1/0753/3507/3885/files/large-flower-garland-orange-magenta-drape.jpg?v=1792063007,2,,,
++emerald-green-crystal-pearl-moti-mala,Emerald Green Crystal & Pearl Moti Mala / पन्ना हरा क्रिस्टल व मोती माला,"<p><strong>Sparkling emerald green faceted crystal beads and ivory pearls | पन्ना हरे क्रिस्टल और श्वेत मोतियों की मनोहारी माला</strong></p><p>Beautifully strung decorative garland pack featuring faceted emerald-green crystal beads, woven ivory white pearl layers, fluted golden spacers, and pearl cluster tassel bell drops with red ribbon ties.</p><p><em>पन्ना हरे कट-क्रिस्टल मोती, बुने हुए श्वेत मोती, सुनहरी कैप्स और मोतियों के झुमकेनुमा लटकन से सुसज्जित मोती माला।</em></p><h3>Key Features</h3><ul><li>Emerald green faceted crystals that catch light from every angle</li><li>Double strands of woven ivory pearls</li><li>Pearl pom-pom cluster bells at the end</li><li>Sold as protective multi-garland pack</li></ul>",BHAYA INDIA,Home & Living > Religious & Ceremonial > Garlands,Moti Mala,"garlands, moti-mala, featured, bhaya-india, real-products, handcrafted",false,Title,Default Title,BI-MM-001,250,shopify,,deny,manual,,true,true,https://cdn.shopify.com/s/files/1/0753/3507/3885/files/moti-mala-emerald-green-crystal-pearl.jpg?v=1792063011,1,Emerald Green Crystal & Pearl Moti Mala — Bhaya India,Exquisite emerald green crystal and pearl moti mala for decor and worship by Bhaya India.,draft
++antique-gold-filigree-pearl-moti-mala,Antique Gold Filigree & Pearl Moti Mala / जालीदार सुनहरी व मोती माला,"<p><strong>Intricate antique gold filigree mesh cage beads with lustrous pearls | बारीक जालीदार सुनहरे मोती और श्वेत मोतियों का अद्भुत शिल्प</strong></p><p>Exquisite decorative garland bundle featuring intricate hollow antique gold filigree mesh cage beads, cream pearls, fluted golden caps, and pearl drop cluster bells with red ribbon ties.</p><p><em>बारीक जालीदार सुनहरे बीड्स (Filigree), क्रीम मोती और सुनहरी घंटियों से तैयार की गई पारंपरिक मोती माला।</em></p><h3>Key Features</h3><ul><li>Intricate metal wire mesh filigree beads (जालीदार मोती)</li><li>Alternating lustrous white pearls and golden fluted rings</li><li>Pearl bell tassels at the bottom terminal</li></ul>",BHAYA INDIA,Home & Living > Religious & Ceremonial > Garlands,Moti Mala,"garlands, moti-mala, featured, bhaya-india, real-products, handcrafted",false,Title,Default Title,BI-MM-002,250,shopify,,deny,manual,,true,true,https://cdn.shopify.com/s/files/1/0753/3507/3885/files/moti-mala-antique-gold-filigree-pearl.jpg?v=1792063016,1,Antique Gold Filigree & Pearl Moti Mala — Bhaya India,Traditional antique gold filigree mesh and pearl garland from Bhaya India.,draft
++royal-peacock-brooch-sherwani-mala,Royal Peacock Brooch Pearl & Maroon Sherwani Mala / राजसी मोर ब्रोच मोती व मैरून शेरवानी माला,"<p><strong>4-strand groom sherwani mala with ornate gold peacock brooch | दूल्हे की शेरवानी हेतु 4-लड़ी मोर ब्रोच शेरवानी माला</strong></p><p>4-strand royal groom sherwani garland featuring high-lustre ivory pearls and deep maroon beads, accented with an ornate gold-plated peacock side brooch encrusted with sparkling crystal rhinestones and an adjustable gold cord.</p><p><em>दूल्हे की शेरवानी हेतु 4-लड़ी राजसी माला। श्वेत व मैरून मोती, बारीक नक्काशीदार मोर ब्रोच और चमकीले पत्थरों के साथ।</em></p><h3>Key Features</h3><ul><li>Authentic asymmetrical royal side brooch with peacock carving</li><li>Tiered 4-strand drape tailored for groom sherwanis and achkans</li><li>Contrasting maroon and ivory pearls with fluted gold caps</li><li>Packaged in retail presentation card with model groom display</li></ul>",BHAYA INDIA,Home & Living > Religious & Ceremonial > Garlands,Sherwani Mala,"garlands, sherwani-mala, featured, bhaya-india, real-products, handcrafted",false,Title,Default Title,BI-SM-001,250,shopify,,deny,manual,,true,true,https://cdn.shopify.com/s/files/1/0753/3507/3885/files/sherwani-mala-peacock-brooch-detail.jpg?v=1792063021,1,Royal Peacock Brooch Sherwani Mala — Bhaya India,Exquisite 4-strand royal peacock brooch groom sherwani mala with maroon and pearl beads by Bhaya India.,draft
++royal-peacock-brooch-sherwani-mala,,,,,,,,,,,,,,,,,,,https://cdn.shopify.com/s/files/1/0753/3507/3885/files/sherwani-mala-peacock-brooch-pack.jpg?v=1792063021,2,,,
++royal-ruby-brooch-sherwani-mala,Royal Ruby Brooch & Gold Bead Sherwani Mala / रूबी ब्रोच व सुनहरे मोती शेरवानी माला,"<p><strong>Multi-tier groom necklace with ruby-red brooch and gold beads | रूबी-लाल स्टोन ब्रोच व सुनहरे मोतियों वाला राजसी दूल्हा हार</strong></p><p>Multi-layer royal groom sherwani garland combining ivory pearls, golden spherical beads, cascading maroon bead accents, and an elaborate circular rhinestone halo side brooch with an oval ruby-red centre gem.</p><p><em>दूल्हे की शेरवानी के लिए मल्टी-लेयर शाही माला। सुनहरे मोती, श्वेत मोती और लाल रूबी स्टोन ब्रोच के साथ।</em></p><h3>Key Features</h3><ul><li>Striking ruby-red oval gem centerpiece surrounded by crystal pavé halo</li><li>Sections of polished gold sphere beads alternating with white pearls</li><li>Cascading maroon bead accents at the base tiers</li><li>Available both unpacked and on 'ABC दुल्हा हार' presentation card</li></ul>",BHAYA INDIA,Home & Living > Religious & Ceremonial > Garlands,Sherwani Mala,"garlands, sherwani-mala, featured, bhaya-india, real-products, handcrafted",false,Title,Default Title,BI-SM-002,250,shopify,,deny,manual,,true,true,https://cdn.shopify.com/s/files/1/0753/3507/3885/files/sherwani-mala-ruby-brooch-detail.jpg?v=1792063027,1,Royal Ruby Brooch & Gold Bead Sherwani Mala — Bhaya India,Regal ruby-red brooch and gold pearl groom sherwani mala by Bhaya India.,draft
++royal-ruby-brooch-sherwani-mala,,,,,,,,,,,,,,,,,,,https://cdn.shopify.com/s/files/1/0753/3507/3885/files/sherwani-mala-ruby-brooch-pack.jpg?v=1792063027,2,,,
++kundan-floral-brooch-dulha-haar,Kundan Floral Brooch Maroon-Pearl Dulha Haar / कुंदन फ्लोरल ब्रोच मैरून-मोती दूल्हा हार,"<p><strong>4-strand groom garland with gold Kundan leaf brooch | कुंदन की पत्तियों वाले ब्रोच से सजा 4-लड़ी दूल्हा हार</strong></p><p>4-strand groom garland featuring ivory white pearls, cascading lower maroon bead drape, gold floral spacer beads, and an asymmetrical gold Kundan floral-leaf brooch studded with clear teardrop stones.</p><p><em>4-लड़ी दूल्हा हार, श्वेत मोती और मैरून मोतियों की भव्य लटकन के साथ। बाईं ओर आकर्षक कुंदन पत्ती-फूल ब्रोच।</em></p><h3>Key Features</h3><ul><li>Traditional Kundan-style floral brooch with clear faceted stones</li><li>Ivory pearl upper tiers with deep maroon lower drape</li><li>Gold ribbed spacer elements</li><li>Adjustable gold thread fastening</li></ul>",BHAYA INDIA,Home & Living > Religious & Ceremonial > Garlands,Groom Garland,"garlands, groom-garland, featured, bhaya-india, real-products, handcrafted",false,Title,Default Title,BI-DG-001,250,shopify,,deny,manual,,true,true,https://cdn.shopify.com/s/files/1/0753/3507/3885/files/dulha-haar-kundan-floral-brooch.jpg?v=1792063032,1,Kundan Floral Brooch Dulha Haar — Bhaya India,Exquisite Kundan floral brooch groom garland with pearl and maroon beads from Bhaya India.,draft
++golden-heart-pendant-dulha-haar,Golden Heart Pendant Tiered Pearl Dulha Haar / गोल्डन हार्ट लटकन बहुस्तरीय मोती दूल्हा हार,"<p><strong>4-tier layered pearl garland adorned with gold heart pendants | सुनहरे हार्ट पेंडेंट से सुसज्जित 4-लड़ी मोती दूल्हा हार</strong></p><p>Multi-tiered layered groom necklace featuring four cascading pearl strands accented with golden ball beads, each lower tier embellished with an ornate hanging gold heart-shaped pendant with pearl centre inlay.</p><p><em>बहुस्तरीय दूल्हा हार, जिसमें प्रत्येक लड़ी पर सुंदर सुनहरे हार्ट पेंडेंट और श्वेत मोती जड़े हैं।</em></p><h3>Key Features</h3><ul><li>Unique heart-shaped golden drop pendants on each layer</li><li>Evenly spaced white pearls and gold metal beads</li><li>Symmetrical cascade creating balanced groom necklines</li><li>Packaged on traditional groom display card</li></ul>",BHAYA INDIA,Home & Living > Religious & Ceremonial > Garlands,Groom Garland,"garlands, groom-garland, featured, bhaya-india, real-products, handcrafted",false,Title,Default Title,BI-DG-002,250,shopify,,deny,manual,,true,true,https://cdn.shopify.com/s/files/1/0753/3507/3885/files/dulha-haar-golden-heart-pendant.jpg?v=1792063036,1,Golden Heart Pendant Tiered Pearl Dulha Haar — Bhaya India,Unique 4-tier pearl groom garland with cascading gold heart pendants from Bhaya India.,draft
++multi-tier-pearl-ruby-brooch-dulha-haar,Multi-Tier Pearl Dulha Haar with Side Ruby Brooch / मल्टी-लेयर मोती व रूबी ब्रोच दूल्हा हार,"<p><strong>5-tier draped pearl garland with cylindrical gold beads & ruby brooch | 5-लड़ी मोती हार, सुनहरे बेलनाकार मोती व रूबी ब्रोच के साथ</strong></p><p>5-tier draped groom necklace with lustrous white pearls, cylindrical textured gold spacer barrels, and an ornate circular crystal brooch with oval red centre stone.</p><p><em>5-लड़ी भव्य दूल्हा हार, बारीक नक्काशीदार सुनहरे बेलनाकार बीड्स और लाल स्टोन वाले गोलाकार क्रिस्टल ब्रोच के साथ।</em></p><h3>Key Features</h3><ul><li>Extensive 5-strand graduated pearl cascade for royal volume</li><li>Textured cylindrical gold barrel spacers</li><li>Side crystal brooch providing royal focal point</li><li>Mounted on 'ABC दुल्हा हार' display card</li></ul>",BHAYA INDIA,Home & Living > Religious & Ceremonial > Garlands,Groom Garland,"garlands, groom-garland, featured, bhaya-india, real-products, handcrafted",false,Title,Default Title,BI-DG-003,250,shopify,,deny,manual,,true,true,https://cdn.shopify.com/s/files/1/0753/3507/3885/files/dulha-haar-multi-tier-pearl-ruby.jpg?v=1792063040,1,Multi-Tier Pearl Dulha Haar with Ruby Brooch — Bhaya India,Royal 5-tier pearl groom garland with cylindrical gold spacers and ruby brooch from Bhaya India.,draft
++premium-banarasi-silk-saree,Premium Banarasi Silk Saree / प्रीमियम बनारसी सिल्क साड़ी,"<p><strong>Heritage weave, contemporary grace | विरासती बुनाई, समकालीन लालित्य</strong></p><p>Handwoven Banarasi silk saree crafted with genuine gold-tone zari embellishment along the borders and ornate pallu. Blends timeless Indian craftsmanship with modern refinement, ideal for weddings, family milestones, and auspicious celebrations.</p><p><em>हथकरघे पर निर्मित प्रामाणिक बनारसी सिल्क साड़ी, पारंपरिक जरी बॉर्डर और समृद्ध पल्लू के साथ। विवाह एवं शुभ अवसरों के लिए सर्वोत्कृष्ट भारतीय शिल्प।</em></p><h3>Key Features</h3><ul><li>Pure mulberry silk foundation</li><li>Authentic Banarasi Kadhwa weave</li><li>Rich zari borders and heavy ornamental pallu</li><li>Silk Mark certified quality assurance</li></ul>",BHAYA INDIA,Home & Living > Religious & Ceremonial > Garlands,Textiles & Fabrics,"garlands, textiles-fabrics, featured, bhaya-india, real-products, handcrafted",false,Title,Default Title,BI-TX-001,250,shopify,,deny,manual,,true,true,/assets/category-textiles.jpg,1,Premium Banarasi Silk Saree — Bhaya India,Authentic handwoven Banarasi pure silk saree with zari border. Pan-India delivery from Bhaya India.,draft
++leather-bound-executive-notebook,Leather-Bound Executive Notebook / प्रीमियम लेदर-बाउंड एग्जीक्यूटिव नोटबुक,"<p><strong>Write your legacy with intention | अपने विचारों को दें एक गरिमापूर्ण रूप</strong></p><p>Handcrafted top-grain leather journal with 200 pages of 90 GSM archival-grade ivory paper. Featuring lay-flat bookbinding, gilded edge accents, and a satin bookmark ribbon. Built for leaders, thinkers, and discerning professionals.</p><p><em>हस्तनिर्मित टॉप-ग्रेन लेदर कवर और 90 जीएसएम एसिड-फ्री आइवरी पेपर्स के साथ निर्मित जर्नल। विचारकों, कॉर्पोरेट लीडर्स और रचनाकारों के लिए उत्कृष्ट साथी।</em></p><h3>Key Features</h3><ul><li>Supple genuine leather finish that patinas with age</li><li>Zero bleed-through on fountain pens and rollers</li><li>Integrated dual bookmark ribbons</li><li>Custom hot-foil gold monogramming available on bulk orders</li></ul>",BHAYA INDIA,Home & Living > Religious & Ceremonial > Garlands,Stationery & Office,"garlands, stationery-office, featured, bhaya-india, real-products, handcrafted",false,Title,Default Title,BI-ST-002,250,shopify,,deny,manual,,true,true,/assets/category-stationery.jpg,1,Leather-Bound Executive Notebook — Bhaya India,Fine genuine leather notebook with archival paper. Shop luxury office stationery at Bhaya India.,draft
++royal-heritage-festival-hamper,Royal Heritage Festival Hamper / रॉयल हेरिटेज त्योहार उपहार,"<p><strong>Thoughtful gifting made effortless | विचारशील उपहार, अत्यंत सहजता के साथ</strong></p><p>An opulent gift trunk handcrafted in wooden casing with gold-embossed faux leather trim. Includes artisanal saffron treats, stone-ground dry fruits, pure brass incense holder, hand-poured soy candle, and personalized greeting scroll.</p><p><em>त्योहारों, शादियों और कॉर्पोरेट आयोजनों के लिए विशेष रूप से तैयार किया गया प्रीमियम हैंपर — जिसमें पारंपरिक मिष्ठान, उत्कृष्ट स्टेशनरी और हस्तनिर्मित वस्तुएं शामिल हैं।</em></p><h3>Key Features</h3><ul><li>Curated assortment of premium dry fruits and sweets</li><li>Brass handcrafted artifact for lasting keepsake</li><li>Custom foil-stamped corporate company ribbon option</li><li>Express temperature-controlled shipping</li></ul>",BHAYA INDIA,Home & Living > Religious & Ceremonial > Garlands,Gift Hampers,"garlands, gift-hampers, featured, bhaya-india, real-products, handcrafted",false,Title,Default Title,BI-GH-003,250,shopify,,deny,manual,,true,true,/assets/hero-editorial.jpg,1,Royal Heritage Festival Hamper — Bhaya India,Luxury corporate and festive gifting hampers by Bhaya India. Nationwide delivery.,draft
++handcrafted-brass-urli-bowl,Handcrafted Brass Urli Bowl / हस्तनिर्मित पीतल उरली बाउल,"<p><strong>Spiritual serenity in pure metal | शुद्ध धातु में आध्यात्मिक शांति</strong></p><p>Traditional bell-metal brass urli bowl hand-beaten by hereditary artisans. Perfectly sized for floating flower petals, aromatic water, and tealights at the entrance of homes and luxury office receptions.</p><p><em>पारंपरिक कारीगरों द्वारा हस्तनिर्मित शुद्ध पीतल की उरली। घर के प्रवेश द्वार और स्वागत कक्ष में फूलों की पंखुड़ियों, सुगंधित जल और दीपकों के लिए उपयुक्त।</em></p><h3>Key Features</h3><ul><li>Hand-carved floral edge filigree</li><li>Heavy stable base prevents tipping</li><li>Coated with natural tarnish-resistant lacquer</li></ul>",BHAYA INDIA,Home & Living > Religious & Ceremonial > Garlands,Home & Living,"garlands, home-living, featured, bhaya-india, real-products, handcrafted",false,Title,Default Title,BI-HL-004,250,shopify,,deny,manual,,true,true,/assets/hero-editorial.jpg,1,Handcrafted Brass Urli Bowl — Bhaya India Home,Pure brass hand-carved urli bowl for floating flowers. Buy authentic home decor at Bhaya India.,draft
++chanderi-silk-cotton-dupatta,Chanderi Silk Cotton Dupatta / चंदेरी सिल्क कॉटन दुपट्टा,"<p><strong>Breezy elegance woven with grace | शालीनता और सहज आकर्षण का सुंदर संगम</strong></p><p>Lightweight authentic Chanderi fabric combining raw silk warp with fine combed cotton weft. Embellished with delicate hand-block gold motifs (boota) and sheer pallu detailing.</p><p><em>हल्का प्रामाणिक चंदेरी कपड़ा, जिसमें शुद्ध सिल्क और कॉटन का सुंदर मिश्रण है। पारंपरिक सुनहरी बूटा कढ़ाई और किनारी के साथ सुसज्जित।</em></p><h3>Key Features</h3><ul><li>Authentic Madhya Pradesh Chanderi cluster weave</li><li>Zari tissue borders</li><li>Subtle shimmer in natural daylight</li></ul>",BHAYA INDIA,Home & Living > Religious & Ceremonial > Garlands,Textiles & Fabrics,"garlands, textiles-fabrics, featured, bhaya-india, real-products, handcrafted",false,Title,Default Title,BI-TX-005,250,shopify,,deny,manual,,true,true,/assets/category-textiles.jpg,1,Chanderi Silk Cotton Dupatta — Bhaya India,Authentic handwoven Chanderi dupatta with gold boota motifs. Bhaya India textiles.,draft
++institutional-bulk-uniform-fabric,Institutional Bulk Uniform Fabric / संस्थागत थोक यूनिफॉर्म कपड़ा,"<p><strong>Industrial durability meets comfort | औद्योगिक मजबूती और संपूर्ण आराम</strong></p><p>High-density poly-viscose and combed cotton blended textiles tailored for institutional uniforms, corporate workforce attire, and hospitality garments. Available in roll bolts of 50m to 500m.</p><p><em>संस्थानों, कार्यस्थलों और कॉर्पोरेट यूनिफॉर्म के लिए विशेष रूप से तैयार किया गया उच्च-घनत्व पॉली-विस्कोस कपड़ा। 50 से 500 मीटर के थानों में उपलब्ध।</em></p><h3>Key Features</h3><ul><li>Wrinkle-resistant and sweat-wicking breathability</li><li>Tested for 100+ commercial wash cycles</li><li>Custom Pantone dyeing available for 500m+ orders</li></ul>",BHAYA INDIA,Home & Living > Religious & Ceremonial > Garlands,Wholesale & Bulk,"garlands, wholesale-bulk, featured, bhaya-india, real-products, handcrafted",false,Title,Default Title,BI-WB-006,250,shopify,,deny,manual,,true,true,/assets/category-textiles.jpg,1,Institutional Bulk Uniform Fabric — Bhaya India Wholesale,Commercial and institutional uniform textiles in bulk rolls. Request quotation from Bhaya India.,draft
+\ No newline at end of file
+diff --git a/next.config.ts b/next.config.ts
+index ae2663e..55f4cb0 100644
+--- a/next.config.ts
++++ b/next.config.ts
+@@ -5,6 +5,15 @@ const nextConfig: NextConfig = {
+     remotePatterns: [],
+     formats: ["image/avif", "image/webp"],
+   },
++  async redirects() {
++    return [
++      {
++        source: "/founder",
++        destination: "/founder-profile",
++        permanent: false,
++      },
++    ];
++  },
+ };
+ 
+ export default nextConfig;
+diff --git a/package-lock.json b/package-lock.json
+index 6a3b045..e3c0003 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -17,8 +17,11 @@
+         "@types/node": "^20",
+         "@types/react": "^19",
+         "@types/react-dom": "^19",
++        "archiver": "^8.0.0",
+         "eslint": "^9",
+         "eslint-config-next": "16.3.4",
++        "liquidjs": "^10.30.0",
++        "puppeteer-core": "^25.12.0",
+         "typescript": "^5"
+       }
+     },
+@@ -264,9 +267,9 @@
+       }
+     },
+     "node_modules/@emnapi/wasi-threads": {
+-      "version": "1.2.1",
+-      "resolved": "https://registry.npmjs.org/@emnapi/wasi-threads/-/wasi-threads-1.2.1.tgz",
+-      "integrity": "sha512-uTII7OYF+/Mes/MrcIOYp5yOtSMLBWSIoLPpcgwipoiKbli6k322tcoFsxoIIxPDqW01SQGAgko4EzZi2BNv2w==",
++      "version": "1.2.3",
++      "resolved": "https://registry.npmjs.org/@emnapi/wasi-threads/-/wasi-threads-1.2.3.tgz",
++      "integrity": "sha512-ELEBe8PsLvvJ6QMr0zLt8ffvOHW/dc1m3CEzNMg7aJUv3bMaoDtw2TXyDAwkYBuroxxuHEwhRTLJSe5sya547g==",
+       "dev": true,
+       "license": "MIT",
+       "optional": true,
+@@ -1282,6 +1285,35 @@
+         "node": ">=12.4.0"
+       }
+     },
++    "node_modules/@puppeteer/browsers": {
++      "version": "3.2.3",
++      "resolved": "https://registry.npmjs.org/@puppeteer/browsers/-/browsers-3.2.3.tgz",
++      "integrity": "sha512-2Bt3m6dDAJqmZehn0wiXSYyQmuhyiHHZ7FjvrVaS1W2RoFGV6eCK71UvKYkNJjkwC1Q9nobjhvTMhLQztFVINA==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "dependencies": {
++        "modern-tar": "^0.8.4",
++        "yargs": "^18.0.0"
++      },
++      "bin": {
++        "browsers": "lib/main-cli.js"
++      },
++      "engines": {
++        "node": ">=22.12.0"
++      },
++      "peerDependencies": {
++        "proxy-agent": ">=8.0.1",
++        "yauzl": "^2.10.0 || ^3.4.0"
++      },
++      "peerDependenciesMeta": {
++        "proxy-agent": {
++          "optional": true
++        },
++        "yauzl": {
++          "optional": true
++        }
++      }
++    },
+     "node_modules/@rtsao/scc": {
+       "version": "1.1.0",
+       "resolved": "https://registry.npmjs.org/@rtsao/scc/-/scc-1.1.0.tgz",
+@@ -1928,6 +1960,18 @@
+         "node": ">=14.0.0"
+       }
+     },
++    "node_modules/@unrs/resolver-binding-wasm32-wasi/node_modules/@emnapi/core": {
++      "version": "1.10.0",
++      "resolved": "https://registry.npmjs.org/@emnapi/core/-/core-1.10.0.tgz",
++      "integrity": "sha512-yq6OkJ4p82CAfPl0u9mQebQHKPJkY7WrIuk205cTYnYe+k2Z8YBh11FrbRG/H6ihirqcacOgl2BIO8oyMQLeXw==",
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "dependencies": {
++        "@emnapi/wasi-threads": "1.2.1",
++        "tslib": "^2.4.0"
++      }
++    },
+     "node_modules/@unrs/resolver-binding-wasm32-wasi/node_modules/@emnapi/runtime": {
+       "version": "1.10.0",
+       "resolved": "https://registry.npmjs.org/@emnapi/runtime/-/runtime-1.10.0.tgz",
+@@ -1939,6 +1983,17 @@
+         "tslib": "^2.4.0"
+       }
+     },
++    "node_modules/@unrs/resolver-binding-wasm32-wasi/node_modules/@emnapi/wasi-threads": {
++      "version": "1.2.1",
++      "resolved": "https://registry.npmjs.org/@emnapi/wasi-threads/-/wasi-threads-1.2.1.tgz",
++      "integrity": "sha512-uTII7OYF+/Mes/MrcIOYp5yOtSMLBWSIoLPpcgwipoiKbli6k322tcoFsxoIIxPDqW01SQGAgko4EzZi2BNv2w==",
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "dependencies": {
++        "tslib": "^2.4.0"
++      }
++    },
+     "node_modules/@unrs/resolver-binding-win32-arm64-msvc": {
+       "version": "1.12.2",
+       "resolved": "https://registry.npmjs.org/@unrs/resolver-binding-win32-arm64-msvc/-/resolver-binding-win32-arm64-msvc-1.12.2.tgz",
+@@ -1981,6 +2036,19 @@
+         "win32"
+       ]
+     },
++    "node_modules/abort-controller": {
++      "version": "3.0.0",
++      "resolved": "https://registry.npmjs.org/abort-controller/-/abort-controller-3.0.0.tgz",
++      "integrity": "sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "event-target-shim": "^5.0.0"
++      },
++      "engines": {
++        "node": ">=6.5"
++      }
++    },
+     "node_modules/acorn": {
+       "version": "8.18.0",
+       "resolved": "https://registry.npmjs.org/acorn/-/acorn-8.18.0.tgz",
+@@ -2022,6 +2090,19 @@
+         "url": "https://github.com/sponsors/epoberezkin"
+       }
+     },
++    "node_modules/ansi-regex": {
++      "version": "6.4.0",
++      "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-6.4.0.tgz",
++      "integrity": "sha512-KzTVk2tCWAHtYrvvvaP8bJKJq2pVinhLcGEQdtLIYPbmNGNyYe8QwNaTUYQp2J7/vIsUKt5QCqAfUkYyG9DkOw==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=12"
++      },
++      "funding": {
++        "url": "https://github.com/chalk/ansi-regex?sponsor=1"
++      }
++    },
+     "node_modules/ansi-styles": {
+       "version": "4.3.0",
+       "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-4.3.0.tgz",
+@@ -2038,6 +2119,27 @@
+         "url": "https://github.com/chalk/ansi-styles?sponsor=1"
+       }
+     },
++    "node_modules/archiver": {
++      "version": "8.0.0",
++      "resolved": "https://registry.npmjs.org/archiver/-/archiver-8.0.0.tgz",
++      "integrity": "sha512-fV1orZfsnPn9BaSByR/qE67rJCLJEy2Ox5bq7nJh+jquWaNh6Sfec75kJ2T6PtdGUbPQlrVoSVCEOa5SdiTQ1g==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "async": "^3.2.4",
++        "buffer-crc32": "^1.0.0",
++        "is-stream": "^4.0.0",
++        "lazystream": "^1.0.0",
++        "normalize-path": "^3.0.0",
++        "readable-stream": "^4.0.0",
++        "readdir-glob": "^3.0.0",
++        "tar-stream": "^3.0.0",
++        "zip-stream": "^7.0.2"
++      },
++      "engines": {
++        "node": ">=18"
++      }
++    },
+     "node_modules/argparse": {
+       "version": "2.0.1",
+       "resolved": "https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz",
+@@ -2222,6 +2324,13 @@
+       "dev": true,
+       "license": "MIT"
+     },
++    "node_modules/async": {
++      "version": "3.2.6",
++      "resolved": "https://registry.npmjs.org/async/-/async-3.2.6.tgz",
++      "integrity": "sha512-htCUDlxyyCLMgaM3xXg0C0LW2xqfuQ6p05pCEIsXuyQ+a1koYKTuBMzRNwmybfLgvJDMd0r1LTn4+E0Ti6C2AA==",
++      "dev": true,
++      "license": "MIT"
++    },
+     "node_modules/async-function": {
+       "version": "1.0.0",
+       "resolved": "https://registry.npmjs.org/async-function/-/async-function-1.0.0.tgz",
+@@ -2268,6 +2377,21 @@
+         "node": ">= 0.4"
+       }
+     },
++    "node_modules/b4a": {
++      "version": "1.9.0",
++      "resolved": "https://registry.npmjs.org/b4a/-/b4a-1.9.0.tgz",
++      "integrity": "sha512-dpfcF9fDNR6++cthXR67iyhgqWy9CBouAvIWhIntzBG6cvK/cnIPiZQjBwi/ZqjjBEDGfoNDtmB0kTjroOJ3pQ==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "peerDependencies": {
++        "react-native-b4a": "*"
++      },
++      "peerDependenciesMeta": {
++        "react-native-b4a": {
++          "optional": true
++        }
++      }
++    },
+     "node_modules/balanced-match": {
+       "version": "1.0.2",
+       "resolved": "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz",
+@@ -2275,6 +2399,113 @@
+       "dev": true,
+       "license": "MIT"
+     },
++    "node_modules/bare-events": {
++      "version": "2.9.2",
++      "resolved": "https://registry.npmjs.org/bare-events/-/bare-events-2.9.2.tgz",
++      "integrity": "sha512-AIPKioV7/Y/8KfZ3AAhjPJxLLbY49S64Ym5DakZlUg75qQiTgUq9hEJoEwa4eUezPUlXRy/i5NpsKvo9jgKmoA==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "peer": true,
++      "peerDependencies": {
++        "bare-abort-controller": "*"
++      },
++      "peerDependenciesMeta": {
++        "bare-abort-controller": {
++          "optional": true
++        }
++      }
++    },
++    "node_modules/bare-fs": {
++      "version": "4.8.2",
++      "resolved": "https://registry.npmjs.org/bare-fs/-/bare-fs-4.8.2.tgz",
++      "integrity": "sha512-+ZI68KHMUvosXfKbg/UOHK0tbCdRnegbvPEdEcZ3Nd6TetieQsJPRXBRXPdLyy8+3VSEbPXtsumTpEtt78xv9w==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "dependencies": {
++        "bare-events": "^2.5.4",
++        "bare-path": "^3.0.0",
++        "bare-stream": "^2.6.4",
++        "bare-url": "^2.2.2",
++        "fast-fifo": "^1.3.2"
++      },
++      "engines": {
++        "bare": ">=1.28.0"
++      },
++      "peerDependencies": {
++        "bare-buffer": "*"
++      },
++      "peerDependenciesMeta": {
++        "bare-buffer": {
++          "optional": true
++        }
++      }
++    },
++    "node_modules/bare-path": {
++      "version": "3.1.2",
++      "resolved": "https://registry.npmjs.org/bare-path/-/bare-path-3.1.2.tgz",
++      "integrity": "sha512-ZyKbsuuqK6Ag0K8pX6V5Txq6XeJRvY+wXucnFGRjiyVYP9YWDpIQugk/b+enRYrEYBJaqLzghRQpXPMR7341Nw==",
++      "dev": true,
++      "license": "Apache-2.0"
++    },
++    "node_modules/bare-stream": {
++      "version": "2.13.4",
++      "resolved": "https://registry.npmjs.org/bare-stream/-/bare-stream-2.13.4.tgz",
++      "integrity": "sha512-PcrQ8lVLbiJscNm1Kez+Yp4Gy4AHGcN1lzwjvf5NybWen7VvEgUfyfnXYJ2zNqWnzOfCb1Abq6lH8ti0syQszA==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "dependencies": {
++        "b4a": "^1.8.1",
++        "streamx": "^2.25.0",
++        "teex": "^1.0.1"
++      },
++      "peerDependencies": {
++        "bare-abort-controller": "*",
++        "bare-buffer": "*",
++        "bare-events": "*"
++      },
++      "peerDependenciesMeta": {
++        "bare-abort-controller": {
++          "optional": true
++        },
++        "bare-buffer": {
++          "optional": true
++        },
++        "bare-events": {
++          "optional": true
++        }
++      }
++    },
++    "node_modules/bare-url": {
++      "version": "2.5.4",
++      "resolved": "https://registry.npmjs.org/bare-url/-/bare-url-2.5.4.tgz",
++      "integrity": "sha512-Gxa7UVWBr0/edU1b+TJhn/AZvMQUj9OGspvYsaTYQrAbZA4BOTZGL3LiZxvD+CeMlDH4juwD84+eTAp/bLYW5g==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "dependencies": {
++        "bare-path": "^3.0.0"
++      }
++    },
++    "node_modules/base64-js": {
++      "version": "1.5.1",
++      "resolved": "https://registry.npmjs.org/base64-js/-/base64-js-1.5.1.tgz",
++      "integrity": "sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==",
++      "dev": true,
++      "funding": [
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/feross"
++        },
++        {
++          "type": "patreon",
++          "url": "https://www.patreon.com/feross"
++        },
++        {
++          "type": "consulting",
++          "url": "https://feross.org/support"
++        }
++      ],
++      "license": "MIT"
++    },
+     "node_modules/baseline-browser-mapping": {
+       "version": "2.11.21",
+       "resolved": "https://registry.npmjs.org/baseline-browser-mapping/-/baseline-browser-mapping-2.11.21.tgz",
+@@ -2346,6 +2577,41 @@
+         "node": "^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7"
+       }
+     },
++    "node_modules/buffer": {
++      "version": "6.0.3",
++      "resolved": "https://registry.npmjs.org/buffer/-/buffer-6.0.3.tgz",
++      "integrity": "sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==",
++      "dev": true,
++      "funding": [
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/feross"
++        },
++        {
++          "type": "patreon",
++          "url": "https://www.patreon.com/feross"
++        },
++        {
++          "type": "consulting",
++          "url": "https://feross.org/support"
++        }
++      ],
++      "license": "MIT",
++      "dependencies": {
++        "base64-js": "^1.3.1",
++        "ieee754": "^1.2.1"
++      }
++    },
++    "node_modules/buffer-crc32": {
++      "version": "1.0.0",
++      "resolved": "https://registry.npmjs.org/buffer-crc32/-/buffer-crc32-1.0.0.tgz",
++      "integrity": "sha512-Db1SbgBS/fg/392AblrMJk97KggmvYhr4pB5ZIMTWtaivCPMWLkmb7m21cJvpvgK+J3nsU2CmmixNBZx4vFj/w==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=8.0.0"
++      }
++    },
+     "node_modules/call-bind": {
+       "version": "1.0.9",
+       "resolved": "https://registry.npmjs.org/call-bind/-/call-bind-1.0.9.tgz",
+@@ -2443,12 +2709,79 @@
+         "url": "https://github.com/chalk/chalk?sponsor=1"
+       }
+     },
++    "node_modules/chromium-bidi": {
++      "version": "17.0.2",
++      "resolved": "https://registry.npmjs.org/chromium-bidi/-/chromium-bidi-17.0.2.tgz",
++      "integrity": "sha512-5v9GQFhTktFvotn/OFNJBmKLKRAb6n9r0bVCwf7sHgWc3/JryK0bj1nn93L3pHFrfgcsu6Be6EWsDi+1XHTGDg==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "dependencies": {
++        "mitt": "^3.0.1",
++        "zod": "^3.24.1"
++      },
++      "engines": {
++        "node": ">=20.19.0 <22.0.0 || >=22.12.0"
++      },
++      "peerDependencies": {
++        "devtools-protocol": "*"
++      }
++    },
++    "node_modules/chromium-bidi/node_modules/zod": {
++      "version": "3.25.76",
++      "resolved": "https://registry.npmjs.org/zod/-/zod-3.25.76.tgz",
++      "integrity": "sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==",
++      "dev": true,
++      "license": "MIT",
++      "funding": {
++        "url": "https://github.com/sponsors/colinhacks"
++      }
++    },
+     "node_modules/client-only": {
+       "version": "0.0.1",
+       "resolved": "https://registry.npmjs.org/client-only/-/client-only-0.0.1.tgz",
+       "integrity": "sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==",
+       "license": "MIT"
+     },
++    "node_modules/cliui": {
++      "version": "9.0.1",
++      "resolved": "https://registry.npmjs.org/cliui/-/cliui-9.0.1.tgz",
++      "integrity": "sha512-k7ndgKhwoQveBL+/1tqGJYNz097I7WOvwbmmU2AR5+magtbjPWQTS1C5vzGkBC8Ym8UWRzfKUzUUqFLypY4Q+w==",
++      "dev": true,
++      "license": "ISC",
++      "dependencies": {
++        "string-width": "^7.2.0",
++        "strip-ansi": "^7.1.0",
++        "wrap-ansi": "^9.0.0"
++      },
++      "engines": {
++        "node": ">=20"
++      }
++    },
++    "node_modules/cliui/node_modules/emoji-regex": {
++      "version": "10.6.0",
++      "resolved": "https://registry.npmjs.org/emoji-regex/-/emoji-regex-10.6.0.tgz",
++      "integrity": "sha512-toUI84YS5YmxW219erniWD0CIVOo46xGKColeNQRgOzDorgBi1v4D71/OFzgD9GO2UGKIv1C3Sp8DAn0+j5w7A==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/cliui/node_modules/string-width": {
++      "version": "7.2.0",
++      "resolved": "https://registry.npmjs.org/string-width/-/string-width-7.2.0.tgz",
++      "integrity": "sha512-tsaTIkKW9b4N+AEj+SVA+WhJzV7/zMhcSu78mLKWSk7cXMOSHsBKFWUs0fWwq8QyK3MgJBQRX6Gbi4kYbdvGkQ==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "emoji-regex": "^10.3.0",
++        "get-east-asian-width": "^1.0.0",
++        "strip-ansi": "^7.1.0"
++      },
++      "engines": {
++        "node": ">=18"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/sindresorhus"
++      }
++    },
+     "node_modules/color-convert": {
+       "version": "2.0.1",
+       "resolved": "https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz",
+@@ -2469,6 +2802,33 @@
+       "dev": true,
+       "license": "MIT"
+     },
++    "node_modules/commander": {
++      "version": "10.0.1",
++      "resolved": "https://registry.npmjs.org/commander/-/commander-10.0.1.tgz",
++      "integrity": "sha512-y4Mg2tXshplEbSGzx7amzPwKKOCGuoSRP/CjEdwwk0FOGlUbq6lKuoyDZTNZkmxHdJtp54hdfY/JUrdL7Xfdug==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=14"
++      }
++    },
++    "node_modules/compress-commons": {
++      "version": "7.0.1",
++      "resolved": "https://registry.npmjs.org/compress-commons/-/compress-commons-7.0.1.tgz",
++      "integrity": "sha512-g0S8KAD8qf4+V//pr3BfB1aBnARLXNz2Gx+jmHU0LEriUuoQUOPOulVquHKTJ8+EAIIO7fhseNDr9wK5Q9FKBQ==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "crc-32": "^1.2.0",
++        "crc32-stream": "^7.0.1",
++        "is-stream": "^4.0.0",
++        "normalize-path": "^3.0.0",
++        "readable-stream": "^4.0.0"
++      },
++      "engines": {
++        "node": ">=18"
++      }
++    },
+     "node_modules/concat-map": {
+       "version": "0.0.1",
+       "resolved": "https://registry.npmjs.org/concat-map/-/concat-map-0.0.1.tgz",
+@@ -2483,6 +2843,40 @@
+       "dev": true,
+       "license": "MIT"
+     },
++    "node_modules/core-util-is": {
++      "version": "1.0.3",
++      "resolved": "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.3.tgz",
++      "integrity": "sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/crc-32": {
++      "version": "1.2.2",
++      "resolved": "https://registry.npmjs.org/crc-32/-/crc-32-1.2.2.tgz",
++      "integrity": "sha512-ROmzCKrTnOwybPcJApAA6WBWij23HVfGVNKqqrZpuyZOHqK2CwHSvpGuyt/UNNvaIjEd8X5IFGp4Mh+Ie1IHJQ==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "bin": {
++        "crc32": "bin/crc32.njs"
++      },
++      "engines": {
++        "node": ">=0.8"
++      }
++    },
++    "node_modules/crc32-stream": {
++      "version": "7.0.1",
++      "resolved": "https://registry.npmjs.org/crc32-stream/-/crc32-stream-7.0.1.tgz",
++      "integrity": "sha512-IBWsY8xznyQrcHn8h4bC8/4ErNke5elzgG8GcqF4RFPw6aHkWWRc7Tgw6upjaTX/CT/yQgqYENkxYsTYN+hW2g==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "crc-32": "^1.2.0",
++        "readable-stream": "^4.0.0"
++      },
++      "engines": {
++        "node": ">=18"
++      }
++    },
+     "node_modules/cross-spawn": {
+       "version": "7.0.6",
+       "resolved": "https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.6.tgz",
+@@ -2637,6 +3031,14 @@
+         "node": ">=8"
+       }
+     },
++    "node_modules/devtools-protocol": {
++      "version": "0.0.1687809",
++      "resolved": "https://registry.npmjs.org/devtools-protocol/-/devtools-protocol-0.0.1687809.tgz",
++      "integrity": "sha512-t7kSb+UKYdyxcmqy98U2P86ne6rCve3DIJ4+lp54i/hhClgFuG35JrLj23rO14Jw3sWDsp7i+22QhNU0+/qk8g==",
++      "dev": true,
++      "license": "BSD-3-Clause",
++      "peer": true
++    },
+     "node_modules/doctrine": {
+       "version": "2.1.0",
+       "resolved": "https://registry.npmjs.org/doctrine/-/doctrine-2.1.0.tgz",
+@@ -3310,6 +3712,36 @@
+         "node": ">=0.10.0"
+       }
+     },
++    "node_modules/event-target-shim": {
++      "version": "5.0.1",
++      "resolved": "https://registry.npmjs.org/event-target-shim/-/event-target-shim-5.0.1.tgz",
++      "integrity": "sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=6"
++      }
++    },
++    "node_modules/events": {
++      "version": "3.3.0",
++      "resolved": "https://registry.npmjs.org/events/-/events-3.3.0.tgz",
++      "integrity": "sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=0.8.x"
++      }
++    },
++    "node_modules/events-universal": {
++      "version": "1.0.1",
++      "resolved": "https://registry.npmjs.org/events-universal/-/events-universal-1.0.1.tgz",
++      "integrity": "sha512-LUd5euvbMLpwOF8m6ivPCbhQeSiYVNb8Vs0fQ8QjXo0JTkEHpz8pxdQf0gStltaPpw0Cca8b39KxvK9cfKRiAw==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "dependencies": {
++        "bare-events": "^2.7.0"
++      }
++    },
+     "node_modules/fast-deep-equal": {
+       "version": "3.1.3",
+       "resolved": "https://registry.npmjs.org/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz",
+@@ -3317,6 +3749,13 @@
+       "dev": true,
+       "license": "MIT"
+     },
++    "node_modules/fast-fifo": {
++      "version": "1.3.2",
++      "resolved": "https://registry.npmjs.org/fast-fifo/-/fast-fifo-1.3.2.tgz",
++      "integrity": "sha512-/d9sfos4yxzpwkDkuN7k2SqFKtYNmCTzgfEpz82x34IM9/zc8KGxQoXg1liNC/izpRM/MBdt44Nmx41ZWqk+FQ==",
++      "dev": true,
++      "license": "MIT"
++    },
+     "node_modules/fast-glob": {
+       "version": "3.3.1",
+       "resolved": "https://registry.npmjs.org/fast-glob/-/fast-glob-3.3.1.tgz",
+@@ -3515,6 +3954,29 @@
+         "node": ">=6.9.0"
+       }
+     },
++    "node_modules/get-caller-file": {
++      "version": "2.0.5",
++      "resolved": "https://registry.npmjs.org/get-caller-file/-/get-caller-file-2.0.5.tgz",
++      "integrity": "sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==",
++      "dev": true,
++      "license": "ISC",
++      "engines": {
++        "node": "6.* || 8.* || >= 10.*"
++      }
++    },
++    "node_modules/get-east-asian-width": {
++      "version": "1.7.0",
++      "resolved": "https://registry.npmjs.org/get-east-asian-width/-/get-east-asian-width-1.7.0.tgz",
++      "integrity": "sha512-XjH1AECxf0giL2V1aU8vKyRR2ppRUb5c0EvT7zuJTokQ74bNo52zOtghqdWIqrhUD79fo3x0WfKZdOqxF6LG1Q==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=18"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/sindresorhus"
++      }
++    },
+     "node_modules/get-intrinsic": {
+       "version": "1.3.0",
+       "resolved": "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.3.0.tgz",
+@@ -3752,6 +4214,27 @@
+         "hermes-estree": "0.25.1"
+       }
+     },
++    "node_modules/ieee754": {
++      "version": "1.2.1",
++      "resolved": "https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz",
++      "integrity": "sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==",
++      "dev": true,
++      "funding": [
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/feross"
++        },
++        {
++          "type": "patreon",
++          "url": "https://www.patreon.com/feross"
++        },
++        {
++          "type": "consulting",
++          "url": "https://feross.org/support"
++        }
++      ],
++      "license": "BSD-3-Clause"
++    },
+     "node_modules/ignore": {
+       "version": "5.3.2",
+       "resolved": "https://registry.npmjs.org/ignore/-/ignore-5.3.2.tgz",
+@@ -3789,6 +4272,13 @@
+         "node": ">=0.8.19"
+       }
+     },
++    "node_modules/inherits": {
++      "version": "2.0.4",
++      "resolved": "https://registry.npmjs.org/inherits/-/inherits-2.0.4.tgz",
++      "integrity": "sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==",
++      "dev": true,
++      "license": "ISC"
++    },
+     "node_modules/internal-slot": {
+       "version": "1.1.0",
+       "resolved": "https://registry.npmjs.org/internal-slot/-/internal-slot-1.1.0.tgz",
+@@ -4138,6 +4628,19 @@
+         "url": "https://github.com/sponsors/ljharb"
+       }
+     },
++    "node_modules/is-stream": {
++      "version": "4.0.1",
++      "resolved": "https://registry.npmjs.org/is-stream/-/is-stream-4.0.1.tgz",
++      "integrity": "sha512-Dnz92NInDqYckGEUJv689RbRiTSEHCQ7wOVeALbkOz999YpqT46yMRIGtSNl2iCL1waAZSx40+h59NV/EwzV/A==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=18"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/sindresorhus"
++      }
++    },
+     "node_modules/is-string": {
+       "version": "1.1.1",
+       "resolved": "https://registry.npmjs.org/is-string/-/is-string-1.1.1.tgz",
+@@ -4390,6 +4893,59 @@
+         "node": ">=0.10"
+       }
+     },
++    "node_modules/lazystream": {
++      "version": "1.0.1",
++      "resolved": "https://registry.npmjs.org/lazystream/-/lazystream-1.0.1.tgz",
++      "integrity": "sha512-b94GiNHQNy6JNTrt5w6zNyffMrNkXZb3KTkCZJb2V1xaEGCk093vkZ2jk3tpaeP33/OiXC+WvK9AxUebnf5nbw==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "readable-stream": "^2.0.5"
++      },
++      "engines": {
++        "node": ">= 0.6.3"
++      }
++    },
++    "node_modules/lazystream/node_modules/isarray": {
++      "version": "1.0.0",
++      "resolved": "https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz",
++      "integrity": "sha512-VLghIWNM6ELQzo7zwmcg0NmTVyWKYjvIeM83yjp0wRDTmUnrM678fQbcKBo6n2CJEF0szoG//ytg+TKla89ALQ==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/lazystream/node_modules/readable-stream": {
++      "version": "2.3.8",
++      "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-2.3.8.tgz",
++      "integrity": "sha512-8p0AUk4XODgIewSi0l8Epjs+EVnWiK7NoDIEGU0HhE7+ZyY8D1IMY7odu5lRrFXGg71L15KG8QrPmum45RTtdA==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "core-util-is": "~1.0.0",
++        "inherits": "~2.0.3",
++        "isarray": "~1.0.0",
++        "process-nextick-args": "~2.0.0",
++        "safe-buffer": "~5.1.1",
++        "string_decoder": "~1.1.1",
++        "util-deprecate": "~1.0.1"
++      }
++    },
++    "node_modules/lazystream/node_modules/safe-buffer": {
++      "version": "5.1.2",
++      "resolved": "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz",
++      "integrity": "sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/lazystream/node_modules/string_decoder": {
++      "version": "1.1.1",
++      "resolved": "https://registry.npmjs.org/string_decoder/-/string_decoder-1.1.1.tgz",
++      "integrity": "sha512-n/ShnvDi6FHbbVfviro+WojiFzv+s8MPMHBczVePfUpDJLwoLT0ht1l4YwBCbi8pJAveEEdnkHyPyTP/mzRfwg==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "safe-buffer": "~5.1.0"
++      }
++    },
+     "node_modules/levn": {
+       "version": "0.4.1",
+       "resolved": "https://registry.npmjs.org/levn/-/levn-0.4.1.tgz",
+@@ -4404,6 +4960,27 @@
+         "node": ">= 0.8.0"
+       }
+     },
++    "node_modules/liquidjs": {
++      "version": "10.30.0",
++      "resolved": "https://registry.npmjs.org/liquidjs/-/liquidjs-10.30.0.tgz",
++      "integrity": "sha512-Fw4wA+8CZsJkaeLEIlPE3AoponfjEZhj7FQvYNcAEcg7jNRik7mEMoaco382FBdrYlykVf6w4vClPNctz2OYjg==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "commander": "^10.0.0"
++      },
++      "bin": {
++        "liquid": "bin/liquid.js",
++        "liquidjs": "bin/liquid.js"
++      },
++      "engines": {
++        "node": ">=16"
++      },
++      "funding": {
++        "type": "opencollective",
++        "url": "https://opencollective.com/liquidjs"
++      }
++    },
+     "node_modules/locate-path": {
+       "version": "6.0.0",
+       "resolved": "https://registry.npmjs.org/locate-path/-/locate-path-6.0.0.tgz",
+@@ -4516,6 +5093,23 @@
+         "url": "https://github.com/sponsors/ljharb"
+       }
+     },
++    "node_modules/mitt": {
++      "version": "3.0.1",
++      "resolved": "https://registry.npmjs.org/mitt/-/mitt-3.0.1.tgz",
++      "integrity": "sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/modern-tar": {
++      "version": "0.8.5",
++      "resolved": "https://registry.npmjs.org/modern-tar/-/modern-tar-0.8.5.tgz",
++      "integrity": "sha512-snEhs+6G5Tjd4I7tLCDOaoln2RgE0bD19RzEKgvgK2hZ5VKy3MpLhLTZ2fWpXSTg4K2cyPwp+VHATFJhxfnOeA==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=18.0.0"
++      }
++    },
+     "node_modules/ms": {
+       "version": "2.1.3",
+       "resolved": "https://registry.npmjs.org/ms/-/ms-2.1.3.tgz",
+@@ -4646,6 +5240,16 @@
+         "node": ">=18"
+       }
+     },
++    "node_modules/normalize-path": {
++      "version": "3.0.0",
++      "resolved": "https://registry.npmjs.org/normalize-path/-/normalize-path-3.0.0.tgz",
++      "integrity": "sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=0.10.0"
++      }
++    },
+     "node_modules/object-assign": {
+       "version": "4.1.1",
+       "resolved": "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz",
+@@ -4945,6 +5549,23 @@
+         "node": ">= 0.8.0"
+       }
+     },
++    "node_modules/process": {
++      "version": "0.11.10",
++      "resolved": "https://registry.npmjs.org/process/-/process-0.11.10.tgz",
++      "integrity": "sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">= 0.6.0"
++      }
++    },
++    "node_modules/process-nextick-args": {
++      "version": "2.0.1",
++      "resolved": "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz",
++      "integrity": "sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==",
++      "dev": true,
++      "license": "MIT"
++    },
+     "node_modules/prop-types": {
+       "version": "15.8.1",
+       "resolved": "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz",
+@@ -4967,6 +5588,24 @@
+         "node": ">=6"
+       }
+     },
++    "node_modules/puppeteer-core": {
++      "version": "25.12.0",
++      "resolved": "https://registry.npmjs.org/puppeteer-core/-/puppeteer-core-25.12.0.tgz",
++      "integrity": "sha512-z6LQUt5SH7jwGtGA+nMtJuEjZIsqPiwQ+EFHCYuVDQrJpvifNmmGuyDvTzAKPyFzihxgHc5f3aMzu2kn8Ps37A==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "dependencies": {
++        "@puppeteer/browsers": "3.2.3",
++        "chromium-bidi": "17.0.2",
++        "devtools-protocol": "0.0.1687809",
++        "typed-query-selector": "^2.12.2",
++        "webdriver-bidi-protocol": "0.4.3",
++        "ws": "^8.21.3"
++      },
++      "engines": {
++        "node": ">=22.12.0"
++      }
++    },
+     "node_modules/queue-microtask": {
+       "version": "1.2.3",
+       "resolved": "https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz",
+@@ -5018,6 +5657,78 @@
+       "dev": true,
+       "license": "MIT"
+     },
++    "node_modules/readable-stream": {
++      "version": "4.7.0",
++      "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-4.7.0.tgz",
++      "integrity": "sha512-oIGGmcpTLwPga8Bn6/Z75SVaH1z5dUut2ibSyAMVhmUggWpmDn2dapB0n7f8nwaSiRtepAsfJyfXIO5DCVAODg==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "abort-controller": "^3.0.0",
++        "buffer": "^6.0.3",
++        "events": "^3.3.0",
++        "process": "^0.11.10",
++        "string_decoder": "^1.3.0"
++      },
++      "engines": {
++        "node": "^12.22.0 || ^14.17.0 || >=16.0.0"
++      }
++    },
++    "node_modules/readdir-glob": {
++      "version": "3.0.0",
++      "resolved": "https://registry.npmjs.org/readdir-glob/-/readdir-glob-3.0.0.tgz",
++      "integrity": "sha512-AhNB2KgKeVJr16nK9LLZbJNWnYoT23ZrumNKFDebHBdkC8KHSqWo871JAUhoWC/RtjEVdqNMFpM6qrwRbaUqpw==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "dependencies": {
++        "minimatch": "^10.2.2"
++      },
++      "engines": {
++        "node": ">=18"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/yqnn"
++      }
++    },
++    "node_modules/readdir-glob/node_modules/balanced-match": {
++      "version": "4.0.4",
++      "resolved": "https://registry.npmjs.org/balanced-match/-/balanced-match-4.0.4.tgz",
++      "integrity": "sha512-BLrgEcRTwX2o6gGxGOCNyMvGSp35YofuYzw9h1IMTRmKqttAZZVU67bdb9Pr2vUHA8+j3i2tJfjO6C6+4myGTA==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": "18 || 20 || >=22"
++      }
++    },
++    "node_modules/readdir-glob/node_modules/brace-expansion": {
++      "version": "5.0.12",
++      "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.12.tgz",
++      "integrity": "sha512-YovQ3rzhaLMIrDjNDMkNS01tea93qhEhG5xy8f6+R0l+dw3Ki+5sCoIoI942iuLZTHWogWktgwVDhU09iNEimQ==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "balanced-match": "^4.0.2"
++      },
++      "engines": {
++        "node": "20 || >=22"
++      }
++    },
++    "node_modules/readdir-glob/node_modules/minimatch": {
++      "version": "10.2.6",
++      "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-10.2.6.tgz",
++      "integrity": "sha512-vpLQEs+VLCr1nU0BXS07maYoFwlDAH0gngQuuttxIwutDFEMHq2blX+8vpgxDdK3J1PwjCJiep77OitTZ4Ll1A==",
++      "dev": true,
++      "license": "BlueOak-1.0.0",
++      "dependencies": {
++        "brace-expansion": "^5.0.8"
++      },
++      "engines": {
++        "node": "18 || 20 || >=22"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/isaacs"
++      }
++    },
+     "node_modules/reflect.getprototypeof": {
+       "version": "1.0.10",
+       "resolved": "https://registry.npmjs.org/reflect.getprototypeof/-/reflect.getprototypeof-1.0.10.tgz",
+@@ -5161,6 +5872,27 @@
+         "url": "https://github.com/sponsors/ljharb"
+       }
+     },
++    "node_modules/safe-buffer": {
++      "version": "5.2.1",
++      "resolved": "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.2.1.tgz",
++      "integrity": "sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==",
++      "dev": true,
++      "funding": [
++        {
++          "type": "github",
++          "url": "https://github.com/sponsors/feross"
++        },
++        {
++          "type": "patreon",
++          "url": "https://www.patreon.com/feross"
++        },
++        {
++          "type": "consulting",
++          "url": "https://feross.org/support"
++        }
++      ],
++      "license": "MIT"
++    },
+     "node_modules/safe-push-apply": {
+       "version": "1.0.0",
+       "resolved": "https://registry.npmjs.org/safe-push-apply/-/safe-push-apply-1.0.0.tgz",
+@@ -5453,6 +6185,45 @@
+         "node": ">= 0.4"
+       }
+     },
++    "node_modules/streamx": {
++      "version": "2.28.1",
++      "resolved": "https://registry.npmjs.org/streamx/-/streamx-2.28.1.tgz",
++      "integrity": "sha512-zEzXb0s5Cds7tqMH6rhZ05lcJydCWiQPEwiNngVqzsxCc962vLY4Uw+mW7od8kDH258k2Uz/JrOkdIAAhSh9VA==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "events-universal": "^1.0.0",
++        "fast-fifo": "^1.3.2",
++        "text-decoder": "^1.1.0"
++      }
++    },
++    "node_modules/string_decoder": {
++      "version": "1.3.0",
++      "resolved": "https://registry.npmjs.org/string_decoder/-/string_decoder-1.3.0.tgz",
++      "integrity": "sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "safe-buffer": "~5.2.0"
++      }
++    },
++    "node_modules/string-width": {
++      "version": "8.3.0",
++      "resolved": "https://registry.npmjs.org/string-width/-/string-width-8.3.0.tgz",
++      "integrity": "sha512-ZbmZM0JCihQN91dWnxoipT2KOEyHqEyfRXUyjuRhW8b/xnqPDoq4gWEVApTVa9db2wN8mmoikgFBbjh71+cGeQ==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "get-east-asian-width": "^1.5.0",
++        "strip-ansi": "^7.1.2"
++      },
++      "engines": {
++        "node": ">=20"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/sindresorhus"
++      }
++    },
+     "node_modules/string.prototype.includes": {
+       "version": "2.0.1",
+       "resolved": "https://registry.npmjs.org/string.prototype.includes/-/string.prototype.includes-2.0.1.tgz",
+@@ -5567,6 +6338,22 @@
+         "url": "https://github.com/sponsors/ljharb"
+       }
+     },
++    "node_modules/strip-ansi": {
++      "version": "7.2.0",
++      "resolved": "https://registry.npmjs.org/strip-ansi/-/strip-ansi-7.2.0.tgz",
++      "integrity": "sha512-yDPMNjp4WyfYBkHnjIRLfca1i6KMyGCtsVgoKe/z1+6vukgaENdgGBZt+ZmKPc4gavvEZ5OgHfHdrazhgNyG7w==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "ansi-regex": "^6.2.2"
++      },
++      "engines": {
++        "node": ">=12"
++      },
++      "funding": {
++        "url": "https://github.com/chalk/strip-ansi?sponsor=1"
++      }
++    },
+     "node_modules/strip-bom": {
+       "version": "3.0.0",
+       "resolved": "https://registry.npmjs.org/strip-bom/-/strip-bom-3.0.0.tgz",
+@@ -5639,6 +6426,39 @@
+         "url": "https://github.com/sponsors/ljharb"
+       }
+     },
++    "node_modules/tar-stream": {
++      "version": "3.2.2",
++      "resolved": "https://registry.npmjs.org/tar-stream/-/tar-stream-3.2.2.tgz",
++      "integrity": "sha512-+8NeqHRjQWH9nYlwo2gamAMImZCVzI4UoEgDpWorBt9OEfppiZn+uSkskzQKPWIZyji/C8fpWO7u69G0DX0tbg==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "b4a": "^1.9.0",
++        "bare-fs": "^4.8.2",
++        "fast-fifo": "^1.3.2",
++        "streamx": "^2.28.1"
++      }
++    },
++    "node_modules/teex": {
++      "version": "1.0.1",
++      "resolved": "https://registry.npmjs.org/teex/-/teex-1.0.1.tgz",
++      "integrity": "sha512-eYE6iEI62Ni1H8oIa7KlDU6uQBtqr4Eajni3wX7rpfXD8ysFx8z0+dri+KWEPWpBsxXfxu58x/0jvTVT1ekOSg==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "streamx": "^2.12.5"
++      }
++    },
++    "node_modules/text-decoder": {
++      "version": "1.2.7",
++      "resolved": "https://registry.npmjs.org/text-decoder/-/text-decoder-1.2.7.tgz",
++      "integrity": "sha512-vlLytXkeP4xvEq2otHeJfSQIRyWxo/oZGEbXrtEEF9Hnmrdly59sUbzZ/QgyWuLYHctCHxFF4tRQZNQ9k60ExQ==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "dependencies": {
++        "b4a": "^1.6.4"
++      }
++    },
+     "node_modules/tinyglobby": {
+       "version": "0.2.17",
+       "resolved": "https://registry.npmjs.org/tinyglobby/-/tinyglobby-0.2.17.tgz",
+@@ -5837,6 +6657,13 @@
+         "url": "https://github.com/sponsors/ljharb"
+       }
+     },
++    "node_modules/typed-query-selector": {
++      "version": "2.12.3",
++      "resolved": "https://registry.npmjs.org/typed-query-selector/-/typed-query-selector-2.12.3.tgz",
++      "integrity": "sha512-/dtuMZyutHLlrxWhhC1uib00ELUr2dZ8C9B8YzZYsJmeE3V56OxRblrSM2UaF142pcMtak7ehZ6+poWGeehNIg==",
++      "dev": true,
++      "license": "MIT"
++    },
+     "node_modules/typescript": {
+       "version": "5.9.3",
+       "resolved": "https://registry.npmjs.org/typescript/-/typescript-5.9.3.tgz",
+@@ -5981,6 +6808,20 @@
+         "punycode": "^2.1.0"
+       }
+     },
++    "node_modules/util-deprecate": {
++      "version": "1.0.2",
++      "resolved": "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz",
++      "integrity": "sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/webdriver-bidi-protocol": {
++      "version": "0.4.3",
++      "resolved": "https://registry.npmjs.org/webdriver-bidi-protocol/-/webdriver-bidi-protocol-0.4.3.tgz",
++      "integrity": "sha512-uuN0goWfxP22B7J/uAgBpOYNPttC+XVseYE+rSY5+rQ+YBeVz/VORw8WbmLVcqW78zNg5A4qnjNXYUWR3il2ig==",
++      "dev": true,
++      "license": "Apache-2.0"
++    },
+     "node_modules/which": {
+       "version": "2.0.2",
+       "resolved": "https://registry.npmjs.org/which/-/which-2.0.2.tgz",
+@@ -6096,6 +6937,94 @@
+         "node": ">=0.10.0"
+       }
+     },
++    "node_modules/wrap-ansi": {
++      "version": "9.0.2",
++      "resolved": "https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-9.0.2.tgz",
++      "integrity": "sha512-42AtmgqjV+X1VpdOfyTGOYRi0/zsoLqtXQckTmqTeybT+BDIbM/Guxo7x3pE2vtpr1ok6xRqM9OpBe+Jyoqyww==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "ansi-styles": "^6.2.1",
++        "string-width": "^7.0.0",
++        "strip-ansi": "^7.1.0"
++      },
++      "engines": {
++        "node": ">=18"
++      },
++      "funding": {
++        "url": "https://github.com/chalk/wrap-ansi?sponsor=1"
++      }
++    },
++    "node_modules/wrap-ansi/node_modules/ansi-styles": {
++      "version": "6.2.3",
++      "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-6.2.3.tgz",
++      "integrity": "sha512-4Dj6M28JB+oAH8kFkTLUo+a2jwOFkuqb3yucU0CANcRRUbxS0cP0nZYCGjcc3BNXwRIsUVmDGgzawme7zvJHvg==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=12"
++      },
++      "funding": {
++        "url": "https://github.com/chalk/ansi-styles?sponsor=1"
++      }
++    },
++    "node_modules/wrap-ansi/node_modules/emoji-regex": {
++      "version": "10.6.0",
++      "resolved": "https://registry.npmjs.org/emoji-regex/-/emoji-regex-10.6.0.tgz",
++      "integrity": "sha512-toUI84YS5YmxW219erniWD0CIVOo46xGKColeNQRgOzDorgBi1v4D71/OFzgD9GO2UGKIv1C3Sp8DAn0+j5w7A==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/wrap-ansi/node_modules/string-width": {
++      "version": "7.2.0",
++      "resolved": "https://registry.npmjs.org/string-width/-/string-width-7.2.0.tgz",
++      "integrity": "sha512-tsaTIkKW9b4N+AEj+SVA+WhJzV7/zMhcSu78mLKWSk7cXMOSHsBKFWUs0fWwq8QyK3MgJBQRX6Gbi4kYbdvGkQ==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "emoji-regex": "^10.3.0",
++        "get-east-asian-width": "^1.0.0",
++        "strip-ansi": "^7.1.0"
++      },
++      "engines": {
++        "node": ">=18"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/sindresorhus"
++      }
++    },
++    "node_modules/ws": {
++      "version": "8.22.0",
++      "resolved": "https://registry.npmjs.org/ws/-/ws-8.22.0.tgz",
++      "integrity": "sha512-Ydggc987+RO0AnWtZ/7Wq9FtNvcrL1b/RO0ud9mWjUPgDrsAAwQSF51sm2hm1XofbU/4jkpGEsLFsZZxU+1DOg==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=10.0.0"
++      },
++      "peerDependencies": {
++        "bufferutil": "^4.0.1",
++        "utf-8-validate": ">=5.0.2"
++      },
++      "peerDependenciesMeta": {
++        "bufferutil": {
++          "optional": true
++        },
++        "utf-8-validate": {
++          "optional": true
++        }
++      }
++    },
++    "node_modules/y18n": {
++      "version": "5.0.8",
++      "resolved": "https://registry.npmjs.org/y18n/-/y18n-5.0.8.tgz",
++      "integrity": "sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==",
++      "dev": true,
++      "license": "ISC",
++      "engines": {
++        "node": ">=10"
++      }
++    },
+     "node_modules/yallist": {
+       "version": "3.1.1",
+       "resolved": "https://registry.npmjs.org/yallist/-/yallist-3.1.1.tgz",
+@@ -6103,6 +7032,34 @@
+       "dev": true,
+       "license": "ISC"
+     },
++    "node_modules/yargs": {
++      "version": "18.2.0",
++      "resolved": "https://registry.npmjs.org/yargs/-/yargs-18.2.0.tgz",
++      "integrity": "sha512-9OpKOLeaoNFecEp7P6iYbzze/5CqWoH7N3SMs/6y1XF4nMvFMspEGZzJ6uFi9MmQwXhyzqYoSEKO3tvA3Z/o2w==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "cliui": "^9.0.1",
++        "escalade": "^3.1.1",
++        "get-caller-file": "^2.0.5",
++        "string-width": "^8.2.1",
++        "y18n": "^5.0.5",
++        "yargs-parser": "^22.0.0"
++      },
++      "engines": {
++        "node": "^20.19.0 || ^22.12.0 || >=23"
++      }
++    },
++    "node_modules/yargs-parser": {
++      "version": "22.0.0",
++      "resolved": "https://registry.npmjs.org/yargs-parser/-/yargs-parser-22.0.0.tgz",
++      "integrity": "sha512-rwu/ClNdSMpkSrUb+d6BRsSkLUq1fmfsY6TOpYzTwvwkg1/NRG85KBy3kq++A8LKQwX6lsu+aWad+2khvuXrqw==",
++      "dev": true,
++      "license": "ISC",
++      "engines": {
++        "node": "^20.19.0 || ^22.12.0 || >=23"
++      }
++    },
+     "node_modules/yocto-queue": {
+       "version": "0.1.0",
+       "resolved": "https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz",
+@@ -6116,6 +7073,21 @@
+         "url": "https://github.com/sponsors/sindresorhus"
+       }
+     },
++    "node_modules/zip-stream": {
++      "version": "7.0.5",
++      "resolved": "https://registry.npmjs.org/zip-stream/-/zip-stream-7.0.5.tgz",
++      "integrity": "sha512-dSvYKdvLsAHCDqPOhIwk/q5CvuWtTB3Dgpoe0uVEFjTzIOAmsQpprX25InCvrvJsirEbu1OHyy67n/kAj1Sw/w==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "compress-commons": "^7.0.0",
++        "normalize-path": "^3.0.0",
++        "readable-stream": "^4.0.0"
++      },
++      "engines": {
++        "node": ">=18"
++      }
++    },
+     "node_modules/zod": {
+       "version": "4.5.4",
+       "resolved": "https://registry.npmjs.org/zod/-/zod-4.5.4.tgz",
+diff --git a/package.json b/package.json
+index 16aef44..073ba4d 100644
+--- a/package.json
++++ b/package.json
+@@ -18,8 +18,11 @@
+     "@types/node": "^20",
+     "@types/react": "^19",
+     "@types/react-dom": "^19",
++    "archiver": "^8.0.0",
+     "eslint": "^9",
+     "eslint-config-next": "16.3.4",
++    "liquidjs": "^10.30.0",
++    "puppeteer-core": "^25.12.0",
+     "typescript": "^5"
+   }
+ }
+diff --git a/src/app/blog/[slug]/page.tsx b/src/app/blog/[slug]/page.tsx
+index 0de6a27..d6085a3 100644
+--- a/src/app/blog/[slug]/page.tsx
++++ b/src/app/blog/[slug]/page.tsx
+@@ -5,7 +5,7 @@ import Image from "next/image";
+ import Header from "@/components/Header/Header";
+ import Footer from "@/components/Footer/Footer";
+ import CredibilityStrip from "@/components/CredibilityStrip/CredibilityStrip";
+-import { getBlogBySlug, getBlogs } from "@/lib/db";
++import { getBlogBySlug } from "@/lib/db";
+ import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/schema";
+ import styles from "../blog.module.css";
+ 
+diff --git a/src/app/globals.css b/src/app/globals.css
+index 8b560c7..5bef3e4 100644
+--- a/src/app/globals.css
++++ b/src/app/globals.css
+@@ -369,3 +369,414 @@ h1, h2, h3, h4, h5, h6 {
+     --header-height: 68px;
+   }
+ }
++
++/* =========================================================
++   FOUNDER PROFILE PAGE STYLES (Next.js & OS 2.0 Parity)
++   ========================================================= */
++.founder-profile-section {
++  padding-top: 2rem;
++  padding-bottom: 5rem;
++  background-color: #ffffff;
++}
++
++.founder-profile-breadcrumb {
++  font-size: 0.8125rem;
++  color: var(--text-muted);
++  margin-bottom: 2.5rem;
++  display: flex;
++  align-items: center;
++  gap: 0.5rem;
++  flex-wrap: wrap;
++}
++
++.founder-profile-breadcrumb a {
++  color: var(--text-secondary);
++  text-decoration: none;
++  transition: color var(--duration-fast);
++}
++
++.founder-profile-breadcrumb a:hover {
++  color: var(--gold);
++}
++
++.breadcrumb-sep {
++  color: var(--text-muted);
++}
++
++.founder-profile-hero {
++  display: grid;
++  grid-template-columns: 420px 1fr;
++  gap: clamp(2.5rem, 5vw, 4.5rem);
++  align-items: start;
++  margin-bottom: 3.5rem;
++}
++
++.founder-profile-visual {
++  width: 100%;
++}
++
++.founder-profile-portrait-card {
++  position: relative;
++  width: 100%;
++  aspect-ratio: 4 / 5.2;
++  border-radius: 12px;
++  overflow: hidden;
++  border: 2px solid rgba(197, 160, 89, 0.4);
++  box-shadow: 0 20px 48px rgba(18, 52, 86, 0.12);
++  background-color: var(--sapphire);
++}
++
++.founder-profile-badge {
++  position: absolute;
++  bottom: 0;
++  left: 0;
++  right: 0;
++  padding: 1.5rem 1.75rem;
++  background: linear-gradient(180deg, transparent 0%, rgba(18, 52, 86, 0.94) 45%, rgba(18, 52, 86, 0.99) 100%);
++  display: flex;
++  flex-direction: column;
++  gap: 0.25rem;
++  z-index: 2;
++}
++
++.founder-profile-badge .badge-title {
++  color: #ffffff;
++  font-family: var(--font-primary);
++  font-size: 1.3125rem;
++  font-weight: 700;
++}
++
++.founder-profile-badge .badge-subtitle {
++  color: var(--gold);
++  font-size: 0.875rem;
++  font-weight: 600;
++}
++
++.founder-profile-badge .badge-origin {
++  color: rgba(255, 255, 255, 0.75);
++  font-size: 0.75rem;
++  letter-spacing: 0.05em;
++  text-transform: uppercase;
++}
++
++.founder-profile-intro {
++  display: flex;
++  flex-direction: column;
++}
++
++.founder-profile-title {
++  font-family: var(--font-primary);
++  font-size: clamp(2.25rem, 4vw, 3.25rem);
++  font-weight: 700;
++  color: var(--sapphire);
++  line-height: 1.15;
++  margin: 0.5rem 0 0.35rem 0;
++}
++
++.founder-profile-designation {
++  font-size: 1.125rem;
++  font-weight: 600;
++  color: var(--gold-dark);
++  margin-bottom: 1.5rem;
++  letter-spacing: 0.02em;
++}
++
++.founder-profile-pullquote {
++  margin: 0 0 2rem 0;
++  padding: 1.25rem 1.75rem;
++  border-left: 4px solid var(--gold);
++  background: var(--ivory-warm);
++  border-radius: 0 8px 8px 0;
++  display: flex;
++  flex-direction: column;
++  gap: 0.35rem;
++}
++
++.founder-profile-pullquote .pullquote-text {
++  font-size: 1.5rem;
++  font-weight: 700;
++  color: var(--sapphire);
++}
++
++.founder-profile-pullquote .pullquote-sub {
++  font-size: 0.8125rem;
++  color: var(--text-muted);
++  font-weight: 600;
++  letter-spacing: 0.06em;
++  text-transform: uppercase;
++}
++
++.founder-profile-body p {
++  font-size: 1.0625rem;
++  line-height: 1.85;
++  color: var(--text-secondary);
++  margin-bottom: 1.25rem;
++}
++
++.founder-profile-vision-card {
++  background: linear-gradient(135deg, rgba(18, 52, 86, 0.03) 0%, rgba(197, 160, 89, 0.08) 100%);
++  border: 1px solid rgba(197, 160, 89, 0.35);
++  border-radius: 12px;
++  padding: clamp(2rem, 4vw, 3rem);
++  margin-bottom: 4rem;
++  box-shadow: 0 8px 24px rgba(18, 52, 86, 0.04);
++}
++
++.vision-card-heading {
++  font-family: var(--font-primary);
++  font-size: clamp(1.625rem, 3vw, 2.25rem);
++  font-weight: 700;
++  color: var(--sapphire);
++  margin-top: 0.5rem;
++  margin-bottom: 1rem;
++}
++
++.vision-card-text {
++  font-size: 1.125rem;
++  line-height: 1.85;
++  color: var(--text-secondary);
++  margin: 0;
++}
++
++.founder-profile-philosophy {
++  margin-bottom: 4rem;
++}
++
++.philosophy-heading {
++  font-family: var(--font-primary);
++  font-size: clamp(1.875rem, 3.5vw, 2.5rem);
++  font-weight: 700;
++  color: var(--sapphire);
++  margin-top: 0.5rem;
++  margin-bottom: 0.75rem;
++}
++
++.philosophy-subheading {
++  font-size: 1.0625rem;
++  color: var(--text-secondary);
++  max-width: 640px;
++  margin: 0 auto;
++}
++
++.philosophy-grid {
++  display: grid;
++  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
++  gap: 1.5rem;
++  margin-top: 2.5rem;
++  margin-bottom: 1.5rem;
++}
++
++.philosophy-card {
++  position: relative;
++  background: #ffffff;
++  border: 1px solid rgba(18, 52, 86, 0.1);
++  border-radius: 12px;
++  padding: 1.75rem 1.5rem;
++  display: flex;
++  flex-direction: column;
++  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
++}
++
++.philosophy-card:hover {
++  transform: translateY(-4px);
++  box-shadow: 0 14px 32px rgba(18, 52, 86, 0.09);
++  border-color: var(--gold);
++}
++
++.philosophy-card-num {
++  font-size: 0.75rem;
++  font-weight: 700;
++  color: var(--gold);
++  letter-spacing: 0.12em;
++  margin-bottom: 0.75rem;
++}
++
++.philosophy-card-icon {
++  width: 46px;
++  height: 46px;
++  border-radius: 10px;
++  background: rgba(197, 160, 89, 0.12);
++  color: var(--sapphire);
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  margin-bottom: 1.25rem;
++}
++
++.philosophy-card-title {
++  font-size: 1.25rem;
++  font-weight: 700;
++  color: var(--sapphire);
++  margin: 0 0 0.5rem 0;
++}
++
++.philosophy-card-desc {
++  font-size: 0.9375rem;
++  line-height: 1.65;
++  color: var(--text-secondary);
++  margin: 0;
++}
++
++.philosophy-disclaimer {
++  font-size: 0.8125rem;
++  color: var(--text-muted);
++  text-align: center;
++  font-style: italic;
++  margin-top: 1.25rem;
++}
++
++.founder-profile-future-box {
++  background-color: var(--sapphire);
++  border-radius: 14px;
++  padding: clamp(2.25rem, 4.5vw, 3.5rem);
++  margin-bottom: 4rem;
++  box-shadow: 0 20px 48px rgba(18, 52, 86, 0.16);
++  position: relative;
++  overflow: hidden;
++}
++
++.founder-profile-future-box::after {
++  content: "";
++  position: absolute;
++  top: -40%;
++  right: -20%;
++  width: 400px;
++  height: 400px;
++  border-radius: 50%;
++  background: radial-gradient(circle, rgba(197, 160, 89, 0.15) 0%, transparent 70%);
++  pointer-events: none;
++}
++
++.future-box-heading {
++  font-family: var(--font-primary);
++  font-size: clamp(1.625rem, 3vw, 2.375rem);
++  font-weight: 700;
++  color: #ffffff;
++  margin-top: 0.5rem;
++  margin-bottom: 1rem;
++}
++
++.future-box-text {
++  font-size: 1.0625rem;
++  line-height: 1.85;
++  color: rgba(255, 255, 255, 0.9);
++  margin-bottom: 1.75rem;
++}
++
++.future-verticals-tags {
++  display: flex;
++  flex-wrap: wrap;
++  gap: 0.625rem;
++}
++
++.vtag {
++  background: rgba(255, 255, 255, 0.1);
++  border: 1px solid rgba(197, 160, 89, 0.45);
++  color: var(--gold-light);
++  padding: 0.45rem 0.9375rem;
++  border-radius: 999px;
++  font-size: 0.8125rem;
++  font-weight: 600;
++  letter-spacing: 0.03em;
++}
++
++.founder-profile-closing {
++  text-align: center;
++  padding: clamp(2.5rem, 5vw, 4rem) 1.5rem;
++  background-color: var(--ivory-warm);
++  border-radius: 14px;
++  border: 1px solid rgba(197, 160, 89, 0.35);
++}
++
++.closing-badge {
++  display: flex;
++  flex-direction: column;
++  align-items: center;
++  gap: 0.5rem;
++  margin-bottom: 2rem;
++}
++
++.closing-motto {
++  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
++  font-weight: 700;
++  color: var(--sapphire);
++}
++
++.closing-brand {
++  font-size: 0.875rem;
++  letter-spacing: 0.18em;
++  font-weight: 700;
++  color: var(--gold);
++  text-transform: uppercase;
++}
++
++.founder-profile-actions {
++  display: flex;
++  flex-wrap: wrap;
++  justify-content: center;
++  gap: 1rem;
++  margin-bottom: 2rem;
++}
++
++.founder-profile-contact-info {
++  display: flex;
++  flex-wrap: wrap;
++  justify-content: center;
++  align-items: center;
++  gap: 0.75rem;
++  font-size: 0.875rem;
++  color: var(--text-secondary);
++}
++
++.founder-profile-contact-info a {
++  color: var(--sapphire);
++  font-weight: 600;
++  text-decoration: none;
++}
++
++.founder-profile-contact-info a:hover {
++  color: var(--gold);
++}
++
++.founder-profile-contact-info .bullet {
++  color: var(--gold);
++}
++
++@media (max-width: 991px) {
++  .founder-profile-hero {
++    grid-template-columns: 1fr;
++    gap: 2.5rem;
++  }
++  .founder-profile-portrait-card {
++    max-width: 380px;
++    margin: 0 auto;
++  }
++}
++
++@media (max-width: 576px) {
++  .founder-profile-portrait-card {
++    max-width: 100%;
++    aspect-ratio: 4 / 4.8;
++  }
++  .philosophy-grid {
++    grid-template-columns: 1fr;
++  }
++  .founder-profile-actions {
++    flex-direction: column;
++    width: 100%;
++    align-items: stretch;
++  }
++  .founder-profile-actions .btn {
++    width: 100%;
++    text-align: center;
++    justify-content: center;
++  }
++  .founder-profile-contact-info {
++    flex-direction: column;
++    gap: 0.35rem;
++  }
++  .founder-profile-contact-info .bullet {
++    display: none;
++  }
++}
++
+diff --git a/src/components/FounderStory/FounderStory.tsx b/src/components/FounderStory/FounderStory.tsx
+index 10c37f5..16bb03d 100644
+--- a/src/components/FounderStory/FounderStory.tsx
++++ b/src/components/FounderStory/FounderStory.tsx
+@@ -119,10 +119,10 @@ export default function FounderStory() {
+                 }}
+               >
+                 <Image
+-                  src="/assets/bhaya-india-logo.png"
+-                  alt="Ram Ji Bhaya — Founder of BHAYA INDIA"
++                  src="/ram-ji-bhaya-founder.jpg"
++                  alt="राम जी भाया — Founder & Visionary, Bhaya India"
+                   fill
+-                  style={{ objectFit: "cover" }}
++                  style={{ objectFit: "cover", objectPosition: "center 15%" }}
+                   sizes="100px"
+                 />
+               </div>
+@@ -153,14 +153,14 @@ export default function FounderStory() {
+                   राम जी भाया (Ram Ji Bhaya)
+                 </h3>
+                 <span style={{ fontSize: "13px", color: "var(--gray-500, #666)" }}>
+-                  {language === "hi" ? "बलरामपुर, उत्तर प्रदेश" : "Balrampur, Uttar Pradesh"}
++                  {language === "hi" ? "Founder & Visionary — Bhaya India" : "Founder & Visionary — Bhaya India"}
+                 </span>
+               </div>
+             </div>
+ 
+             <div className={styles.storyEyebrow}>
+               <span className={styles.verifiedBadge}>
+-                {language === "hi" ? "सत्यापित विवरण" : "VERIFIED FACTS"}
++                {language === "hi" ? "संस्थापक परिचय" : "FOUNDER INTRODUCTION"}
+               </span>
+               <span className={styles.originTag}>
+                 {language === "hi" ? "बलरामपुर, उत्तर प्रदेश" : "Balrampur, Uttar Pradesh"}
+@@ -168,7 +168,9 @@ export default function FounderStory() {
+             </div>
+ 
+             <p className={styles.narrativeText}>
+-              {t("founderStoryVerifiedText")}
++              {language === "hi"
++                ? "राम जी भाया, Bhaya India के संस्थापक हैं। छोटी शुरुआत से बड़े vision की ओर बढ़ते हुए उन्होंने विश्वास, गुणवत्ता और जिम्मेदार व्यापार को अपनी सोच का आधार बनाया। उनका लक्ष्य Bhaya India को Festival, Retail, Agro, Manufacturing, Logistics और Exports के क्षेत्रों में एक मजबूत भारतीय व्यवसायिक समूह के रूप में विकसित करना है।"
++                : "Ram Ji Bhaya is the founder of Bhaya India. Moving from humble beginnings toward an expansive vision, he established trust, quality, and responsible commerce as the foundation of his thinking. His goal is to build Bhaya India into a strong Indian business group across Festival, Retail, Agro, Manufacturing, Logistics, and Exports."}
+             </p>
+ 
+             <div className={styles.pullQuoteBox}>
+@@ -177,36 +179,17 @@ export default function FounderStory() {
+               </span>
+               <p className={styles.pullQuoteNote}>
+                 {language === "hi"
+-                  ? "पारंपरिक विश्वास और आधुनिक वाणिज्य का सेतु — लोकल टू ऑनलाइन, लोकल टू इंडिया।"
+-                  : "Bridging time-honored integrity with modern digital trade — Local to Online, Local to India."}
+-              </p>
+-            </div>
+-
+-            {/* Strict Truthful Policy Placeholder for unverified personal biography */}
+-            <div className={styles.placeholderBox}>
+-              <div className={styles.placeholderHeader}>
+-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+-                  <circle cx="12" cy="12" r="10"/>
+-                  <line x1="12" y1="8" x2="12" y2="12"/>
+-                  <line x1="12" y1="16" x2="12.01" y2="16"/>
+-                </svg>
+-                <span>
+-                  {language === "hi" ? "संस्थापक जीवन यात्रा" : "Founder Story"}
+-                </span>
+-              </div>
+-              <p className={styles.placeholderText}>
+-                {language === "hi"
+-                  ? "विस्तृत व्यक्तिगत जीवन यात्रा एवं कालक्रम संस्थापक द्वारा अनुमोदित प्रोफाइल के साथ अपडेट किया जाएगा।"
+-                  : "Details will be updated with the founder-approved profile."}
++                  ? "विश्वास, गुणवत्ता और जिम्मेदार व्यापार — लोकल टू ऑनलाइन, लोकल टू इंडिया।"
++                  : "Trust, Quality, and Responsible Commerce — Local to Online, Local to India."}
+               </p>
+             </div>
+ 
+             <div className={styles.actionRow}>
+-              <Link href="/about" className="btn btn-primary" id="founder-about-readmore-btn">
+-                {language === "hi" ? "विस्तृत यात्रा पढ़ें" : "Read Full Story"} →
++              <Link href="/founder-profile" className="btn btn-primary" id="founder-about-readmore-btn">
++                {language === "hi" ? "संस्थापक के बारे में" : "About Founder"} →
+               </Link>
+               <Link href="/contact" className="btn btn-secondary">
+-                {language === "hi" ? "डेस्क से संपर्क करें" : "Contact Founder Desk"}
++                {language === "hi" ? "डेस्क से संपर्क करें" : "Contact Desk"}
+               </Link>
+             </div>
+           </div>
+diff --git a/src/components/Header/Header.tsx b/src/components/Header/Header.tsx
+index cdf010b..9482e1b 100644
+--- a/src/components/Header/Header.tsx
++++ b/src/components/Header/Header.tsx
+@@ -32,16 +32,10 @@ export default function Header() {
+   const navLinks = [
+     { label: t("navHome"), href: "/" },
+     { label: t("navAbout"), href: "/about" },
++    { label: language === "hi" ? "संस्थापक प्रोफ़ाइल" : "Founder Profile", href: "/founder-profile" },
+     { label: language === "hi" ? "दुकान" : "Shop", href: "/products" },
+-    { label: t("catFestival"), href: "/products?category=festival" },
+-    { label: t("catRetail"), href: "/products?category=retail" },
+-    { label: t("catAgro"), href: "/products?category=agro" },
+-    { label: t("catManufacturing"), href: "/products?category=manufacturing" },
++    { label: "B2B / " + (language === "hi" ? "थोक" : "Wholesale"), href: "/wholesale" },
+     { label: t("catLogistics"), href: "/services" },
+-    { label: t("catExports"), href: "/wholesale" },
+-    { label: t("catEcommerce"), href: "/products" },
+-    { label: t("catPackaging"), href: "/products?category=packaging" },
+-    { label: "B2B", href: "/wholesale" },
+     { label: language === "hi" ? "भाया इंडिया पर बेचें" : "Sell on Bhaya India", href: "/become-a-seller" },
+     { label: language === "hi" ? "पार्टनर बनें" : "Become a Partner", href: "/manufacturers" },
+     { label: "BHAYA INDIA 2.0", href: "/bhaya-india-2" },
+@@ -648,9 +642,9 @@ export default function Header() {
+         {/* Mobile Navigation Links */}
+         <div className={styles.drawerNav}>
+           <div className={styles.drawerGroupTitle}>{t("allPieces")}</div>
+-          {navLinks.map((link) => (
++          {navLinks.map((link, idx) => (
+             <Link
+-              key={link.href}
++              key={`${link.href}-${idx}`}
+               href={link.href}
+               className={styles.drawerNavLink}
+               onClick={() => setMobileOpen(false)}
+diff --git a/src/components/WhyBhayaIndia/WhyBhayaIndia.tsx b/src/components/WhyBhayaIndia/WhyBhayaIndia.tsx
+index 5d1f66f..6a2161d 100644
+--- a/src/components/WhyBhayaIndia/WhyBhayaIndia.tsx
++++ b/src/components/WhyBhayaIndia/WhyBhayaIndia.tsx
+@@ -127,7 +127,7 @@ export default function WhyBhayaIndia() {
+ 
+         {/* 8 Core Brand Trust Pillars */}
+         <div className={styles.pillarsGrid}>
+-          {trustPillars.map((pillar, idx) => (
++          {trustPillars.map((pillar) => (
+             <div key={pillar.id} className={styles.pillarItem} id={`why-pillar-${pillar.id}`}>
+               <div className={styles.iconWrap} aria-hidden="true">
+                 {pillar.icon}
+diff --git a/src/lib/seo.ts b/src/lib/seo.ts
+index 7abf0bf..674106e 100644
+--- a/src/lib/seo.ts
++++ b/src/lib/seo.ts
+@@ -26,14 +26,14 @@ export function buildPageMetadata(options: BuildPageMetadataOptions): Metadata {
+   const pageSeo = getPageSeo(options.path);
+ 
+   // 1. Determine Title
+-  let title =
++  const title =
+     pageSeo?.seoTitle ||
+     options.shopifySeoTitle ||
+     options.fallbackTitle ||
+     (options.path === "/" ? globalSeo.homepageTitle : globalSeo.defaultTitle);
+ 
+   // 2. Determine Description
+-  let description =
++  const description =
+     pageSeo?.metaDescription ||
+     options.shopifySeoDescription ||
+     options.fallbackDescription ||
+diff --git a/src/lib/shopify/api.ts b/src/lib/shopify/api.ts
+index 6cfeed5..113095d 100644
+--- a/src/lib/shopify/api.ts
++++ b/src/lib/shopify/api.ts
+@@ -455,7 +455,15 @@ export async function getShopifyCollections(): Promise<BhayaCollection[]> {
+       variables: { first: 20 },
+     });
+ 
+-    return body.data.collections.edges.map((edge) => {
++    const validEdges = (body.data.collections.edges || []).filter(
++      (edge) => edge.node.handle !== "frontpage"
++    );
++
++    if (validEdges.length === 0) {
++      return fallbackCats;
++    }
++
++    return validEdges.map((edge) => {
+       const match = fallbackCats.find((f) => f.slug === edge.node.handle);
+       return {
+         id: edge.node.id,
+diff --git a/src/lib/shopify/client.ts b/src/lib/shopify/client.ts
+index c91ccd7..397bc33 100644
+--- a/src/lib/shopify/client.ts
++++ b/src/lib/shopify/client.ts
+@@ -27,11 +27,6 @@ function getDomain(): string {
+   );
+ }
+ 
+-const storefrontAccessToken =
+-  process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN ||
+-  process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN ||
+-  "";
+-
+ export function isShopifyConfigured(): boolean {
+   const domain = getDomain();
+   const privateToken = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN?.trim();

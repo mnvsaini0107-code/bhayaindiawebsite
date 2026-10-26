@@ -475,7 +475,7 @@ export default function AdminSettingsPage() {
               <div style={{ background: "#f8fafc", padding: "1rem", borderRadius: "6px", fontSize: "0.85rem", color: "#475569" }}>
                 <strong>Server-Side Secret Hygiene:</strong>
                 <p style={{ margin: "0.25rem 0 0" }}>
-                  All Shopify Admin API tokens, Storefront tokens, and administrative credentials remain strictly inside server-side environment variables (.env.local). No private credentials leak into client bundles.
+                  All standalone commerce configurations, administrative credentials, and HMAC session secrets remain strictly inside server-side environment variables (.env.local). No private credentials leak into client bundles.
                 </p>
               </div>
             </div>

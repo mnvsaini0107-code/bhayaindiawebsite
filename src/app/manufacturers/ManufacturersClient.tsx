@@ -15,7 +15,6 @@ export default function ManufacturersClient() {
   const [capacity, setCapacity] = useState("");
   const [moq, setMoq] = useState("");
   const [priceRange, setPriceRange] = useState("");
-  const [companyProfile, setCompanyProfile] = useState("");
   const [documents, setDocuments] = useState("");
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -36,7 +35,7 @@ export default function ManufacturersClient() {
           businessName: companyName,
           city: location,
           type: "manufacturer",
-          message: `Manufacturer Partnership Form. Company: ${companyName}, Profile: ${companyProfile}, Capacity: ${capacity}, MOQ: ${moq}, Price: ${priceRange}, Location: ${location}, Documents/Reg: ${documents}. Products: ${productDetails}`,
+          message: `Manufacturer Partnership Form. Company: ${companyName}, Capacity: ${capacity}, MOQ: ${moq}, Price: ${priceRange}, Location: ${location}, Documents/Reg: ${documents}. Products: ${productDetails}`,
         }),
       });
 

@@ -1,0 +1,97 @@
+Total Products: 16
+1. ID: prod-pm-001 | SKU: BI-PM-001
+   Name: Rose Decorative Flower Puja Mala
+   Category: Puja Mala (puja-mala) | Subcategory: Rose Flower Mala
+   Images: ["/assets/products/puja-mala-rose-yellow-pink.jpg"]
+   Price: null | Stock: true | Status: published
+---
+2. ID: prod-pm-002 | SKU: BI-PM-002
+   Name: Red Rose & Yellow Bud Decorative Puja Mala
+   Category: Puja Mala (puja-mala) | Subcategory: Bud Flower Mala
+   Images: ["/assets/products/puja-mala-red-rose-yellow-bud.jpg"]
+   Price: null | Stock: true | Status: published
+---
+3. ID: prod-pm-003 | SKU: BI-PM-003
+   Name: Mint White & Blush Pink Rose Puja Mala
+   Category: Puja Mala (puja-mala) | Subcategory: Rose Flower Mala
+   Images: ["/assets/products/puja-mala-mint-white-blush-rose.jpg"]
+   Price: null | Stock: true | Status: published
+---
+4. ID: prod-bj-001 | SKU: BI-BJ-001
+   Name: Royal Blue & Pearl Deity Jaymala
+   Category: Bhagwan Jaymala (bhagwan-jaymala) | Subcategory: Deity Shringar Mala
+   Images: ["/assets/products/bhagwan-jaymala-royal-blue-pearl.jpg"]
+   Price: null | Stock: true | Status: published
+---
+5. ID: prod-bj-002 | SKU: BI-BJ-002
+   Name: Marigold & Maroon Sacred Flower Jaymala
+   Category: Bhagwan Jaymala (bhagwan-jaymala) | Subcategory: Marigold Sacred Mala
+   Images: ["/assets/products/bhagwan-jaymala-marigold-maroon.jpg"]
+   Price: null | Stock: true | Status: published
+---
+6. ID: prod-bj-003 | SKU: BI-BJ-003
+   Name: Peach & Yellow Rose Religious Jaymala
+   Category: Bhagwan Jaymala (bhagwan-jaymala) | Subcategory: Pastel Jaymala
+   Images: ["/assets/products/bhagwan-jaymala-peach-yellow-rose.jpg"]
+   Price: null | Stock: true | Status: published
+---
+7. ID: prod-lfg-001 | SKU: BI-LG-001
+   Name: Grand Multicolour Decorative Large Flower Garland
+   Category: Large Flower Garlands (large-flower-garlands) | Subcategory: Conical Festival Garlands
+   Images: ["/assets/products/large-flower-garland-grand-multicolour.jpg"]
+   Price: null | Stock: true | Status: published
+---
+8. ID: prod-lfg-002 | SKU: BI-LG-002
+   Name: Grand Orange Marigold & Jasmine Bead Large Flower Garland
+   Category: Large Flower Garlands (large-flower-garlands) | Subcategory: Marigold Jasmine Garlands
+   Images: ["/assets/products/large-flower-garland-orange-marigold-jasmine.jpg"]
+   Price: null | Stock: true | Status: published
+---
+9. ID: prod-lfg-003 | SKU: BI-LG-003
+   Name: Grand Tiered Festive Large Flower Garland
+   Category: Large Flower Garlands (large-flower-garlands) | Subcategory: Tiered Event Garlands
+   Images: ["/assets/products/large-flower-garland-grand-tiered-festive.jpg","/assets/products/large-flower-garland-orange-magenta-drape.jpg"]
+   Price: null | Stock: true | Status: published
+---
+10. ID: prod-mm-001 | SKU: BI-MM-001
+   Name: Emerald Green Crystal & Pearl Moti Mala
+   Category: Moti Mala (moti-mala) | Subcategory: Crystal Pearl Mala
+   Images: ["/assets/products/moti-mala-emerald-green-crystal-pearl.jpg"]
+   Price: null | Stock: true | Status: published
+---
+11. ID: prod-mm-002 | SKU: BI-MM-002
+   Name: Antique Gold Filigree & Pearl Moti Mala
+   Category: Moti Mala (moti-mala) | Subcategory: Antique Filigree Mala
+   Images: ["/assets/products/moti-mala-antique-gold-filigree-pearl.jpg"]
+   Price: null | Stock: true | Status: published
+---
+12. ID: prod-sm-001 | SKU: BI-SM-001
+   Name: Royal Peacock Brooch Pearl & Maroon Sherwani Mala
+   Category: Sherwani Mala (sherwani-mala) | Subcategory: Peacock Brooch Sherwani Mala
+   Images: ["/assets/products/sherwani-mala-peacock-brooch-detail.jpg","/assets/products/sherwani-mala-peacock-brooch-pack.jpg"]
+   Price: null | Stock: true | Status: published
+---
+13. ID: prod-sm-002 | SKU: BI-SM-002
+   Name: Royal Ruby Brooch & Gold Bead Sherwani Mala
+   Category: Sherwani Mala (sherwani-mala) | Subcategory: Ruby Brooch Sherwani Mala
+   Images: ["/assets/products/sherwani-mala-ruby-brooch-detail.jpg","/assets/products/sherwani-mala-ruby-brooch-pack.jpg"]
+   Price: null | Stock: true | Status: published
+---
+14. ID: prod-dg-001 | SKU: BI-DG-001
+   Name: Kundan Floral Brooch Maroon-Pearl Dulha Haar
+   Category: Groom Garland (groom-garland) | Subcategory: Kundan Brooch Dulha Haar
+   Images: ["/assets/products/dulha-haar-kundan-floral-brooch.jpg"]
+   Price: null | Stock: true | Status: published
+---
+15. ID: prod-dg-002 | SKU: BI-DG-002
+   Name: Golden Heart Pendant Tiered Pearl Dulha Haar
+   Category: Groom Garland (groom-garland) | Subcategory: Heart Pendant Haar
+   Images: ["/assets/products/dulha-haar-golden-heart-pendant.jpg"]
+   Price: null | Stock: true | Status: published
+---
+16. ID: prod-dg-003 | SKU: BI-DG-003
+   Name: Multi-Tier Pearl Dulha Haar with Side Ruby Brooch
+   Category: Groom Garland (groom-garland) | Subcategory: Multi-Tier Pearl Haar
+   Images: ["/assets/products/dulha-haar-multi-tier-pearl-ruby.jpg"]
+   Price: null | Stock: true | Status: published
+---

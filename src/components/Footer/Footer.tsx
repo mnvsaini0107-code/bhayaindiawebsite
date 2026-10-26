@@ -144,6 +144,8 @@ export default function Footer({ settings = DEFAULT_SITE_SETTINGS }: { settings?
             &copy; {new Date().getFullYear()} BHAYA INDIA. {t("footerRights")}
           </p>
           <div className={styles.legalLinks}>
+            <Link href="/track-order" className={styles.legalLink}>{language === "hi" ? "ऑर्डर ट्रैक करें" : "Track Order"}</Link>
+            <span className={styles.legalSep}>·</span>
             <Link href="/faq" className={styles.legalLink}>{t("navFaq")}</Link>
             <span className={styles.legalSep}>·</span>
             <Link href="/privacy-policy" className={styles.legalLink}>{t("footerPrivacy")}</Link>

@@ -5,7 +5,7 @@ import Image from "next/image";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import CredibilityStrip from "@/components/CredibilityStrip/CredibilityStrip";
-import { getBlogBySlug, getBlogs } from "@/lib/db";
+import { getBlogBySlug } from "@/lib/db";
 import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import styles from "../blog.module.css";
 
@@ -29,7 +29,7 @@ export async function generateMetadata({
   const title = post.seoTitle || `${post.title} — BHAYA INDIA Publications`;
   const description = post.seoDescription || post.excerpt;
   const canonicalUrl = post.canonical || `https://bhayaindia.com/blog/${post.slug}`;
-  const ogImageUrl = post.ogImage || post.featuredImage || "/assets/hero-editorial.jpg";
+  const ogImageUrl = post.ogImage || post.featuredImage || "/assets/bhaya-india-logo.png";
   const fullOgImage = ogImageUrl.startsWith("http")
     ? ogImageUrl
     : `https://bhayaindia.com${ogImageUrl}`;
@@ -130,7 +130,7 @@ export default async function BlogPostPage({
 
         <div className={styles.featuredImageContainer}>
           <Image
-            src={post.featuredImage || "/assets/hero-editorial.jpg"}
+            src={post.featuredImage || "/assets/bhaya-india-logo.png"}
             alt={post.title}
             fill
             style={{ objectFit: "cover" }}

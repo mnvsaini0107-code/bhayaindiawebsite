@@ -1,7 +1,15 @@
 import { NextResponse } from "next/server";
 import { getMedia, saveMedia, deleteMedia, getMediaTotalSize } from "@/lib/db";
+import { verifyAdminRequest } from "@/lib/auth";
 
 export async function GET(request: Request) {
+  if (!(await verifyAdminRequest(request))) {
+    return NextResponse.json(
+      { success: false, error: "Unauthorized: Admin session required." },
+      { status: 401 }
+    );
+  }
+
   try {
     const { searchParams } = new URL(request.url);
     const query = searchParams.get("q")?.toLowerCase();
@@ -44,6 +52,13 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
+  if (!(await verifyAdminRequest(request))) {
+    return NextResponse.json(
+      { success: false, error: "Unauthorized: Admin session required." },
+      { status: 401 }
+    );
+  }
+
   try {
     const body = await request.json();
     if (!body.url && !body.filename) {
@@ -59,6 +74,13 @@ export async function POST(request: Request) {
 }
 
 export async function DELETE(request: Request) {
+  if (!(await verifyAdminRequest(request))) {
+    return NextResponse.json(
+      { success: false, error: "Unauthorized: Admin session required." },
+      { status: 401 }
+    );
+  }
+
   try {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id");

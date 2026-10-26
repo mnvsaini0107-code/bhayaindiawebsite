@@ -1,0 +1,132 @@
+.main {
+  padding-top: var(--header-total, 76px);
+  background-color: var(--ivory, #FDFDFD);
+}
+
+.heroSection {
+  background-color: var(--sapphire-dark, #0c2540);
+  color: #ffffff;
+  padding: 4rem 0 3.5rem;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 1rem;
+}
+
+.sep {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--gold, #C5A059);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 650px;
+}
+
+.reviewsGrid {
+  padding: 4rem 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.reviewCard {
+  background: #ffffff;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg, 8px);
+  padding: 2.25rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reviewCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--gold);
+}
+
+.starRow {
+  color: var(--gold);
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+}
+
+.reviewQuote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--sapphire);
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.authorBlock {
+  border-top: 1px solid var(--gray-100);
+  padding-top: 1rem;
+}
+
+.authorName {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--sapphire);
+}
+
+.authorMeta {
+  font-size: 0.8rem;
+  color: var(--gold-dark);
+}
+
+.shareBlock {
+  background-color: var(--ivory-warm, #F8F6F1);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius-lg, 8px);
+  padding: 3rem;
+  text-align: center;
+  margin: 2rem 0 5rem;
+}
+
+.shareBlock h2 {
+  font-size: 1.75rem;
+  color: var(--sapphire);
+  margin-bottom: 0.5rem;
+}
+
+.shareBlock p {
+  color: var(--gray-600);
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 992px) {
+  .reviewsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .reviewsGrid {
+    grid-template-columns: 1fr;
+  }
+}

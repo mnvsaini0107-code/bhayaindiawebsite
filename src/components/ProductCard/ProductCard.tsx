@@ -20,16 +20,21 @@ function getWhatsAppUrl(
   language: string = "hi"
 ) {
   const prodName = getLocalizedProductName(product, language as "en" | "hi");
+  const priceInfo = product.price ? `₹${product.price.toLocaleString("en-IN")}` : "Custom Quote";
   const msg =
     language === "hi"
-      ? `नमस्कार, मुझे BHAYA INDIA के इस product के बारे में जानकारी चाहिए:
+      ? `नमस्कार, मुझे BHAYA INDIA के इस उत्पाद के बारे में जानकारी चाहिए:
 
-Product Name: ${prodName}
-Quantity: 1`
+उत्पाद: ${prodName}
+मूल्य: ${priceInfo}
+SKU: ${product.sku}
+लिंक: https://bhayaindia.com/products/${product.slug}`
       : `Hello, I would like to enquire about this BHAYA INDIA product:
 
-Product Name: ${prodName}
-Quantity: 1`;
+Product: ${prodName}
+Price: ${priceInfo}
+SKU: ${product.sku}
+Link: https://bhayaindia.com/products/${product.slug}`;
   return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
 }
 
@@ -43,7 +48,7 @@ export default function ProductCard({
   whatsappNumber,
 }: ProductCardProps) {
   const { language, t } = useLanguage();
-  const { addItem, checkoutUrl } = useCart();
+  const { addItem } = useCart();
   const router = useRouter();
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [addedSuccess, setAddedSuccess] = useState(false);
@@ -52,12 +57,12 @@ export default function ProductCard({
   const displayName = getLocalizedProductName(product, language as "en" | "hi");
   const displayCategory = getLocalizedProductCategory(product, language as "en" | "hi");
 
-  const hasPrice = product.price !== null && product.price > 0;
+  const hasPrice = product.price !== null && typeof product.price === "number" && product.price > 0;
+  
+  // Real compare-at price only; never fabricate fake discounts
   const comparePrice =
     product.compareAtPrice && product.compareAtPrice > (product.price || 0)
       ? product.compareAtPrice
-      : hasPrice
-      ? Math.round(product.price! * 1.25)
       : null;
 
   const discountPercent =
@@ -65,8 +70,12 @@ export default function ProductCard({
       ? Math.round(((comparePrice - product.price!) / comparePrice) * 100)
       : 0;
 
-  const rating = product.rating;
-  const reviewsCount = product.reviewsCount;
+  // Genuine rating and reviews only
+  const hasVerifiedReviews =
+    typeof product.rating === "number" &&
+    product.rating > 0 &&
+    typeof product.reviewsCount === "number" &&
+    product.reviewsCount > 0;
 
   const handleAddToCart = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -90,32 +99,6 @@ export default function ProductCard({
     setTimeout(() => setAddedSuccess(false), 2000);
   };
 
-  const handleBuyNow = async (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (!hasPrice) {
-      router.push(`/products/${product.slug}`);
-      return;
-    }
-    await addItem(
-      {
-        id: product.id,
-        variantId: product.variantId,
-        name: displayName,
-        slug: product.slug,
-        price: product.price!,
-        image: currentImage,
-        category: displayCategory,
-      },
-      1
-    );
-
-    if (checkoutUrl) {
-      window.location.href = checkoutUrl;
-    } else {
-      router.push("/checkout");
-    }
-  };
-
   const toggleWishlist = (e: React.MouseEvent) => {
     e.preventDefault();
     setIsWishlisted(!isWishlisted);
@@ -125,17 +108,17 @@ export default function ProductCard({
     <article className={styles.card} id={`product-card-${product.sku}`}>
       {/* Image Container with Badges and Wishlist */}
       <div className={styles.imageWrap}>
-        <Link href={`/products/${product.slug}`} className={styles.imageLink}>
+        <Link href={`/products/${product.slug}`} className={styles.imageLink} aria-label={displayName}>
           <Image
             src={currentImage}
             alt={displayName}
             fill
             className={styles.productImage}
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
           />
         </Link>
 
-        {/* Badges */}
+        {/* Badges: Verified data only */}
         <div className={styles.badgeCluster}>
           {discountPercent > 0 && (
             <span className={styles.badgeDiscount}>
@@ -145,6 +128,11 @@ export default function ProductCard({
           {product.isNew && (
             <span className={styles.badgeNew}>
               {t("newArrival")}
+            </span>
+          )}
+          {product.isFeatured && !product.isNew && discountPercent === 0 && (
+            <span className={styles.badgeFeatured}>
+              {language === "hi" ? "प्रमुख" : "Featured"}
             </span>
           )}
         </div>
@@ -158,8 +146,8 @@ export default function ProductCard({
           title={isWishlisted ? t("removeFromWishlist") : t("addToWishlist")}
         >
           <svg
-            width="18"
-            height="18"
+            width="16"
+            height="16"
             viewBox="0 0 24 24"
             fill={isWishlisted ? "#E53935" : "none"}
             stroke={isWishlisted ? "#E53935" : "currentColor"}
@@ -177,23 +165,23 @@ export default function ProductCard({
         {/* Category & Rating Row */}
         <div className={styles.metaRow}>
           <span className={styles.categoryEyebrow}>{displayCategory}</span>
-          {rating ? (
-            <div className={styles.ratingWrap} title={`${rating} / 5`}>
+          {hasVerifiedReviews && (
+            <div className={styles.ratingWrap} title={`${product.rating} / 5`}>
               <span className={styles.starIcon}>★</span>
-              <span className={styles.ratingNumber}>{rating}</span>
-              {reviewsCount ? (
-                <span className={styles.reviewsCount}>({reviewsCount})</span>
-              ) : null}
+              <span className={styles.ratingNumber}>{product.rating}</span>
+              <span className={styles.reviewsCount}>({product.reviewsCount})</span>
             </div>
-          ) : null}
+          )}
         </div>
 
         {/* Product Title */}
         <h3 className={styles.cardName}>
-          <Link href={`/products/${product.slug}`}>{displayName}</Link>
+          <Link href={`/products/${product.slug}`} title={displayName}>
+            {displayName}
+          </Link>
         </h3>
 
-        {/* Pricing Row with Compare-At Price */}
+        {/* Pricing Row */}
         <div className={styles.priceRow}>
           {hasPrice ? (
             <div className={styles.priceWrap}>
@@ -213,10 +201,10 @@ export default function ProductCard({
           )}
         </div>
 
-        {/* Action Buttons: Add to Bag, Buy Now & WhatsApp */}
+        {/* Aligned Actions: View Details + Add to Bag / WhatsApp */}
         <div className={styles.cardActions}>
-          {product.inStock ? (
-            <div className={styles.commerceBtnRow}>
+          <div className={styles.primaryActionRow}>
+            {product.inStock && hasPrice ? (
               <button
                 type="button"
                 onClick={handleAddToCart}
@@ -225,37 +213,43 @@ export default function ProductCard({
               >
                 {addedSuccess ? t("addedToBag") : t("addToBag")}
               </button>
-
-              <button
-                type="button"
-                onClick={handleBuyNow}
-                className={styles.btnBuyNow}
-                id={`buy-now-${product.sku}`}
+            ) : product.inStock && !hasPrice ? (
+              <Link
+                href={`/contact?product=${encodeURIComponent(product.slug)}`}
+                className={styles.btnQuote}
+                id={`quote-${product.sku}`}
               >
-                {t("buyNow")}
-              </button>
-            </div>
-          ) : (
-            <div className={styles.btnOutOfStock}>
-              {t("outOfStock")}
-            </div>
-          )}
+                {t("requestQuote")}
+              </Link>
+            ) : (
+              <div className={styles.btnOutOfStock}>
+                {t("outOfStock")}
+              </div>
+            )}
 
-          <a
-            href={getWhatsAppUrl(product, whatsappNumber, language)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.btnWhatsapp}
-            id={`enquire-wa-${product.sku}`}
-            title={t("whatsAppEnquiry")}
-            aria-label={t("whatsAppEnquiry")}
+            <a
+              href={getWhatsAppUrl(product, whatsappNumber, language)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.btnWhatsappIcon}
+              id={`enquire-wa-${product.sku}`}
+              title={t("whatsAppEnquiry")}
+              aria-label={t("whatsAppEnquiry")}
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                <path d="M11.998 2C6.477 2 2 6.484 2 12.017c0 1.99.518 3.869 1.424 5.49L2 22l4.618-1.41A9.917 9.917 0 0 0 12 22.033c5.52 0 9.998-4.484 9.998-10.016C21.998 6.484 17.52 2 11.998 2zm0 18.338a8.28 8.28 0 0 1-4.22-1.155l-.302-.18-3.13.955.832-3.048-.198-.313A8.273 8.273 0 0 1 3.72 12.017c0-4.57 3.718-8.286 8.278-8.286 4.556 0 8.275 3.716 8.275 8.286 0 4.571-3.72 8.321-8.275 8.321z" />
+              </svg>
+            </a>
+          </div>
+
+          <Link
+            href={`/products/${product.slug}`}
+            className={styles.btnViewDetails}
+            id={`view-details-${product.sku}`}
           >
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-              <path d="M11.998 2C6.477 2 2 6.484 2 12.017c0 1.99.518 3.869 1.424 5.49L2 22l4.618-1.41A9.917 9.917 0 0 0 12 22.033c5.52 0 9.998-4.484 9.998-10.016C21.998 6.484 17.52 2 11.998 2zm0 18.338a8.28 8.28 0 0 1-4.22-1.155l-.302-.18-3.13.955.832-3.048-.198-.313A8.273 8.273 0 0 1 3.72 12.017c0-4.57 3.718-8.286 8.278-8.286 4.556 0 8.275 3.716 8.275 8.286 0 4.571-3.72 8.321-8.275 8.321z" />
-            </svg>
-            <span>{t("whatsAppEnquiry")}</span>
-          </a>
+            {t("viewDetails")} &rarr;
+          </Link>
         </div>
       </div>
     </article>

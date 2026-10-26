@@ -2,9 +2,19 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import type { Product, Category, ProductSpec } from "@/lib/types";
-import { ShoppingBag, Upload, X } from "lucide-react";
+import type { Product, Category, ProductSpec, MediaAsset } from "@/lib/types";
+import {
+  Upload,
+  X,
+  ArrowLeft,
+  ArrowRight,
+  Star,
+  Trash2,
+  ImageIcon,
+} from "lucide-react";
 import styles from "./products.module.css";
+
+type StatusTab = "all" | "approved" | "needs_review" | "draft" | "archived";
 
 export default function AdminProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -12,6 +22,15 @@ export default function AdminProductsPage() {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [selectedCat, setSelectedCat] = useState("all");
+  const [statusFilter, setStatusFilter] = useState<StatusTab>("all");
+
+  // Media Library state & Lightbox
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const [isMediaPickerOpen, setIsMediaPickerOpen] = useState(false);
+  const [mediaAssets, setMediaAssets] = useState<MediaAsset[]>([]);
+  const [mediaLoading, setMediaLoading] = useState(false);
+  const [mediaSearch, setMediaSearch] = useState("");
+  const [selectedMediaUrl, setSelectedMediaUrl] = useState<string | null>(null);
 
   // Modal / Form state
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,8 +46,15 @@ export default function AdminProductsPage() {
   const [description, setDescription] = useState("");
   const [priceType, setPriceType] = useState<"fixed" | "quote">("fixed");
   const [price, setPrice] = useState<string>("");
+  const [compareAtPrice, setCompareAtPrice] = useState<string>("");
   const [priceNote, setPriceNote] = useState("");
+  const [stockQuantity, setStockQuantity] = useState<string>("50");
+  const [status, setStatus] = useState<"published" | "draft" | "archived">("published");
+  const [reviewStatus, setReviewStatus] = useState<"Approved" | "Needs Review" | "Unpublished">("Approved");
   const [images, setImages] = useState<string[]>([]);
+  const [imageUrlInput, setImageUrlInput] = useState<string>("");
+  const [altText, setAltText] = useState("");
+  const [whatsappMessage, setWhatsappMessage] = useState("");
   const [isFeatured, setIsFeatured] = useState(false);
   const [isPublished, setIsPublished] = useState(true);
   const [isNew, setIsNew] = useState(false);
@@ -40,13 +66,14 @@ export default function AdminProductsPage() {
   ]);
   const [features, setFeatures] = useState<string[]>([""]);
   const [benefits, setBenefits] = useState<string[]>([""]);
+  const [faqs, setFaqs] = useState<Array<{ question: string; answer: string }>>([]);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const fetchCatalogue = async () => {
     try {
       const [prodRes, catRes] = await Promise.all([
-        fetch("/api/products"),
+        fetch("/api/products?scope=admin"),
         fetch("/api/categories"),
       ]);
       const prodData = await prodRes.json();
@@ -60,16 +87,23 @@ export default function AdminProductsPage() {
     }
   };
 
+  const fetchMediaAssets = async () => {
+    setMediaLoading(true);
+    try {
+      const res = await fetch("/api/media");
+      const data = await res.json();
+      if (data.success) {
+        setMediaAssets(data.assets || []);
+      }
+    } catch (e) {
+      console.error("Fetch media error", e);
+    } finally {
+      setMediaLoading(false);
+    }
+  };
+
   useEffect(() => {
-    Promise.all([fetch("/api/products"), fetch("/api/categories")])
-      .then(async ([prodRes, catRes]) => {
-        const prodData = await prodRes.json();
-        const catData = await catRes.json();
-        if (prodData.success) setProducts(prodData.products);
-        if (catData.success) setCategories(catData.categories);
-      })
-      .catch((e) => console.error("Fetch catalogue error", e))
-      .finally(() => setLoading(false));
+    fetchCatalogue();
   }, []);
 
   const openAddModal = () => {
@@ -81,8 +115,15 @@ export default function AdminProductsPage() {
     setDescription("");
     setPriceType("fixed");
     setPrice("");
+    setCompareAtPrice("");
     setPriceNote("Per piece (Inclusive of Taxes)");
+    setStockQuantity("50");
+    setStatus("published");
+    setReviewStatus("Approved");
+    setImageUrlInput("");
     setImages([]);
+    setAltText("");
+    setWhatsappMessage("");
     setIsFeatured(false);
     setIsPublished(true);
     setIsNew(true);
@@ -94,6 +135,7 @@ export default function AdminProductsPage() {
     ]);
     setFeatures([""]);
     setBenefits([""]);
+    setFaqs([]);
     setIsModalOpen(true);
   };
 
@@ -106,8 +148,19 @@ export default function AdminProductsPage() {
     setDescription(p.description);
     setPriceType(p.price === null ? "quote" : "fixed");
     setPrice(p.price ? p.price.toString() : "");
+    setCompareAtPrice(p.compareAtPrice ? p.compareAtPrice.toString() : "");
     setPriceNote(p.priceNote || "");
-    setImages(p.images || []);
+    setStockQuantity(
+      p.stockQuantity !== undefined ? p.stockQuantity.toString() : p.inStock ? "50" : "0"
+    );
+    setStatus(
+      p.status === "archived" ? "archived" : p.status === "draft" ? "draft" : "published"
+    );
+    setReviewStatus(p.reviewStatus || (p.isPublished ? "Approved" : "Needs Review"));
+    setImageUrlInput("");
+    setImages(p.images && p.images.length > 0 ? p.images : []);
+    setAltText(p.altText || "");
+    setWhatsappMessage(p.whatsappMessage || "");
     setIsFeatured(p.isFeatured);
     setIsPublished(p.isPublished);
     setIsNew(Boolean(p.isNew));
@@ -116,9 +169,15 @@ export default function AdminProductsPage() {
     setSpecs(p.specs && p.specs.length > 0 ? p.specs : [{ label: "Material", value: "" }]);
     setFeatures(p.features && p.features.length > 0 ? p.features : [""]);
     setBenefits(p.benefits && p.benefits.length > 0 ? p.benefits : [""]);
+    setFaqs(
+      p.productFaqs && p.productFaqs.length > 0
+        ? p.productFaqs.map((f) => ({ question: f.question, answer: f.answer }))
+        : []
+    );
     setIsModalOpen(true);
   };
 
+  // Image Upload handler
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -129,7 +188,7 @@ export default function AdminProductsPage() {
       fd.append("file", file);
       const res = await fetch("/api/upload", { method: "POST", body: fd });
       const data = await res.json();
-      if (data.success) {
+      if (data.success && data.url) {
         setImages((prev) => [...prev, data.url]);
       } else {
         alert(data.error || "Upload failed");
@@ -142,10 +201,51 @@ export default function AdminProductsPage() {
     }
   };
 
+  // Image gallery controls
   const handleRemoveImage = (index: number) => {
     setImages((prev) => prev.filter((_, i) => i !== index));
   };
 
+  const handleMoveImage = (index: number, direction: -1 | 1) => {
+    setImages((prev) => {
+      const targetIndex = index + direction;
+      if (targetIndex < 0 || targetIndex >= prev.length) return prev;
+      const copy = [...prev];
+      const temp = copy[index];
+      copy[index] = copy[targetIndex];
+      copy[targetIndex] = temp;
+      return copy;
+    });
+  };
+
+  const handleSetPrimaryImage = (index: number) => {
+    if (index === 0) return;
+    setImages((prev) => {
+      const copy = [...prev];
+      const [item] = copy.splice(index, 1);
+      return [item, ...copy];
+    });
+  };
+
+  // Open Media Picker
+  const openMediaPicker = () => {
+    setIsMediaPickerOpen(true);
+    setSelectedMediaUrl(null);
+    fetchMediaAssets();
+  };
+
+  const handleSelectMedia = (url: string) => {
+    setSelectedMediaUrl(url);
+  };
+
+  const handleConfirmMediaSelection = () => {
+    if (selectedMediaUrl) {
+      setImages((prev) => (prev.includes(selectedMediaUrl) ? prev : [...prev, selectedMediaUrl]));
+    }
+    setIsMediaPickerOpen(false);
+  };
+
+  // Specs & FAQs
   const handleSpecChange = (index: number, field: "label" | "value", val: string) => {
     setSpecs((prev) => {
       const copy = [...prev];
@@ -162,12 +262,40 @@ export default function AdminProductsPage() {
     setSpecs((prev) => prev.filter((_, i) => i !== index));
   };
 
+  const addFaqRow = () => {
+    setFaqs((prev) => [...prev, { question: "", answer: "" }]);
+  };
+
+  const updateFaqRow = (index: number, field: "question" | "answer", val: string) => {
+    setFaqs((prev) => {
+      const copy = [...prev];
+      copy[index][field] = val;
+      return copy;
+    });
+  };
+
+  const removeFaqRow = (index: number) => {
+    setFaqs((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  // Save product with strict image verification and neutral fallback
   const handleSaveProduct = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormLoading(true);
 
     const categoryObj = categories.find((c) => c.slug === categorySlug);
     const catName = categoryObj ? categoryObj.name : "General";
+
+    // Clean and check images
+    const cleanImages = images.filter((img) => img && img.trim().length > 0);
+    const hasAuthenticImage = cleanImages.some(
+      (img) => !img.includes("image-coming-soon.svg") && !img.includes("category-textiles")
+    );
+
+    // If no authentic image, use neutral coming soon placeholder and force review
+    const finalImages = cleanImages.length > 0 ? cleanImages : ["/assets/image-coming-soon.svg"];
+    const effectiveReviewStatus = hasAuthenticImage ? reviewStatus : "Needs Review";
+    const effectivePublished = effectiveReviewStatus === "Approved" && isPublished;
 
     const payload = {
       name,
@@ -176,16 +304,34 @@ export default function AdminProductsPage() {
       subcategory: subcategory || "General",
       tagline,
       description,
-      price: priceType === "quote" ? null : Number(price) || 0,
+      price: priceType === "quote" ? null : price ? Number(price) : null,
+      compareAtPrice: compareAtPrice ? Number(compareAtPrice) : null,
+      stockQuantity: Number(stockQuantity) || 0,
+      status:
+        status === "archived"
+          ? "archived"
+          : effectiveReviewStatus === "Approved"
+          ? effectivePublished
+            ? "published"
+            : "draft"
+          : effectiveReviewStatus === "Needs Review"
+          ? "needs_review"
+          : "draft",
+      reviewStatus: effectiveReviewStatus,
       priceNote,
-      images: images.length > 0 ? images : ["/assets/category-textiles.jpg"],
+      images: finalImages,
+      altText: altText || `${name} — Bhaya India Authentic Handicraft`,
+      whatsappMessage:
+        whatsappMessage ||
+        `Namaste Bhaya India, I am interested in inquiring about ${name} (SKU: ${sku}). Please share details.`,
       specs: specs.filter((s) => s.label.trim() && s.value.trim()),
       features: features.filter((f) => f.trim()),
       benefits: benefits.filter((b) => b.trim()),
+      productFaqs: faqs.filter((f) => f.question.trim() && f.answer.trim()),
       isFeatured,
-      isPublished,
+      isPublished: effectivePublished,
       isNew,
-      inStock,
+      inStock: inStock && (Number(stockQuantity) > 0 || stockQuantity === ""),
       sku,
       seoTitle: `${name} — Bhaya India`,
       seoDescription: description.slice(0, 160),
@@ -193,7 +339,6 @@ export default function AdminProductsPage() {
 
     try {
       if (editingProduct) {
-        // Update
         const res = await fetch(`/api/products/${editingProduct.id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -207,7 +352,6 @@ export default function AdminProductsPage() {
           alert(data.error || "Failed to update product");
         }
       } else {
-        // Create
         const res = await fetch("/api/products", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -229,6 +373,34 @@ export default function AdminProductsPage() {
     }
   };
 
+  // Quick Review Status Actions
+  const handleQuickStatus = async (
+    p: Product,
+    targetReview: "Approved" | "Needs Review" | "Unpublished",
+    targetStatus: "published" | "draft" | "archived" | "needs_review"
+  ) => {
+    try {
+      const isPub = targetReview === "Approved" && targetStatus === "published";
+      const res = await fetch(`/api/products/${p.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          reviewStatus: targetReview,
+          status: targetStatus,
+          isPublished: isPub,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        fetchCatalogue();
+      } else {
+        alert(data.error || "Failed to update status");
+      }
+    } catch (e) {
+      console.error("Quick status update error", e);
+    }
+  };
+
   const handleDeleteProduct = async (id: string, prodName: string) => {
     if (!confirm(`Are you sure you want to delete "${prodName}"?`)) return;
     try {
@@ -241,19 +413,6 @@ export default function AdminProductsPage() {
       }
     } catch (e) {
       console.error("Delete error", e);
-    }
-  };
-
-  const handleTogglePublish = async (p: Product) => {
-    try {
-      await fetch(`/api/products/${p.id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ isPublished: !p.isPublished }),
-      });
-      fetchCatalogue();
-    } catch (e) {
-      console.error("Toggle publish error", e);
     }
   };
 
@@ -270,6 +429,23 @@ export default function AdminProductsPage() {
     }
   };
 
+  // Status counts
+  const countAll = products.length;
+  const countApproved = products.filter(
+    (p) => p.reviewStatus === "Approved" || (p.isPublished && p.status === "published")
+  ).length;
+  const countNeedsReview = products.filter(
+    (p) => p.reviewStatus === "Needs Review" || p.status === "needs_review"
+  ).length;
+  const countDraft = products.filter(
+    (p) =>
+      p.reviewStatus === "Unpublished" ||
+      p.status === "draft" ||
+      (!p.isPublished && p.status !== "archived" && p.reviewStatus !== "Needs Review")
+  ).length;
+  const countArchived = products.filter((p) => p.status === "archived").length;
+
+  // Filtered Products
   const filteredProducts = products.filter((p) => {
     const matchCat = selectedCat === "all" || p.categorySlug === selectedCat;
     const matchSearch =
@@ -277,7 +453,29 @@ export default function AdminProductsPage() {
       p.name.toLowerCase().includes(search.toLowerCase()) ||
       p.sku.toLowerCase().includes(search.toLowerCase()) ||
       p.category.toLowerCase().includes(search.toLowerCase());
-    return matchCat && matchSearch;
+
+    if (!matchCat || !matchSearch) return false;
+
+    const rev = (p.reviewStatus || "").toLowerCase();
+    const stat = (p.status || "").toLowerCase();
+
+    if (statusFilter === "approved") {
+      return rev === "approved" || (p.isPublished && stat === "published");
+    }
+    if (statusFilter === "needs_review") {
+      return rev === "needs review" || stat === "needs_review";
+    }
+    if (statusFilter === "draft") {
+      return (
+        rev === "unpublished" ||
+        stat === "draft" ||
+        (!p.isPublished && stat !== "archived" && rev !== "needs review")
+      );
+    }
+    if (statusFilter === "archived") {
+      return stat === "archived";
+    }
+    return true;
   });
 
   return (
@@ -286,7 +484,7 @@ export default function AdminProductsPage() {
         <div>
           <h1 className={styles.title}>Product Catalogue Management</h1>
           <p className={styles.subTitle}>
-            Manage all {products.length} products, add specifications, prices, and upload gallery images.
+            Manage all {products.length} products, review authentic images, configure specifications, and control publication.
           </p>
         </div>
         <button onClick={openAddModal} className={styles.addBtn}>
@@ -294,66 +492,40 @@ export default function AdminProductsPage() {
         </button>
       </div>
 
-      {/* Shopify Integration Status Banner */}
-      <div style={{
-        background: "linear-gradient(135deg, #0d233a 0%, #123456 100%)",
-        border: "1px solid #C5A059",
-        borderRadius: "8px",
-        padding: "1.25rem 1.5rem",
-        marginBottom: "1.5rem",
-        color: "#FFFFFF",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        flexWrap: "wrap",
-        gap: "1rem"
-      }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "0.85rem" }}>
-          <div style={{
-            width: "40px",
-            height: "40px",
-            borderRadius: "50%",
-            background: "rgba(197, 160, 89, 0.2)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: "1.2rem",
-            color: "#C5A059"
-          }}>
-            <ShoppingBag size={20} color="#C5A059" />
-          </div>
-          <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <strong style={{ fontSize: "1rem", color: "#FDFDFD" }}>Shopify Live Catalog Backend Connected</strong>
-              <span style={{ fontSize: "0.7rem", padding: "0.15rem 0.5rem", borderRadius: "12px", background: "#2E7D32", color: "#fff", fontWeight: 700 }}>LIVE</span>
-            </div>
-            <p style={{ margin: "0.25rem 0 0", fontSize: "0.85rem", color: "#C2CBD4" }}>
-              All product titles, descriptions, images, prices, variants (sizes, colors), inventory, and collections can be managed directly in Shopify Admin. Changes reflect automatically on the customer storefront.
-            </p>
-          </div>
-        </div>
-        <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-          <a
-            href="https://admin.shopify.com/store/a3g0h2-ss/products"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.4rem",
-              background: "#C5A059",
-              color: "#123456",
-              fontWeight: 700,
-              fontSize: "0.85rem",
-              padding: "0.6rem 1.1rem",
-              borderRadius: "5px",
-              textDecoration: "none",
-              boxShadow: "0 2px 8px rgba(197, 160, 89, 0.3)"
-            }}
-          >
-            Open Shopify Products Admin ↗
-          </a>
-        </div>
+
+
+      {/* Review Workflow Status Filter Tabs */}
+      <div className={styles.statusTabs}>
+        <button
+          className={`${styles.statusTab} ${statusFilter === "all" ? styles.statusTabActive : ""}`}
+          onClick={() => setStatusFilter("all")}
+        >
+          All Items <span className={styles.countPill}>{countAll}</span>
+        </button>
+        <button
+          className={`${styles.statusTab} ${statusFilter === "approved" ? styles.statusTabActive : ""}`}
+          onClick={() => setStatusFilter("approved")}
+        >
+          Approved / Live <span className={styles.countPill}>{countApproved}</span>
+        </button>
+        <button
+          className={`${styles.statusTab} ${statusFilter === "needs_review" ? styles.statusTabActive : ""}`}
+          onClick={() => setStatusFilter("needs_review")}
+        >
+          Needs Review <span className={styles.countPill}>{countNeedsReview}</span>
+        </button>
+        <button
+          className={`${styles.statusTab} ${statusFilter === "draft" ? styles.statusTabActive : ""}`}
+          onClick={() => setStatusFilter("draft")}
+        >
+          Draft / Unpublished <span className={styles.countPill}>{countDraft}</span>
+        </button>
+        <button
+          className={`${styles.statusTab} ${statusFilter === "archived" ? styles.statusTabActive : ""}`}
+          onClick={() => setStatusFilter("archived")}
+        >
+          Archived <span className={styles.countPill}>{countArchived}</span>
+        </button>
       </div>
 
       {/* Filter / Search Bar */}
@@ -361,7 +533,7 @@ export default function AdminProductsPage() {
         <input
           type="text"
           className={styles.searchInput}
-          placeholder="Search by name, SKU or keyword..."
+          placeholder="Search products by name, SKU or keyword..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
@@ -388,91 +560,241 @@ export default function AdminProductsPage() {
             <table className={styles.table}>
               <thead>
                 <tr>
-                  <th>Product</th>
+                  <th>Product & Authentic Image</th>
                   <th>Category</th>
                   <th>Price</th>
                   <th>Stock</th>
                   <th>Featured</th>
-                  <th>Status</th>
+                  <th>Review Status</th>
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {filteredProducts.map((p) => (
-                  <tr key={p.id}>
-                    <td>
-                      <div className={styles.productCell}>
-                        <div className={styles.thumbWrapper}>
-                          <Image
-                            src={p.images[0] || "/assets/category-textiles.jpg"}
-                            alt={p.name}
-                            width={48}
-                            height={48}
-                            className={styles.thumb}
-                          />
+                {filteredProducts.map((p) => {
+                  const isApproved =
+                    p.reviewStatus === "Approved" ||
+                    (p.isPublished && p.status === "published" && p.reviewStatus !== "Needs Review");
+                  const isNeedsReview =
+                    p.reviewStatus === "Needs Review" || p.status === "needs_review";
+                  const isArchived = p.status === "archived";
+
+                  return (
+                    <tr key={p.id}>
+                      <td>
+                        <div className={styles.productCell}>
+                          <div
+                            className={styles.thumbWrapper}
+                            onClick={() => setPreviewImage(p.images[0] || "/assets/image-coming-soon.svg")}
+                            title="Click to preview image"
+                            style={{ cursor: "pointer" }}
+                          >
+                            <Image
+                              src={p.images[0] || "/assets/image-coming-soon.svg"}
+                              alt={p.name}
+                              width={48}
+                              height={48}
+                              className={styles.thumb}
+                            />
+                          </div>
+                          <div>
+                            <strong>{p.name}</strong>
+                            <span className={styles.skuText}>SKU: {p.sku}</span>
+                          </div>
                         </div>
-                        <div>
-                          <strong>{p.name}</strong>
-                          <span className={styles.skuText}>SKU: {p.sku}</span>
+                      </td>
+                      <td>
+                        <span>{p.category}</span>
+                        <span className={styles.subCatText}>{p.subcategory}</span>
+                      </td>
+                      <td>
+                        <strong>
+                          {p.price !== null ? `₹${p.price.toLocaleString("en-IN")}` : "Get Quote"}
+                        </strong>
+                      </td>
+                      <td>
+                        <span className={p.inStock ? styles.badgeInStock : styles.badgeOutOfStock}>
+                          {p.inStock ? "In Stock" : "Out of Stock"}
+                        </span>
+                      </td>
+                      <td>
+                        <button
+                          onClick={() => handleToggleFeatured(p)}
+                          className={`${styles.toggleBtn} ${p.isFeatured ? styles.toggleActive : ""}`}
+                          title="Click to toggle featured status on homepage"
+                        >
+                          {p.isFeatured ? "Featured" : "Standard"}
+                        </button>
+                      </td>
+                      <td>
+                        {isApproved ? (
+                          <span className={styles.badgeApproved}>Approved / Live</span>
+                        ) : isNeedsReview ? (
+                          <span className={styles.badgeNeedsReview}>Needs Review</span>
+                        ) : isArchived ? (
+                          <span className={styles.badgeArchived}>Archived</span>
+                        ) : (
+                          <span className={styles.badgeDraft}>Unpublished</span>
+                        )}
+
+                        {/* Quick Workflow Action Buttons */}
+                        <div className={styles.quickActionGroup}>
+                          {!isApproved && (
+                            <button
+                              type="button"
+                              className={styles.quickApproveBtn}
+                              onClick={() => handleQuickStatus(p, "Approved", "published")}
+                              title="Approve & make visible publicly"
+                            >
+                              Approve
+                            </button>
+                          )}
+                          {!isNeedsReview && (
+                            <button
+                              type="button"
+                              className={styles.quickReviewBtn}
+                              onClick={() => handleQuickStatus(p, "Needs Review", "needs_review")}
+                              title="Flag for image review"
+                            >
+                              Needs Review
+                            </button>
+                          )}
+                          {isApproved && (
+                            <button
+                              type="button"
+                              className={styles.quickUnpublishBtn}
+                              onClick={() => handleQuickStatus(p, "Unpublished", "draft")}
+                              title="Unpublish from storefront"
+                            >
+                              Unpublish
+                            </button>
+                          )}
                         </div>
-                      </div>
-                    </td>
-                    <td>
-                      <span>{p.category}</span>
-                      <span className={styles.subCatText}>{p.subcategory}</span>
-                    </td>
-                    <td>
-                      <strong>
-                        {p.price !== null ? `₹${p.price.toLocaleString("en-IN")}` : "Get Quote"}
-                      </strong>
-                    </td>
-                    <td>
-                      <span className={p.inStock ? styles.badgeInStock : styles.badgeOutOfStock}>
-                        {p.inStock ? "In Stock" : "Out of Stock"}
-                      </span>
-                    </td>
-                    <td>
-                      <button
-                        onClick={() => handleToggleFeatured(p)}
-                        className={`${styles.toggleBtn} ${p.isFeatured ? styles.toggleActive : ""}`}
-                        title="Click to toggle featured status on homepage"
-                      >
-                        {p.isFeatured ? "Featured" : "Standard"}
-                      </button>
-                    </td>
-                    <td>
-                      <button
-                        onClick={() => handleTogglePublish(p)}
-                        className={`${styles.statusPill} ${p.isPublished ? styles.published : styles.draft}`}
-                      >
-                        {p.isPublished ? "Live" : "Draft"}
-                      </button>
-                    </td>
-                    <td>
-                      <div className={styles.actions}>
-                        <button
-                          onClick={() => openEditModal(p)}
-                          className={styles.editBtn}
-                          title="Edit Product"
-                        >
-                          Edit
-                        </button>
-                        <button
-                          onClick={() => handleDeleteProduct(p.id, p.name)}
-                          className={styles.deleteBtn}
-                          title="Delete Product"
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
+                      </td>
+                      <td>
+                        <div className={styles.actions}>
+                          <button
+                            onClick={() => openEditModal(p)}
+                            className={styles.editBtn}
+                            title="Edit Product"
+                          >
+                            Edit
+                          </button>
+                          <button
+                            onClick={() => handleDeleteProduct(p.id, p.name)}
+                            className={styles.deleteBtn}
+                            title="Delete Product"
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
         )}
       </div>
+
+      {/* Image Preview Lightbox */}
+      {previewImage && (
+        <div className={styles.lightboxOverlay} onClick={() => setPreviewImage(null)}>
+          <div className={styles.lightboxContent} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.lightboxCloseBtn} onClick={() => setPreviewImage(null)}>
+              ✕
+            </button>
+            <Image
+              src={previewImage}
+              alt="Preview"
+              width={600}
+              height={600}
+              style={{ maxHeight: "80vh", width: "auto", borderRadius: "8px", objectFit: "contain" }}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Media Library Picker Modal */}
+      {isMediaPickerOpen && (
+        <div className={styles.mediaPickerOverlay} onClick={() => setIsMediaPickerOpen(false)}>
+          <div className={styles.mediaPickerModal} onClick={(e) => e.stopPropagation()}>
+            <div className={styles.modalHeader}>
+              <div>
+                <h2>Select Image from Media Library</h2>
+                <p style={{ margin: "0.2rem 0 0", fontSize: "0.8rem", color: "#64748b" }}>
+                  Choose authentic verified product photographs from your catalogue assets.
+                </p>
+              </div>
+              <button className={styles.closeBtn} onClick={() => setIsMediaPickerOpen(false)}>
+                <X size={18} />
+              </button>
+            </div>
+
+            <div style={{ padding: "0.75rem 1rem", borderBottom: "1px solid #e2e8f0" }}>
+              <input
+                type="text"
+                className={styles.input}
+                placeholder="Search assets by filename or description..."
+                value={mediaSearch}
+                onChange={(e) => setMediaSearch(e.target.value)}
+              />
+            </div>
+
+            <div className={styles.mediaGrid}>
+              {mediaLoading ? (
+                <p style={{ padding: "2rem", textAlign: "center", color: "#64748b" }}>
+                  Loading Media Assets...
+                </p>
+              ) : (
+                mediaAssets
+                  .filter(
+                    (m) =>
+                      !mediaSearch ||
+                      m.filename.toLowerCase().includes(mediaSearch.toLowerCase()) ||
+                      (m.title && m.title.toLowerCase().includes(mediaSearch.toLowerCase()))
+                  )
+                  .map((m) => (
+                    <div
+                      key={m.id}
+                      className={`${styles.mediaItemCard} ${
+                        selectedMediaUrl === m.url ? styles.mediaItemCardSelected : ""
+                      }`}
+                      onClick={() => handleSelectMedia(m.url)}
+                    >
+                      <Image
+                        src={m.url}
+                        alt={m.title || m.filename || "Media"}
+                        width={130}
+                        height={90}
+                        className={styles.mediaItemThumb}
+                      />
+                      <span className={styles.mediaItemLabel}>{m.title || m.filename}</span>
+                    </div>
+                  ))
+              )}
+            </div>
+
+            <div className={styles.modalFooter}>
+              <button
+                type="button"
+                className={styles.cancelBtn}
+                onClick={() => setIsMediaPickerOpen(false)}
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                className={styles.saveBtn}
+                disabled={!selectedMediaUrl}
+                onClick={handleConfirmMediaSelection}
+              >
+                Add Selected to Gallery
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Add / Edit Product Modal */}
       {isModalOpen && (
@@ -494,7 +816,7 @@ export default function AdminProductsPage() {
                     type="text"
                     required
                     className={styles.input}
-                    placeholder="e.g. Handcrafted Banarasi Pure Silk Saree"
+                    placeholder="e.g. Handcrafted Brass Puja Kalash & Thali Ensemble"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
@@ -506,7 +828,7 @@ export default function AdminProductsPage() {
                   <input
                     type="text"
                     className={styles.input}
-                    placeholder="e.g. Heritage weave, contemporary grace"
+                    placeholder="e.g. Traditional Vedic Ritual Craftsmanship with Sacred Motifs"
                     value={tagline}
                     onChange={(e) => setTagline(e.target.value)}
                   />
@@ -514,7 +836,7 @@ export default function AdminProductsPage() {
 
                 {/* Category & Subcategory */}
                 <div className={styles.colHalf}>
-                  <label className={styles.label}>Category *</label>
+                  <label className={styles.label}>Primary Category *</label>
                   <select
                     className={styles.select}
                     value={categorySlug}
@@ -529,17 +851,17 @@ export default function AdminProductsPage() {
                 </div>
 
                 <div className={styles.colHalf}>
-                  <label className={styles.label}>Subcategory</label>
+                  <label className={styles.label}>Subcategory / Collection</label>
                   <input
                     type="text"
                     className={styles.input}
-                    placeholder="e.g. Sarees, Notebooks, Corporate Gifts"
+                    placeholder="e.g. Puja Samagri, Vivah Soop, Jaymala"
                     value={subcategory}
                     onChange={(e) => setSubcategory(e.target.value)}
                   />
                 </div>
 
-                {/* Pricing & SKU */}
+                {/* Pricing Type */}
                 <div className={styles.colHalf}>
                   <label className={styles.label}>Pricing Model</label>
                   <select
@@ -547,47 +869,88 @@ export default function AdminProductsPage() {
                     value={priceType}
                     onChange={(e) => setPriceType(e.target.value as "fixed" | "quote")}
                   >
-                    <option value="fixed">Fixed Price (INR)</option>
-                    <option value="quote">Get Quote / Wholesale Inquiry</option>
+                    <option value="fixed">Fixed Price (₹ INR)</option>
+                    <option value="quote">Price on Enquiry / Get Quote</option>
                   </select>
                 </div>
 
-                <div className={styles.colHalf}>
-                  <label className={styles.label}>
-                    {priceType === "fixed" ? "Price (₹ INR) *" : "Quote Note"}
-                  </label>
-                  {priceType === "fixed" ? (
+                {priceType === "fixed" ? (
+                  <div className={styles.colHalf}>
+                    <label className={styles.label}>Selling Price (₹) *</label>
                     <input
                       type="number"
                       required
-                      min="1"
+                      min="0"
                       className={styles.input}
-                      placeholder="e.g. 3800"
+                      placeholder="e.g. 1850"
                       value={price}
                       onChange={(e) => setPrice(e.target.value)}
                     />
-                  ) : (
+                  </div>
+                ) : (
+                  <div className={styles.colHalf}>
+                    <label className={styles.label}>Enquiry Label</label>
                     <input
                       type="text"
+                      disabled
                       className={styles.input}
-                      placeholder="e.g. Custom quotation based on volume"
-                      value={priceNote}
-                      onChange={(e) => setPriceNote(e.target.value)}
+                      value="Display 'Get Quote' button on storefront"
                     />
-                  )}
+                  </div>
+                )}
+
+                <div className={styles.colHalf}>
+                  <label className={styles.label}>Original / Compare Price (₹)</label>
+                  <input
+                    type="number"
+                    min="0"
+                    className={styles.input}
+                    placeholder="e.g. 2500"
+                    value={compareAtPrice}
+                    onChange={(e) => setCompareAtPrice(e.target.value)}
+                  />
                 </div>
 
                 <div className={styles.colHalf}>
-                  <label className={styles.label}>SKU Identifier</label>
+                  <label className={styles.label}>Stock Quantity</label>
+                  <input
+                    type="number"
+                    min="0"
+                    className={styles.input}
+                    placeholder="e.g. 50"
+                    value={stockQuantity}
+                    onChange={(e) => setStockQuantity(e.target.value)}
+                  />
+                </div>
+
+                <div className={styles.colHalf}>
+                  <label className={styles.label}>SKU Identifier *</label>
                   <input
                     type="text"
+                    required
                     className={styles.input}
                     value={sku}
                     onChange={(e) => setSku(e.target.value)}
                   />
                 </div>
 
+                {/* Review Workflow Status */}
                 <div className={styles.colHalf}>
+                  <label className={styles.label}>Content Review Workflow Status *</label>
+                  <select
+                    className={styles.select}
+                    value={reviewStatus}
+                    onChange={(e) =>
+                      setReviewStatus(e.target.value as "Approved" | "Needs Review" | "Unpublished")
+                    }
+                  >
+                    <option value="Approved">Approved (Publicly Visible)</option>
+                    <option value="Needs Review">Needs Review (Hidden until image verified)</option>
+                    <option value="Unpublished">Unpublished (Work In Progress)</option>
+                  </select>
+                </div>
+
+                <div className={styles.colFull}>
                   <label className={styles.label}>Price Note / Unit</label>
                   <input
                     type="text"
@@ -605,31 +968,130 @@ export default function AdminProductsPage() {
                     rows={4}
                     required
                     className={styles.textarea}
-                    placeholder="Describe craftsmanship, heritage, materials, and occasion suitability..."
+                    placeholder="Describe craftsmanship, materials, cultural significance, and occasion suitability..."
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                   />
                 </div>
 
-                {/* Image Upload Section */}
+                {/* Gallery Management with Reorder, Preview, & Media Library Picker */}
                 <div className={styles.colFull}>
-                  <label className={styles.label}>Product Images</label>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    <label className={styles.label} style={{ margin: 0 }}>
+                      Product Images & Gallery (Reorder & Set Primary)
+                    </label>
+                    <button
+                      type="button"
+                      className="btn btn-secondary"
+                      style={{
+                        fontSize: "0.8rem",
+                        padding: "0.35rem 0.75rem",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "5px",
+                        cursor: "pointer",
+                      }}
+                      onClick={openMediaPicker}
+                    >
+                      <ImageIcon size={14} />
+                      Choose from Media Library
+                    </button>
+                  </div>
+
                   <div className={styles.imageUploadArea}>
-                    <div className={styles.imageThumbnails}>
+                    {/* Gallery Cards */}
+                    <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginBottom: "0.75rem" }}>
                       {images.map((imgUrl, idx) => (
-                        <div key={idx} className={styles.uploadedThumb}>
-                          <Image src={imgUrl} alt="Thumbnail" width={64} height={64} className={styles.thumbImg} />
-                          <button
-                            type="button"
-                            className={styles.removeThumbBtn}
-                            onClick={() => handleRemoveImage(idx)}
-                          >
-                            <X size={14} />
-                          </button>
+                        <div
+                          key={idx}
+                          className={`${styles.galleryCard} ${idx === 0 ? styles.galleryCardPrimary : ""}`}
+                        >
+                          {idx === 0 && <span className={styles.galleryPrimaryTag}>Primary</span>}
+                          <Image
+                            src={imgUrl}
+                            alt={`Gallery ${idx + 1}`}
+                            width={100}
+                            height={100}
+                            className={styles.galleryImg}
+                            onClick={() => setPreviewImage(imgUrl)}
+                            title="Click to preview large"
+                          />
+                          <div className={styles.galleryCardControls}>
+                            {idx > 0 && (
+                              <button
+                                type="button"
+                                className={styles.galleryControlBtn}
+                                onClick={() => handleMoveImage(idx, -1)}
+                                title="Move Left"
+                              >
+                                <ArrowLeft size={12} />
+                              </button>
+                            )}
+                            {idx !== 0 && (
+                              <button
+                                type="button"
+                                className={styles.galleryControlBtn}
+                                onClick={() => handleSetPrimaryImage(idx)}
+                                title="Make Primary"
+                              >
+                                <Star size={12} />
+                              </button>
+                            )}
+                            {idx < images.length - 1 && (
+                              <button
+                                type="button"
+                                className={styles.galleryControlBtn}
+                                onClick={() => handleMoveImage(idx, 1)}
+                                title="Move Right"
+                              >
+                                <ArrowRight size={12} />
+                              </button>
+                            )}
+                            <button
+                              type="button"
+                              className={styles.galleryDeleteBtn}
+                              onClick={() => handleRemoveImage(idx)}
+                              title="Remove Image"
+                            >
+                              <Trash2 size={12} />
+                            </button>
+                          </div>
                         </div>
                       ))}
                     </div>
 
+                    {/* Manual URL input */}
+                    <div style={{ display: "flex", gap: "8px", width: "100%", margin: "8px 0" }}>
+                      <input
+                        type="url"
+                        className={styles.input}
+                        placeholder="Paste image URL (e.g. /assets/products/... or https://...)"
+                        value={imageUrlInput}
+                        onChange={(e) => setImageUrlInput(e.target.value)}
+                      />
+                      <button
+                        type="button"
+                        className="btn btn-secondary"
+                        style={{ padding: "0 16px", whiteSpace: "nowrap" }}
+                        onClick={() => {
+                          if (imageUrlInput.trim()) {
+                            setImages((prev) => [...prev, imageUrlInput.trim()]);
+                            setImageUrlInput("");
+                          }
+                        }}
+                      >
+                        Add URL
+                      </button>
+                    </div>
+
+                    {/* File Upload input */}
                     <input
                       type="file"
                       ref={fileInputRef}
@@ -643,15 +1105,43 @@ export default function AdminProductsPage() {
                       className={styles.uploadBtn}
                       onClick={() => fileInputRef.current?.click()}
                       disabled={uploadLoading}
-                      style={{ display: "inline-flex", alignItems: "center", gap: "6px", justifyContent: "center" }}
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "6px",
+                        justifyContent: "center",
+                      }}
                     >
                       <Upload size={15} />
-                      <span>{uploadLoading ? "Uploading Image..." : "Upload Product Image"}</span>
+                      <span>{uploadLoading ? "Uploading Image..." : "Upload New Image File"}</span>
                     </button>
                     <span className={styles.uploadHint}>
-                      Supports JPG, PNG, WEBP. Uploaded directly to your website server.
+                      Supports JPG, PNG, WEBP. Uploads directly to your server and auto-indexes in the Media Library.
                     </span>
                   </div>
+                </div>
+
+                {/* Alt Text & WhatsApp Message */}
+                <div className={styles.colHalf}>
+                  <label className={styles.label}>Image Alt Text (SEO & Accessibility)</label>
+                  <input
+                    type="text"
+                    className={styles.input}
+                    placeholder="e.g. Traditional Brass Puja Kalash by Bhaya India"
+                    value={altText}
+                    onChange={(e) => setAltText(e.target.value)}
+                  />
+                </div>
+
+                <div className={styles.colHalf}>
+                  <label className={styles.label}>Custom WhatsApp Enquiry Message</label>
+                  <input
+                    type="text"
+                    className={styles.input}
+                    placeholder="Leave blank for automatic smart message"
+                    value={whatsappMessage}
+                    onChange={(e) => setWhatsappMessage(e.target.value)}
+                  />
                 </div>
 
                 {/* Specifications Builder */}
@@ -675,7 +1165,7 @@ export default function AdminProductsPage() {
                         <input
                           type="text"
                           className={styles.input}
-                          placeholder="Spec Value (e.g. Pure Silk)"
+                          placeholder="Spec Value (e.g. Solid Brass)"
                           value={spec.value}
                           onChange={(e) => handleSpecChange(idx, "value", e.target.value)}
                         />
@@ -691,6 +1181,56 @@ export default function AdminProductsPage() {
                   </div>
                 </div>
 
+                {/* Product FAQs Builder */}
+                <div className={styles.colFull}>
+                  <div className={styles.sectionHeaderFlex}>
+                    <label className={styles.label}>Product-Specific FAQs</label>
+                    <button type="button" onClick={addFaqRow} className={styles.addSmallBtn}>
+                      + Add FAQ Question
+                    </button>
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                    {faqs.map((faq, idx) => (
+                      <div
+                        key={idx}
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: "0.35rem",
+                          background: "#f8fafc",
+                          padding: "0.75rem",
+                          borderRadius: "6px",
+                          border: "1px solid #e2e8f0",
+                        }}
+                      >
+                        <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+                          <input
+                            type="text"
+                            className={styles.input}
+                            placeholder="Question (e.g. Is this pure brass?)"
+                            value={faq.question}
+                            onChange={(e) => updateFaqRow(idx, "question", e.target.value)}
+                          />
+                          <button
+                            type="button"
+                            className={styles.rowDeleteBtn}
+                            onClick={() => removeFaqRow(idx)}
+                          >
+                            <X size={14} />
+                          </button>
+                        </div>
+                        <textarea
+                          rows={2}
+                          className={styles.textarea}
+                          placeholder="Answer..."
+                          value={faq.answer}
+                          onChange={(e) => updateFaqRow(idx, "answer", e.target.value)}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
                 {/* Toggles */}
                 <div className={styles.colFull}>
                   <div className={styles.toggleRow}>
@@ -700,7 +1240,7 @@ export default function AdminProductsPage() {
                         checked={isPublished}
                         onChange={(e) => setIsPublished(e.target.checked)}
                       />
-                      <span>Publish Live Immediately</span>
+                      <span>Publish Live Immediately (if Approved)</span>
                     </label>
 
                     <label className={styles.checkboxLabel}>
@@ -741,12 +1281,12 @@ export default function AdminProductsPage() {
                 >
                   Cancel
                 </button>
-                <button
-                  type="submit"
-                  disabled={formLoading}
-                  className={styles.saveBtn}
-                >
-                  {formLoading ? "Saving Product..." : editingProduct ? "Save Changes" : "Publish Product →"}
+                <button type="submit" disabled={formLoading} className={styles.saveBtn}>
+                  {formLoading
+                    ? "Saving Product..."
+                    : editingProduct
+                    ? "Save Changes"
+                    : "Create & Save Product →"}
                 </button>
               </div>
             </form>

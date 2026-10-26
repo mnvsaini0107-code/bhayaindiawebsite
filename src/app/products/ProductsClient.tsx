@@ -2,10 +2,8 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
-import { useCart } from "@/context/CartContext";
 import type { BhayaShopifyProduct } from "@/lib/shopify/types";
 import {
   CATEGORIES_TAXONOMY,
@@ -16,28 +14,8 @@ import {
   analyzeSearchIntent,
   scoreAndRankProducts,
 } from "@/lib/search/intentSearch";
-import {
-  getLanguageAwareProductImage,
-  getLocalizedProductName,
-  getLocalizedProductCategory,
-  getLocalizedProductSubcategory,
-} from "@/lib/shopify/utils";
+import ProductCard from "@/components/ProductCard/ProductCard";
 import styles from "./products.module.css";
-
-function getWhatsAppUrl(product: BhayaShopifyProduct, whatsappNumber: string, language: "en" | "hi" = "hi") {
-  const prodName = getLocalizedProductName(product, language);
-  const msg =
-    language === "hi"
-      ? `नमस्कार, मुझे BHAYA INDIA के इस product के बारे में जानकारी चाहिए:
-
-Product Name: ${prodName}
-Quantity: 1`
-      : `Hello, I would like to enquire about this BHAYA INDIA product:
-
-Product Name: ${prodName}
-Quantity: 1`;
-  return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
-}
 
 interface Props {
   allProducts: BhayaShopifyProduct[];
@@ -48,8 +26,7 @@ export default function ProductsClient({
   allProducts,
   whatsappNumber,
 }: Props) {
-  const { language, t } = useLanguage();
-  const { addItem } = useCart();
+  const { language } = useLanguage();
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -122,12 +99,7 @@ export default function ProductsClient({
 
     // If search query is present, rank with intelligent intent engine
     if (searchQuery.trim()) {
-      list = scoreAndRankProducts(
-        list,
-        searchQuery,
-        searchIntent?.matchedCategory || matchedTaxonomyCategory || null,
-        searchIntent?.matchedSubcategories || []
-      );
+      list = scoreAndRankProducts(list, searchQuery);
     }
 
     if (sortOption === "price-low") {
@@ -148,7 +120,6 @@ export default function ProductsClient({
     sortOption,
     matchedTaxonomyCategory,
     matchedTaxonomySubcategory,
-    searchIntent,
   ]);
 
   const updateParam = (key: string, value: string) => {
@@ -529,134 +500,13 @@ export default function ProductsClient({
           </div>
         ) : (
           <div className={styles.productGrid}>
-            {filtered.map((product) => {
-              const hasPrice = product.price !== null && product.price > 0;
-              const compPrice =
-                product.compareAtPrice && product.compareAtPrice > (product.price || 0)
-                  ? product.compareAtPrice
-                  : hasPrice
-                  ? Math.round(product.price! * 1.25)
-                  : null;
-              const discount =
-                hasPrice && compPrice
-                  ? Math.round(((compPrice - product.price!) / compPrice) * 100)
-                  : 0;
-              const rating = product.rating;
-              const reviewsCount = product.reviewsCount;
-              const currentImage = getLanguageAwareProductImage(product, language);
-              const displayName = getLocalizedProductName(product, language);
-              const displayCategory = getLocalizedProductCategory(product, language);
-
-              return (
-                <article key={product.id} className={styles.card} id={`product-${product.sku}`}>
-                  {/* Image Wrap */}
-                  <div className={styles.imageWrap}>
-                    <Link href={`/products/${product.slug}`} className={styles.imageLink}>
-                      <Image
-                        src={currentImage}
-                        alt={displayName}
-                        fill
-                        className={styles.productImg}
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                    </Link>
-
-                    <div className={styles.badgeGroup}>
-                      {discount > 0 && (
-                        <span className={styles.discountBadge}>
-                          {t("offDiscount", { discount })}
-                        </span>
-                      )}
-                      {product.isNew && (
-                        <span className={styles.badge}>
-                          {t("newArrival")}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Body Content */}
-                  <div className={styles.cardBody}>
-                    <span className={styles.category}>{displayCategory}</span>
-
-                    <h2 className={styles.title}>
-                      <Link href={`/products/${product.slug}`}>{displayName}</Link>
-                    </h2>
-
-                    {rating ? (
-                      <div className={styles.ratingRow}>
-                        <span className={styles.stars}>★</span>
-                        <span className={styles.ratingNum}>{rating}</span>
-                        {reviewsCount ? (
-                          <span className={styles.reviewCount}>({reviewsCount})</span>
-                        ) : null}
-                      </div>
-                    ) : null}
-
-                    <div className={styles.priceRow}>
-                      {hasPrice ? (
-                        <>
-                          <span className={styles.price}>
-                            ₹{product.price!.toLocaleString("en-IN")}
-                          </span>
-                          {compPrice && (
-                            <span className={styles.originalPrice}>
-                              ₹{compPrice.toLocaleString("en-IN")}
-                            </span>
-                          )}
-                        </>
-                      ) : (
-                        <span className={styles.quoteOnly}>
-                          {t("customQuoteWholesale")}
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Actions */}
-                    <div className={styles.cardActions}>
-                      {product.inStock ? (
-                        <button
-                          type="button"
-                          className={styles.addToBagBtn}
-                          onClick={() => {
-                            addItem({
-                              id: product.id,
-                              name: displayName,
-                              slug: product.slug,
-                              price: product.price || 0,
-                              image: currentImage,
-                              category: product.category || "retail",
-                              variantId: product.variantId,
-                            });
-                          }}
-                          id={`add-bag-${product.id}`}
-                        >
-                          {t("addToBag")}
-                        </button>
-                      ) : (
-                        <button type="button" className={styles.outOfStockBtn} disabled>
-                          {t("outOfStock")}
-                        </button>
-                      )}
-
-                      <a
-                        href={getWhatsAppUrl(product, whatsappNumber, language)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.whatsappIconBtn}
-                        aria-label={`Enquire about ${displayName} on WhatsApp`}
-                        title={t("whatsAppEnquiry")}
-                      >
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-                          <path d="M11.998 2C6.477 2 2 6.484 2 12.017c0 1.99.518 3.869 1.424 5.49L2 22l4.618-1.41A9.917 9.917 0 0 0 12 22.033c5.52 0 9.998-4.484 9.998-10.016C21.998 6.484 17.52 2 11.998 2zm0 18.338a8.28 8.28 0 0 1-4.22-1.155l-.302-.18-3.13.955.832-3.048-.198-.313A8.273 8.273 0 0 1 3.72 12.017c0-4.57 3.718-8.286 8.278-8.286 4.556 0 8.275 3.716 8.275 8.286 0 4.571-3.72 8.321-8.275 8.321z" />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
+            {filtered.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                whatsappNumber={whatsappNumber}
+              />
+            ))}
           </div>
         )}
       </div>

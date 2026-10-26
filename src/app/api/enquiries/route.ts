@@ -1,8 +1,15 @@
 import { NextResponse } from "next/server";
 import { getEnquiries, createEnquiry } from "@/lib/db";
-import { isShopifyAdminConfigured, shopifyAdminFetch } from "@/lib/shopify";
+import { verifyAdminRequest, checkRateLimit, recordRateLimitAttempt } from "@/lib/auth";
 
-export async function GET() {
+export async function GET(request: Request) {
+  if (!(await verifyAdminRequest(request))) {
+    return NextResponse.json(
+      { success: false, error: "Unauthorized: Admin session required." },
+      { status: 401 }
+    );
+  }
+
   try {
     const enquiries = getEnquiries();
     return NextResponse.json({ success: true, enquiries });
@@ -14,13 +21,26 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
+    const forwardedFor = request.headers.get("x-forwarded-for") || "local";
+    const clientIp = forwardedFor.split(",")[0].trim();
+
+    // Rate limit enquiries to 10 submissions per 10 minutes per IP
+    const rateCheck = checkRateLimit(`enquiry:${clientIp}`, 10, 10 * 60 * 1000);
+    if (rateCheck.limited) {
+      return NextResponse.json(
+        { success: false, error: `Too many submissions. Please wait ${rateCheck.retryAfterSeconds} seconds before submitting again.` },
+        { status: 429 }
+      );
+    }
+    recordRateLimitAttempt(`enquiry:${clientIp}`, 10, 10 * 60 * 1000);
+
     const body = await request.json();
-    const name = body.name || body.fullName || "";
-    const mobile = body.mobile || body.phone || "";
-    const email = body.email || "";
-    const businessName = body.businessName || "";
-    const message = body.message || body.requirement || body.notes || "";
-    const enquiryType = body.type || "general";
+    const name = String(body.name || body.fullName || "").trim().slice(0, 100);
+    const mobile = String(body.mobile || body.phone || "").trim().slice(0, 25);
+    const email = String(body.email || "").trim().slice(0, 120);
+    const businessName = String(body.businessName || "").trim().slice(0, 150);
+    const message = String(body.message || body.requirement || body.notes || "").trim().slice(0, 1500);
+    const enquiryType = String(body.type || "general").slice(0, 50);
 
     if (!name || !mobile) {
       return NextResponse.json(
@@ -37,53 +57,8 @@ export async function POST(request: Request) {
       productName: body.productName || (businessName ? `Business: ${businessName}` : "General Lead"),
       productId: body.productId || "",
       quantity: body.quantity ? Number(body.quantity) : undefined,
-      message: `${message}${businessName ? ` | Business: ${businessName}` : ""}${body.location ? ` | Location: ${body.location}` : ""}`,
+      message: `[${enquiryType.toUpperCase()}] ${message}${businessName ? ` | Business: ${businessName}` : ""}${body.location ? ` | Location: ${body.location}` : ""}`,
     });
-
-    // 2. Synchronize to Shopify Customer / Lead if Admin API is configured
-    if (isShopifyAdminConfigured() && (email || mobile)) {
-      try {
-        const tagMap: Record<string, string> = {
-          seller: "Lead - Become a Seller",
-          manufacturer: "Lead - Manufacturer",
-          wholesale: "Lead - Wholesale B2B",
-          product: "Lead - Product Enquiry",
-        };
-        const leadTag = tagMap[enquiryType] || "Lead - General";
-
-        const customerCreateMutation = `
-          mutation customerCreate($input: CustomerInput!) {
-            customerCreate(input: $input) {
-              customer {
-                id
-                email
-                phone
-              }
-              userErrors {
-                field
-                message
-              }
-            }
-          }
-        `;
-
-        await shopifyAdminFetch({
-          query: customerCreateMutation,
-          variables: {
-            input: {
-              firstName: name.split(" ")[0] || name,
-              lastName: name.split(" ").slice(1).join(" ") || "Lead",
-              email: email || undefined,
-              phone: mobile.startsWith("+") ? mobile : `+91${mobile.replace(/[^0-9]/g, "").slice(-10)}`,
-              note: `BHAYA INDIA ${enquiryType.toUpperCase()} Enquiry: ${message}. Business: ${businessName || "N/A"}`,
-              tags: [leadTag, "Bhaya India", "Storefront Lead"],
-            },
-          },
-        });
-      } catch (shopifyErr) {
-        console.warn("Could not sync lead to Shopify Customer:", shopifyErr);
-      }
-    }
 
     return NextResponse.json({ success: true, enquiry }, { status: 201 });
   } catch (error) {

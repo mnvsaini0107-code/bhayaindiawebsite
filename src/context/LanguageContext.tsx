@@ -3,8 +3,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { en } from "@/locales/en";
 import { hi } from "@/locales/hi";
-
-export type Locale = "hi" | "en";
+import { INDIAN_LANGUAGE_PACKS } from "@/locales/indianLanguages";
 
 export type IndianLanguageCode =
   | "en"
@@ -18,7 +17,10 @@ export type IndianLanguageCode =
   | "ml"
   | "pa"
   | "or"
-  | "as";
+  | "as"
+  | "ur";
+
+export type Locale = IndianLanguageCode;
 
 export interface IndianLanguageOption {
   code: IndianLanguageCode;
@@ -26,21 +28,23 @@ export interface IndianLanguageOption {
   name: string;
   nativeName: string;
   status: "live" | "coming_soon";
+  dir?: "ltr" | "rtl";
 }
 
 export const INDIAN_LANGUAGES: IndianLanguageOption[] = [
-  { code: "en", isoCode: "EN", name: "English", nativeName: "English", status: "live" },
-  { code: "hi", isoCode: "HI", name: "Hindi", nativeName: "हिन्दी", status: "live" },
-  { code: "bn", isoCode: "BN", name: "Bengali", nativeName: "বাংলা", status: "coming_soon" },
-  { code: "mr", isoCode: "MR", name: "Marathi", nativeName: "मराठी", status: "coming_soon" },
-  { code: "gu", isoCode: "GU", name: "Gujarati", nativeName: "ગુજરાતી", status: "coming_soon" },
-  { code: "ta", isoCode: "TA", name: "Tamil", nativeName: "தமிழ்", status: "coming_soon" },
-  { code: "te", isoCode: "TE", name: "Telugu", nativeName: "తెలుగు", status: "coming_soon" },
-  { code: "kn", isoCode: "KN", name: "Kannada", nativeName: "ಕನ್ನಡ", status: "coming_soon" },
-  { code: "ml", isoCode: "ML", name: "Malayalam", nativeName: "മലയാളം", status: "coming_soon" },
-  { code: "pa", isoCode: "PA", name: "Punjabi", nativeName: "ਪੰਜਾਬੀ", status: "coming_soon" },
-  { code: "or", isoCode: "OR", name: "Odia", nativeName: "ଓଡ଼ିଆ", status: "coming_soon" },
-  { code: "as", isoCode: "AS", name: "Assamese", nativeName: "অসমীয়া", status: "coming_soon" },
+  { code: "en", isoCode: "EN", name: "English", nativeName: "English", status: "live", dir: "ltr" },
+  { code: "hi", isoCode: "HI", name: "Hindi", nativeName: "हिन्दी", status: "live", dir: "ltr" },
+  { code: "bn", isoCode: "BN", name: "Bengali", nativeName: "বাংলা", status: "live", dir: "ltr" },
+  { code: "mr", isoCode: "MR", name: "Marathi", nativeName: "मराठी", status: "live", dir: "ltr" },
+  { code: "gu", isoCode: "GU", name: "Gujarati", nativeName: "ગુજરાતી", status: "live", dir: "ltr" },
+  { code: "ta", isoCode: "TA", name: "Tamil", nativeName: "தமிழ்", status: "live", dir: "ltr" },
+  { code: "te", isoCode: "TE", name: "Telugu", nativeName: "తెలుగు", status: "live", dir: "ltr" },
+  { code: "kn", isoCode: "KN", name: "Kannada", nativeName: "ಕನ್ನಡ", status: "live", dir: "ltr" },
+  { code: "ml", isoCode: "ML", name: "Malayalam", nativeName: "മലയാളം", status: "live", dir: "ltr" },
+  { code: "pa", isoCode: "PA", name: "Punjabi", nativeName: "ਪੰਜਾਬੀ", status: "live", dir: "ltr" },
+  { code: "or", isoCode: "OR", name: "Odia", nativeName: "ଓଡ଼ିଆ", status: "live", dir: "ltr" },
+  { code: "as", isoCode: "AS", name: "Assamese", nativeName: "অসমীয়া", status: "live", dir: "ltr" },
+  { code: "ur", isoCode: "UR", name: "Urdu", nativeName: "اردو", status: "live", dir: "rtl" },
 ];
 
 interface LanguageContextType {
@@ -70,12 +74,24 @@ export function LanguageProvider({
   const [mounted, setMounted] = useState(false);
   const [pendingNotice, setPendingNotice] = useState<IndianLanguageOption | null>(null);
 
+  const applyDirectionAndLang = (code: string) => {
+    if (typeof document !== "undefined") {
+      document.documentElement.lang = code;
+      if (code === "ur") {
+        document.documentElement.dir = "rtl";
+      } else {
+        document.documentElement.dir = "ltr";
+      }
+    }
+  };
+
   useEffect(() => {
     setMounted(true);
     try {
       const saved = localStorage.getItem("bhaya_locale") as Locale;
-      if (saved && (saved === "hi" || saved === "en")) {
-        setLocaleState((prev) => (prev !== saved ? saved : prev));
+      if (saved && INDIAN_LANGUAGES.some((l) => l.code === saved)) {
+        setLocaleState(saved);
+        applyDirectionAndLang(saved);
         document.cookie = `bhaya_locale=${saved}; path=/; max-age=31536000; SameSite=Lax`;
       }
     } catch {
@@ -86,6 +102,7 @@ export function LanguageProvider({
   const setLocale = (newLocale: Locale) => {
     setLocaleState(newLocale);
     setPendingNotice(null);
+    applyDirectionAndLang(newLocale);
     try {
       localStorage.setItem("bhaya_locale", newLocale);
       document.cookie = `bhaya_locale=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
@@ -99,25 +116,31 @@ export function LanguageProvider({
   };
 
   const selectLanguage = (code: IndianLanguageCode) => {
-    const lang = INDIAN_LANGUAGES.find((l) => l.code === code);
-    if (!lang) return;
-
-    if (lang.status === "live") {
-      setLocale(code as Locale);
-    } else {
-      // For upcoming regional languages, trigger truthful notice without breaking UI into mixed languages
-      setPendingNotice(lang);
-    }
+    setLocale(code);
   };
 
   const dismissNotice = () => {
     setPendingNotice(null);
   };
 
-  const currentStrings = locale === "hi" ? (hi as typeof en) : en;
-
   const t = (key: keyof typeof en, params?: Record<string, string | number>): string => {
-    let text = currentStrings[key] || en[key] || (key as string);
+    let text = "";
+
+    if (locale === "hi") {
+      text = (hi as Record<string, string>)[key as string] || en[key] || (key as string);
+    } else if (locale === "en") {
+      text = en[key] || (key as string);
+    } else {
+      // Indian Regional Language Pack
+      const pack = INDIAN_LANGUAGE_PACKS[locale];
+      if (pack && pack.translations[key as string]) {
+        text = pack.translations[key as string];
+      } else {
+        // Graceful fallback to Hindi or English
+        text = (hi as Record<string, string>)[key as string] || en[key] || (key as string);
+      }
+    }
+
     if (params) {
       Object.entries(params).forEach(([k, v]) => {
         text = text.replace(new RegExp(`\\{${k}\\}`, "g"), String(v));
@@ -125,6 +148,18 @@ export function LanguageProvider({
     }
     return text;
   };
+
+  const currentStrings = (
+    locale === "hi"
+      ? { ...en, ...hi }
+      : locale === "en"
+      ? en
+      : {
+          ...en,
+          ...(hi as Record<string, string>),
+          ...(INDIAN_LANGUAGE_PACKS[locale]?.translations || {}),
+        }
+  ) as typeof en;
 
   return (
     <LanguageContext.Provider

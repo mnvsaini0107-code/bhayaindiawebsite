@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import { useCart } from "@/context/CartContext";
@@ -10,6 +11,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import styles from "./cart.module.css";
 
 export default function CartPage() {
+  const router = useRouter();
   const { items, updateQuantity, removeItem, clearCart, totalPrice, totalCount, checkoutUrl, isLoading, createCheckout } = useCart();
   const { t, language } = useLanguage();
   const [checkingOut, setCheckingOut] = useState(false);
@@ -74,7 +76,7 @@ Total Amount: ₹${totalPrice.toLocaleString("en-IN")}`;
                     <div className={styles.productCell}>
                       <div className={styles.imageBox}>
                         <Image
-                          src={item.image || "/assets/category-textiles.jpg"}
+                          src={item.image || "/assets/image-coming-soon.svg"}
                           alt={item.name}
                           width={88}
                           height={88}
@@ -182,13 +184,13 @@ Total Amount: ₹${totalPrice.toLocaleString("en-IN")}`;
                         setCheckingOut(true);
                         try {
                           const url = await createCheckout();
-                          if (url) {
+                          if (url && (url.startsWith("http://") || url.startsWith("https://"))) {
                             window.location.href = url;
                           } else {
-                            window.location.href = "/checkout";
+                            router.push(url || "/checkout");
                           }
                         } catch {
-                          window.location.href = "/checkout";
+                          router.push("/checkout");
                         } finally {
                           setCheckingOut(false);
                         }

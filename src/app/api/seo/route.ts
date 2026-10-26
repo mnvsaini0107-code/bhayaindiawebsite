@@ -6,6 +6,7 @@ import {
   getPageSeo,
   savePageSeo,
 } from "@/lib/db";
+import { verifyAdminRequest } from "@/lib/auth";
 
 export async function GET(request: Request) {
   try {
@@ -33,6 +34,13 @@ export async function GET(request: Request) {
 }
 
 export async function PUT(request: Request) {
+  if (!(await verifyAdminRequest(request))) {
+    return NextResponse.json(
+      { success: false, error: "Unauthorized: Admin session required." },
+      { status: 401 }
+    );
+  }
+
   try {
     const body = await request.json();
 

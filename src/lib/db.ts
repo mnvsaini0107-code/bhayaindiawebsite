@@ -147,7 +147,7 @@ const initialData: DatabaseSchema = {
       slug: "puja-samagri",
       description: "Pure and authentic puja samagri, brassware, diya lamps, camphor, dhoop, and sacred ritual offerings.",
       descriptionHi: "शुद्ध एवं प्रामाणिक पूजा सामग्री, पीतल के दीये, धूप, हवन सामग्री और पारंपरिक पूजा अनुष्ठान सामग्री।",
-      image: "/assets/hero-editorial.jpg",
+      image: "/assets/products/puja-kalash-and-thali-ensemble.jpg",
       productCount: 45,
       subcategories: ["Brassware & Diyas", "Dhoop & Agarbatti", "Havan Samagri", "Pooja Aasan & Cloth"],
       subcategoriesHi: ["पीतल के दीये व थाली", "धूप एवं अगरबत्ती", "हवन सामग्री", "पूजा आसन व वस्त्र"],
@@ -159,7 +159,7 @@ const initialData: DatabaseSchema = {
       slug: "festival-decoration",
       description: "Traditional festival decor, decorative torans, bandhanwars, handcrafted festive hangings, and lights.",
       descriptionHi: "पारंपरिक त्योहार सजावट, तोरण, बंदनवार, हस्तशिल्प झालरें, शुभ-लाभ हैंगिंग्स और उत्सव सामग्री।",
-      image: "/assets/category-textiles.jpg",
+      image: "/assets/products/large-flower-garland-grand-tiered-festive.jpg",
       productCount: 38,
       subcategories: ["Torans & Bandhanwars", "Festive Hangings", "Decorative Lights", "Rangoli & Accents"],
       subcategoriesHi: ["तोरण एवं बंदनवार", "उत्सव हैंगिंग्स", "सजावटी लाइट्स", "रंगोली व सजावट"],
@@ -171,7 +171,7 @@ const initialData: DatabaseSchema = {
       slug: "wedding-marriage-items",
       description: "Essential marriage ritual items, bridal accessories, ornate wedding trunks, and gift boxes.",
       descriptionHi: "विवाह एवं शुभ वैवाहिक संस्कार सामग्री, शगुन लिफाफे, वर-वधू पूजन सामग्री और शादी के विशेष उपहार बक्से।",
-      image: "/assets/category-textiles.jpg",
+      image: "/assets/products/traditional-vivah-soop-collection.jpg",
       productCount: 32,
       subcategories: ["Ritual Essentials", "Shagun & Gift Boxes", "Bridal Accessories", "Ceremonial Trunks"],
       subcategoriesHi: ["विवाह संस्कार सामग्री", "शगुन एवं उपहार बॉक्स", "विवाह परिधान व श्रृंगार", "वैवाहिक बक्से"],
@@ -183,7 +183,7 @@ const initialData: DatabaseSchema = {
       slug: "handicraft",
       description: "Authentic Indian handicrafts, brass artifacts, hand-carved woodwork, terracotta, and folk art.",
       descriptionHi: "प्रामाणिक भारतीय हस्तशिल्प, पीतल शिल्प, नक्काशीदार काष्ठ कला, टेराकोटा कलाकृतियां और क्षेत्रीय लोक शिल्प।",
-      image: "/assets/category-stationery.jpg",
+      image: "/assets/products/handpainted-wooden-okhali.jpg",
       productCount: 54,
       subcategories: ["Brass & Metal Craft", "Wood Crafts", "Folk Art & Paintings", "Terracotta Art"],
       subcategoriesHi: ["पीतल एवं धातु शिल्प", "काष्ठ कला", "लोक कला एवं पेंटिंग्स", "टेराकोटा शिल्प"],
@@ -195,7 +195,7 @@ const initialData: DatabaseSchema = {
       slug: "home-decoration",
       description: "Artisan homeware, wall decor, brass urns, decorative figurines, and aesthetic interior accents.",
       descriptionHi: "पारंपरिक एवं आधुनिक घर की सजावट, वॉल डेकोर, पीतल के शोपीस, लैंप्स और सुरुचिपूर्ण कलाकृतियां।",
-      image: "/assets/hero-editorial.jpg",
+      image: "/assets/products/auspicious-moti-kalash.jpg",
       productCount: 42,
       subcategories: ["Wall Hangings & Clocks", "Brass Showpieces", "Tabletop Decor", "Vases & Urns"],
       subcategoriesHi: ["दीवार सजावट व घड़ियां", "पीतल शोपीस", "टेबल सजावट", "फूलदान एवं पात्र"],
@@ -207,7 +207,7 @@ const initialData: DatabaseSchema = {
       slug: "gift-items",
       description: "Curated gift items, festive hampers, corporate tokens, and customized bespoke presentation boxes.",
       descriptionHi: "विचारशील उपहार सामग्री, त्योहार उपहार हैम्पर्स, कॉर्पोरेट उपहार सेट, रिटर्न गिफ्ट्स और कस्टम उपहार।",
-      image: "/assets/hero-editorial.jpg",
+      image: "/assets/products/heart-rose-floral-frame.jpg",
       productCount: 49,
       subcategories: ["Festival Hampers", "Corporate Gifts", "Return Gifts", "Personalized Boxes"],
       subcategoriesHi: ["त्योहार हैम्पर्स", "कॉर्पोरेट उपहार", "रिटर्न गिफ्ट्स", "कस्टम बॉक्सेज"],
@@ -219,7 +219,7 @@ const initialData: DatabaseSchema = {
       slug: "household-products",
       description: "Everyday household essentials, kitchenware, copper bottles, storage organizers, and home utility.",
       descriptionHi: "दैनिक घरेलू उत्पाद, रसोई सामग्री, तांबे के बर्तन व बोतलें, स्टोरेज वस्तुएं और पारिवारिक दैनिक उपयोग की वस्तुएं।",
-      image: "/assets/category-textiles.jpg",
+      image: "/assets/products/natural-bamboo-soop.jpg",
       productCount: 65,
       subcategories: ["Copper & Brass Utensils", "Storage & Utility", "Kitchen Essentials", "Home Textiles"],
       subcategoriesHi: ["तांबे व पीतल के बर्तन", "स्टोरेज एवं उपयोगिता", "रसोई उपयोगी वस्तुएं", "घरेलू वस्त्र"],
@@ -231,7 +231,7 @@ const initialData: DatabaseSchema = {
       slug: "other-categories",
       description: "Textiles, fabrics, fine stationery, Agro produce, packaging materials, and general merchandise.",
       descriptionHi: "वस्त्र, स्टेशनरी, कृषि उत्पाद, पैकेजिंग सामग्री और हमारे 7 व्यावसायिक क्षेत्रों के विविध उत्पाद।",
-      image: "/assets/category-stationery.jpg",
+      image: "/assets/bhaya-india-logo.png",
       productCount: 88,
       subcategories: ["Textiles & Fabrics", "Stationery & Office", "Agro Produce", "Commercial Packaging"],
       subcategoriesHi: ["वस्त्र एवं परिधान", "स्टेशनरी व कार्यालय", "कृषि उपज", "व्यावसायिक पैकेजिंग"],
@@ -239,46 +239,56 @@ const initialData: DatabaseSchema = {
     {
       id: "cat-1",
       name: "Textiles & Fabrics",
+      nameHi: "वस्त्र एवं परिधान",
       slug: "textiles-fabrics",
       description: "Handcrafted sarees, pure silks, heritage shawls, and premium tailored linens.",
-      image: "/assets/category-textiles.jpg",
-      productCount: 48,
+      descriptionHi: "हस्तशिल्प साड़ियाँ, विशुद्ध सिल्क, विरासती शॉल एवं उत्कृष्ट भारतीय परिधान।",
+      image: "/assets/placeholder-textiles.svg",
+      productCount: 0,
       subcategories: ["Sarees", "Silk Dupattas", "Handloom Shawls", "Unstitched Suits"],
     },
     {
       id: "cat-2",
       name: "Stationery & Office",
+      nameHi: "स्टेशनरी एवं कार्यालय सामग्री",
       slug: "stationery-office",
       description: "Fine leather journals, executive desk accessories, and corporate paper supplies.",
-      image: "/assets/category-stationery.jpg",
-      productCount: 36,
+      descriptionHi: "उत्कृष्ट डायरी, कॉटन रैग पेपर, एक्ज़ीक्यूटिव पेन और कॉर्पोरेट स्टेशनरी।",
+      image: "/assets/placeholder-stationery.svg",
+      productCount: 0,
       subcategories: ["Notebooks", "Executive Pens", "Desk Organizers", "Paper Sets"],
     },
     {
       id: "cat-3",
       name: "Gift Hampers",
+      nameHi: "उपहार हैम्पर्स",
       slug: "gift-hampers",
       description: "Bespoke curated gifting for festive celebrations, weddings, and corporate recognition.",
-      image: "/assets/hero-editorial.jpg",
-      productCount: 24,
+      descriptionHi: "उत्सव, विवाह और विशेष कॉर्पोरेट अवसरों के लिए विशेष क्यूरेटेड उपहार हैम्पर्स।",
+      image: "/assets/placeholder-gift-hampers.svg",
+      productCount: 0,
       subcategories: ["Corporate Gifts", "Festival Hampers", "Wedding Favours", "Custom Hampers"],
     },
     {
       id: "cat-4",
       name: "Home & Living",
+      nameHi: "घर एवं गृह सज्जा",
       slug: "home-living",
       description: "Artisanal brassware, hand-carved accessories, and luxury home decor accents.",
-      image: "/assets/hero-editorial.jpg",
-      productCount: 42,
+      descriptionHi: "कलात्मक पीतल शिल्प, नक्काशीदार सजावट और सुरुचिपूर्ण गृह सज्जा सामग्री।",
+      image: "/assets/products/auspicious-moti-kalash.jpg",
+      productCount: 1,
       subcategories: ["Brass Decor", "Bedding", "Tableware", "Artisanal Accents"],
     },
     {
       id: "cat-5",
       name: "Wholesale & Bulk",
+      nameHi: "थोक एवं संस्थागत आपूर्ति",
       slug: "wholesale-bulk",
       description: "Institutional supply, commercial fabrics, corporate supplies, and bulk packaging.",
-      image: "/assets/category-stationery.jpg",
-      productCount: 65,
+      descriptionHi: "संस्थागत आपूर्ति, व्यावसायिक वस्त्र, थोक स्टेशनरी और व्यावसायिक पैकेजिंग।",
+      image: "/assets/products/shubh-vivah-soop-okhali-set.jpg",
+      productCount: 0,
       subcategories: ["Institutional Textiles", "Bulk Stationery", "Custom Merchandise"],
     },
   ],
@@ -293,7 +303,7 @@ const initialData: DatabaseSchema = {
       tagline: "Heritage weave, contemporary grace",
       description:
         "Handwoven Banarasi silk saree crafted with genuine gold-tone zari embellishment along the borders and ornate pallu. Blends timeless Indian craftsmanship with modern refinement, ideal for weddings, family milestones, and auspicious celebrations.",
-      images: ["/assets/category-textiles.jpg"],
+      images: ["/assets/placeholder-textiles.svg"],
       price: 3800,
       priceNote: "Per piece (Inclusive of Taxes)",
       specs: [
@@ -334,7 +344,7 @@ const initialData: DatabaseSchema = {
       tagline: "Write your legacy with intention",
       description:
         "Handcrafted top-grain leather journal with 200 pages of 90 GSM archival-grade ivory paper. Featuring lay-flat bookbinding, gilded edge accents, and a satin bookmark ribbon. Built for leaders, thinkers, and discerning professionals.",
-      images: ["/assets/category-stationery.jpg"],
+      images: ["/assets/placeholder-stationery.svg"],
       price: 650,
       priceNote: "Per piece (Bulk rates available)",
       specs: [
@@ -375,7 +385,7 @@ const initialData: DatabaseSchema = {
       tagline: "Thoughtful gifting made effortless",
       description:
         "An opulent gift trunk handcrafted in wooden casing with gold-embossed faux leather trim. Includes artisanal saffron treats, stone-ground dry fruits, pure brass incense holder, hand-poured soy candle, and personalized greeting scroll.",
-      images: ["/assets/hero-editorial.jpg"],
+      images: ["/assets/bhaya-india-logo.png"],
       price: 2450,
       priceNote: "Per hamper (Minimum order for customization: 15)",
       specs: [
@@ -415,7 +425,7 @@ const initialData: DatabaseSchema = {
       tagline: "Spiritual serenity in pure metal",
       description:
         "Traditional bell-metal brass urli bowl hand-beaten by hereditary artisans. Perfectly sized for floating flower petals, aromatic water, and tealights at the entrance of homes and luxury office receptions.",
-      images: ["/assets/hero-editorial.jpg"],
+      images: ["/assets/bhaya-india-logo.png"],
       price: 1850,
       priceNote: "Per piece",
       specs: [
@@ -454,7 +464,7 @@ const initialData: DatabaseSchema = {
       tagline: "Breezy elegance woven with grace",
       description:
         "Lightweight authentic Chanderi fabric combining raw silk warp with fine combed cotton weft. Embellished with delicate hand-block gold motifs (boota) and sheer pallu detailing.",
-      images: ["/assets/category-textiles.jpg"],
+      images: ["/assets/placeholder-textiles.svg"],
       price: 1250,
       priceNote: "Per piece",
       specs: [
@@ -492,7 +502,7 @@ const initialData: DatabaseSchema = {
       tagline: "Industrial durability meets comfort",
       description:
         "High-density poly-viscose and combed cotton blended textiles tailored for institutional uniforms, corporate workforce attire, and hospitality garments. Available in roll bolts of 50m to 500m.",
-      images: ["/assets/category-textiles.jpg"],
+      images: ["/assets/placeholder-textiles.svg"],
       price: null, // Get Quote
       priceNote: "Custom Quotation based on Meterage",
       specs: [
@@ -563,7 +573,7 @@ const initialData: DatabaseSchema = {
           name: "Leather-Bound Executive Notebook",
           price: 650,
           quantity: 2,
-          image: "/assets/category-stationery.jpg",
+          image: "/assets/placeholder-stationery.svg",
         },
       ],
       totalAmount: 1300,
@@ -795,10 +805,27 @@ export function deleteProduct(id: string): boolean {
   return true;
 }
 
+export function isProductPubliclyVisible(p: Product): boolean {
+  if (p.isPublished === false) return false;
+  const s = (p.status || "").toLowerCase();
+  if (s === "draft" || s === "archived" || s === "unpublished" || s === "needs_review") {
+    return false;
+  }
+  const rs = (p.reviewStatus || "").toLowerCase();
+  if (rs === "needs review" || rs === "unpublished") {
+    return false;
+  }
+  return true;
+}
+
 // ------------------- CATEGORIES -------------------
 export function getCategories(): Category[] {
   const db = ensureDb();
-  return db.categories || [];
+  const publishedProducts = (db.products || []).filter(isProductPubliclyVisible);
+  return (db.categories || []).map((cat) => ({
+    ...cat,
+    productCount: publishedProducts.filter((p) => p.categorySlug === cat.slug).length,
+  }));
 }
 
 export function getCategoryBySlug(slug: string): Category | undefined {
@@ -870,17 +897,89 @@ export function getOrders(): Order[] {
   return db.orders || [];
 }
 
+export function getOrderById(id: string): Order | undefined {
+  const db = ensureDb();
+  const searchId = id.trim().toLowerCase();
+  return db.orders.find((o) => o.id.toLowerCase() === searchId);
+}
+
+/**
+ * Privacy-preserving customer order lookup.
+ * Requires matching both Order ID and registered Phone number.
+ */
+export function lookupOrder(orderId: string, phone: string): Order | null {
+  const db = ensureDb();
+  const cleanOrderId = orderId.trim().toLowerCase();
+  const cleanInputPhone = phone.replace(/[^0-9]/g, "");
+
+  if (!cleanOrderId || cleanInputPhone.length < 5) return null;
+
+  const found = db.orders.find((o) => {
+    if (o.id.toLowerCase() !== cleanOrderId) return false;
+    const cleanOrderPhone = (o.phone || "").replace(/[^0-9]/g, "");
+    return cleanOrderPhone.endsWith(cleanInputPhone) || cleanInputPhone.endsWith(cleanOrderPhone);
+  });
+
+  return found || null;
+}
+
 export function createOrder(orderData: Omit<Order, "id" | "createdAt">): Order {
   const db = ensureDb();
-  const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+  const randomSuffix = Math.floor(100000 + Math.random() * 900000);
+  const now = new Date().toISOString();
+  
+  const initialHistory = orderData.history && orderData.history.length > 0
+    ? orderData.history
+    : [
+        {
+          timestamp: now,
+          status: orderData.orderStatus || "Order Placed",
+          note: `Order placed via ${orderData.paymentMethod || "COD"}`,
+        },
+      ];
+
   const newOrder: Order = {
     ...orderData,
     id: `ORD-${randomSuffix}`,
-    createdAt: new Date().toISOString(),
+    history: initialHistory,
+    createdAt: now,
+    updatedAt: now,
   };
   db.orders.unshift(newOrder);
   writeDb(db);
   return newOrder;
+}
+
+export function updateOrder(id: string, updates: Partial<Order>): Order | null {
+  const db = ensureDb();
+  const index = db.orders.findIndex((o) => o.id.toLowerCase() === id.trim().toLowerCase());
+  if (index === -1) return null;
+
+  const current = db.orders[index];
+  const now = new Date().toISOString();
+
+  // If status is changing, automatically append to timeline history
+  let updatedHistory = current.history || [];
+  if (updates.orderStatus && updates.orderStatus !== current.orderStatus) {
+    updatedHistory = [
+      ...updatedHistory,
+      {
+        timestamp: now,
+        status: updates.orderStatus,
+        note: updates.internalNotes || `Status updated to ${updates.orderStatus}`,
+      },
+    ];
+  }
+
+  db.orders[index] = {
+    ...current,
+    ...updates,
+    history: updatedHistory,
+    updatedAt: now,
+  };
+
+  writeDb(db);
+  return db.orders[index];
 }
 
 export function updateOrderStatus(
@@ -888,13 +987,10 @@ export function updateOrderStatus(
   orderStatus?: Order["orderStatus"],
   paymentStatus?: Order["paymentStatus"]
 ): Order | null {
-  const db = ensureDb();
-  const order = db.orders.find((o) => o.id === id);
-  if (!order) return null;
-  if (orderStatus) order.orderStatus = orderStatus;
-  if (paymentStatus) order.paymentStatus = paymentStatus;
-  writeDb(db);
-  return order;
+  return updateOrder(id, {
+    ...(orderStatus ? { orderStatus } : {}),
+    ...(paymentStatus ? { paymentStatus } : {}),
+  });
 }
 
 // ------------------- TESTIMONIALS -------------------
@@ -1197,7 +1293,7 @@ export function saveService(service: Partial<ServiceItem> & { id?: string }): Se
     description: service.description || "",
     descriptionHi: service.descriptionHi || "",
     category: service.category || "General",
-    image: service.image || "/assets/hero-editorial.jpg",
+    image: service.image || "/assets/bhaya-india-logo.png",
     featured: service.featured ?? false,
     status: service.status || "Published",
     order: service.order || db.services.length + 1,
@@ -1323,14 +1419,14 @@ export function saveBlog(post: Partial<BlogPost> & { id?: string }): BlogPost {
     contentHi: post.contentHi || "",
     author: post.author || "BHAYA INDIA Editorial Desk",
     publishedAt: post.publishedAt || new Date().toISOString(),
-    featuredImage: post.featuredImage || "/assets/hero-editorial.jpg",
+    featuredImage: post.featuredImage || "/assets/bhaya-india-logo.png",
     category: post.category || "General",
     tags: post.tags || ["Business"],
     status: post.status || "Published",
     seoTitle: post.seoTitle || post.title || "",
     seoDescription: post.seoDescription || post.excerpt || "",
     canonical: post.canonical || `https://bhayaindia.com/blog/${post.slug || "article"}`,
-    ogImage: post.ogImage || post.featuredImage || "/assets/hero-editorial.jpg",
+    ogImage: post.ogImage || post.featuredImage || "/assets/bhaya-india-logo.png",
   };
 
   db.blogs.unshift(newPost);
@@ -1390,10 +1486,10 @@ export function savePageSeo(path: string, seo: Partial<PageSeoRecord>): PageSeoR
     canonicalUrl: seo.canonicalUrl || `https://bhayaindia.com${path}`,
     ogTitle: seo.ogTitle || seo.seoTitle || "BHAYA INDIA",
     ogDescription: seo.ogDescription || seo.metaDescription || "",
-    ogImage: seo.ogImage || "/assets/hero-editorial.jpg",
+    ogImage: seo.ogImage || "/assets/bhaya-india-logo.png",
     twitterTitle: seo.twitterTitle || seo.seoTitle || "BHAYA INDIA",
     twitterDescription: seo.twitterDescription || seo.metaDescription || "",
-    twitterImage: seo.twitterImage || "/assets/hero-editorial.jpg",
+    twitterImage: seo.twitterImage || "/assets/bhaya-india-logo.png",
     robots: (seo.robots as PageSeoRecord["robots"]) || "index, follow",
     schemaType: (seo.schemaType as PageSeoRecord["schemaType"]) || "WebSite",
     isIndexable: seo.isIndexable ?? true,

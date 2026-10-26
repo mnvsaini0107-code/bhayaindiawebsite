@@ -127,7 +127,7 @@ export default function WhyBhayaIndia() {
 
         {/* 8 Core Brand Trust Pillars */}
         <div className={styles.pillarsGrid}>
-          {trustPillars.map((pillar, idx) => (
+          {trustPillars.map((pillar) => (
             <div key={pillar.id} className={styles.pillarItem} id={`why-pillar-${pillar.id}`}>
               <div className={styles.iconWrap} aria-hidden="true">
                 {pillar.icon}

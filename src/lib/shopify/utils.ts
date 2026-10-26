@@ -173,7 +173,7 @@ export function getLanguageAwareProductImage(
   if (language === "en" && product.image_en) {
     return product.image_en;
   }
-  return product.images?.[0] || "/assets/category-textiles.jpg";
+  return product.images?.[0] || "/assets/image-coming-soon.svg";
 }
 
 // Localized product name

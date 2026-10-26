@@ -311,3 +311,20 @@
     transform: translateY(0) scale(1);
   }
 }
+
+@media (max-width: 640px) {
+  .overlay {
+    padding: 16px 12px;
+    align-items: flex-start;
+  }
+  .modal {
+    max-height: 90vh;
+    border-radius: 12px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .body {
+    max-height: calc(90vh - 75px);
+    padding: 1rem;
+  }
+}

@@ -26,14 +26,14 @@ export function buildPageMetadata(options: BuildPageMetadataOptions): Metadata {
   const pageSeo = getPageSeo(options.path);
 
   // 1. Determine Title
-  let title =
+  const title =
     pageSeo?.seoTitle ||
     options.shopifySeoTitle ||
     options.fallbackTitle ||
     (options.path === "/" ? globalSeo.homepageTitle : globalSeo.defaultTitle);
 
   // 2. Determine Description
-  let description =
+  const description =
     pageSeo?.metaDescription ||
     options.shopifySeoDescription ||
     options.fallbackDescription ||
@@ -47,7 +47,7 @@ export function buildPageMetadata(options: BuildPageMetadataOptions): Metadata {
     pageSeo?.ogImage ||
     options.fallbackImage ||
     globalSeo.defaultOgImage ||
-    "/assets/hero-editorial.jpg";
+    "/assets/bhaya-india-logo.png";
 
   const fullImageUrl = image.startsWith("http") ? image : `${BASE_URL}${image}`;
 

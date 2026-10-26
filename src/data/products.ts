@@ -50,9 +50,9 @@ export const products: Product[] = [
     taglineHi: "विरासती बुनाई, समकालीन लालित्य",
     description: "Handwoven Banarasi silk saree with traditional zari work border. A timeless piece that blends heritage craftsmanship with refined contemporary taste. Suitable for weddings, festivals and formal occasions.",
     descriptionHi: "हथकरघे पर निर्मित प्रामाणिक बनारसी सिल्क साड़ी, पारंपरिक जरी बॉर्डर और समृद्ध पल्लू के साथ। विवाह एवं शुभ अवसरों के लिए सर्वोत्कृष्ट भारतीय शिल्प।",
-    images: ["/assets/category-textiles.jpg"],
-    image_en: "/assets/category-textiles.jpg",
-    image_hi: "/assets/hero-editorial.jpg",
+    images: ["/assets/products/traditional-vivah-soop-collection.jpg"],
+    image_en: "/assets/products/traditional-vivah-soop-collection.jpg",
+    image_hi: "/assets/products/shubh-vivah-soop-okhali-set.jpg",
     price: 3800,
     priceNote: "Per piece",
     specs: [
@@ -98,7 +98,7 @@ export const products: Product[] = [
     taglineHi: "अपने विचारों को दें एक गरिमापूर्ण रूप",
     description: "Crafted with a genuine leather cover and acid-free ivory pages, this premium notebook is designed for professionals and creatives who value quality in every detail.",
     descriptionHi: "हस्तनिर्मित लेदर कवर और 90 जीएसएम एसिड-फ्री आइवरी पेपर्स के साथ निर्मित प्रीमियम नोटबुक। विचारकों और प्रोफेशनल्स के लिए उत्कृष्ट साथी।",
-    images: ["/assets/category-stationery.jpg"],
+    images: ["/assets/products/handpainted-wooden-okhali.jpg"],
     price: 650,
     priceNote: "Per piece",
     specs: [
@@ -144,7 +144,7 @@ export const products: Product[] = [
     taglineHi: "विचारशील उपहार, अत्यंत सहजता के साथ",
     description: "A premium curated hamper for corporate gifting — includes artisanal sweets, quality stationery, and artisan homeware. Customisable branding available for orders of 25+.",
     descriptionHi: "कॉर्पोरेट एवं त्योहारों के लिए विशेष रूप से तैयार किया गया प्रीमियम हैंपर — जिसमें पारंपरिक मिष्ठान, उत्कृष्ट स्टेशनरी और हस्तनिर्मित वस्तुएं शामिल हैं।",
-    images: ["/assets/hero-editorial.jpg"],
+    images: ["/assets/products/shubh-vivah-soop-okhali-set.jpg"],
     price: null,
     priceNote: "Get Quote",
     specs: [
@@ -190,7 +190,7 @@ export const products: Product[] = [
     taglineHi: "शानदार ध्वनि, दिनभर का आरामदायक अनुभव",
     description: "Quality wireless earphones with active noise cancellation, 30-hour battery life and premium sound drivers. Ideal for professionals and everyday use.",
     descriptionHi: "एक्टिव नॉइज़ कैंसलेशन, 30 घंटे की बैटरी बैकअप और प्रीमियम साउंड ड्राइवर्स के साथ उच्च गुणवत्ता वाले वायरलेस ईयरफ़ोन।",
-    images: ["/assets/category-stationery.jpg"],
+    images: ["/assets/products/handpainted-wooden-okhali.jpg"],
     price: 2200,
     priceNote: "Per piece",
     specs: [
@@ -236,7 +236,7 @@ export const products: Product[] = [
     taglineHi: "परंपरा और प्रकाश से सजाएं अपना घर",
     description: "Set of four handcrafted brass diyas with intricate traditional patterns. Each piece is individually finished by skilled artisans, making every set uniquely beautiful.",
     descriptionHi: "चार हस्तनिर्मित शुद्ध पीतल के दीयों का सेट। कुशल कारीगरों द्वारा गढ़े गए पारंपरिक आकृतियाँ जो पूजा और त्योहारों को पावन बनाती हैं।",
-    images: ["/assets/category-textiles.jpg"],
+    images: ["/assets/products/traditional-vivah-soop-collection.jpg"],
     price: 880,
     priceNote: "Set of 4",
     specs: [
@@ -281,7 +281,7 @@ export const products: Product[] = [
     taglineHi: "बड़े पैमाने पर उच्च गुणवत्ता",
     description: "Wholesale pack of premium cotton dress materials in assorted prints. Ideal for retailers, boutiques and institutions. Custom colour and print selection available on bulk orders.",
     descriptionHi: "प्रीमियम कॉटन ड्रेस मटेरियल का थोक पैक। खुदरा विक्रेताओं, बुटीक और संस्थानों के लिए सर्वोत्तम। थोक ऑर्डर पर कस्टम प्रिंट व रंग उपलब्ध।",
-    images: ["/assets/category-textiles.jpg"],
+    images: ["/assets/products/traditional-vivah-soop-collection.jpg"],
     price: null,
     priceNote: "Get Quote",
     specs: [

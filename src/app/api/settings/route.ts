@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSiteSettings, updateSiteSettings } from "@/lib/db";
+import { verifyAdminRequest } from "@/lib/auth";
 
 export async function GET() {
   try {
@@ -12,6 +13,13 @@ export async function GET() {
 }
 
 export async function PUT(request: Request) {
+  if (!(await verifyAdminRequest(request))) {
+    return NextResponse.json(
+      { success: false, error: "Unauthorized: Admin session required." },
+      { status: 401 }
+    );
+  }
+
   try {
     const body = await request.json();
     const updated = updateSiteSettings(body);

@@ -1,0 +1,135 @@
+.loginContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--sapphire-dark, #0c2540) 0%, var(--sapphire, #123456) 100%);
+  padding: 2rem;
+  font-family: var(--font-body);
+}
+
+.loginCard {
+  background: #ffffff;
+  border-radius: var(--radius-lg, 8px);
+  width: 100%;
+  max-width: 440px;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+}
+
+.brandArea {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logoWrapper {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1rem;
+}
+
+.logoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.brandTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--sapphire);
+  margin-bottom: 0.25rem;
+}
+
+.tagline {
+  font-size: 1rem;
+  color: var(--gold-dark, #a8833c);
+  margin-bottom: 0.5rem;
+}
+
+.panelBadge {
+  display: inline-block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background-color: var(--gray-100);
+  color: var(--gray-600);
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+}
+
+.errorAlert {
+  background-color: #fee2e2;
+  border: 1px solid #f87171;
+  color: #b91c1c;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--sapphire);
+}
+
+.input {
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--gray-300);
+  border-radius: 4px;
+  font-size: 0.95rem;
+  color: var(--sapphire);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.input:focus {
+  border-color: var(--gold, #C5A059);
+}
+
+.submitBtn {
+  background-color: var(--sapphire, #123456);
+  color: #ffffff;
+  padding: 0.95rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.15s ease;
+}
+
+.submitBtn:hover {
+  background-color: var(--sapphire-dark, #0c2540);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.cardFooter {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--gray-100);
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--gray-500);
+}

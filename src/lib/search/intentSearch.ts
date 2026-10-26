@@ -59,8 +59,7 @@ export function executeIntentSearch(
 
 export function scoreAndRankProducts(
   products: BhayaShopifyProduct[],
-  query: string,
-  ..._rest: unknown[]
+  query: string
 ): BhayaShopifyProduct[] {
   const result = executeSearch(query, products);
   return result.products;

@@ -44,7 +44,7 @@ export default function AdminServicesPage() {
       description: "",
       descriptionHi: "",
       category: "Sourcing & Supply Chain",
-      image: "/assets/hero-editorial.jpg",
+      image: "/assets/bhaya-india-logo.png",
       featured: true,
       status: "Published",
       order: services.length + 1,
@@ -175,7 +175,7 @@ export default function AdminServicesPage() {
                     <td style={{ padding: "1rem" }}>
                       <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
                         <div style={{ width: "40px", height: "40px", borderRadius: "6px", overflow: "hidden", position: "relative", background: "#f1f5f9" }}>
-                          <Image src={srv.image || "/assets/hero-editorial.jpg"} alt={srv.title} fill style={{ objectFit: "cover" }} sizes="40px" />
+                          <Image src={srv.image || "/assets/bhaya-india-logo.png"} alt={srv.title} fill style={{ objectFit: "cover" }} sizes="40px" />
                         </div>
                         <div>
                           <strong style={{ color: "var(--navy)", display: "block" }}>{srv.title}</strong>

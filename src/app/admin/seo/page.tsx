@@ -459,7 +459,7 @@ export default function SeoControlCenterPage() {
               <div className={styles.socialCard}>
                 <div className={styles.socialImageWrapper}>
                   <Image
-                    src={currentPage.ogImage || "/assets/hero-editorial.jpg"}
+                    src={currentPage.ogImage || "/assets/bhaya-india-logo.png"}
                     alt={currentPage.seoTitle}
                     fill
                     style={{ objectFit: "cover" }}
@@ -704,9 +704,9 @@ export default function SeoControlCenterPage() {
         <div className={styles.card}>
           <div className={styles.cardHeader}>
             <div>
-              <h2 className={styles.cardTitle}>Shopify Product SEO Audit</h2>
+              <h2 className={styles.cardTitle}>Catalogue Product SEO Audit</h2>
               <span style={{ fontSize: "0.8rem", color: "#64748b" }}>
-                Displays product search metadata. Product titles and descriptions inherit from Shopify Storefront API with optional CMS overrides.
+                Displays product search metadata, indexation status, and SEO overrides for all products in the catalogue.
               </span>
             </div>
             <Link
@@ -756,7 +756,7 @@ export default function SeoControlCenterPage() {
                     <td>
                       <span className={styles.statusPass}>
                         <CheckCircle2 size={12} />
-                        <span>Shopify Synced</span>
+                        <span>Catalogue Verified</span>
                       </span>
                     </td>
                   </tr>

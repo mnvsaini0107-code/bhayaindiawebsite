@@ -6,7 +6,7 @@ import CredibilityStrip from "@/components/CredibilityStrip/CredibilityStrip";
 import styles from "./testimonials.module.css";
 
 export default function TestimonialsClient() {
-  const { language, t } = useLanguage();
+  const { language } = useLanguage();
 
   return (
     <main className={styles.main}>

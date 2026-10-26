@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#081421"/>
+      <stop offset="50%" stop-color="#123456"/>
+      <stop offset="100%" stop-color="#081421"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F2D283"/>
+      <stop offset="50%" stop-color="#C5A059"/>
+      <stop offset="100%" stop-color="#8F6B27"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Deep Navy Background -->
+  <rect width="800" height="800" fill="url(#bgGrad)"/>
+
+  <!-- Ornate Border -->
+  <rect x="28" y="28" width="744" height="744" rx="20" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" opacity="0.85"/>
+  <rect x="40" y="40" width="720" height="720" rx="14" fill="none" stroke="url(#goldGrad)" stroke-width="1" stroke-dasharray="8 6" opacity="0.4"/>
+
+  <!-- Corner Flourishes -->
+  <path d="M 40 70 L 70 70 L 70 40" fill="none" stroke="url(#goldGrad)" stroke-width="2"/>
+  <path d="M 760 70 L 730 70 L 730 40" fill="none" stroke="url(#goldGrad)" stroke-width="2"/>
+  <path d="M 40 730 L 70 730 L 70 760" fill="none" stroke="url(#goldGrad)" stroke-width="2"/>
+  <path d="M 760 730 L 730 730 L 730 760" fill="none" stroke="url(#goldGrad)" stroke-width="2"/>
+
+  <!-- Central Icon: Gift Hamper Box & Ribbon Motif -->
+  <g transform="translate(400, 310)">
+    <circle cx="0" cy="0" r="76" fill="#0C2035" stroke="url(#goldGrad)" stroke-width="2"/>
+    <!-- Hamper Box Base -->
+    <rect x="-38" y="-12" width="76" height="52" rx="4" fill="none" stroke="url(#goldGrad)" stroke-width="2.5"/>
+    <!-- Box Lid -->
+    <rect x="-44" y="-24" width="88" height="14" rx="3" fill="#123456" stroke="url(#goldGrad)" stroke-width="2.5"/>
+    <!-- Vertical ribbon -->
+    <line x1="0" y1="-24" x2="0" y2="40" stroke="url(#goldGrad)" stroke-width="4"/>
+    <!-- Ribbon Bow -->
+    <path d="M 0 -24 C -16 -44, -34 -24, 0 -24 Z" fill="url(#goldGrad)" opacity="0.8"/>
+    <path d="M 0 -24 C 16 -44, 34 -24, 0 -24 Z" fill="url(#goldGrad)" opacity="0.8"/>
+    <circle cx="0" cy="-24" r="5" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="400" y="445" text-anchor="middle" font-family="'Outfit', 'Inter', -apple-system, sans-serif" font-size="16" font-weight="700" fill="#C5A059" letter-spacing="5">
+    BHAYA INDIA • COLLECTION
+  </text>
+  <text x="400" y="488" text-anchor="middle" font-family="'Outfit', 'Inter', -apple-system, sans-serif" font-size="30" font-weight="700" fill="#FFFFFF" letter-spacing="2">
+    GIFT HAMPERS
+  </text>
+  <text x="400" y="525" text-anchor="middle" font-family="'Outfit', 'Inter', -apple-system, sans-serif" font-size="18" font-weight="600" fill="#E8C982" letter-spacing="1.5">
+    उपहार हैम्पर्स संग्रह
+  </text>
+
+  <!-- Status pill -->
+  <g transform="translate(400, 560)">
+    <rect x="-190" y="0" width="380" height="36" rx="18" fill="rgba(197, 160, 89, 0.12)" stroke="url(#goldGrad)" stroke-width="1"/>
+    <text x="0" y="23" text-anchor="middle" font-family="'Outfit', 'Inter', -apple-system, sans-serif" font-size="12" font-weight="600" fill="#F2D283" letter-spacing="2">
+      PHOTO AWAITING CLIENT SUPPLY
+    </text>
+  </g>
+
+  <!-- Motto footer -->
+  <text x="400" y="650" text-anchor="middle" font-family="'Outfit', 'Inter', -apple-system, sans-serif" font-size="14" fill="#9FB3C8" letter-spacing="1">
+    No Stock Photography Used • जहाँ भाया, वहाँ भरोसा
+  </text>
+</svg>

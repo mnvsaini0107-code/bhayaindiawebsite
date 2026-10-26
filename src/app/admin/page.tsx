@@ -9,17 +9,11 @@ import {
   getActivityLogs,
 } from "@/lib/db";
 import {
-  isShopifyConfigured,
-  isShopifyAdminConfigured,
-  getShopifyStoreDomain,
-} from "@/lib/shopify";
-import {
   Package,
   ShoppingBag,
   Inbox,
   IndianRupee,
   ExternalLink,
-  ArrowUpRight,
   House,
   Tags,
   SearchCheck,
@@ -31,6 +25,7 @@ import {
   Clock,
   Layers,
   ArrowRight,
+  FileText,
 } from "lucide-react";
 import styles from "./dashboard.module.css";
 
@@ -45,16 +40,14 @@ export default function AdminDashboardPage() {
   const pageSeo = getAllPageSeo();
   const activityLogs = getActivityLogs();
 
-  const isConfigured = isShopifyConfigured();
-  const isAdminConfigured = isShopifyAdminConfigured();
-  const shopifyDomain = getShopifyStoreDomain() || "a3g0h2-ss.myshopify.com";
-  const cleanDomain = shopifyDomain.replace(/^https?:\/\//, "").replace(/\/$/, "");
-  const shopifyAdminUrl = `https://admin.shopify.com/store/${cleanDomain.replace(".myshopify.com", "")}`;
-
   const activeLeads = enquiries.filter((e) => e.status !== "Closed");
   const totalRevenue = orders
     .filter((o) => o.paymentStatus === "Paid")
     .reduce((sum, o) => sum + o.totalAmount, 0);
+
+  const lowStockProducts = products.filter(
+    (p) => p.isPublished && (p.stockQuantity !== undefined && p.stockQuantity !== null && p.stockQuantity <= 10)
+  );
 
   // SEO Health calculation from actual data
   const pagesList = Object.values(pageSeo);
@@ -79,142 +72,94 @@ export default function AdminDashboardPage() {
             <ExternalLink size={15} />
             <span>View Public Site</span>
           </Link>
-          <a
-            href={shopifyAdminUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.primaryActionBtn}
-          >
-            <span>Open Shopify Admin</span>
-            <ArrowUpRight size={15} color="#c9a24b" />
-          </a>
+          <Link href="/admin/products" className={styles.primaryActionBtn}>
+            <span>Manage Products</span>
+            <ArrowRight size={15} color="#c9a24b" />
+          </Link>
         </div>
       </section>
 
       {/* ------------------------------------------------------------------
-          ROW 2: SHOPIFY STATUS PANEL (REDESIGNED & FULLY UNCLIPPED)
+          ROW 2: STANDALONE STORE OVERVIEW & INVENTORY ALERTS
           ------------------------------------------------------------------ */}
-      <section className={styles.shopifyPanel}>
-        <div className={styles.shopifyPanelTop}>
-          <div className={styles.shopifyBrandBadge}>
-            <div className={styles.shopifyIconBox}>
-              <ShoppingBag size={24} />
+      <section className={styles.panelCard} style={{ marginBottom: "1.75rem", borderLeft: "4px solid #C5A059" }}>
+        <div className={styles.panelHeader} style={{ padding: "1.25rem 1.5rem" }}>
+          <div className={styles.panelTitleArea}>
+            <div style={{
+              width: "38px",
+              height: "38px",
+              borderRadius: "8px",
+              background: "rgba(18, 52, 86, 0.08)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "#123456"
+            }}>
+              <Package size={20} />
             </div>
-            <div className={styles.shopifyTitleInfo}>
-              <div className={styles.shopifyHeadingRow}>
-                <h2 className={styles.shopifyTitle}>SHOPIFY ADMIN</h2>
-                <span className={styles.shopifyLiveBadge}>
-                  <span className={styles.pulseDot} style={{ width: 6, height: 6 }} />
-                  <span>LIVE SYNC ACTIVE</span>
-                </span>
-              </div>
-              <p className={styles.shopifySubtitle}>
-                Primary Commerce Source of Truth — Real-time catalog & order synchronization
+            <div>
+              <h2 style={{ fontSize: "1.1rem", fontWeight: 700, color: "#123456", margin: 0 }}>
+                BHAYA INDIA Standalone Store Desk
+              </h2>
+              <p style={{ margin: "0.2rem 0 0", fontSize: "0.85rem", color: "#64748B" }}>
+                Primary Source of Truth · Native persistent database active · Zero external dependencies
               </p>
             </div>
           </div>
-
-          <div className={styles.shopifyConnectedStore}>
-            <span>Connected to:</span>
-            <span className={styles.shopifyDomainPill}>{cleanDomain}</span>
+          <div style={{ display: "flex", gap: "0.5rem" }}>
+            <Link
+              href="/admin/products"
+              className={styles.secondaryActionBtn}
+              style={{ fontSize: "0.82rem", padding: "0.45rem 0.9rem" }}
+            >
+              <Package size={14} />
+              <span>Products CMS</span>
+            </Link>
+            <Link
+              href="/admin/orders"
+              className={styles.secondaryActionBtn}
+              style={{ fontSize: "0.82rem", padding: "0.45rem 0.9rem" }}
+            >
+              <ShoppingBag size={14} />
+              <span>Orders Desk</span>
+            </Link>
+            <Link
+              href="/admin/enquiries"
+              className={styles.secondaryActionBtn}
+              style={{ fontSize: "0.82rem", padding: "0.45rem 0.9rem" }}
+            >
+              <Inbox size={14} />
+              <span>Leads CRM</span>
+            </Link>
           </div>
         </div>
 
-        {/* 4 Sync Pillars Grid */}
-        <div className={styles.shopifyPillarsGrid}>
-          <div className={styles.pillarCard}>
-            <span className={styles.pillarIcon}>
-              <Package size={18} />
-            </span>
-            <div className={styles.pillarMeta}>
-              <span className={styles.pillarLabel}>Products</span>
-              <span className={styles.pillarDesc}>Live Storefront Catalog</span>
+        {lowStockProducts.length > 0 && (
+          <div style={{
+            padding: "0.9rem 1.5rem",
+            background: "#FFFBEB",
+            borderTop: "1px solid #FEF3C7",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            fontSize: "0.88rem",
+            color: "#92400E"
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
+              <AlertCircle size={17} color="#D97706" />
+              <span>
+                <strong>{lowStockProducts.length} Product(s) with Low Stock:</strong>{" "}
+                {lowStockProducts.slice(0, 3).map(p => `${p.name} (${p.stockQuantity ?? 0} left)`).join(", ")}
+              </span>
             </div>
-          </div>
-
-          <div className={styles.pillarCard}>
-            <span className={styles.pillarIcon}>
-              <Layers size={18} />
-            </span>
-            <div className={styles.pillarMeta}>
-              <span className={styles.pillarLabel}>Inventory</span>
-              <span className={styles.pillarDesc}>Multi-variant Stock</span>
-            </div>
-          </div>
-
-          <div className={styles.pillarCard}>
-            <span className={styles.pillarIcon}>
-              <ShoppingBag size={18} />
-            </span>
-            <div className={styles.pillarMeta}>
-              <span className={styles.pillarLabel}>Orders</span>
-              <span className={styles.pillarDesc}>Direct Customer Billing</span>
-            </div>
-          </div>
-
-          <div className={styles.pillarCard}>
-            <span className={styles.pillarIcon}>
-              <CheckCircle2 size={18} />
-            </span>
-            <div className={styles.pillarMeta}>
-              <span className={styles.pillarLabel}>Customers</span>
-              <span className={styles.pillarDesc}>Unified Account Vault</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Actions Row */}
-        <div className={styles.shopifyActionsRow}>
-          <div className={styles.shopifyDeepLinks}>
-            <a
-              href={`${shopifyAdminUrl}/products`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.deepLinkItem}
+            <Link
+              href="/admin/products"
+              style={{ color: "#B45309", fontWeight: 600, textDecoration: "underline", fontSize: "0.82rem" }}
             >
-              <span>Manage Products & Prices</span>
-              <ArrowUpRight size={13} color="#c9a24b" />
-            </a>
-            <a
-              href={`${shopifyAdminUrl}/orders`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.deepLinkItem}
-            >
-              <span>Manage Orders & Dispatches</span>
-              <ArrowUpRight size={13} color="#c9a24b" />
-            </a>
-            <a
-              href={`${shopifyAdminUrl}/collections`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.deepLinkItem}
-            >
-              <span>Manage Collections</span>
-              <ArrowUpRight size={13} color="#c9a24b" />
-            </a>
+              Update Stock →
+            </Link>
           </div>
-
-          <div className={styles.shopifyBtnGroup}>
-            <a
-              href={shopifyAdminUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.goldAdminBtn}
-            >
-              <span>Open Shopify Admin</span>
-              <ExternalLink size={14} />
-            </a>
-            <a
-              href="/data/shopify_products_import.csv"
-              download="shopify_products_import.csv"
-              className={styles.csvDownloadBtn}
-              title="Download standard Shopify CSV export ready for import"
-            >
-              <span>Export CSV</span>
-            </a>
-          </div>
-        </div>
+        )}
       </section>
 
       {/* ------------------------------------------------------------------
@@ -540,21 +485,19 @@ export default function AdminDashboardPage() {
               <ArrowRight size={14} className={styles.quickActionArrow} />
             </Link>
 
-            <a
-              href={shopifyAdminUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/admin/content"
               className={styles.quickActionCard}
             >
               <div className={styles.quickActionIcon} style={{ background: "rgba(201, 162, 75, 0.15)", color: "#c9a24b" }}>
-                <ExternalLink size={18} />
+                <FileText size={18} />
               </div>
               <div className={styles.quickActionText}>
-                <h4 className={styles.quickActionTitle}>Shopify Admin</h4>
-                <p className={styles.quickActionDesc}>Store backend portal</p>
+                <h4 className={styles.quickActionTitle}>Website Content</h4>
+                <p className={styles.quickActionDesc}>Headlines & brand story</p>
               </div>
-              <ArrowUpRight size={14} className={styles.quickActionArrow} />
-            </a>
+              <ArrowRight size={14} className={styles.quickActionArrow} />
+            </Link>
           </div>
         </div>
 
@@ -654,18 +597,18 @@ export default function AdminDashboardPage() {
       <section className={styles.systemHealthStrip}>
         <div className={styles.healthStripGrid}>
           <div className={styles.healthStripItem}>
-            <span className={styles.healthStripLabel}>SHOPIFY ADMIN API</span>
+            <span className={styles.healthStripLabel}>COMMERCE ENGINE</span>
             <span className={styles.healthStripStatus}>
               <span className={styles.healthDot} />
-              <span>{isAdminConfigured ? "Authenticated" : "Setup Mode"}</span>
+              <span>Standalone Store Active</span>
             </span>
           </div>
 
           <div className={styles.healthStripItem}>
-            <span className={styles.healthStripLabel}>STOREFRONT API</span>
+            <span className={styles.healthStripLabel}>CATALOGUE CMS</span>
             <span className={styles.healthStripStatus}>
               <span className={styles.healthDot} />
-              <span>{isConfigured ? "Operational" : "Fallback Active"}</span>
+              <span>Native Storefront Synced</span>
             </span>
           </div>
 

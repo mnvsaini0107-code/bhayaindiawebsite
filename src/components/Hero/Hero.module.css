@@ -22,11 +22,11 @@
 }
 
 .heroHeading {
-  font-family: var(--font-heading, "Playfair Display", serif);
+  font-family: var(--font-primary);
   font-size: clamp(2.35rem, 4.5vw, 3.85rem);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.025em;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
   color: var(--sapphire, #123456);
   margin-bottom: clamp(1rem, 2vw, 1.5rem);
 }

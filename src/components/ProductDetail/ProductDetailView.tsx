@@ -55,7 +55,7 @@ export default function ProductDetailView({
     (product.images || []).forEach((img) => {
       if (!list.includes(img)) list.push(img);
     });
-    return list.length > 0 ? list : ["/assets/category-textiles.jpg"];
+    return list.length > 0 ? list : ["/assets/image-coming-soon.svg"];
   }, [activeProductImage, product.images]);
   const [added, setAdded] = useState(false);
   const [buyingNow, setBuyingNow] = useState(false);

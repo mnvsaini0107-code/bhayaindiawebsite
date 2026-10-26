@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import BrandSplash from "@/components/BrandSplash/BrandSplash";
 import { CartProvider } from "@/context/CartContext";
 import { LanguageProvider, Locale } from "@/context/LanguageContext";
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-plus-jakarta-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -39,7 +47,11 @@ export default async function RootLayout({
   const initialLocale: Locale = rawLocale === "hi" ? "hi" : "en";
 
   return (
-    <html lang={initialLocale === "hi" ? "hi-IN" : "en-IN"} suppressHydrationWarning>
+    <html
+      lang={initialLocale === "hi" ? "hi-IN" : "en-IN"}
+      className={plusJakartaSans.variable}
+      suppressHydrationWarning
+    >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

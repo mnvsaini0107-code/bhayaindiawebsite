@@ -12,16 +12,16 @@ export default function CategoryShowcaseClient({ categories }: { categories: Bha
 
   if (!categories || categories.length === 0) return null;
 
-  // Circular strip items representing the client-mandated categories
+  // Circular strip items representing the client-mandated categories with authentic photography
   const circularItems = [
-    { name: t("catFestival"), slug: "festival", image: "/assets/hero-editorial.jpg" },
-    { name: t("catPackaging"), slug: "packaging", image: "/assets/category-stationery.jpg" },
-    { name: t("catPujaSamagri"), slug: "puja-samagri", image: "/assets/hero-editorial.jpg" },
-    { name: t("catFestivalDecoration"), slug: "festival-decoration", image: "/assets/category-textiles.jpg" },
-    { name: t("catWeddingMarriage"), slug: "wedding-marriage-items", image: "/assets/category-textiles.jpg" },
-    { name: t("catHandicraft"), slug: "handicraft", image: "/assets/category-stationery.jpg" },
-    { name: t("catGiftItems"), slug: "gift-items", image: "/assets/hero-editorial.jpg" },
-    { name: t("catHouseholdProducts"), slug: "household-products", image: "/assets/category-textiles.jpg" },
+    { name: t("catFestival"), slug: "festival", image: "/assets/products/large-flower-garland-grand-multicolour.jpg" },
+    { name: t("catPackaging"), slug: "packaging", image: "/assets/products/traditional-vivah-soop-ensemble.jpg" },
+    { name: t("catPujaSamagri"), slug: "puja-samagri", image: "/assets/products/puja-kalash-and-thali-ensemble.jpg" },
+    { name: t("catFestivalDecoration"), slug: "festival-decoration", image: "/assets/products/large-flower-garland-grand-tiered-festive.jpg" },
+    { name: t("catWeddingMarriage"), slug: "wedding-marriage-items", image: "/assets/products/traditional-vivah-soop-collection.jpg" },
+    { name: t("catHandicraft"), slug: "handicraft", image: "/assets/products/handpainted-wooden-okhali.jpg" },
+    { name: t("catGiftItems"), slug: "gift-items", image: "/assets/products/heart-rose-floral-frame.jpg" },
+    { name: t("catHouseholdProducts"), slug: "household-products", image: "/assets/products/natural-bamboo-soop.jpg" },
   ];
 
   return (

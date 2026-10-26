@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { isStandaloneMode } from "@/lib/commerce";
 
 export interface CartItem {
   id: string;
@@ -40,6 +41,13 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const fetchShopifyCart = async (cId: string) => {
+    // If standalone mode is active, do not execute runtime Shopify cart queries
+    if (isStandaloneMode()) {
+      setIsShopify(false);
+      setCheckoutUrl(null);
+      return;
+    }
+
     try {
       const res = await fetch("/api/cart", {
         method: "POST",
@@ -82,10 +90,15 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       if (savedItems) {
         setItems(JSON.parse(savedItems));
       }
-      const savedCartId = localStorage.getItem("bhaya_shopify_cart_id");
-      if (savedCartId) {
-        setCartId(savedCartId);
-        fetchShopifyCart(savedCartId);
+      if (!isStandaloneMode()) {
+        const savedCartId = localStorage.getItem("bhaya_shopify_cart_id");
+        if (savedCartId) {
+          setCartId(savedCartId);
+          fetchShopifyCart(savedCartId);
+        }
+      } else {
+        setIsShopify(false);
+        setCheckoutUrl(null);
       }
     } catch (e) {
       console.error("Failed to load cart from storage", e);
@@ -130,49 +143,53 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       return [...prev, { ...product, quantity: qty }];
     });
 
-    // Shopify Cart sync
-    try {
-      const merchandiseId =
-        product.variantId ||
-        (product.id.startsWith("gid://shopify/") ? product.id : null);
+    // Shopify Cart sync (only when in Shopify mode)
+    if (!isStandaloneMode()) {
+      try {
+        const merchandiseId =
+          product.variantId ||
+          (product.id.startsWith("gid://shopify/") ? product.id : null);
 
-      if (merchandiseId) {
-        const res = await fetch("/api/cart", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            action: "add",
-            cartId,
-            lines: [{ merchandiseId, quantity: qty }],
-          }),
-        });
-        const data = await res.json();
-        if (data.success && data.isShopify && data.cart) {
-          setIsShopify(true);
-          setCartId(data.cart.id);
-          setCheckoutUrl(data.cart.checkoutUrl);
+        if (merchandiseId) {
+          const res = await fetch("/api/cart", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              action: "add",
+              cartId,
+              lines: [{ merchandiseId, quantity: qty }],
+            }),
+          });
+          const data = await res.json();
+          if (data.success && data.isShopify && data.cart) {
+            setIsShopify(true);
+            setCartId(data.cart.id);
+            setCheckoutUrl(data.cart.checkoutUrl);
 
-          // Update items with lineId from returned Shopify cart
-          const lines = data.cart.lines?.edges || [];
-          setItems((prev) =>
-            prev.map((item) => {
-              const matchedLine = lines.find(
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                (edge: any) =>
-                  edge.node.merchandise?.id === item.variantId ||
-                  edge.node.merchandise?.id === item.id
-              );
-              if (matchedLine) {
-                return { ...item, lineId: matchedLine.node.id };
-              }
-              return item;
-            })
-          );
+            // Update items with lineId from returned Shopify cart
+            const lines = data.cart.lines?.edges || [];
+            setItems((prev) =>
+              prev.map((item) => {
+                const matchedLine = lines.find(
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  (edge: any) =>
+                    edge.node.merchandise?.id === item.variantId ||
+                    edge.node.merchandise?.id === item.id
+                );
+                if (matchedLine) {
+                  return { ...item, lineId: matchedLine.node.id };
+                }
+                return item;
+              })
+            );
+          }
         }
+      } catch (e) {
+        console.warn("Shopify cart add failed, using local cart state:", e);
+      } finally {
+        setIsLoading(false);
       }
-    } catch (e) {
-      console.warn("Shopify cart add failed, using local cart state:", e);
-    } finally {
+    } else {
       setIsLoading(false);
     }
   };
@@ -182,7 +199,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     setItems((prev) => prev.filter((item) => item.id !== id && item.variantId !== id));
 
     const lineIdToRemove = itemToRemove?.lineId;
-    if (cartId && lineIdToRemove) {
+    if (!isStandaloneMode() && cartId && lineIdToRemove) {
       try {
         const res = await fetch("/api/cart", {
           method: "POST",
@@ -216,7 +233,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       )
     );
 
-    if (cartId && itemToUpdate?.lineId) {
+    if (!isStandaloneMode() && cartId && itemToUpdate?.lineId) {
       try {
         const res = await fetch("/api/cart", {
           method: "POST",
@@ -246,6 +263,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   };
 
   const createCheckout = async (): Promise<string | null> => {
+    if (isStandaloneMode()) {
+      return "/checkout";
+    }
     if (checkoutUrl) return checkoutUrl;
     if (items.length === 0) return null;
 

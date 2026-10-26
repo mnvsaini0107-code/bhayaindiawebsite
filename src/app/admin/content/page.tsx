@@ -51,6 +51,24 @@ export default function AdminContentPage() {
     });
   };
 
+  const handleFounderChange = (field: string, val: string) => {
+    if (!content) return;
+    setContent({
+      ...content,
+      founder: {
+        heading: "संस्थापक के बारे में",
+        name: "राम जी भाया",
+        title: "Founder & Visionary — Bhaya India",
+        tagline: "“जहाँ भाया, वहाँ भरोसा।”",
+        intro: "राम जी भाया, बलरामपुर, उत्तर प्रदेश से जुड़े एक उद्यमी हैं। उन्होंने मेहनत, विश्वास, गुणवत्ता और जिम्मेदार व्यापार को अपनी सोच का आधार बनाया है। उनका vision Bhaya India को Festival, Retail, Agro, Manufacturing, Logistics और Exports जैसे क्षेत्रों में विकसित करना है।",
+        portraitUrl: "/ram-ji-bhaya-founder.jpg",
+        closingMotto: "छोटी शुरुआत • बड़ी सोच • मजबूत विश्वास • लंबा सफर",
+        ...(content.founder || {}),
+        [field]: val,
+      },
+    });
+  };
+
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!content) return;
@@ -250,6 +268,77 @@ export default function AdminContentPage() {
               className={styles.textarea}
               value={content.bhaya2.body}
               onChange={(e) => handleBhaya2Change("body", e.target.value)}
+            />
+          </div>
+        </div>
+
+        {/* Section 5: Founder Profile & Story Section */}
+        <div className={styles.card}>
+          <h2 className={styles.cardTitle}>5. Founder Story & Profile CMS (राम जी भाया)</h2>
+          <div className={styles.field}>
+            <label className={styles.label}>Founder Section Heading</label>
+            <input
+              type="text"
+              className={styles.input}
+              value={content.founder?.heading || "संस्थापक के बारे में"}
+              onChange={(e) => handleFounderChange("heading", e.target.value)}
+            />
+          </div>
+          <div className={styles.field}>
+            <label className={styles.label}>Founder Name</label>
+            <input
+              type="text"
+              className={styles.input}
+              value={content.founder?.name || "राम जी भाया"}
+              onChange={(e) => handleFounderChange("name", e.target.value)}
+            />
+          </div>
+          <div className={styles.field}>
+            <label className={styles.label}>Founder Title / Designation</label>
+            <input
+              type="text"
+              className={styles.input}
+              value={content.founder?.title || "Founder & Visionary — Bhaya India"}
+              onChange={(e) => handleFounderChange("title", e.target.value)}
+            />
+          </div>
+          <div className={styles.field}>
+            <label className={styles.label}>Tagline</label>
+            <input
+              type="text"
+              className={styles.input}
+              value={content.founder?.tagline || "“जहाँ भाया, वहाँ भरोसा।”"}
+              onChange={(e) => handleFounderChange("tagline", e.target.value)}
+            />
+          </div>
+          <div className={styles.field}>
+            <label className={styles.label}>Introduction (Homepage Summary)</label>
+            <textarea
+              rows={3}
+              className={styles.textarea}
+              value={content.founder?.intro || "राम जी भाया, बलरामपुर, उत्तर प्रदेश से जुड़े एक उद्यमी हैं। उन्होंने मेहनत, विश्वास, गुणवत्ता और जिम्मेदार व्यापार को अपनी सोच का आधार बनाया है। उनका vision Bhaya India को Festival, Retail, Agro, Manufacturing, Logistics और Exports जैसे क्षेत्रों में विकसित करना है।"}
+              onChange={(e) => handleFounderChange("intro", e.target.value)}
+            />
+          </div>
+          <div className={styles.field}>
+            <label className={styles.label}>Founder Portrait Image URL</label>
+            <input
+              type="text"
+              className={styles.input}
+              value={content.founder?.portraitUrl || "/ram-ji-bhaya-founder.jpg"}
+              onChange={(e) => handleFounderChange("portraitUrl", e.target.value)}
+            />
+            <small style={{ color: "#666", display: "block", marginTop: "4px" }}>
+              Verified authentic portrait stored at: <code>/ram-ji-bhaya-founder.jpg</code>
+            </small>
+          </div>
+          <div className={styles.field}>
+            <label className={styles.label}>Closing Motto</label>
+            <input
+              type="text"
+              className={styles.input}
+              value={content.founder?.closingMotto || "छोटी शुरुआत • बड़ी सोच • मजबूत विश्वास • लंबा सफर"}
+              onChange={(e) => handleFounderChange("closingMotto", e.target.value)}
             />
           </div>
         </div>

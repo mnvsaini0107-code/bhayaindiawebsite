@@ -8,6 +8,7 @@ import Footer from "@/components/Footer/Footer";
 import { useCart } from "@/context/CartContext";
 import { useLanguage } from "@/context/LanguageContext";
 import type { Order } from "@/lib/types";
+import { isStandaloneMode } from "@/lib/commerce";
 import styles from "./checkout.module.css";
 
 export default function CheckoutPage() {
@@ -30,7 +31,8 @@ export default function CheckoutPage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    if (checkoutUrl) {
+    // Only redirect to Shopify if in Shopify-backed mode and checkoutUrl exists
+    if (!isStandaloneMode() && checkoutUrl) {
       window.location.href = checkoutUrl;
     }
   }, [checkoutUrl]);
@@ -94,7 +96,7 @@ export default function CheckoutPage() {
     }
   };
 
-  if (checkoutUrl) {
+  if (!isStandaloneMode() && checkoutUrl) {
     return (
       <>
         <Header />
@@ -166,8 +168,12 @@ export default function CheckoutPage() {
               </div>
 
               <div className={styles.successActions}>
-                <Link href="/account" className="btn btn-primary" id="btn-track-order">
-                  {language === "hi" ? "खाते में ट्रैक करें" : "Track in My Account"}
+                <Link
+                  href={`/track-order?orderId=${encodeURIComponent(orderComplete.id)}&phone=${encodeURIComponent(orderComplete.phone)}`}
+                  className="btn btn-primary"
+                  id="btn-track-order"
+                >
+                  {language === "hi" ? "लाइव ऑर्डर ट्रैक करें →" : "Track Order Status →"}
                 </Link>
                 <Link href="/products" className="btn btn-secondary">
                   {t("continueShopping")}
@@ -442,7 +448,7 @@ export default function CheckoutPage() {
                           <div key={item.id} className={styles.summaryItem}>
                             <div className={styles.itemThumb}>
                               <Image
-                                src={item.image || "/assets/category-textiles.jpg"}
+                                src={item.image || "/assets/image-coming-soon.svg"}
                                 alt={item.name}
                                 width={48}
                                 height={48}

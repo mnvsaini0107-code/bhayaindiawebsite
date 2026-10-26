@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: bhaya-india
+    env: node
+    plan: standard
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: COMMERCE_MODE
+        value: standalone
+      - key: NEXT_PUBLIC_SITE_URL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: ADMIN_JWT_SECRET
+        sync: false

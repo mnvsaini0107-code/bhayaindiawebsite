@@ -27,16 +27,21 @@ function getDomain(): string {
   );
 }
 
-const storefrontAccessToken =
-  process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN ||
-  process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN ||
-  "";
+import { isStandaloneMode } from "@/lib/commerce";
 
-export function isShopifyConfigured(): boolean {
+export function isShopifyStorefrontCredentialsConfigured(): boolean {
   const domain = getDomain();
   const privateToken = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN?.trim();
   const publicToken = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN?.trim();
   return Boolean(domain && (privateToken || publicToken));
+}
+
+export function isShopifyConfigured(): boolean {
+  // If standalone commerce mode is active, runtime Storefront requests are bypassed
+  if (isStandaloneMode()) {
+    return false;
+  }
+  return isShopifyStorefrontCredentialsConfigured();
 }
 
 export function getShopifyStoreDomain(): string {

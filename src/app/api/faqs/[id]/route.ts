@@ -1,10 +1,18 @@
 import { NextResponse } from "next/server";
 import { updateFaq, deleteFaq } from "@/lib/db";
+import { verifyAdminRequest } from "@/lib/auth";
 
 export async function PUT(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  if (!(await verifyAdminRequest(request))) {
+    return NextResponse.json(
+      { success: false, error: "Unauthorized: Admin session required." },
+      { status: 401 }
+    );
+  }
+
   try {
     const { id } = await params;
     const body = await request.json();
@@ -23,6 +31,13 @@ export async function DELETE(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  if (!(await verifyAdminRequest(request))) {
+    return NextResponse.json(
+      { success: false, error: "Unauthorized: Admin session required." },
+      { status: 401 }
+    );
+  }
+
   try {
     const { id } = await params;
     const ok = deleteFaq(id);

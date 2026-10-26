@@ -82,7 +82,7 @@ export function generateProductSchema(product: Product) {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
-    image: images.length > 0 ? images : [`${BASE_URL}/assets/hero-editorial.jpg`],
+    image: images.length > 0 ? images : [`${BASE_URL}/assets/image-coming-soon.svg`],
     description: product.description,
     sku: product.sku || product.id,
     brand: {

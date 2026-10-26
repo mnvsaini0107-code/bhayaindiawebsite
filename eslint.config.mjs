@@ -13,6 +13,10 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
     "scripts/**",
+    "recovery_src/**",
+    "scratch/**",
+    "archive/**",
+    "*.bak",
   ]),
   {
     rules: {

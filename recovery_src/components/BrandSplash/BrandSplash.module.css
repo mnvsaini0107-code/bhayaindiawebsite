@@ -1,0 +1,89 @@
+.splashOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background-color: var(--ivory, #FDFDFD);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto;
+}
+
+.splashOverlay.fadeOut {
+  opacity: 0;
+  transform: scale(1.02);
+  pointer-events: none;
+}
+
+.splashCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: introAppear 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  padding: var(--space-8, 2rem);
+}
+
+.logoWrapper {
+  position: relative;
+  width: 112px;
+  height: 112px;
+  margin-bottom: var(--space-5, 1.25rem);
+}
+
+.logoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.brandTitle {
+  font-family: var(--font-primary, sans-serif);
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--sapphire, #123456);
+  margin-bottom: var(--space-2, 0.5rem);
+  text-transform: uppercase;
+}
+
+.brandAccent {
+  color: var(--gold, #C5A059);
+}
+
+.tagline {
+  font-family: var(--font-devanagari, "Noto Sans Devanagari", sans-serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text-secondary, #4A5B6D);
+  letter-spacing: 0.04em;
+  margin-top: var(--space-1, 0.25rem);
+  opacity: 0.95;
+}
+
+@keyframes introAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 640px) {
+  .logoWrapper {
+    width: 88px;
+    height: 88px;
+  }
+  .brandTitle {
+    font-size: 1.5rem;
+  }
+  .tagline {
+    font-size: 1.1rem;
+  }
+}

@@ -83,7 +83,7 @@ export default async function BlogIndexPage({
             <article key={post.id} className={styles.card}>
               <div className={styles.imageWrapper}>
                 <Image
-                  src={post.featuredImage || "/assets/hero-editorial.jpg"}
+                  src={post.featuredImage || "/assets/bhaya-india-logo.png"}
                   alt={post.title}
                   fill
                   style={{ objectFit: "cover" }}

@@ -1,0 +1,269 @@
+.heroSection {
+  background-color: var(--ivory, #FDFDFD);
+  padding-top: clamp(2.5rem, 4.5vw, 4.5rem);
+  padding-bottom: clamp(3rem, 6vw, 5.5rem);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(18, 52, 86, 0.06);
+}
+
+.heroLayout {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: center;
+  gap: clamp(2.5rem, 5vw, 5rem);
+}
+
+/* --- Editorial Copy Column --- */
+.heroCopy {
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+}
+
+.heroHeading {
+  font-family: var(--font-heading, "Playfair Display", serif);
+  font-size: clamp(2.35rem, 4.5vw, 3.85rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--sapphire, #123456);
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.heroSubtext {
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.65;
+  color: var(--text-secondary, #4A5B6D);
+  margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+  max-width: 540px;
+}
+
+.heroCtas {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.heroNote {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted, #768696);
+  letter-spacing: 0.02em;
+}
+
+.heroNoteDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--gold, #C5A059);
+}
+
+.heroNoteSep {
+  opacity: 0.5;
+}
+
+/* --- Editorial Visual Column with Slider --- */
+.heroVisualCol {
+  position: relative;
+  width: 100%;
+}
+
+.imageFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3.4;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(18, 52, 86, 0.1);
+  box-shadow: 0 16px 40px rgba(18, 52, 86, 0.1);
+}
+
+.heroImage {
+  object-fit: cover;
+  transition: opacity 0.5s ease;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 52, 86, 0.02) 60%,
+    rgba(18, 52, 86, 0.4) 100%
+  );
+  pointer-events: none;
+}
+
+/* Floating Tag */
+.floatingTag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(18, 52, 86, 0.85);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.35rem 0.8rem;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  z-index: 5;
+}
+
+.tagDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold, #C5A059);
+}
+
+/* Slider Controls: Arrows & Dots */
+.sliderArrows {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  z-index: 5;
+}
+
+.arrowBtn {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(18, 52, 86, 0.15);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: var(--sapphire, #123456);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.arrowBtn:hover {
+  background: #FFFFFF;
+  color: var(--gold, #C5A059);
+  transform: scale(1.08);
+}
+
+.sliderDots {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  z-index: 5;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  padding: 0;
+}
+
+.dotActive {
+  background: var(--gold, #C5A059);
+  width: 22px;
+  border-radius: 10px;
+}
+
+/* --- Responsive Breakpoints --- */
+@media (max-width: 1024px) {
+  .heroLayout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .heroCopy {
+    max-width: 100%;
+    text-align: center;
+    align-items: center;
+  }
+  .heroSubtext {
+    max-width: 600px;
+  }
+  .heroCtas {
+    justify-content: center;
+  }
+  .imageFrame {
+    aspect-ratio: 16 / 10;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .heroSection {
+    padding-top: 1.75rem;
+    padding-bottom: 2.25rem;
+  }
+  .heroLayout {
+    gap: 2rem;
+  }
+  .heroHeading {
+    font-size: clamp(1.75rem, 6.5vw, 2.35rem);
+    line-height: 1.12;
+  }
+  .heroSubtext {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-bottom: 1.5rem;
+  }
+  .heroCtas {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-bottom: 1.5rem;
+  }
+  .heroCtas > a,
+  .heroCtas > button {
+    width: 100%;
+    justify-content: center;
+    height: 46px;
+  }
+  .heroNote {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.78rem;
+    gap: 0.35rem;
+    line-height: 1.4;
+  }
+  .imageFrame {
+    aspect-ratio: 4 / 3;
+    width: 100%;
+    max-width: 100%;
+  }
+  .sliderDots {
+    left: 0.75rem;
+    bottom: 0.75rem;
+  }
+  .sliderArrows {
+    right: 0.75rem;
+    bottom: 0.75rem;
+  }
+  .arrowBtn {
+    width: 34px;
+    height: 34px;
+  }
+}
